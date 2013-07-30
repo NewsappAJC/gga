@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+  <title>Georgia General Assembly -- Members</title>
+	<meta name="description" content="">
+	<meta name="author" content="John Perry">
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+	<!-- CSS
+  ================================================== -->
+  <link rel="stylesheet" type="text/css" href="//normalize-css.googlecode.com/svn/trunk/normalize.css">
+  <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="style/bootstrap.css">
+	<link rel="stylesheet" href="style/app.css">
+	<link rel="stylesheet" href="http://host.coxmediagroup.com/ajc/digitalprojects/global/css/iFrame_Medley.css" type="text/css"/>
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+  <div id="main-region" class="container-fluid">
+    <p>Loading ...</p>
+  </div>
+  <div id="member-detail-region">Loading ...</div>
+
+  <script type = "text/template" id="member-icon-template">
+    <div class="member js-show-member-detail <%- party %> <%- district_type %> <%- district_address_city %>" id="member<%- id %>" style="background-image: url('images/cropped/<%- id %>.jpg')" title="<%- tooltip_info %>">
+      <div class="member-info">
+        <%- district_type %> <%- district_number %>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/template" id="member-list-template">
+    <div class="row-fluid">
+      <nav id="control-bar" class="span2">
+        <h3>Filter by:</h3>
+        <p>Party</p>
+        <ul>
+          <li id="filter-Democrat" class="filter">Democrat</li>
+          <li id="filter-Republican" class="filter">Republican</li>
+          <li id="filter-Independent" class="filter">Independent</li>
+        </ul>
+      <p>Legislative chamber</p>
+      <ul>
+        <li id="filter-Senate" class="filter">Senate</li>
+        <li id="filter-House" class="filter">House</li>
+      </ul>
+      <p id="filter-none" class="filter">Show all</p>
+      </nav>
+      <div id="members-container" class="span10"></div>
+    </div>
+  </script>
+
+  <script type="text/template" id="member-detail">
+    <div class="row-fluid">
+      <div class="span2">
+        <img src="images/mugs/<%- id %>.jpg" alt="<%- full_name %>" height="195">
+      </div>
+      <div class="span10">
+        <h1><%- full_name %></h1>
+        <h3><%- party %>, <%- district_type %> District <%- district_number %></h3>
+        <ul>
+          <li><stong>Leadership role:</strong> <%-title %></li>
+          <li><strong>Occupation:</strong> <%- occupation %></li>
+          <li><strong>Education:</strong> <%- education %></li>
+          <li><strong>Religion:</strong> <%- religion %></li>
+          <li><strong>Home town:</strong> <%- district_address_city %></li>
+        </ul>
+      </div>
+    </div>
+  </script>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<!--
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+-->
+  <script src="scripts/lib/json2.js"></script>
+  <script src="scripts/lib/jquery-scrolltofixed-min.js"></script>
+  <script src="//underscorejs.org/underscore-min.js"></script>
+  <script src="scripts/lib/underscore.string.min.js"></script>
+  <script src="scripts/lib/backbone.js"></script>
+  <script src="scripts/lib/backbone.marionette.js"></script>
+	<script src="scripts/app.js"></script>
+  <script src="scripts/entities/member.js"></script>
+  <script src="scripts/apps/members/members_app.js"></script>
+  <script src="scripts/apps/members/list/list_view.js"></script>
+  <script src="scripts/apps/members/list/list_controller.js"></script>
+  <script src="scripts/apps/members/show/show_view.js"></script>
+  <script src="scripts/apps/members/show/show_controller.js"></script>
+
+  <script>
+    GeneralAssemblyApp.start();
+  </script>
+</body>
+</html>

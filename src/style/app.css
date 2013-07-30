@@ -1,0 +1,65 @@
+#members-container {
+  background-color: lightgrey;
+}
+.member {
+  width: 78px;
+  height: 92px;
+  margin: 9px;
+  border: 2px solid white;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+  -webkit-border-radius-topleft:  20px;
+     -moz-border-radius-topleft:  20px;
+          border-top-left-radius: 20px;
+  text-align: center;
+  font-weight: bold;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-color: white;
+  position: relative;
+  white-space: nowrap;
+  cursor: pointer;
+  float: left;
+}
+.member-info {
+  position: relative;
+  padding-left: 2px;
+  padding-right: 2px;
+  border-top: 3px solid white;
+  background-color: grey;
+  color: white;
+}
+.member-info p {
+  font-size: 11px;
+}
+.member.Senate {
+  width: 95px;
+  height: 112px;
+  margin: 8px;
+}
+.House .member-info {
+  top: 74px;
+}
+.Senate .member-info {
+  top: 94px;
+}
+.Republican .member-info {
+  background-color: #FF0F0F;
+}
+.Democrat .member-info {
+  background-color: #0F0FFF;
+}
+.hidden {
+  display: none;
+}
+.filter {
+  cursor: pointer;
+}
+.selected {
+  font-weight: bold;
+}
+#control-bar {
+  padding: 2px;
+  padding-top: 10px;
+}
