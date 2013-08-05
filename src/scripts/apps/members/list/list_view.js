@@ -1,4 +1,16 @@
 GeneralAssemblyApp.module("MembersApp.List", function(List, GeneralAssemblyApp, Backbone, Marionette, $, _) {
+  List.Layout = Marionette.Layout.extend({
+    template: "#member-list-layout",
+    regions: {
+      panelRegion: "#panel-region",
+      membersRegion: "#members-region"
+    }
+  });
+
+  List.Panel = Marionette.ItemView.extend({
+    template: "#member-list-panel"
+  })
+
   List.Member = Marionette.ItemView.extend({
     template: "#member-icon-template",
     events: {
@@ -12,9 +24,9 @@ GeneralAssemblyApp.module("MembersApp.List", function(List, GeneralAssemblyApp, 
     }
   });
 
-  List.Members = Marionette.CompositeView.extend({
-    itemView: List.Member,
-    template: "#member-list-template",
-    itemViewContainer: "#members-container"
+  List.Members = Marionette.CollectionView.extend({
+    itemView: List.Member
+    // template: "#member-list-template",
+    // itemViewContainer: "#members-container"
   });
-})
+});

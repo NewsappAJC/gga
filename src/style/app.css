@@ -1,4 +1,4 @@
-#members-container {
+#members-region {
   background-color: lightgrey;
 }
 .member {
@@ -59,7 +59,7 @@
 .selected {
   font-weight: bold;
 }
-#control-bar {
+#panel-region {
   padding: 2px;
   padding-top: 10px;
 }

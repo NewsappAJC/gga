@@ -43,27 +43,6 @@
     </div>
   </script>
 
-  <script type="text/template" id="member-list-template">
-    <div class="row-fluid">
-      <nav id="control-bar" class="span2">
-        <h3>Filter by:</h3>
-        <p>Party</p>
-        <ul>
-          <li id="filter-Democrat" class="filter">Democrat</li>
-          <li id="filter-Republican" class="filter">Republican</li>
-          <li id="filter-Independent" class="filter">Independent</li>
-        </ul>
-      <p>Legislative chamber</p>
-      <ul>
-        <li id="filter-Senate" class="filter">Senate</li>
-        <li id="filter-House" class="filter">House</li>
-      </ul>
-      <p id="filter-none" class="filter">Show all</p>
-      </nav>
-      <div id="members-container" class="span10"></div>
-    </div>
-  </script>
-
   <script type="text/template" id="member-detail">
     <div class="row-fluid">
       <div class="span2">
@@ -81,6 +60,29 @@
         </ul>
       </div>
     </div>
+  </script>
+
+  <script type="text/template" id="member-list-layout">
+    <div class="row-fluid">
+      <div id="panel-region" class="span2"></div>
+      <div id="members-region" class="span10"></div>
+    </div>
+  </script>
+
+  <script type="text/template" id="member-list-panel">
+    <h3>Filter by:</h3>
+    <p>Party</p>
+    <ul>
+      <li id="filter-Democrat" class="filter">Democrat</li>
+      <li id="filter-Republican" class="filter">Republican</li>
+      <li id="filter-Independent" class="filter">Independent</li>
+    </ul>
+    <p>Legislative chamber</p>
+    <ul>
+      <li id="filter-Senate" class="filter">Senate</li>
+      <li id="filter-House" class="filter">House</li>
+    </ul>
+    <p id="filter-none" class="filter">Show all</p>
   </script>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
