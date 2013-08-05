@@ -7,7 +7,7 @@ GeneralAssemblyApp.module("MembersApp.Show", function(Show, GeneralAssemblyApp, 
         model: model
       });
 
-      GeneralAssemblyApp.mainRegion.show(memberView)
+      GeneralAssemblyApp.mainRegion.show(memberView);
     }
-  }
+  };
 });

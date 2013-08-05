@@ -31,15 +31,15 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
 
   var API = {
     getMembers: function() {
-      Entities.members = new Entities.MembersCollection();
-      Entities.members.fetch();
-      // This is really screwy
+      if (! Entities.members) {
+        Entities.members = new Entities.MembersCollection();
+        Entities.members.fetch();
+      }
       return Entities.members;
     }
   };
 
   GeneralAssemblyApp.reqres.setHandler("members:collection", function() {
-    // This is also really screwy
-    return Entities.members || API.getMembers();
-  })
+    return API.getMembers();
+  });
 });
