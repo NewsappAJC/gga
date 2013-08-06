@@ -8,7 +8,8 @@ GeneralAssemblyApp.module("MembersApp.List", function(List, GeneralAssemblyApp, 
   });
 
   List.Panel = Marionette.ItemView.extend({
-    template: "#member-list-panel"
+    template: "#member-list-panel",
+    className: "container"
   })
 
   List.Member = Marionette.ItemView.extend({

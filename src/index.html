@@ -20,9 +20,14 @@
   ================================================== -->
   <link rel="stylesheet" type="text/css" href="//normalize-css.googlecode.com/svn/trunk/normalize.css">
   <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
+<!--
   <link rel="stylesheet" href="style/bootstrap.css">
+-->
 	<link rel="stylesheet" href="style/app.css">
+<!--
 	<link rel="stylesheet" href="http://host.coxmediagroup.com/ajc/digitalprojects/global/css/iFrame_Medley.css" type="text/css"/>
+-->
 
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -30,7 +35,7 @@
 
 </head>
 <body>
-  <div id="main-region" class="container-fluid">
+  <div id="main-region" class="container">
     <p>Loading ...</p>
   </div>
   <div id="member-detail-region">Loading ...</div>
@@ -44,11 +49,11 @@
   </script>
 
   <script type="text/template" id="member-detail">
-    <div class="row-fluid">
-      <div class="span2">
+    <div class="row-">
+      <div class="col-lg-2">
         <img src="images/mugs/<%- id %>.jpg" alt="<%- full_name %>" height="195">
       </div>
-      <div class="span10">
+      <div class="col-lg-10">
         <h1><%- full_name %></h1>
         <h3><%- party %>, <%- district_type %> District <%- district_number %></h3>
         <ul>
@@ -64,34 +69,43 @@
 
   <script type="text/template" id="member-list-layout">
     <div class="row-fluid">
-      <div id="panel-region" class="span2"></div>
-      <div id="members-region" class="span10"></div>
+      <div id="panel-region" class="navbar navbar-static-top"></div>
+      <div id="members-region"></div>
     </div>
   </script>
 
   <script type="text/template" id="member-list-panel">
-    <h3>Filter by:</h3>
-    <p>Party</p>
-    <ul>
-      <li id="filter-Democrat" class="filter">Democrat</li>
-      <li id="filter-Republican" class="filter">Republican</li>
-      <li id="filter-Independent" class="filter">Independent</li>
-    </ul>
-    <p>Legislative chamber</p>
-    <ul>
-      <li id="filter-Senate" class="filter">Senate</li>
-      <li id="filter-House" class="filter">House</li>
-    </ul>
-    <p id="filter-none" class="filter">Show all</p>
+  <div class="row">
+    <div class="col-sm-6">
+      <span class="navbar-text">Filter by party:</span>
+      <ul class="nav nav-pills">
+        <li id="filter-Democrat" class="filter"><a href="#">Democrat</a></li>
+        <li id="filter-Republican" class="filter"><a href="#">Republican</a></li>
+        <li id="filter-Independent" class="filter"><a href="#">Independent</a></li>
+        <li id="filter-all" class="filter"><a class="active" href="#">All parties</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-6">
+      <span class="navbar-text">by chamber:</span>
+      <ul class="nav nav-pills">
+        <li id="filter-Senate" class="filter"><a href="#">Senate</a></li>
+        <li id="filter-House" class="filter"><a href="#">House</a></li>
+        <li id="filter-all" class="filter"><a class="active"href="#">Both chambers</a></li>
+      </ul>
+    </div>
+  </div>
   </script>
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <!--
   <script src="http://d3js.org/d3.v3.min.js"></script>
 -->
   <script src="scripts/lib/json2.js"></script>
   <script src="scripts/lib/jquery-scrolltofixed-min.js"></script>
+<!--
+  <script src="scripts/lib/bootstrap.js"></script>
+-->
   <script src="//underscorejs.org/underscore-min.js"></script>
   <script src="scripts/lib/underscore.string.min.js"></script>
   <script src="scripts/lib/backbone.js"></script>
