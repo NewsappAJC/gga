@@ -3,28 +3,15 @@ GeneralAssemblyApp.module("Entities", function(Entities, ContactManager, Backbon
     var original = options.collection;
     var filtered = new original.constructor();
     filtered.add(original.models);
-    filtered.filterFunction = options.filterFunction;
+    filtered.filterCriterion = options.filterCriterion;
 
-    var applyFilter = function(filterCriterion, filterStrategy, collection) {
+    var applyFilter = function(filterCriterion, collection) {
       var collection = collection || original;
-      var criterion;
-      if (filterStrategy == "filter") {
-        criterion = filterCriterion.trim();
-      } else {
-        criterion = filterCriterion;
-      }
+      var criterion = filterCriterion;
 
       var items = [];
       if (criterion) {
-        if (filterStrategy == "filter") {
-          if (! filtered.filterFunction) {
-            throw("Attempted to use filter function, but none was defined");
-          }
-          var filterFunction = filtered.filterFunction(criterion);
-          items = collection.filter(filterFunction);
-        } else {
-          items = collection.where(criterion);
-        }
+        items = collection.where(criterion);
       } else {
         items = collection.models;
       }
@@ -45,11 +32,11 @@ GeneralAssemblyApp.module("Entities", function(Entities, ContactManager, Backbon
     };
 
     original.on("reset", function() {
-      var items = applyFilter(filtered._currentCriterion, filtered._currentFilter);
+      var items = applyFilter(filtered._currentCriterion);
       filtered.reset(items);
     });
 
-    original.on("ad", function(models) {
+    original.on("add", function(models) {
       var coll = new original.contructor();
       coll.add(models);
       var items = applyFilter(filtered._currentCriterion, filtered._currentFilter, coll);

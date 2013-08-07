@@ -9,8 +9,23 @@ GeneralAssemblyApp.module("MembersApp.List", function(List, GeneralAssemblyApp, 
 
   List.Panel = Marionette.ItemView.extend({
     template: "#member-list-panel",
-    className: "container"
-  })
+    className: "container",
+    events: {
+      "click .filter": "filterMembers"
+    },
+
+    filterMembers: function(e) {
+      e.preventDefault();
+      $(e.currentTarget).siblings().removeClass("btn-default");
+      $(e.currentTarget).addClass("btn-default");
+
+      var key = $(e.currentTarget).parent().attr("id").match(/filter-(.*)$/)[1];
+      var val = $(e.currentTarget).attr("id").match(/filter-(.*)$/)[1];
+      var criterion = {};
+      criterion[key] = val;
+      this.trigger("members:filter", criterion);
+    }
+  });
 
   List.Member = Marionette.ItemView.extend({
     template: "#member-icon-template",

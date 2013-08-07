@@ -26,16 +26,22 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
     url: "http://localhost:3000/members/",
     comparator: function(member) {
       return ( (member.get("district_type") === "House" ? "A" : "B") + _.string.sprintf('%03s', member.get("district_number")) );
-    }
+    },
+    criterion: {}
   });
 
   var API = {
     getMembers: function() {
       if (! Entities.members) {
         Entities.members = new Entities.MembersCollection();
-        Entities.members.fetch();
+        var defer = $.Deferred();
+        Entities.members.fetch({
+          success: function(data) {
+            defer.resolve(data);
+          }
+        });
       }
-      return Entities.members;
+      return defer.promise();
     }
   };
 

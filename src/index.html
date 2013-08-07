@@ -21,9 +21,6 @@
   <link rel="stylesheet" type="text/css" href="//normalize-css.googlecode.com/svn/trunk/normalize.css">
   <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
-<!--
-  <link rel="stylesheet" href="style/bootstrap.css">
--->
 	<link rel="stylesheet" href="style/app.css">
 <!--
 	<link rel="stylesheet" href="http://host.coxmediagroup.com/ajc/digitalprojects/global/css/iFrame_Medley.css" type="text/css"/>
@@ -38,7 +35,7 @@
   <div id="main-region" class="container">
     <p>Loading ...</p>
   </div>
-  <div id="member-detail-region">Loading ...</div>
+  <div id="member-detail-region"></div>
 
   <script type = "text/template" id="member-icon-template">
     <div class="member js-show-member-detail <%- party %> <%- district_type %> <%- district_address_city %>" id="member<%- id %>" style="background-image: url('images/cropped/<%- id %>.jpg')" title="<%- tooltip_info %>">
@@ -57,7 +54,7 @@
         <h1><%- full_name %></h1>
         <h3><%- party %>, <%- district_type %> District <%- district_number %></h3>
         <ul>
-          <li><stong>Leadership role:</strong> <%- title %></li>
+          <li><strong>Leadership role:</strong> <%- title %></li>
           <li><strong>Occupation:</strong> <%- occupation %></li>
           <li><strong>Education:</strong> <%- education %></li>
           <li><strong>Religion:</strong> <%- religion %></li>
@@ -69,7 +66,7 @@
 
   <script type="text/template" id="member-list-layout">
     <div class="row-fluid">
-      <div id="panel-region" class="navbar navbar-static-top"></div>
+      <div id="panel-region" class="navbar navbar-fixed-top"></div>
       <div id="members-region"></div>
     </div>
   </script>
@@ -78,20 +75,20 @@
   <div class="row">
     <div class="col-sm-6">
       <span class="navbar-text">Filter by party:</span>
-      <ul class="nav nav-pills">
-        <li id="filter-Democrat" class="filter"><a href="#">Democrat</a></li>
-        <li id="filter-Republican" class="filter"><a href="#">Republican</a></li>
-        <li id="filter-Independent" class="filter"><a href="#">Independent</a></li>
-        <li id="filter-all" class="filter"><a class="active" href="#">All parties</a></li>
-      </ul>
+      <div id="filter-party" class="nav btn-group">
+        <button id="filter-Democrat" class="btn btn-small navbar-btn filter">Democrat</button>
+        <button id="filter-Republican" class="btn btn-small navbar-btn filter">Republican</button>
+        <button id="filter-Independent" class="btn btn-small navbar-btn filter">Independent</button>
+        <button id="filter-all" class="btn btn-small btn-default navbar-btn filter">All parties</button>
+      </div>
     </div>
     <div class="col-sm-6">
       <span class="navbar-text">by chamber:</span>
-      <ul class="nav nav-pills">
-        <li id="filter-Senate" class="filter"><a href="#">Senate</a></li>
-        <li id="filter-House" class="filter"><a href="#">House</a></li>
-        <li id="filter-all" class="filter"><a class="active"href="#">Both chambers</a></li>
-      </ul>
+      <div id="filter-district_type" class="nav btn-group">
+        <button id="filter-Senate" class="btn btn-small navbar-btn filter">Senate</button>
+        <button id="filter-House" class="btn btn-small navbar-btn filter">House</button>
+        <button id="filter-all" class="btn btn-small btn-default navbar-btn filter">Both chambers</button>
+      </div>
     </div>
   </div>
   </script>
