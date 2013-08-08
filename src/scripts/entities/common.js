@@ -9,25 +9,20 @@ GeneralAssemblyApp.module("Entities", function(Entities, ContactManager, Backbon
       var collection = collection || original;
       var criterion = filterCriterion;
 
-      var items = [];
-      if (criterion) {
-        items = collection.where(criterion);
-      } else {
-        items = collection.models;
-      }
+      var items = _.isEmpty(criterion) ? collection.models : collection.where(criterion);
       filtered._currentCriterion = criterion;
       return items;
     };
 
-    filtered.filter = function(filterCriterion) {
-      filtered._currentFilter = "filter";
-      var items = applyFilter(filterCriterion, "filter");
-      filtered.reset(items);
-    };
+    // filtered.filter = function(filterCriterion) {
+    //   filtered._currentFilter = "filter";
+    //   var items = applyFilter(filterCriterion, "filter");
+    //   filtered.reset(items);
+    // };
 
-    filtered.where = function(filterCriterion) {
-      filtered._currentFilter = "where";
-      var items = applyFilter(filterCriterion, "where");
+    filtered.filter = function(filterCriterion) {
+      var items = applyFilter(filterCriterion);
+      console.log(items);
       filtered.reset(items);
     };
 
@@ -36,12 +31,12 @@ GeneralAssemblyApp.module("Entities", function(Entities, ContactManager, Backbon
       filtered.reset(items);
     });
 
-    original.on("add", function(models) {
-      var coll = new original.contructor();
-      coll.add(models);
-      var items = applyFilter(filtered._currentCriterion, filtered._currentFilter, coll);
-      filtered.add(item);
-    });
+    // original.on("add", function(models) {
+    //   var coll = new original.contructor();
+    //   coll.add(models);
+    //   var items = applyFilter(filtered._currentCriterion, filtered._currentFilter, coll);
+    //   filtered.add(item);
+    // });
 
     return filtered;
   };

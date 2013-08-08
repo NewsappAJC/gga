@@ -8,6 +8,7 @@ GeneralAssemblyApp.module("MembersApp.List", function(List, GeneralAssemblyApp, 
       var membersListPanel = new List.Panel();
 
       $.when(fetchingMembers).done(function(members) {
+        window.members = members;
         var membersListView = new List.Members({
           collection: members
         });
