@@ -1,15 +1,25 @@
 GeneralAssemblyApp.module("MembersApp.List", function(List, GeneralAssemblyApp, Backbone, Marionette, $, _) {
   List.Controller = {
-    listMembers: function() {
-      var searchCriterion = {};
+    listMembers: function(criterion) {
       var fetchingMembers = GeneralAssemblyApp.request("members:collection");
 
       var membersListLayout = new List.Layout();
       var membersListPanel = new List.Panel();
 
       $.when(fetchingMembers).done(function(members) {
+        filteredMembers = GeneralAssemblyApp.Entities.FilteredCollection({
+          collection: members,
+          filterCriterion: criterion
+        });
+
+        if (criterion) {
+          filteredMembers.filter(criterion);
+          membersListPanel.once("show", function() {
+            membersListPanel.triggerMethod("set:filter:criterion", criterion);
+          });
+        }
         var membersListView = new List.Members({
-          collection: members
+          collection: filteredMembers
         });
 
         membersListView.on("itemview:member:show", function(childView, model) {
@@ -22,13 +32,8 @@ GeneralAssemblyApp.module("MembersApp.List", function(List, GeneralAssemblyApp, 
         });
 
         membersListPanel.on("members:filter", function(criterion) {
-          if (_.contains(_.values(criterion), "all")) {
-            delete searchCriterion[ _.keys(criterion)[0] ];
-          } else {
-            $.extend(searchCriterion, criterion);
-          }
-          console.log(searchCriterion);
-          console.log(members.where(searchCriterion));
+          filteredMembers.filter(criterion);
+          GeneralAssemblyApp.trigger("members:filter", filteredMembers.filterCriterion);
         });
 
         GeneralAssemblyApp.mainRegion.show(membersListLayout);

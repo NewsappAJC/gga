@@ -32,16 +32,18 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
 
   var API = {
     getMembers: function() {
+      var defer = $.Deferred();
       if (! Entities.members) {
         Entities.members = new Entities.MembersCollection();
-        var defer = $.Deferred();
         Entities.members.fetch({
           success: function(data) {
             defer.resolve(data);
           }
         });
+        return defer.promise();
+      } else {
+        return Entities.members;
       }
-      return defer.promise();
     }
   };
 

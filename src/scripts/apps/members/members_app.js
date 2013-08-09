@@ -1,14 +1,24 @@
 GeneralAssemblyApp.module("MembersApp", function(MembersApp, GeneralAssemblyApp, Backbone, Marionette, $, _) {
   MembersApp.Router = Marionette.AppRouter.extend({
     appRoutes: {
-      "members": "listMembers",
+      "members(?:query)": "listMembers",
       "members/:id": "showMember"
     }
   });
 
   var API = {
-    listMembers: function() {
-      MembersApp.List.Controller.listMembers();
+    listMembers: function(query) {
+      var criterion;
+      // turn url query string into a filter criterion object
+      if (query) {
+        criterion = _.object(_.map(query.split(";"), function(str) {
+          return str.split("=");
+        }));
+      } else {
+        criterion = {};
+      }
+
+      MembersApp.List.Controller.listMembers(criterion);
     },
     showMember: function(id) {
       MembersApp.Show.Controller.showMember(id);
@@ -23,7 +33,18 @@ GeneralAssemblyApp.module("MembersApp", function(MembersApp, GeneralAssemblyApp,
   GeneralAssemblyApp.on("member:show", function(id) {
     GeneralAssemblyApp.navigate("members/" + id);
     API.showMember(id);
-  })
+  });
+
+  GeneralAssemblyApp.on("members:filter", function(criterion) {
+    if (_.isEmpty(criterion)) {
+      GeneralAssemblyApp.navigate("members");
+    } else {
+      var queryString = _.map(_.pairs(criterion), function(pair) {
+        return pair.join("=");
+      }).join(";");
+      GeneralAssemblyApp.navigate("members?" + queryString);
+    }
+  });
 
   GeneralAssemblyApp.addInitializer(function() {
     new MembersApp.Router({
