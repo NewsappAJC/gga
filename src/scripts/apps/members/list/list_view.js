@@ -24,6 +24,22 @@ GeneralAssemblyApp.module("MembersApp.List", function(List, GeneralAssemblyApp, 
       var criterion = {};
       criterion[key] = val;
       this.trigger("members:filter", criterion);
+    },
+
+    onSetFilterCriterion: function(criterion) {
+      $(".filter").removeClass("btn-default");
+
+      if (! criterion.party) {
+        $("#filter-party").children("#filter-all-parties").addClass("btn-default");
+      } else {
+        $("#filter-" + criterion.party).addClass("btn-default");
+      }
+
+      if (! criterion.party) {
+        $("#filter-district_type").children("#filter-all-districtTypes").addClass("btn-default");
+      } else {
+        $("#filter-" + criterion.district_type).addClass("btn-default");
+      }
     }
   });
 
