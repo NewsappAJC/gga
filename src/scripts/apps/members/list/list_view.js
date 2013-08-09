@@ -35,7 +35,7 @@ GeneralAssemblyApp.module("MembersApp.List", function(List, GeneralAssemblyApp, 
         $("#filter-" + criterion.party).addClass("btn-default");
       }
 
-      if (! criterion.party) {
+      if (! criterion.district_type) {
         $("#filter-district_type").children("#filter-all-districtTypes").addClass("btn-default");
       } else {
         $("#filter-" + criterion.district_type).addClass("btn-default");
