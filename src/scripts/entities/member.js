@@ -44,10 +44,20 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
       } else {
         return Entities.members;
       }
+    },
+
+    getMember: function(memberId) {
+      var member = new Entities.MembersCollection({id: memberId});
+      member.fetch();
+      return member;
     }
   };
 
   GeneralAssemblyApp.reqres.setHandler("members:collection", function() {
     return API.getMembers();
+  });
+
+  GeneralAssemblyApp.reqres.setHandler("members:member", function(id) {
+    return API.getMember(id);
   });
 });

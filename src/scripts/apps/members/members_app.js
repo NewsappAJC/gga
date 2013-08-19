@@ -21,6 +21,7 @@ GeneralAssemblyApp.module("MembersApp", function(MembersApp, GeneralAssemblyApp,
       MembersApp.List.Controller.listMembers(criterion);
     },
     showMember: function(id) {
+      console.log(id);
       MembersApp.Show.Controller.showMember(id);
     }
   };

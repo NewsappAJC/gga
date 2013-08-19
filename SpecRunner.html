@@ -18,18 +18,27 @@
   <script src="//underscorejs.org/underscore-min.js"></script>
   <script src="src/scripts/lib/underscore.string.min.js"></script>
   <script src="src/scripts/lib/backbone.js"></script>
-  <script src="src/scripts/models/member.js"></script>
-  <script src="src/scripts/collections/members.js"></script>
-  <script src="src/scripts/views/member.js"></script>
+  <script src="src/scripts/lib/backbone.marionette.js"></script>
+  <script src="src/scripts/app.js"></script>
+  <script src="src/scripts/entities/member.js"></script>
+  <script src="src/scripts/entities/common.js"></script>
+  <script src="src/scripts/apps/members/members_app.js"></script>
+  <script src="src/scripts/apps/members/list/list_view.js"></script>
+  <script src="src/scripts/apps/members/list/list_controller.js"></script>
+  <script src="src/scripts/apps/members/show/show_view.js"></script>
+  <script src="src/scripts/apps/members/show/show_controller.js"></script>
 <!--
   <script src="src/scripts/views/app.js"></script>
 -->
 
   <!-- include spec files here... -->
   <script src="spec/SpecHelper.js"></script>
+  <script src="spec/application_spec.js"></script>
+<!--
   <script src="spec/memberModelSpec.js"></script>
   <script src="spec/membersCollectionSpec.js"></script>
   <script src="spec/memberViewSpec.js"></script>
+-->
   <script type="text/javascript">
     (function() {
       var jasmineEnv = jasmine.getEnv();

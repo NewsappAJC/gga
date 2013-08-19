@@ -1,13 +1,16 @@
 GeneralAssemblyApp.module("MembersApp.Show", function(Show, GeneralAssemblyApp, Backbone, Marionette, $, _) {
   Show.Controller = {
     showMember: function(id) {
-      var members = GeneralAssemblyApp.request("members:collection");
-      var model = members.get(id);
-      var memberView = new Show.Member({
-        model: model
-      });
+      var fetchingMembers = GeneralAssemblyApp.request("members:collection");
+      $.when(fetchingMembers).done(function(members) {
+        var model = members.get(id);
+        var memberView = new Show.Member({
+          model: model
+        });
 
-      GeneralAssemblyApp.mainRegion.show(memberView);
+        model = GeneralAssemblyApp.request("members:member", id);
+        GeneralAssemblyApp.mainRegion.show(memberView);
+      });
     }
   };
 });
