@@ -1,17 +1,6 @@
 GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Backbone, Marionette, $, _){
   Entities.Member = Backbone.Model.extend({
     initialize: function() {
-      // Create proper full name string
-      var fullName = this.get("name_first");
-      if (this.get("name_middle")) {
-        fullName += " " + this.get("name_middle");
-      }
-      if (this.get("name_nickname")) {
-        fullName += " '" + this.get("name_nickname") + "'";
-      }
-      fullName += " " + this.get("name_last");
-      this.set("full_name", fullName);
-
       // Create tooltip info string
       var tooltipInfo = this.get("full_name") + ", " + this.get("district_address_city");
       if ( this.get("title") !== "" ) {
@@ -47,8 +36,7 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
     },
 
     getMember: function(memberId) {
-      var member = new Entities.MembersCollection({id: memberId});
-      member.fetch();
+      var member = Entities.members.where({id: memberId});
       return member;
     }
   };

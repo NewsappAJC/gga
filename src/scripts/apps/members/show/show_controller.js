@@ -2,14 +2,19 @@ GeneralAssemblyApp.module("MembersApp.Show", function(Show, GeneralAssemblyApp, 
   Show.Controller = {
     showMember: function(id) {
       var fetchingMembers = GeneralAssemblyApp.request("members:collection");
+      var memberShowLayout = new Show.Layout();
+
       $.when(fetchingMembers).done(function(members) {
         var model = members.get(id);
-        var memberView = new Show.Member({
+        var memberDetailView = new Show.Detail({
           model: model
         });
 
         model = GeneralAssemblyApp.request("members:member", id);
-        GeneralAssemblyApp.mainRegion.show(memberView);
+        memberShowLayout.on("show", function() {
+          memberShowLayout.detailRegion.show(memberDetailView)
+        })
+        GeneralAssemblyApp.mainRegion.show(memberShowLayout);
       });
     }
   };

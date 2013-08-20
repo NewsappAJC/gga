@@ -45,7 +45,12 @@
     </div>
   </script>
 
-  <script type="text/template" id="member-detail">
+  <script type="text/template" id="member-show-layout">
+    <div id="detail-region"></div>
+    <div id="top_contributors-region"></div>
+  </script>
+
+  <script type="text/template" id="member-detail-template">
     <div class="row-">
       <div class="col-lg-3">
         <img src="images/mugs/<%- id %>.jpg" alt="<%- full_name %>" height="195">
@@ -62,6 +67,27 @@
         </ul>
       </div>
     </div>
+  </script>
+
+  <script type="text/template" id="#top-contributor-template">
+    <td><%= contributor_name %></td>
+    <td><%= business_name %></td>
+    <td><%= total_contribution_records %></td>
+    <td><%= '$' + total_dollars %></td>
+    <td><%= percent_of_total_total_dollars %></td>
+  </script>
+
+  <script type="text/template" id="top-contributors-table-template">
+    <thead>
+      <tr>
+        <th>Contributor</th>
+        <th>Business type</th>
+        <th>Contributions</th>
+        <th>Total amount</th>
+        <th>Percent of all contributions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
   </script>
 
   <script type="text/template" id="member-list-layout">
@@ -103,6 +129,7 @@
   <script src="scripts/lib/backbone.marionette.js"></script>
 	<script src="scripts/app.js"></script>
   <script src="scripts/entities/member.js"></script>
+  <script src="scripts/entities/top_contributors.js"></script>
   <script src="scripts/entities/common.js"></script>
   <script src="scripts/apps/members/members_app.js"></script>
   <script src="scripts/apps/members/list/list_view.js"></script>
