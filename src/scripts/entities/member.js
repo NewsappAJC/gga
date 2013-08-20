@@ -36,7 +36,7 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
     },
 
     getMember: function(memberId) {
-      var member = Entities.members.where({id: memberId});
+      var member = Entities.members.where({id: memberId})[0];
       return member;
     }
   };

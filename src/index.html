@@ -35,7 +35,6 @@
   <div id="main-region" class="container">
     <p>Loading ...</p>
   </div>
-  <div id="member-detail-region"></div>
 
   <script type = "text/template" id="member-icon-template">
     <div class="member js-show-member-detail <%- party %> <%- district_type %> <%- district_address_city %>" id="member<%- id %>" style="background-image: url('images/cropped/<%- id %>.jpg')" title="<%- tooltip_info %>">
@@ -47,7 +46,7 @@
 
   <script type="text/template" id="member-show-layout">
     <div id="detail-region"></div>
-    <div id="top_contributors-region"></div>
+    <div id="top-contributors-region"></div>
   </script>
 
   <script type="text/template" id="member-detail-template">
@@ -69,14 +68,6 @@
     </div>
   </script>
 
-  <script type="text/template" id="#top-contributor-template">
-    <td><%= contributor_name %></td>
-    <td><%= business_name %></td>
-    <td><%= total_contribution_records %></td>
-    <td><%= '$' + total_dollars %></td>
-    <td><%= percent_of_total_total_dollars %></td>
-  </script>
-
   <script type="text/template" id="top-contributors-table-template">
     <thead>
       <tr>
@@ -88,6 +79,14 @@
       </tr>
     </thead>
     <tbody></tbody>
+  </script>
+
+  <script type="text/template" id="top-contributor-template">
+    <td><%= contributor_name %></td>
+    <td><%= business_name %></td>
+    <td><%= total_contribution_records %></td>
+    <td><%= '$' + total_dollars %></td>
+    <td><%= percent_of_total_total_dollars + '%' %></td>
   </script>
 
   <script type="text/template" id="member-list-layout">

@@ -10,7 +10,6 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
 
   var API = {
     getTopContributors: function(id) {
-      console.log(id);
       var defer = $.Deferred();
       Entities.top_contributors = new Entities.TopContributorsCollection(id);
       Entities.top_contributors.fetch({
