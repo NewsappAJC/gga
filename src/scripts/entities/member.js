@@ -23,7 +23,7 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
 
   Entities.MembersCollection = Backbone.Collection.extend({
     model: Entities.Member,
-    url: "http://localhost:3000/members/",
+    url: "http://localhost:3000/api/members/",
     comparator: function(member) {
       return ( (member.get("district_type") === "House" ? "A" : "B") + _.string.sprintf('%03s', member.get("district_number")) );
     },
