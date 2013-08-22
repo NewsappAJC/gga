@@ -1,8 +1,7 @@
 var GeneralAssemblyApp = new Marionette.Application();
 
 GeneralAssemblyApp.addRegions({
-  mainRegion: "#main-region",
-  memberDetailRegion: "#member-detail-region"
+  mainRegion: "#main-region"
 });
 
 GeneralAssemblyApp.navigate = function(route, options) {

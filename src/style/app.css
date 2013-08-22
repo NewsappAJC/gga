@@ -61,6 +61,9 @@ body { padding-top: 70px; }
 .selected {
   font-weight: bold;
 }
+.dataTables_paginate a {
+  margin: 20px 10px;
+}
 /*
 #panel-region {
   padding: 2px;
