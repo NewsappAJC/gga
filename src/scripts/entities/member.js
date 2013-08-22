@@ -22,7 +22,7 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
   var API = {
     getMembers: function() {
       var defer = $.Deferred();
-      if (! Entities.members) {
+      if (! Entities.members || Entities.members.length == 0) {
         Entities.members = new Entities.MembersCollection();
         Entities.members.fetch({
           success: function(data) {

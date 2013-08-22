@@ -18,7 +18,8 @@ GeneralAssemblyApp.module("MembersApp.Show", function(Show, GeneralAssemblyApp, 
 
   Show.TopContributors = Marionette.CompositeView.extend({
     tagName: 'table',
-    className: "table table-hover",
+    className: "dataTable table table-hover",
+    id: "top-contributors-table",
     itemView: Show.TopContributor,
     template: "#top-contributors-table-template",
     itemViewContainer: "tbody"

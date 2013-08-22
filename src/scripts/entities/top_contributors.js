@@ -5,6 +5,9 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
     model: Entities.TopContributor,
     initialize: function(id) {
       this.url = 'http://localhost:3000/api/members/' + id + '/top_contributors';
+    },
+    comparator: function(contributor) {
+      return contributor.get("contribution_ranking");
     }
   });
 

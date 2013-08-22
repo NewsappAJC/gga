@@ -22,8 +22,8 @@ GeneralAssemblyApp.module("MembersApp.List", function(List, GeneralAssemblyApp, 
           collection: filteredMembers
         });
 
-        membersListView.on("itemview:member:show", function(childView, model) {
-          GeneralAssemblyApp.trigger("member:show", model.get("id"));
+        membersListView.on("itemview:member:show", function(childView, id) {
+          GeneralAssemblyApp.trigger("member:show", id);
         });
 
         membersListLayout.on("show", function() {
