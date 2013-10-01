@@ -40,6 +40,19 @@ GeneralAssemblyApp.module("MembersApp.List", function(List, GeneralAssemblyApp, 
       } else {
         $("#filter-" + criterion.district_type).addClass("btn-default");
       }
+    },
+
+    onShow: function() {
+      $(document).tooltip({
+        items: "div.member",
+        predelay: 0,
+        cancelDefault: true,
+        position: {
+          my: "center bottom",
+          at: "center top",
+          collision: "flipfit"
+        }
+      });
     }
   });
 

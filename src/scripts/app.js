@@ -22,14 +22,3 @@ GeneralAssemblyApp.on("initialize:after", function() {
     }
   }
 });
-
-$(document).tooltip({
-  items: "div.member",
-  predelay: 0,
-  cancelDefault: true,
-  position: {
-    my: "center bottom",
-    at: "center top",
-    collision: "flipfit"
-  }
-});
