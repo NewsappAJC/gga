@@ -8,7 +8,15 @@ GeneralAssemblyApp.module("MembersApp.Show", function(Show, GeneralAssemblyApp, 
   });
 
   Show.Detail = Marionette.ItemView.extend({
-    template: "#member-detail-template"
+    template: "#member-detail-template",
+
+    onShow: function() {
+      $(".accordion").accordion({
+        heightStyle: "content",
+        collapsible: true,
+        active: false
+      });
+    }
   });
 
   Show.TopContributor = Marionette.ItemView.extend({
