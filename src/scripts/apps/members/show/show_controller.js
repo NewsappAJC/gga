@@ -4,10 +4,11 @@ GeneralAssemblyApp.module("MembersApp.Show", function(Show, GeneralAssemblyApp, 
       console.log("at showMember")
       console.log(id);
       var fetchingTopContributors = GeneralAssemblyApp.request("member:top_contributors", id);
+      var fetchingMembers = GeneralAssemblyApp.request("members:collection");
       var memberShowLayout = new Show.Layout();
 
-      $.when(fetchingTopContributors).done(function(top_contributors) {
-        var member = GeneralAssemblyApp.request("members:member", id);
+      $.when(fetchingMembers, fetchingTopContributors).done(function(members, top_contributors) {
+        var member = members.get(id);
 
         var memberDetailView = new Show.Detail({
           model: member
@@ -20,9 +21,6 @@ GeneralAssemblyApp.module("MembersApp.Show", function(Show, GeneralAssemblyApp, 
         memberShowLayout.on("show", function() {
           memberShowLayout.topContributorsRegion.show(topContributorsView);
           memberShowLayout.detailRegion.show(memberDetailView);
-          $("#top-contributors-table").dataTable({
-            "sPaginationType": "full_numbers"
-          });
         });
 
         GeneralAssemblyApp.mainRegion.show(memberShowLayout);

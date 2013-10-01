@@ -30,6 +30,12 @@ GeneralAssemblyApp.module("MembersApp.Show", function(Show, GeneralAssemblyApp, 
     id: "top-contributors-table",
     itemView: Show.TopContributor,
     template: "#top-contributors-table-template",
-    itemViewContainer: "tbody"
+    itemViewContainer: "tbody",
+
+    onShow: function() {
+      $("#top-contributors-table").dataTable({
+        "sPaginationType": "two_button"
+      });
+    }
   });
 });
