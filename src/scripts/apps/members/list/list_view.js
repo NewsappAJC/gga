@@ -65,7 +65,6 @@ GeneralAssemblyApp.module("MembersApp.List", function(List, GeneralAssemblyApp, 
     showMemberDetail: function(e) {
       e.preventDefault();
       e.stopPropagation();
-      console.log(this.model.id);
       this.trigger("member:show", this.model.id);
     }
   });

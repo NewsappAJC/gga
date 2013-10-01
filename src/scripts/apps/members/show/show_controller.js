@@ -1,8 +1,6 @@
 GeneralAssemblyApp.module("MembersApp.Show", function(Show, GeneralAssemblyApp, Backbone, Marionette, $, _) {
   Show.Controller = {
     showMember: function(id) {
-      console.log("at showMember")
-      console.log(id);
       var fetchingTopContributors = GeneralAssemblyApp.request("member:top_contributors", id);
       var fetchingMembers = GeneralAssemblyApp.request("members:collection");
       var memberShowLayout = new Show.Layout();
