@@ -3,7 +3,9 @@ GeneralAssemblyApp.module("MembersApp.Show", function(Show, GeneralAssemblyApp, 
     template: "#member-show-layout",
     regions: {
       detailRegion: "#detail-region",
-      topContributorsRegion: "#top-contributors-region"
+      topContributorsRegion: "#top-contributors-region",
+      committeesRegion: "#committee-list-region",
+      billsListRegion: "#bills-list-region"
     }
   });
 
@@ -38,4 +40,26 @@ GeneralAssemblyApp.module("MembersApp.Show", function(Show, GeneralAssemblyApp, 
       });
     }
   });
+
+  Show.Committee = Marionette.ItemView.extend({
+    tagName: 'tr',
+    template: "#committee-template"
+  });
+
+  Show.Committees = Marionette.CompositeView.extend({
+    tagName: 'table',
+    className: "table table-hover",
+    id: "committee-list",
+    itemView: Show.Committee,
+    template: "#committees-table-template",
+    itemViewContainer: "tbody"
+  });
+
+  Show.Bill = Marionette.ItemView.extend({
+    template: "#bill-template"
+  });
+
+  Show.Bills = Marionette.CollectionView.extend({
+    itemView: Show.Bill
+  })
 });

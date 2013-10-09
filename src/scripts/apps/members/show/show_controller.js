@@ -7,6 +7,8 @@ GeneralAssemblyApp.module("MembersApp.Show", function(Show, GeneralAssemblyApp, 
 
       $.when(fetchingMembers, fetchingTopContributors).done(function(members, top_contributors) {
         var member = members.get(id);
+        var committees = new GeneralAssemblyApp.Entities.MemberCommittees(member.get('member_committees'));
+        var bills = new GeneralAssemblyApp.Entities.MemberBills(member.get('primary_sponsorships_bills'));
 
         var memberDetailView = new Show.Detail({
           model: member
@@ -16,7 +18,19 @@ GeneralAssemblyApp.module("MembersApp.Show", function(Show, GeneralAssemblyApp, 
           collection: top_contributors
         });
 
+        var committeesView = new Show.Committees({
+          collection: committees
+        });
+
+        var billsListView = new Show.Bills({
+          collection: bills
+        });
+
         memberShowLayout.on("show", function() {
+          if (bills.length > 0) {
+            memberShowLayout.billsListRegion.show(billsListView);
+          }
+          memberShowLayout.committeesRegion.show(committeesView);
           memberShowLayout.topContributorsRegion.show(topContributorsView);
           memberShowLayout.detailRegion.show(memberDetailView);
         });

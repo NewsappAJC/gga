@@ -47,12 +47,12 @@
   <script type="text/template" id="member-show-layout">
     <div id="detail-region" class="row"></div>
     <div class="accordion">
-      <h3>Bills</h3>
-      <div id="bill-list">Bill list goes here ...</div>
+      <h3>Bills Sponsored</h3>
+      <div id="bills-list-region">No bills sonsored thus far this session</div>
       <h3>Votes</h3>
       <div id="vote-list">List of recent votes goes here ...</div>
       <h3>Committees</h3>
-      <div id="committee-list">Committee list goes here ...</div>
+      <div id="committee-list-region">Committee list goes here ...</div>
       <h3>Top Contributors</h3>
       <div id="top-contributors-region"></div>
     </div>
@@ -121,6 +121,28 @@
       <button id="filter-all-districtTypes" class="btn btn-small btn-default navbar-btn filter">Both chambers</button>
     </div>
   </div>
+  </script>
+
+  <script type="text/template" id="committee-template">
+    <td><%= name %></td>
+    <td><%= role %></td>
+  </script>
+
+  <script type="text/template" id="committees-table-template">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </script>
+
+  <script type="text/template" id="bill-template">
+    <div id="bill-<%= document_type %><%= number %>">
+      <h3><%= document_type %><%= number %>: <%= caption %></h3>
+      <p><%= summary %></p>
+    </div>
   </script>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

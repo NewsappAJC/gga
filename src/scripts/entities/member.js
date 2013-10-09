@@ -19,6 +19,16 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
     criterion: {}
   });
 
+  Entities.MemberCommittee = Backbone.Model.extend();
+  Entities.MemberCommittees = Backbone.Collection.extend({
+    model: Entities.MemberCommittee
+  });
+
+  Entities.MemberBill = Backbone.Model.extend();
+  Entities.MemberBills = Backbone.Collection.extend({
+    model: Entities.MemberBill
+  });
+
   var API = {
     getMembers: function() {
       var defer = $.Deferred();

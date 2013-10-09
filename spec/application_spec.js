@@ -18,7 +18,6 @@ describe("GeneralAssemblyApp", function() {
     it("should return current route fragment", function() {
       Backbone.history.start();
       Backbone.history.navigate("test_route2");
-      console.log(GeneralAssemblyApp.getCurrentRoute());
 
       expect(GeneralAssemblyApp.getCurrentRoute()).toEqual(Backbone.history.fragment);
 
