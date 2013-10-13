@@ -21,11 +21,17 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
 
   Entities.MemberCommittee = Backbone.Model.extend();
   Entities.MemberCommittees = Backbone.Collection.extend({
+    initialize: function(id) {
+      this.url = 'http://localhost:3000/api/members/' + id + '/committees';
+    },
     model: Entities.MemberCommittee
   });
 
   Entities.MemberBill = Backbone.Model.extend();
   Entities.MemberBills = Backbone.Collection.extend({
+    initialize: function(id) {
+      this.url = 'http://localhost:3000/api/members/' + id + '/bills';
+    },
     model: Entities.MemberBill
   });
 
@@ -48,6 +54,28 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
     getMember: function(memberId) {
       var member = Entities.members.where({id: memberId})[0];
       return member;
+    },
+
+    getMemberBills: function(id) {
+      var defer = $.Deferred();
+      Entities.memberBills = new Entities.MemberBills(id);
+      Entities.memberBills.fetch({
+        success: function(data) {
+          defer.resolve(data);
+        }
+      });
+      return defer.promise();
+    },
+
+    getMemberCommittees: function(id) {
+      var defer = $.Deferred();
+      Entities.memberCommittees = new Entities.MemberCommittees(id);
+      Entities.memberCommittees.fetch({
+        success: function(data) {
+          defer.resolve(data);
+        }
+      });
+      return defer.promise();
     }
   };
 
@@ -57,5 +85,13 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
 
   GeneralAssemblyApp.reqres.setHandler("members:member", function(id) {
     return API.getMember(id);
+  });
+
+  GeneralAssemblyApp.reqres.setHandler("member:bills", function(id) {
+    return API.getMemberBills(id);
+  });
+
+  GeneralAssemblyApp.reqres.setHandler("member:committees", function(id) {
+    return API.getMemberCommittees(id);
   });
 });
