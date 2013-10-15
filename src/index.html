@@ -140,8 +140,9 @@
 
   <script type="text/template" id="bill-template">
     <div id="bill-<%= document_type %><%= number %>">
-      <h3><%= document_type %><%= number %>: <%= caption %></h3>
+      <a href="<%= latest_version_url %>" target="_blank"><h3><%= document_type %><%= number %>: <%= caption %></h3></a>
       <p><%= summary %></p>
+      <p><b>Status:</b> <%= status_description %></p>
     </div>
   </script>
 
