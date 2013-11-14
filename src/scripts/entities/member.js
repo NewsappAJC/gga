@@ -3,7 +3,7 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
     initialize: function() {
       // Create tooltip info string
       var tooltipInfo = this.get("full_name") + ", " + this.get("district_address_city");
-      if ( this.get("title") !== "" ) {
+      if ( this.get("title") !== null ) {
         tooltipInfo += ", " + this.get("title");
       }
       this.set("tooltip_info", tooltipInfo);
