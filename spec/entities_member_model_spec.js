@@ -4,12 +4,8 @@ describe("Member model", function() {
     member = new GeneralAssemblyApp.Entities.Member();
   });
 
-  it("should be a function", function() {
-    expect(typeof(GeneralAssemblyApp.Entities.Member)).toEqual("function");
-  });
-
-  it("should create a new model", function() {
-    expect(member.cid).toBeDefined();
+  it("should create a new Backbone.Model object", function() {
+    expect(member).toEqual(jasmine.any(Backbone.Model));
   });
 
   it("should have a tooltip_info attribute", function() {

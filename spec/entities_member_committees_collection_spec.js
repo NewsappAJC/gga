@@ -4,16 +4,9 @@ describe("MemberCommittees collection", function() {
     expect(member_committees.url).toMatch(/\/api\/members\/1\/committees$/);
   });
 
-  describe("Constructor", function() {
-    it("should be a function", function() {
-      expect(typeof(GeneralAssemblyApp.Entities.MemberCommittees)).toEqual("function");
-    });
-
-    it("should create a new collection object", function() {
-      var member_committees = new GeneralAssemblyApp.Entities.MemberCommittees();
-      expect(typeof(member_committees)).toEqual("object");
-      expect(Array.isArray(member_committees.models)).toEqual(true);
-    });
+  it("should create a new Backbone.Collection object", function() {
+    var member_committees = new GeneralAssemblyApp.Entities.MemberCommittees();
+    expect(member_committees).toEqual(jasmine.any(Backbone.Collection));
   });
 
   describe("member:committees request handler", function() {
