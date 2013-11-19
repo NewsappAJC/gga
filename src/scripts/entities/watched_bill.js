@@ -15,7 +15,6 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
 
   var API = {
     getWatchedBills: function() {
-      console.log("getWatchedBills")
       var defer = $.Deferred();
       if (! Entities.watched_bills || Entities.watched_bills.length == 0) {
         Entities.watched_bills = new Entities.WatchedBills();

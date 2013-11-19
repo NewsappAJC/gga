@@ -10,7 +10,24 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
     url: "http://localhost:3000/api/bills/"
   });
 
-  Entities.BillCount = Backbone.Model.extend({
+  Entities.BillsCount = Backbone.Model.extend({
     url: 'http://localhost:3000/api/bills/count/'
+  });
+
+  var API = {
+    getBillsCount: function() {
+      var defer = $.Deferred();
+      Entities.bills_count = new Entities.BillsCount()
+      Entities.bills_count.fetch({
+        success: function(data) {
+          defer.resolve(data);
+        }
+      });
+      return defer.promise();
+    }
+  };
+
+  GeneralAssemblyApp.reqres.setHandler("bills:count", function() {
+    return API.getBillsCount();
   });
 });

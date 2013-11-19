@@ -147,6 +147,7 @@
   </script>
 
   <script type="text/template" id="bill-category-layout">
+    <div class="row-fluid" id="bills-count-region"></div>
     <div class="row-fluid" id="bill-category-region"></div>
   </script>
 
@@ -155,7 +156,15 @@
     <p>
       Watching <%- count %> bill<% if(count > 1) {%>s<% } %>
     </p>
-  </script>s
+  </script>
+
+  <script type="text/template" id="bills-count-template">
+    <h2>
+      <%- bills %> Bills:
+      <%- passed_house %> Passed the House.
+      <%- passed_senate %> Passed the Senate.
+    </h2>
+  </script>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="scripts/lib/jquery-ui-1.10.3.custom.js"></script>

@@ -2,9 +2,10 @@ GeneralAssemblyApp.module("WatchedBillsApp.List", function(List, GeneralAssembly
   List.Controller = {
     listCategories: function() {
       var fetchingWatchedBills = GeneralAssemblyApp.request("watched_bills:collection");
-      var categoriesLayout = new List.CategoriesLayout();
+      var fetchingBillsCount = GeneralAssemblyApp.request("bills:count");
+      var categories_layout = new List.CategoriesLayout();
 
-      $.when(fetchingWatchedBills).done(function(watcehd_bills) {
+      $.when(fetchingWatchedBills, fetchingBillsCount).done(function(watcehd_bills, bills_count) {
         category_model_data = _.chain(watcehd_bills.models)
           .countBy(function(model) { return model.get("category") })
           .pairs()
@@ -14,15 +15,20 @@ GeneralAssemblyApp.module("WatchedBillsApp.List", function(List, GeneralAssembly
 
         categories = new GeneralAssemblyApp.Entities.BillCategories( category_model_data );
 
-        categoriesView = new List.CategoriesView({
+        categories_view = new List.CategoriesView({
           collection: categories
         });
 
-        categoriesLayout.on("show", function() {
-          categoriesLayout.categoriesRegion.show(categoriesView);
+        bills_count_view = new List.BillsCountView({
+          model: bills_count
         });
 
-        GeneralAssemblyApp.mainRegion.show(categoriesLayout);
+        categories_layout.on("show", function() {
+          categories_layout.billsCountRegion.show(bills_count_view);
+          categories_layout.categoriesRegion.show(categories_view);
+        });
+
+        GeneralAssemblyApp.mainRegion.show(categories_layout);
       });
     },
     listWatchedBills: function(category) {
