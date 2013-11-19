@@ -6,6 +6,7 @@ GeneralAssemblyApp.addRegions({
 
 GeneralAssemblyApp.navigate = function(route, options) {
   options || (options = {});
+  console.log("route: " + route);
   Backbone.history.navigate(route, options);
 };
 

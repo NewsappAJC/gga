@@ -64,6 +64,24 @@ body { padding-top: 70px; }
 .dataTables_paginate a {
   margin: 20px 10px;
 }
+
+.watched-bill-icon {
+  position: relative;
+  float: left;
+  cursor: pointer;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  margin: 15px;
+  padding: 10px;
+  background-color: lightgray;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+  -webkit-border-radius-topleft:  20px;
+     -moz-border-radius-topleft:  20px;
+          border-top-left-radius: 20px;
+}
 /*
 #panel-region {
   padding: 2px;

@@ -146,6 +146,17 @@
     </div>
   </script>
 
+  <script type="text/template" id="bill-category-layout">
+    <div class="row-fluid" id="bill-category-region"></div>
+  </script>
+
+  <script type="text/template" id="bill-category-template">
+    <h3><a href="#"><%- name %></a></h3>
+    <p>
+      Watching <%- count %> bill<% if(count > 1) {%>s<% } %>
+    </p>
+  </script>s
+
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="scripts/lib/jquery-ui-1.10.3.custom.js"></script>
 <!--
@@ -172,6 +183,9 @@
   <script src="scripts/apps/members/list/list_controller.js"></script>
   <script src="scripts/apps/members/show/show_view.js"></script>
   <script src="scripts/apps/members/show/show_controller.js"></script>
+  <script src="scripts/apps/watched_bills/watched_bills_app.js"></script>
+  <script src="scripts/apps/watched_bills/list/list_view.js"></script>
+  <script src="scripts/apps/watched_bills/list/list_controller.js"></script>
 
   <script>
     GeneralAssemblyApp.start();

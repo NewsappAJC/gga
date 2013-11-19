@@ -1,5 +1,5 @@
 GeneralAssemblyApp.module("MembersApp.List", function(List, GeneralAssemblyApp, Backbone, Marionette, $, _) {
-  List.Layout = Marionette.Layout.extend({
+  List.MemberLayout = Marionette.Layout.extend({
     template: "#member-list-layout",
     regions: {
       panelRegion: "#panel-region",
@@ -7,7 +7,7 @@ GeneralAssemblyApp.module("MembersApp.List", function(List, GeneralAssemblyApp, 
     }
   });
 
-  List.Panel = Marionette.ItemView.extend({
+  List.MemberPanel = Marionette.ItemView.extend({
     template: "#member-list-panel",
     className: "container",
     events: {
