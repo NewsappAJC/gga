@@ -2,22 +2,26 @@ GeneralAssemblyApp.module("WatchedBillsApp", function(WatchedBillsApp, GeneralAs
   WatchedBillsApp.Router = Marionette.AppRouter.extend({
     appRoutes: {
       "watched_bills": "listBillCategories",
-      "members/category/:category": "listWatchedBills"
+      "watched_bills/category/:category": "ShowBillsCategory"
     }
   });
 
   var API = {
     listBillCategories: function() {
-      console.log("listBillCategories")
       WatchedBillsApp.List.Controller.listCategories()
     },
-    listWatchedBills: function(category) {
-      WatchedBillsApp.Controller.List.listWatchedBills(category)
+    ShowBillsCategory: function(category) {
+      console.log(category)
+      WatchedBillsApp.Show.Controller.showBillsForCategory(category)
     }
   };
 
   GeneralAssemblyApp.on( "watchedbills:categories:list", function() {
     GeneralAssemblyApp.navigate("watched_bills");
+  });
+
+  GeneralAssemblyApp.on( "watchedbills:categories:show", function(category) {
+    GeneralAssemblyApp.navigate("watched_bills/category/" + category);
   });
 
   GeneralAssemblyApp.addInitializer(function() {

@@ -1,6 +1,9 @@
 GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Backbone, Marionette, $, _){
   Entities.WatchedBill = Backbone.Model.extend({
-    base_url: "http://localhost:3000/api/watched_bills/"
+    base_url: "http://localhost:3000/api/watched_bills/",
+    initialize: function() {
+      this.set("category", this.get("category").replace(/ /g,'_'));
+    }
   });
 
   Entities.WatchedBills = Backbone.Collection.extend({
