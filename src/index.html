@@ -146,6 +146,31 @@
     </div>
   </script>
 
+  <script type="text/template" id="bill-category-layout">
+    <div class="row-fluid" id="bills-count-region"></div>
+    <div class="row-fluid" id="bill-category-region"></div>
+  </script>
+
+  <script type="text/template" id="bill-category-template">
+    <h3><a href="#watched_bills/category/<%- name %>"><%- name.replace(/_/g, ' ') %></a></h3>
+    <p>
+      Watching <%- count %> bill<% if(count > 1) {%>s<% } %>
+    </p>
+  </script>
+
+  <script type="text/template" id="bills-count-template">
+    <h2>
+      <%- bills %> Bills:
+      <%- passed_house %> Passed the House.
+      <%- passed_senate %> Passed the Senate.
+    </h2>
+  </script>
+
+  <script type="text/template" id="category-item-template">
+    <h3><a href="#"><%- document_type %> <%- number %>: <%- title %></a></h3>
+    <p><%- description %></p>
+  </script>
+
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="scripts/lib/jquery-ui-1.10.3.custom.js"></script>
 <!--
@@ -166,11 +191,17 @@
   <script src="scripts/entities/top_contributors.js"></script>
   <script src="scripts/entities/common.js"></script>
   <script src="scripts/entities/bill.js"></script>
+  <script src="scripts/entities/watched_bill.js"></script>
   <script src="scripts/apps/members/members_app.js"></script>
   <script src="scripts/apps/members/list/list_view.js"></script>
   <script src="scripts/apps/members/list/list_controller.js"></script>
   <script src="scripts/apps/members/show/show_view.js"></script>
   <script src="scripts/apps/members/show/show_controller.js"></script>
+  <script src="scripts/apps/watched_bills/watched_bills_app.js"></script>
+  <script src="scripts/apps/watched_bills/list/list_view.js"></script>
+  <script src="scripts/apps/watched_bills/list/list_controller.js"></script>
+  <script src="scripts/apps/watched_bills/show/show_view.js"></script>
+  <script src="scripts/apps/watched_bills/show/show_controller.js"></script>
 
   <script>
     GeneralAssemblyApp.start();

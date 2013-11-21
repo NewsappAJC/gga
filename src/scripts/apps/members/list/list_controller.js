@@ -3,8 +3,8 @@ GeneralAssemblyApp.module("MembersApp.List", function(List, GeneralAssemblyApp, 
     listMembers: function(criterion) {
       var fetchingMembers = GeneralAssemblyApp.request("members:collection");
 
-      var membersListLayout = new List.Layout();
-      var membersListPanel = new List.Panel();
+      var membersListLayout = new List.MemberLayout();
+      var membersListPanel = new List.MemberPanel();
 
       $.when(fetchingMembers).done(function(members) {
         filteredMembers = GeneralAssemblyApp.Entities.FilteredCollection({
