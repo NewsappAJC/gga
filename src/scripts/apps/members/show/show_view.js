@@ -56,7 +56,7 @@ GeneralAssemblyApp.module("MembersApp.Show", function(Show, GeneralAssemblyApp, 
   });
 
   Show.Bill = Marionette.ItemView.extend({
-    template: "#bill-template"
+    template: "#bill-compact-template"
   });
 
   Show.Bills = Marionette.CollectionView.extend({

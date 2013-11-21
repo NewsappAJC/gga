@@ -11,7 +11,6 @@ GeneralAssemblyApp.module("WatchedBillsApp", function(WatchedBillsApp, GeneralAs
       WatchedBillsApp.List.Controller.listCategories()
     },
     ShowBillsCategory: function(category) {
-      console.log(category)
       WatchedBillsApp.Show.Controller.showBillsForCategory(category)
     }
   };

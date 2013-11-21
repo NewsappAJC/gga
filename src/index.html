@@ -138,10 +138,10 @@
     <tbody></tbody>
   </script>
 
-  <script type="text/template" id="bill-template">
+  <script type="text/template" id="bill-compact-template">
     <div id="bill-<%= document_type %><%= number %>">
-      <a href="<%= latest_version_url %>" target="_blank"><h3><%= document_type %><%= number %>: <%= caption %></h3></a>
-      <p><%= summary %></p>
+      <a href="#bills/<%= id %>"><h3><%= document_type %> <%= number %></a>
+      <h4><%= caption %></h3></h4>
       <p><b>Status:</b> <%= status_description %></p>
     </div>
   </script>
@@ -167,8 +167,16 @@
   </script>
 
   <script type="text/template" id="category-item-template">
-    <h3><a href="#"><%- document_type %> <%- number %>: <%- title %></a></h3>
+    <h3><a href="#bills/<%- bill_id %>"><%- document_type %> <%- number %>: <%- title %></a></h3>
     <p><%- description %></p>
+  </script>
+
+  <script type="text/template" id="bill-detail-template">
+    <h3><%- document_type %> <%- number %></h3>
+    <p><b><%- caption %></b><p>
+    <p><b>Current Status:</b> <%- status_description %></p>
+    <p><b>Current Version:</b> <a href="<%- latest_version_url %>" target="_blank"><%- latest_version_description %></a></p>
+    <p><%- summary %></p>
   </script>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -202,6 +210,9 @@
   <script src="scripts/apps/watched_bills/list/list_controller.js"></script>
   <script src="scripts/apps/watched_bills/show/show_view.js"></script>
   <script src="scripts/apps/watched_bills/show/show_controller.js"></script>
+  <script src="scripts/apps/bills/bills_app.js"></script>
+  <script src="scripts/apps/bills/show/show_view.js"></script>
+  <script src="scripts/apps/bills/show/show_controller.js"></script>
 
   <script>
     GeneralAssemblyApp.start();
