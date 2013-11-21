@@ -24,10 +24,25 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
         }
       });
       return defer.promise();
+    },
+
+    getBill: function(id) {
+      var defer = $.Deferred();
+      bill = new Entities.Bill(id);
+      bill.fetch({
+        success: function(data) {
+          defer.resolve(data)
+        }
+      });
+      return defer.promise();
     }
   };
 
   GeneralAssemblyApp.reqres.setHandler("bills:count", function() {
     return API.getBillsCount();
+  });
+
+  GeneralAssemblyApp.reqres.setHandler("bills:bill", function(id) {
+    return API.getBill(id);
   });
 });
