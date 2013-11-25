@@ -32,7 +32,7 @@
 
 </head>
 <body>
-  <div id="main-region" class="container">
+  <div id="main-region">
     <p>Loading ...</p>
   </div>
 
@@ -154,7 +154,7 @@
   <script type="text/template" id="bill-category-template">
     <h3><a href="#watched_bills/category/<%- name %>"><%- name.replace(/_/g, ' ') %></a></h3>
     <p>
-      Watching <%- count %> bill<% if(count > 1) {%>s<% } %>
+      Watching <%- count %> bill<% if(count > 1) { %>s<% } %>
     </p>
   </script>
 
@@ -171,12 +171,56 @@
     <p><%- description %></p>
   </script>
 
+  <script type="text/template" id="bill-detail-layout">
+    <div class="row" id="bill-region"></div>
+
+    <div class="row" id="supplemental">
+      <div class="col-sm-4" id="sponsors">
+        <h4>Primary Author</h4>
+        <div id="author-region"></div>
+        <h4>Co-authors</h4>
+        <div id="coauthors-region"></div>
+      </div>
+      <div class="col-sm-8" id="actions">
+        <h4>Actions</h4>
+        <div id="status-region"></div>
+      </div>
+    </div>
+  </script>
+
   <script type="text/template" id="bill-detail-template">
-    <h3><%- document_type %> <%- number %></h3>
-    <p><b><%- caption %></b><p>
-    <p><b>Current Status:</b> <%- status_description %></p>
-    <p><b>Current Version:</b> <a href="<%- latest_version_url %>" target="_blank"><%- latest_version_description %></a></p>
-    <p><%- summary %></p>
+    <div class="panel-heading">
+      <h3><%- document_type %> <%- number %></h3>
+    </div>
+    <div class="panel-body">
+      <p><b><%- caption %></b><p>
+      <p><b>Current Status:</b> <%- status_description %></p>
+      <p><b>Current Version:</b> <a href="<%- latest_version_url %>" target="_blank"><%- latest_version_description %></a></p>
+      <p><b>Official Summary:</b> <%- summary %></p>
+    </div>
+  </script>
+
+  <script type="text/template" id="bill-author-list">
+    <ul class="media-list" id="bill-authors"></ul>
+  </script>
+
+  <script type="text/template" id="bill-author-template">
+    <a class="pull-left" href="#members/<%- member_id %>">
+      <img class="media-object" src="images/cropped/<%- member_id %>.jpg">
+    </a>
+    <div class="media-body">
+      <%- full_name %><br />
+      <%- district_type %> <%- district_number %><br />
+      <%- party %>-<%- hometown %><br />
+    </div>
+  </script>
+
+  <script type="text/template" id="bill-status-template">
+    <%- status_date.toString("MMM d") %>: <%- description %>
+  </script>
+
+  <script type="text/template" id="bill_status_listings_template">
+    <ul id="bill_statuses"></ul>
   </script>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -186,10 +230,12 @@
 -->
   <script src="scripts/lib/json2.js"></script>
   <script src="scripts/lib/jquery-scrolltofixed-min.js"></script>
+  <script src="//underscorejs.org/underscore-min.js"></script>
+  <script src="scripts/lib/date.js"></script>
 <!--
   <script src="scripts/lib/bootstrap.js"></script>
 -->
-  <script src="//underscorejs.org/underscore-min.js"></script>
+
   <script src="scripts/lib/underscore.string.min.js"></script>
   <script src="scripts/lib/backbone.js"></script>
   <script src="scripts/lib/backbone.marionette.js"></script>

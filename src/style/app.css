@@ -1,5 +1,19 @@
-body { padding-top: 70px; }
-
+body {
+  padding-top: 70px;
+  /* MyAJC style */
+  font-family: Publico,Georgia,"Times New Roman",Times,serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: normal;
+}
+h1, h2, h3, h4, h5, h6 {
+  /* MyAJC style */
+  font-family: inherit;
+  text-rendering: optimizelegibility;
+}
+#main-region {
+  margin: 50px;
+}
 #members-region {
   background-color: lightgrey;
 }
@@ -81,6 +95,15 @@ body { padding-top: 70px; }
   -webkit-border-radius-topleft:  20px;
      -moz-border-radius-topleft:  20px;
           border-top-left-radius: 20px;
+}
+
+#bill-authors .media-object {
+  width: 60px;
+  height: 60px;
+  border: 2px solid white;
+}
+#bill-authors a:hover {
+  border: 2px solid gray;
 }
 /*
 #panel-region {
