@@ -1,27 +1,27 @@
 GeneralAssemblyApp.module("MembersApp.Show", function(Show, GeneralAssemblyApp, Backbone, Marionette, $, _) {
   Show.Controller = {
     showMember: function(id) {
-      var fetchingMembers = GeneralAssemblyApp.request("members:collection");
-      var fetchingTopContributors = GeneralAssemblyApp.request("member:top_contributors", id);
-      var fetchingBills = GeneralAssemblyApp.request("member:bills", id);
-      var fetchingCommittees = GeneralAssemblyApp.request("member:committees", id);
+      var fetchingMembers = GeneralAssemblyApp.request("members:member", id);
       var memberShowLayout = new Show.Layout();
 
-      $.when(fetchingMembers, fetchingTopContributors, fetchingBills, fetchingCommittees).done(function(members, top_contributors, bills, committees) {
-        var member = members.get(id);
+      $.when(fetchingMembers).done(function(member) {
+        window.member = member;
 
         var memberDetailView = new Show.Detail({
           model: member
         });
 
+        var top_contributors = new GeneralAssemblyApp.Entities.TopContributorsCollection(member.get("top_contributors"));
         var topContributorsView = new Show.TopContributors({
           collection: top_contributors
         });
 
+        var committees = new GeneralAssemblyApp.Entities.MemberCommittees(member.get("member_committees"));
         var committeesView = new Show.Committees({
           collection: committees
         });
 
+        var bills = new GeneralAssemblyApp.Entities.MemberBills(member.get("bills"))
         var billsListView = new Show.Bills({
           collection: bills
         });

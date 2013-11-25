@@ -1,6 +1,7 @@
 GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Backbone, Marionette, $, _){
   Entities.Member = Backbone.Model.extend({
-    initialize: function() {
+    urlRoot: "http://localhost:3000/api/members",
+    initialize: function(id) {
       // Create tooltip info string
       var tooltipInfo = this.get("full_name") + ", " + this.get("district_address_city");
       if ( this.get("title") !== null ) {
@@ -52,8 +53,15 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
     },
 
     getMember: function(memberId) {
-      var member = Entities.members.where({id: memberId})[0];
-      return member;
+      // var member = Entities.members.where({id: memberId})[0];
+      var defer = $.Deferred();
+      member = new Entities.Member({id: memberId});
+      member.fetch({
+        success: function(data) {
+          defer.resolve(data);
+        }
+      });
+      return defer.promise();
     },
 
     getMemberBills: function(id) {
@@ -67,7 +75,7 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
       return defer.promise();
     },
 
-    getMemberCommittees: function(id) {
+    getMemberCommittees: function(committees) {
       var defer = $.Deferred();
       Entities.memberCommittees = new Entities.MemberCommittees(id);
       Entities.memberCommittees.fetch({
