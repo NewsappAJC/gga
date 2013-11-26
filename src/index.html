@@ -159,11 +159,28 @@
   </script>
 
   <script type="text/template" id="bills-count-template">
-    <h2>
-      <%- bills %> Bills:
-      <%- passed_house %> Passed the House.
-      <%- passed_senate %> Passed the Senate.
-    </h2>
+    <h1><%- bills %> Bills</h1>
+    <% if(passed_house > 0) { %>
+      <p><%- passed_house %> Passed the House.</p>
+    <% } %>
+    <% if(passed_senate > 0) { %>
+      <p><%- passed_senate %> Passed the Senate.</p>
+    <% } %>
+    <% if(sent_to_gov > 0) { %>
+      <p><%- sent_to_gov %> Sent to governor.</p>
+    <% } %>
+    <% if(signed_by_gov > 0) { %>
+      <p><%- signed_by_gov %> Signed by governor.</p>
+    <% } %>
+  </script>
+
+  <script type="text/template" id="show-category-layout">
+    <div class="jumbotron" id="headline-region"></div>
+    <div id="watched-bill-list"></div>
+  </script>
+
+  <script type="text/template" id="category-headline-template">
+    <h1><%- category %></h1>
   </script>
 
   <script type="text/template" id="category-item-template">
@@ -175,18 +192,37 @@
     <div class="row" id="bill-region"></div>
 
     <div class="row" id="supplemental">
+
       <div class="col-sm-4" id="sponsors">
-        <h4>Primary Author</h4>
-        <div id="author-region"></div>
-        <h4>Co-authors</h4>
-        <div id="coauthors-region"></div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>Primary Author</h4>
+          </div>
+          <div class="panel-body">
+            <div id="author-region"></div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>Co-authors</h4>
+          </div>
+          <div class="panel-body">
+            <div id="coauthors-region"></div>
+          </div>
+        </div>
       </div>
+
       <div class="col-sm-8" id="actions">
-        <h4>Actions</h4>
+        <div class="well">
+          <h4>Actions</h4>
+        </div>
         <div id="status-region"></div>
-        <h4>Versions</h4>
+        <div class="well">
+          <h4>Versions</h4>
+        </div>
         <div id="version-region"></div>
       </div>
+
     </div>
   </script>
 
@@ -230,7 +266,7 @@
   </script>
 
   <script type="text/template" id="bill-version-template">
-    <a href="<%- url %>" target="_blank"><%- version %>: <%- description %></a>
+    <%- version %>: <a href="<%- url %>" target="_blank"><%- description %></a>
   </script>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

@@ -18,6 +18,7 @@ GeneralAssemblyApp.module("WatchedBillsApp.List", function(List, GeneralAssembly
   });
 
   List.BillsCountView = Marionette.ItemView.extend({
-    template: "#bills-count-template"
+    template: "#bills-count-template",
+    className: "jumbotron"
   });
 });

@@ -16,6 +16,8 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
     model: Entities.BillCategory
   });
 
+  Entities.CetegoryHeadline = Backbone.Model.extend();
+
   var API = {
     getWatchedBills: function() {
       var defer = $.Deferred();
