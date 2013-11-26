@@ -75,7 +75,7 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
       return defer.promise();
     },
 
-    getMemberCommittees: function(committees) {
+    getMemberCommittees: function(id) {
       var defer = $.Deferred();
       Entities.memberCommittees = new Entities.MemberCommittees(id);
       Entities.memberCommittees.fetch({

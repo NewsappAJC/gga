@@ -39,6 +39,12 @@ GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Bac
     model: Entities.BillStatusListing
   });
 
+  // BillVersions
+  Entities.BillVersion = Backbone.Model.extend();
+  Entities.BillVersions = Backbone.Collection.extend({
+    model: Entities.BillVersion
+  });
+
   var API = {
     getBillsCount: function() {
       var defer = $.Deferred();

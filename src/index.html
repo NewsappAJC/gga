@@ -184,6 +184,8 @@
       <div class="col-sm-8" id="actions">
         <h4>Actions</h4>
         <div id="status-region"></div>
+        <h4>Versions</h4>
+        <div id="version-region"></div>
       </div>
     </div>
   </script>
@@ -221,6 +223,14 @@
 
   <script type="text/template" id="bill_status_listings_template">
     <ul id="bill_statuses"></ul>
+  </script>
+
+  <script type="text/template" id="bill-versions-listing-template">
+    <ul id="bill-versions"></ul>
+  </script>
+
+  <script type="text/template" id="bill-version-template">
+    <a href="<%- url %>" target="_blank"><%- version %>: <%- description %></a>
   </script>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

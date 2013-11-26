@@ -76,7 +76,7 @@ describe("Members collection", function() {
     });
 
     describe("members:member request", function() {
-      it("should return specified member", function() {
+      xit("should return specified member", function() {
         var models = [];
         models.push(new GeneralAssemblyApp.Entities.Member({id:1}));
         models.push(new GeneralAssemblyApp.Entities.Member({id:3}));

@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6 {
      -moz-border-radius-topleft:  20px;
           border-top-left-radius: 20px;
   text-align: center;
-  font-weight: bold;
+  font-family: Tahoma, Arial, Helvetica, sans-serif;
   background-repeat: no-repeat;
   background-size: 100%;
   background-color: white;
@@ -105,9 +105,13 @@ h1, h2, h3, h4, h5, h6 {
 #bill-authors a:hover {
   border: 2px solid gray;
 }
-/*
-#panel-region {
-  padding: 2px;
-  padding-top: 10px;
+
+ul#bill-authors li {
+  padding: 5px;
 }
-*/
+ul#bill-authors li.D {
+  background-color: lightblue;
+}
+ul#bill-authors li.R {
+  background-color: pink;
+}
