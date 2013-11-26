@@ -11,6 +11,9 @@ h1, h2, h3, h4, h5, h6 {
   font-family: inherit;
   text-rendering: optimizelegibility;
 }
+.jumbotron {
+  text-align: center;
+}
 #main-region {
   margin: 50px;
 }
@@ -114,4 +117,7 @@ ul#bill-authors li.D {
 }
 ul#bill-authors li.R {
   background-color: pink;
+}
+ul#bill-authors li.I {
+  background-color: lightgray;
 }

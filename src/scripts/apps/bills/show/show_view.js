@@ -33,22 +33,24 @@ GeneralAssemblyApp.module("BillsApp.Show", function(Show, GeneralAssemblyApp, Ba
   // Bill status views
   Show.StatusView = Marionette.ItemView.extend({
     tagName: "li",
+    className: "list-group-item",
     template: "#bill-status-template"
   });
-  Show.StatusListingsView = Marionette.CompositeView.extend({
+  Show.StatusListingsView = Marionette.CollectionView.extend({
     itemView: Show.StatusView,
-    template: "#bill_status_listings_template",
-    itemViewContainer: "#bill_statuses"
+    tagName: "ul",
+    className: "list-group"
   });
 
   // Bill version views
   Show.VersionView = Marionette.ItemView.extend({
     tagName: "li",
+    className: "list-group-item",
     template: "#bill-version-template"
   });
-  Show.VersionsListingView = Marionette.CompositeView.extend({
+  Show.VersionsListingView = Marionette.CollectionView.extend({
     itemView: Show.VersionView,
-    template: "#bill-versions-listing-template",
-    itemViewContainer: "#bill-versions"
+    tagName: "ul",
+    className: "list-group"
   });
 });

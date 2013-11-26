@@ -71,7 +71,5 @@ GeneralAssemblyApp.module("MembersApp.List", function(List, GeneralAssemblyApp, 
 
   List.Members = Marionette.CollectionView.extend({
     itemView: List.Member
-    // template: "#member-list-template",
-    // itemViewContainer: "#members-container"
   });
 });

@@ -2,6 +2,7 @@ GeneralAssemblyApp.module("WatchedBillsApp.Show", function(Show, GeneralAssembly
   Show.Controller = {
     showBillsForCategory: function(category) {
       var fetchingWatchedBills = GeneralAssemblyApp.request("watched_bills:collection");
+      var categoryLayout = new Show.CategoryLayout();
 
       $.when(fetchingWatchedBills).done(function(watched_bills) {
         billsForCategory = GeneralAssemblyApp.Entities.FilteredCollection({
@@ -9,11 +10,23 @@ GeneralAssemblyApp.module("WatchedBillsApp.Show", function(Show, GeneralAssembly
         });
 
         billsForCategory.filter({category: category});
-        category_view = new Show.CategoryCollectionView({
+        console.log(category);
+
+        categoryView = new Show.CategoryCollectionView({
           collection: billsForCategory
         });
 
-        GeneralAssemblyApp.mainRegion.show(category_view);
+        headline = new GeneralAssemblyApp.Entities.CetegoryHeadline({category: category.replace(/\_/g, " ")});
+        headlineView = new Show.CategoryHeadlineView({
+          model: headline
+        });
+
+        categoryLayout.on("show", function() {
+          categoryLayout.headlineRegion.show(headlineView);
+          categoryLayout.billListRegion.show(categoryView);
+        });
+
+        GeneralAssemblyApp.mainRegion.show(categoryLayout);
       });
     }
 
