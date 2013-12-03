@@ -21,7 +21,8 @@ define(["marionette"], function(Marionette) {
         Backbone.history.start();
 
         if (GeneralAssemblyApp.getCurrentRoute() === "") {
-          GeneralAssemblyApp.trigger("members:list");
+          GeneralAssemblyApp.trigger("watchedbills:categories:list");
+          // GeneralAssemblyApp.trigger("members:list");
         }
       });
     }

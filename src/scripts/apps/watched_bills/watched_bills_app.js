@@ -3,29 +3,31 @@ define(["app"], function(GeneralAssemblyApp) {
     WatchedBillsApp.Router = Marionette.AppRouter.extend({
       appRoutes: {
         "watched_bills": "listBillCategories",
-        "watched_bills/category/:category": "ShowBillsCategory"
+        "watched_bills/category/:category": "showBillsCategory"
       }
     });
 
     var API = {
       listBillCategories: function() {
         require(["apps/watched_bills/list/list_controller"], function() {
-          WatchedBillsApp.List.Controller.listCategories()
+          WatchedBillsApp.List.Controller.listCategories();
         });
       },
-      ShowBillsCategory: function(category) {
+      showBillsCategory: function(category) {
         require(["apps/watched_bills/show/show_controller"], function() {
-          WatchedBillsApp.Show.Controller.showBillsForCategory(category)
+          WatchedBillsApp.Show.Controller.showBillsForCategory(category);
         });
       }
     };
 
     GeneralAssemblyApp.on( "watchedbills:categories:list", function() {
       GeneralAssemblyApp.navigate("watched_bills");
+      API.listBillCategories();
     });
 
     GeneralAssemblyApp.on( "watchedbills:categories:show", function(category) {
       GeneralAssemblyApp.navigate("watched_bills/category/" + category);
+      API.showBillCategories(category);
     });
 
     GeneralAssemblyApp.addInitializer(function() {
