@@ -1,28 +1,30 @@
-GeneralAssemblyApp.module("Entities", function(Entities, ContactManager, Backbone, Marionette, $, _){
-  Entities.FilteredCollection = function(options) {
-    var original = options.collection;
-    var filtered = new original.constructor();
-    filtered.add(original.models);
-    filtered.filterCriterion = options.filterCriterion || {};
+define(["app"], function(GeneralAssemblyApp) {
+  GeneralAssemblyApp.module("Entities", function(Entities, ContactManager, Backbone, Marionette, $, _){
+    Entities.FilteredCollection = function(options) {
+      var original = options.collection;
+      var filtered = new original.constructor();
+      filtered.add(original.models);
+      filtered.filterCriterion = options.filterCriterion || {};
 
-    var applyFilter = function(filterCriterion, collection) {
-      var collection = collection || original;
-      var criterion = filterCriterion;
+      var applyFilter = function(filterCriterion, collection) {
+        var collection = collection || original;
+        var criterion = filterCriterion;
 
-      var items = _.isEmpty(criterion) ? collection.models : collection.where(criterion);
-      return items;
+        var items = _.isEmpty(criterion) ? collection.models : collection.where(criterion);
+        return items;
+      };
+
+      filtered.filter = function(filterCriterion) {
+        if (_.find(_.values(filterCriterion), function(str){return str.match(/all/);})) {
+          delete filtered.filterCriterion[ _.keys(filterCriterion)[0] ];
+        } else {
+          $.extend(filtered.filterCriterion, filterCriterion);
+        }
+        var items = applyFilter(filtered.filterCriterion);
+        filtered.reset(items);
+      };
+
+      return filtered;
     };
-
-    filtered.filter = function(filterCriterion) {
-      if (_.find(_.values(filterCriterion), function(str){return str.match(/all/);})) {
-        delete filtered.filterCriterion[ _.keys(filterCriterion)[0] ];
-      } else {
-        $.extend(filtered.filterCriterion, filterCriterion);
-      }
-      var items = applyFilter(filtered.filterCriterion);
-      filtered.reset(items);
-    };
-
-    return filtered;
-  };
+  });
 });

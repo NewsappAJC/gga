@@ -1,24 +1,27 @@
-GeneralAssemblyApp.module("WatchedBillsApp.List", function(List, GeneralAssemblyApp, Backbone, Marionette, $, _) {
-  List.CategoriesLayout = Marionette.Layout.extend({
-    template: "#bill-category-layout",
-    regions: {
-      categoriesRegion: "#bill-category-region",
-      billsCountRegion: "#bills-count-region"
-    }
-  });
+define(["app"], function(GeneralAssemblyApp) {
+  GeneralAssemblyApp.module("WatchedBillsApp.List.View", function(View, GeneralAssemblyApp, Backbone, Marionette, $, _) {
+    View.CategoriesLayout = Marionette.Layout.extend({
+      template: "#bill-category-layout",
+      regions: {
+        categoriesRegion: "#bill-category-region",
+        billsCountRegion: "#bills-count-region"
+      }
+    });
 
-  List.CategoryView = Marionette.ItemView.extend({
-    template: "#bill-category-template",
-    className: "watched-bill-icon"
-  });
+    View.CategoryView = Marionette.ItemView.extend({
+      template: "#bill-category-template",
+      className: "watched-bill-icon"
+    });
 
-  List.CategoriesView = Marionette.CollectionView.extend({
-    itemView: List.CategoryView,
-    className: "container"
-  });
+    View.CategoriesView = Marionette.CollectionView.extend({
+      itemView: View.CategoryView,
+      className: "container"
+    });
 
-  List.BillsCountView = Marionette.ItemView.extend({
-    template: "#bills-count-template",
-    className: "jumbotron"
+    View.BillsCountView = Marionette.ItemView.extend({
+      template: "#bills-count-template",
+      className: "jumbotron"
+    });
   });
+  return GeneralAssemblyApp.WatchedBillsApp.List.View;
 });
