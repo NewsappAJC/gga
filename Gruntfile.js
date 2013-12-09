@@ -36,13 +36,27 @@ module.exports = function(grunt) {
     },
     uglify: {
       options: {
-        mangle: { except: ['d3', '_','$'] },
+        mangle: { except: ['d3', '_','$','Bootstrap','Marionette'] },
         compress: true,
         report: 'gzip'
       },
       my_target: {
         files: {
-          'build/scripts/my_js_file.js'   : ['src/scripts/my_js_file.js']
+          'build/scripts/require_main.js'       : ['src/scripts/require_main.js'],
+          'build/scripts/require_main.built.js' : ['src/scripts/require_main.built.js'],
+          'build/scripts/app.js'                : ['src/scripts/app.js'],
+          'build/scripts/entities/*'            : ['src//scripts/entities/*'],
+
+          'build/scripts/apps/bills/bills_app.js' : ['src/scripts/apps/bills/bills_app.js'],
+          'build/scripts/apps/bills/show/*'       : ['src/scripts/apps/bills/show/*'],
+
+          'build/scripts/apps/members/members_app.js' : ['src/scripts/apps/members/members_app.js'],
+          'build/scripts/apps/members/show/*'         : ['src/scripts/apps/members/show/*'],
+          'build/scripts/apps/members/list/*'         : ['src/scripts/apps/members/list/*'],
+
+          'build/scripts/apps/watched_bills/watched_bills_app.js' : ['src/scripts/apps/watched_bills/watched_bills_app.js'],
+          'build/scripts/apps/watched_bills/show/*'               : ['src/scripts/apps/watched_bills/show/*'],
+          'build/scripts/apps/watched_bills/list/*'               : ['src/scripts/apps/watched_bills/list/*'],
         }
       }
     },
