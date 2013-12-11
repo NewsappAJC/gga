@@ -24,12 +24,16 @@ define(["app","apps/bills/show/show_view"], function(GeneralAssemblyApp, View) {
             bill_versions = new GeneralAssemblyApp.Entities.BillVersions( bill.get("versions") );
             versionListingsView = new View.VersionsListingView({ collection: bill_versions });
 
+            bill_votes = new GeneralAssemblyApp.Entities.BillVotes( bill.get("votes") );
+            votesListingsView = new View.VotesListingView({ collection: bill_votes });
+
             billLayout.on("show", function() {
               billLayout.billRegion.show(billView);
               billLayout.authorRegion.show(authorView);
               billLayout.coauthorsRegion.show(coauthorsView);
               billLayout.statusRegion.show(stausListingsView);
               billLayout.versionRegion.show(versionListingsView);
+              billLayout.voteRegion.show(votesListingsView);
             });
 
             GeneralAssemblyApp.mainRegion.show(billLayout);

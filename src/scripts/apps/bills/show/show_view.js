@@ -8,7 +8,8 @@ define(["app"], function(GeneralAssemblyApp) {
         authorRegion: "#author-region",
         coauthorsRegion: "#coauthors-region",
         statusRegion: "#status-region",
-        versionRegion: "#version-region"
+        versionRegion: "#version-region",
+        voteRegion: "#vote-region"
       }
     });
 
@@ -53,6 +54,19 @@ define(["app"], function(GeneralAssemblyApp) {
       itemView: View.VersionView,
       tagName: "ul",
       className: "list-group"
+    });
+
+    // Bill vote views
+    View.VoteView = Marionette.ItemView.extend({
+      tagName: "tr",
+      template: "#bill-vote-template"
+    });
+    View.VotesListingView = Marionette.CompositeView.extend({
+      itemView: View.VoteView,
+      template: "#bill-votes-listing-template",
+      tagName: "table",
+      className: "table table-hover table-condensed table-bordered",
+      itemViewContainer: "tbody"
     });
   });
   return GeneralAssemblyApp.BillsApp.Show.View;

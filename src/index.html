@@ -210,6 +210,10 @@
             <div id="coauthors-region"></div>
           </div>
         </div>
+        <div class="well">
+          <h4>Versions</h4>
+        </div>
+        <div class="panel-body" id="version-region"></div>
       </div>
 
       <div class="col-sm-8" id="actions">
@@ -218,9 +222,9 @@
         </div>
         <div id="status-region"></div>
         <div class="well">
-          <h4>Versions</h4>
+          <h4>Votes</h4>
         </div>
-        <div id="version-region"></div>
+        <div id="vote-region"></div>
       </div>
 
     </div>
@@ -267,6 +271,27 @@
 
   <script type="text/template" id="bill-version-template">
     <%- version %>: <a href="<%- url %>" target="_blank"><%- description %></a>
+  </script>
+
+  <script type="text/template" id="bill-vote-template">
+    <td><%= vote_date.toString("MMM d, yyyy") %></td>
+    <td><%= caption %> (<%= branch %>)</td>
+    <td><%= yeas %></td>
+    <td><%= nays %></td>
+    <td><%= not_voting %></td>
+    <td><%= excused %></td>
+  </script>
+
+  <script type="text/template" id="bill-votes-listing-template">
+    <thead>
+      <th>Vote Date</th>
+      <th>Description</th>
+      <th>Yeas</th>
+      <th>Nays</th>
+      <th>Not<br/>Voting</th>
+      <th>Excused</th>
+    </thead>
+    <tbody></tbody>
   </script>
 
   <script src="scripts/lib/require.js"></script>
