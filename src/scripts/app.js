@@ -15,7 +15,6 @@ define(["marionette"], function(Marionette) {
   };
 
   GeneralAssemblyApp.on("initialize:after", function() {
-    console.log("GeneralAssemblyApp has started");
     if (Backbone.history) {
       require(["apps/members/members_app","apps/watched_bills/watched_bills_app","apps/bills/bills_app","entities/common"], function() {
         Backbone.history.start();

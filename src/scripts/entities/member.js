@@ -1,7 +1,7 @@
 define(["app"], function(GeneralAssemblyApp) {
   GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Backbone, Marionette, $, _){
     Entities.Member = Backbone.Model.extend({
-      urlRoot: "http://localhost:3000/api/members",
+      urlRoot: "http://ajcgga-api.herokuapp.com/api/members",
       initialize: function(id) {
         // Create tooltip info string
         var tooltipInfo = this.get("full_name") + ", " + this.get("district_address_city");
@@ -14,7 +14,7 @@ define(["app"], function(GeneralAssemblyApp) {
 
     Entities.MembersCollection = Backbone.Collection.extend({
       model: Entities.Member,
-      url: "http://localhost:3000/api/members/",
+      url: "http://ajcgga-api.herokuapp.com/api/members/",
       comparator: function(member) {
         return ( (member.get("district_type") === "House" ? "A" : "B") + _.string.sprintf('%03s', member.get("district_number")) );
       },
@@ -24,7 +24,7 @@ define(["app"], function(GeneralAssemblyApp) {
     Entities.MemberCommittee = Backbone.Model.extend();
     Entities.MemberCommittees = Backbone.Collection.extend({
       initialize: function(id) {
-        this.url = 'http://localhost:3000/api/members/' + id + '/committees';
+        this.url = 'http://ajcgga-api.herokuapp.com/api/members/' + id + '/committees';
       },
       model: Entities.MemberCommittee
     });
@@ -32,7 +32,7 @@ define(["app"], function(GeneralAssemblyApp) {
     Entities.MemberBill = Backbone.Model.extend();
     Entities.MemberBills = Backbone.Collection.extend({
       initialize: function(id) {
-        this.url = 'http://localhost:3000/api/members/' + id + '/bills';
+        this.url = 'http://ajcgga-api.herokuapp.com/api/members/' + id + '/bills';
       },
       model: Entities.MemberBill
     });

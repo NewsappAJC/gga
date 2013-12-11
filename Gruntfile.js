@@ -6,15 +6,25 @@ module.exports = function(grunt) {
     copy: {
       target: {
         files: [
-          { expand: true, flatten: true, src: ['src/scripts/lib/*.js'], dest: 'build/scripts/lib/' },
-          { expand: true, flatten: true, src: ['src/data/*'], dest: 'build/data/' }
+          { expand: true, flatten: true, src: ['src/images/cropped/*.jpg'], dest: 'build/images/cropped/' },
+          { expand: true, flatten: true, src: ['src/images/mugs/*.jpg'], dest: 'build/images/mugs/' },
+          { expand: true, flatten: true, src: ['src/images/datatables/*.png'], dest: 'build/images/datatables/' }
         ]
       }
     },
     jshint: {
       files: [
-        'Grintfile.js',
-        'src/scripts/*.js'
+        'Gruntfile.js',
+        'src/scripts/*.js',
+        'src/scripts/entities/*.js',
+        'src/scripts/apps/bills/*.js',
+        'src/scripts/apps/bills/show/*.js',
+        'src/scripts/apps/members/*.js',
+        'src/scripts/apps/members/list/*.js',
+        'src/scripts/apps/members/show/*.js',
+        'src/scripts/apps/watched_bills/*.js',
+        'src/scripts/apps/watched_bills/list/*.js',
+        'src/scripts/apps/watched_bills/show/*.js'
       ],
       options: {
         browser: true,
@@ -36,7 +46,8 @@ module.exports = function(grunt) {
     },
     uglify: {
       options: {
-        mangle: { except: ['d3', '_','$','Bootstrap','Marionette'] },
+        // mangle: { except: ['d3', '_','$','Bootstrap','Marionette'] },
+        mangle: false,
         compress: true,
         report: 'gzip'
       },
@@ -45,18 +56,29 @@ module.exports = function(grunt) {
           'build/scripts/require_main.js'       : ['src/scripts/require_main.js'],
           'build/scripts/require_main.built.js' : ['src/scripts/require_main.built.js'],
           'build/scripts/app.js'                : ['src/scripts/app.js'],
-          'build/scripts/entities/*'            : ['src//scripts/entities/*'],
+          'build/scripts/lib/require.js'        : ['src/scripts/lib/require.js'],
 
-          'build/scripts/apps/bills/bills_app.js' : ['src/scripts/apps/bills/bills_app.js'],
-          'build/scripts/apps/bills/show/*'       : ['src/scripts/apps/bills/show/*'],
+          'build/scripts/entities/bill.js'             : ['src/scripts/entities/bill.js'],
+          'build/scripts/entities/common.js'           : ['src/scripts/entities/common.js'],
+          'build/scripts/entities/member.js'           : ['src/scripts/entities/member.js'],
+          'build/scripts/entities/top_contributors.js' : ['src/scripts/entities/top_contributors.js'],
+          'build/scripts/entities/watched_bill.js'     : ['src/scripts/entities/watched_bill.js'],
 
-          'build/scripts/apps/members/members_app.js' : ['src/scripts/apps/members/members_app.js'],
-          'build/scripts/apps/members/show/*'         : ['src/scripts/apps/members/show/*'],
-          'build/scripts/apps/members/list/*'         : ['src/scripts/apps/members/list/*'],
+          'build/scripts/apps/bills/bills_app.js'            : ['src/scripts/apps/bills/bills_app.js'],
+          'build/scripts/apps/bills/show/show_controller.js' : ['src/scripts/apps/bills/show/show_controller.js'],
+          'build/scripts/apps/bills/show/show_view.js'       : ['src/scripts/apps/bills/show/show_view.js'],
 
-          'build/scripts/apps/watched_bills/watched_bills_app.js' : ['src/scripts/apps/watched_bills/watched_bills_app.js'],
-          'build/scripts/apps/watched_bills/show/*'               : ['src/scripts/apps/watched_bills/show/*'],
-          'build/scripts/apps/watched_bills/list/*'               : ['src/scripts/apps/watched_bills/list/*'],
+          'build/scripts/apps/members/members_app.js'          : ['src/scripts/apps/members/members_app.js'],
+          'build/scripts/apps/members/show/show_controller.js' : ['src/scripts/apps/members/show/show_controller.js'],
+          'build/scripts/apps/members/show/show_view.js'       : ['src/scripts/apps/members/show/show_view.js'],
+          'build/scripts/apps/members/list/list_controller.js' : ['src/scripts/apps/members/list/list_controller.js'],
+          'build/scripts/apps/members/list/list_view.js'       : ['src/scripts/apps/members/list/list_view.js'],
+
+          'build/scripts/apps/watched_bills/watched_bills_app.js'    : ['src/scripts/apps/watched_bills/watched_bills_app.js'],
+          'build/scripts/apps/watched_bills/show/show_controller.js' : ['src/scripts/apps/watched_bills/show/show_controller.js'],
+          'build/scripts/apps/watched_bills/show/show_view.js'       : ['src/scripts/apps/watched_bills/show/show_view.js'],
+          'build/scripts/apps/watched_bills/list/list_controller.js' : ['src/scripts/apps/watched_bills/list/list_controller.js'],
+          'build/scripts/apps/watched_bills/list/list_view.js'       : ['src/scripts/apps/watched_bills/list/list_view.js']
         }
       }
     },
@@ -79,7 +101,9 @@ module.exports = function(grunt) {
         },
         files: {
           'build/style/app.css': ['src/style/app.css'],
-          'build/style/skeleton.css': ['src/style/skeleton.css']
+          'build/style/bootstrap.css': ['src/style/bootstrap.css'],
+          'build/style/jquery-ui-1.10.3.custom.css': ['src/style/jquery-ui-1.10.3.custom.css'],
+          'build/style/jquery.dataTables.css': ['src/style/jquery.dataTables.css'],
         }
       }
     },
@@ -90,11 +114,28 @@ module.exports = function(grunt) {
       access: "public-read",
       gzip: true,
       debug: false,
+      maxOperations: 10,
       upload: [
-        { src: 'build/*.html', dest: '.' },
-        { src: 'build/scripts/*', dest: 'scripts/' },
-        { src: 'build/scripts/lib/*', dest: 'scripts/lib/' },
-        { src: 'build/data/*', dest: 'data/' },
+        { src: 'build/index.html', dest: '.' },
+        { src: 'build/scripts/app.js', dest: 'scripts/app.js' },
+        { src: 'build/scripts/require_main.built.js', dest: 'scripts/require_main.built.js' },
+        { src: 'build/scripts/require_main.js', dest: 'scripts/require_main.js' },
+        { src: 'build/scripts/underscore.js', dest: 'scripts/underscore.js' },
+        { src: 'build/scripts/underscore-amd.js', dest: 'scripts/underscore-amd.js' },
+        { src: 'build/scripts/lib/require.js', dest: 'scripts/lib/require.js' },
+        { src: 'build/scripts/entities/*', dest: 'scripts/entities/' },
+        { src: 'build/scripts/apps/bills/bills_app.js', dest: 'scripts/apps/bills/bills_app.js' },
+        { src: 'build/scripts/apps/bills/show/*', dest: 'scripts/apps/bills/show/' },
+        { src: 'build/scripts/apps/members/members_app.js', dest: 'scripts/apps/members/members_app.js' },
+        { src: 'build/scripts/apps/members/list/*', dest: 'scripts/apps/members/list/' },
+        { src: 'build/scripts/apps/members/show/*', dest: 'scripts/apps/members/show/' },
+        { src: 'build/scripts/apps/watched_bills/watched_bills_app.js', dest: 'scripts/apps/watched_bills/watched_bills_app.js' },
+        { src: 'build/scripts/apps/watched_bills/list/*', dest: 'scripts/apps/watched_bills/list/' },
+        { src: 'build/scripts/apps/watched_bills/show/*', dest: 'scripts/apps/watched_bills/show/' },
+
+        // { src: 'build/images/cropped/*', dest: 'images/cropped/' },
+        // { src: 'build/images/datatables/*', dest: 'images/datatables/' },
+        // { src: 'build/images/mugs/*', dest: 'images/mugs/' },
         { src: 'build/style/*', dest: 'style/' }
       ]
     }

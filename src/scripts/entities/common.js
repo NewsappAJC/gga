@@ -1,5 +1,6 @@
 define(["app"], function(GeneralAssemblyApp) {
   GeneralAssemblyApp.module("Entities", function(Entities, ContactManager, Backbone, Marionette, $, _){
+    Entities.base_url = "http://ajcgga-api.herokuapp.com/api";
     Entities.FilteredCollection = function(options) {
       var original = options.collection;
       var filtered = new original.constructor();
