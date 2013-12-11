@@ -17,6 +17,7 @@ define(["app"], function(GeneralAssemblyApp) {
         var defer = $.Deferred();
         Entities.top_contributors = new Entities.TopContributorsCollection(id);
         Entities.top_contributors.fetch({
+          dataType: "jsonp",
           success: function(data) {
             defer.resolve(data);
           }

@@ -43,6 +43,7 @@ define(["app"], function(GeneralAssemblyApp) {
         if (! Entities.members || Entities.members.length == 0) {
           Entities.members = new Entities.MembersCollection();
           Entities.members.fetch({
+            dataType: "jsonp",
             success: function(data) {
               defer.resolve(data);
             }
@@ -58,6 +59,7 @@ define(["app"], function(GeneralAssemblyApp) {
         var defer = $.Deferred();
         member = new Entities.Member({id: memberId});
         member.fetch({
+          dataType: "jsonp",
           success: function(data) {
             defer.resolve(data);
           }
@@ -69,6 +71,7 @@ define(["app"], function(GeneralAssemblyApp) {
         var defer = $.Deferred();
         Entities.memberBills = new Entities.MemberBills(id);
         Entities.memberBills.fetch({
+          dataType: "jsonp",
           success: function(data) {
             defer.resolve(data);
           }
@@ -80,6 +83,7 @@ define(["app"], function(GeneralAssemblyApp) {
         var defer = $.Deferred();
         Entities.memberCommittees = new Entities.MemberCommittees(id);
         Entities.memberCommittees.fetch({
+          dataType: "jsonp",
           success: function(data) {
             defer.resolve(data);
           }

@@ -51,6 +51,7 @@ define(["app"], function(GeneralAssemblyApp) {
         var defer = $.Deferred();
         Entities.bills_count = new Entities.BillsCount()
         Entities.bills_count.fetch({
+          dataType: "jsonp",
           success: function(data) {
             defer.resolve(data);
           }
@@ -62,6 +63,7 @@ define(["app"], function(GeneralAssemblyApp) {
         var defer = $.Deferred();
         bill = new Entities.Bill(id);
         bill.fetch({
+          dataType: "jsonp"
           success: function(data) {
             defer.resolve(data)
           }

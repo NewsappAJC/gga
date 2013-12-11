@@ -25,6 +25,7 @@ define(["app"], function(GeneralAssemblyApp) {
         if (! Entities.watched_bills || Entities.watched_bills.length == 0) {
           Entities.watched_bills = new Entities.WatchedBills();
           Entities.watched_bills.fetch({
+            dataType: "jsonp",
             success: function(data) {
               defer.resolve(data);
             }
