@@ -63,7 +63,7 @@ define(["app"], function(GeneralAssemblyApp) {
         var defer = $.Deferred();
         bill = new Entities.Bill(id);
         bill.fetch({
-          dataType: "jsonp"
+          dataType: "jsonp",
           success: function(data) {
             defer.resolve(data)
           }
