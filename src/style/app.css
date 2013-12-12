@@ -15,7 +15,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 #main-region {
-  margin: 50px;
+margin:0px;
 }
 #members-region {
   background-color: lightgrey;
@@ -121,3 +121,101 @@ ul#bill-authors li.R {
 ul#bill-authors li.I {
   background-color: lightgray;
 }
+
+
+body{
+      padding:0px;
+      margin:0px;
+      font-family:Georgia,Times,serif;
+    }
+    /* header styles */
+    #top{
+      width:100%;
+      padding:2px 0px;
+      border-bottom:5px solid #003896;
+    }
+    #inside-top{
+      width:100%;
+      padding:5px 20px;
+      border-bottom:3px solid #888;
+    }
+    #masthead{
+      float:left;
+    }
+    #masthead-tag{
+      text-align:right;
+      font-size:18px;
+      line-height: 1em;
+      text-transform: uppercase;
+      width:200px;
+      float:right;
+    }
+    .breadcrumbs{
+      margin:5px 0px 0px 0px;
+    }
+    .breadcrumbs a{
+      text-transform: uppercase;
+      color:#000;
+    }
+    .breadcrumbs a:hover{
+      text-decoration:underline;
+    }
+
+    /* title styles */
+    #content-head{
+      padding:0px 0px 15px 0px;
+    }
+    #content-head h1{
+      font-size:44px;
+      margin:0px;
+      padding:10px 0px;
+    }
+    #content-head p{
+      font-size:16px;
+    }
+    .card{
+      border:1px solid #e5e5e5;
+      margin:10px 0px;
+    }
+    .card-header{
+      background-color:#e5e5e5;
+      margin:0px;
+    }
+    .card-header h2{
+      font-size:36px;
+      margin:0px;
+      padding:10px;
+    }
+    .card-content{
+      padding:15px;
+      border-top:1px solid #e5e5e5;
+    }
+    .bill-cat{
+      background-color:#efefef;
+      border-radius:5px;
+      padding:10px;
+      margin-bottom:15px;
+      text-align:center;
+      height:120px;
+    }
+    .bill-cat a{
+      color:#000;
+      text-decoration:underline;
+    }
+    .bill-cat a:hover{
+      text-decoration:none;
+    }
+    .bill-summary .col-lg-6{
+      text-align:center;
+      border-right:1px solid #e5e5e5;
+      margin:0px;
+      padding:5px 0px;
+      font-size:18px;
+    }
+    .bill-summary .col-lg-6:last-child{
+      border:none;
+    }
+    .count{
+      font-weight:bold;
+      color:#000;
+    }

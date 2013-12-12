@@ -10,17 +10,17 @@ define(["app"], function(GeneralAssemblyApp) {
 
     View.CategoryView = Marionette.ItemView.extend({
       template: "#bill-category-template",
-      className: "watched-bill-icon"
+      className: "col-lg-3"
     });
 
     View.CategoriesView = Marionette.CollectionView.extend({
       itemView: View.CategoryView,
-      className: "container"
+      className: ""
     });
 
     View.BillsCountView = Marionette.ItemView.extend({
       template: "#bills-count-template",
-      className: "jumbotron"
+      className: ""
     });
   });
   return GeneralAssemblyApp.WatchedBillsApp.List.View;
