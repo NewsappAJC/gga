@@ -121,3 +121,20 @@ ul#bill-authors li.R {
 ul#bill-authors li.I {
   background-color: lightgray;
 }
+
+.member-vote {
+  cursor: pointer;
+}
+
+td.voted.Yea {
+  color: green;
+}
+td.voted.Nay {
+  color: red;
+}
+td.voted.Excused {
+  color: lightgray;
+}
+td.voted.NotVoting {
+  color: lightgray;
+}

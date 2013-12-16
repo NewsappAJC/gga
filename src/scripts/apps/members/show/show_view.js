@@ -6,7 +6,8 @@ define(["app"], function(GeneralAssemblyApp){
         detailRegion: "#detail-region",
         topContributorsRegion: "#top-contributors-region",
         committeesRegion: "#committee-list-region",
-        billsListRegion: "#bills-list-region"
+        billsListRegion: "#bills-list-region",
+        votesRegion: "#vote-list-region"
       }
     });
 
@@ -26,7 +27,6 @@ define(["app"], function(GeneralAssemblyApp){
       tagName: 'tr',
       template: "#top-contributor-template"
     });
-
     View.TopContributors = Marionette.CompositeView.extend({
       tagName: 'table',
       className: "dataTable table table-hover",
@@ -46,7 +46,6 @@ define(["app"], function(GeneralAssemblyApp){
       tagName: 'tr',
       template: "#committee-template"
     });
-
     View.Committees = Marionette.CompositeView.extend({
       tagName: 'table',
       className: "table table-hover",
@@ -59,10 +58,31 @@ define(["app"], function(GeneralAssemblyApp){
     View.Bill = Marionette.ItemView.extend({
       template: "#bill-compact-template"
     });
-
     View.Bills = Marionette.CollectionView.extend({
       itemView: View.Bill
-    })
+    });
+
+    View.Vote = Marionette.ItemView.extend({
+      template: "#member-vote-template",
+      tagName: "tr",
+      className: "member-vote",
+      events: {
+        "click": "showBill"
+      },
+      showBill: function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        GeneralAssemblyApp.trigger("bills:show", this.model.get("bill_id"));
+      }
+    });
+    View.Votes = Marionette.CompositeView.extend({
+      itemView: View.Vote,
+      tagName: "table",
+      className: "table table-hover",
+      id: "vote-list",
+      template: "#member-vote-list-template",
+      itemViewContainer: "tbody"
+    });
   });
   return GeneralAssemblyApp.MembersApp.Show.View;
 });

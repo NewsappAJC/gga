@@ -16,6 +16,7 @@ define(["app"], function(GeneralAssemblyApp) {
 
     GeneralAssemblyApp.on("bills:show", function(id) {
       GeneralAssemblyApp.navigate("bills/" + id);
+      API.showBill(id);
     });
 
     GeneralAssemblyApp.addInitializer(function() {

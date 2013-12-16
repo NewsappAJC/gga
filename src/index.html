@@ -49,8 +49,8 @@
     <div class="accordion">
       <h3>Bills Sponsored</h3>
       <div id="bills-list-region">No bills sonsored thus far this session</div>
-      <h3>Votes</h3>
-      <div id="vote-list">List of recent votes goes here ...</div>
+      <h3>Recent Votes</h3>
+      <div id="vote-list-region">List of recent votes goes here ...</div>
       <h3>Committees</h3>
       <div id="committee-list-region">Committee list goes here ...</div>
       <h3>Top Contributors</h3>
@@ -291,6 +291,17 @@
       <th>Not<br/>Voting</th>
       <th>Excused</th>
     </thead>
+    <tbody></tbody>
+  </script>
+
+  <script type="text/template" ID="member-vote-template">
+    <td><%= vote_date.toString("MMM d, yyyy") %></td>
+    <td><%= document_type %><%= number %></td>
+    <td><%= caption %></td>
+    <td class="voted <%= voted %>"><%= voted %></td>
+  </script>
+
+  <script type="text/template" id="member-vote-list-template">
     <tbody></tbody>
   </script>
 
