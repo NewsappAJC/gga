@@ -67,11 +67,25 @@
         <h1><%- full_name %></h1>
         <h3><%- party %>, <%- district_type %> District <%- district_number %></h3>
         <ul>
-          <li><strong>Leadership role:</strong> <%- title %></li>
-          <li><strong>Occupation:</strong> <%- occupation %></li>
-          <li><strong>Education:</strong> <%- education %></li>
-          <li><strong>Religion:</strong> <%- religion %></li>
-          <li><strong>Home town:</strong> <%- district_address_city %></li>
+          <% if (title) { %>
+            <li><strong>Leadership role:</strong> <%- title %></li>
+          <% } %>
+
+          <% if (occupation) { %>
+            <li><strong>Occupation:</strong> <%- occupation %></li>
+          <% } %>
+
+          <% if (education) { %>
+            <li><strong>Education:</strong> <%- education %></li>
+          <% } %>
+
+          <% if (religion) { %>
+            <li><strong>Religion:</strong> <%- religion %></li>
+          <% } %>
+
+          <% if (district_address_city) { %>
+            <li><strong>Home town:</strong> <%- district_address_city %></li>
+          <% } %>
         </ul>
       </div>
     </div>
