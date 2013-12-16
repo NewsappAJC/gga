@@ -1,6 +1,5 @@
 define(["app","apps/members/show/show_view"], function(GeneralAssemblyApp, View) {
   GeneralAssemblyApp.module("MembersApp.Show", function(Show, GeneralAssemblyApp, Backbone, Marionette, $, _) {
-    console.log(View);
     Show.Controller = {
       showMember: function(id) {
         require(["entities/member","entities/top_contributors"], function() {
@@ -29,7 +28,7 @@ define(["app","apps/members/show/show_view"], function(GeneralAssemblyApp, View)
               collection: bills
             });
 
-            var votes = GeneralAssemblyApp.Entities.MemberVotes(member.get("member_votes"));
+            var votes = new GeneralAssemblyApp.Entities.MemberVotes( member.get("member_votes").slice(0,10) );
             var votesListView = new View.Votes({
               collection: votes
             });

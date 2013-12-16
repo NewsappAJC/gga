@@ -37,7 +37,11 @@ define(["app"], function(GeneralAssemblyApp) {
       model: Entities.MemberBill
     });
 
-    Entities.MemberVote = Backbone.Model.extend();
+    Entities.MemberVote = Backbone.Model.extend({
+      initialize: function() {
+        this.set("vote_date", new Date(this.get("vote_date")))
+      }
+    });
     Entities.MemberVotes = Backbone.Collection.extend({
       initialize: function(id) {
         this.url = 'ajcgga-api.herokuapp.com/api/members/' + id + '/votes'
