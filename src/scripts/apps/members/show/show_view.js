@@ -6,7 +6,8 @@ define(["app"], function(GeneralAssemblyApp){
         detailRegion: "#detail-region",
         topContributorsRegion: "#top-contributors-region",
         committeesRegion: "#committee-list-region",
-        billsListRegion: "#bills-list-region"
+        billsListRegion: "#bills-list-region",
+        votesRegion: "#vote-list-region"
       }
     });
 
@@ -59,10 +60,16 @@ define(["app"], function(GeneralAssemblyApp){
     View.Bill = Marionette.ItemView.extend({
       template: "#bill-compact-template"
     });
-
     View.Bills = Marionette.CollectionView.extend({
       itemView: View.Bill
-    })
+    });
+
+    View.Vote = Marionette.ItemView.extend({
+      template: "#member-vote-template"
+    });
+    View.Votes = Marionette.CollectionView.extend({
+      itemView: View.Vote
+    });
   });
   return GeneralAssemblyApp.MembersApp.Show.View;
 });

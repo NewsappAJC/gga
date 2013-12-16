@@ -37,6 +37,14 @@ define(["app"], function(GeneralAssemblyApp) {
       model: Entities.MemberBill
     });
 
+    Entities.MemberVote = Backbone.Model.extend();
+    Entities.MemberVotes = Backbone.Collection.extend({
+      initialize: function(id) {
+        this.url = 'ajcgga-api.herokuapp.com/api/members/' + id + '/votes'
+      },
+      model: Entities.MemberVote
+    });
+
     var API = {
       getMembers: function() {
         var defer = $.Deferred();

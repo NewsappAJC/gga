@@ -24,9 +24,14 @@ define(["app","apps/members/show/show_view"], function(GeneralAssemblyApp, View)
               collection: committees
             });
 
-            var bills = new GeneralAssemblyApp.Entities.MemberBills(member.get("bills"))
+            var bills = new GeneralAssemblyApp.Entities.MemberBills(member.get("bills"));
             var billsListView = new View.Bills({
               collection: bills
+            });
+
+            var votes = GeneralAssemblyApp.Entities.MemberVotes(member.get("member_votes"));
+            var votesListView = new View.Votes({
+              collection: votes
             });
 
             memberShowLayout.on("show", function() {
@@ -36,6 +41,7 @@ define(["app","apps/members/show/show_view"], function(GeneralAssemblyApp, View)
               memberShowLayout.committeesRegion.show(committeesView);
               memberShowLayout.topContributorsRegion.show(topContributorsView);
               memberShowLayout.detailRegion.show(memberDetailView);
+              memberShowLayout.votesRegion.show(votesListView);
             });
 
             GeneralAssemblyApp.mainRegion.show(memberShowLayout);

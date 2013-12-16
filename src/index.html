@@ -50,7 +50,7 @@
       <h3>Bills Sponsored</h3>
       <div id="bills-list-region">No bills sonsored thus far this session</div>
       <h3>Votes</h3>
-      <div id="vote-list">List of recent votes goes here ...</div>
+      <div id="vote-list-region">List of recent votes goes here ...</div>
       <h3>Committees</h3>
       <div id="committee-list-region">Committee list goes here ...</div>
       <h3>Top Contributors</h3>
@@ -292,6 +292,10 @@
       <th>Excused</th>
     </thead>
     <tbody></tbody>
+  </script>
+
+  <script type="text/template" ID="member-vote-template">
+    <%= document_type %><%= document_number %> <%= caption %> <%= voted %>
   </script>
 
   <script src="scripts/lib/require.js"></script>
