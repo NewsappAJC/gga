@@ -28,7 +28,7 @@ define(["app","apps/members/show/show_view"], function(GeneralAssemblyApp, View)
               collection: bills
             });
 
-            var votes = new GeneralAssemblyApp.Entities.MemberVotes( member.get("member_votes").slice(0,10) );
+            var votes = new GeneralAssemblyApp.Entities.MemberVotes( member.get("member_votes") );
             var votesListView = new View.Votes({
               collection: votes
             });

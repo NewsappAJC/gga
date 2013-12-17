@@ -1,5 +1,4 @@
 body {
-  padding-top: 70px;
   /* MyAJC style */
   font-family: Publico,Georgia,"Times New Roman",Times,serif;
   font-size: 14px;
@@ -80,6 +79,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .dataTables_paginate a {
   margin: 20px 10px;
+  cursor: pointer;
 }
 
 .watched-bill-icon {

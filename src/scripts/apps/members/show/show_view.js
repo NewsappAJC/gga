@@ -29,7 +29,7 @@ define(["app"], function(GeneralAssemblyApp){
     });
     View.TopContributors = Marionette.CompositeView.extend({
       tagName: 'table',
-      className: "dataTable table table-hover",
+      className: "dataTable table table-hover table-condensed",
       id: "top-contributors-table",
       itemView: View.TopContributor,
       template: "#top-contributors-table-template",
@@ -78,10 +78,18 @@ define(["app"], function(GeneralAssemblyApp){
     View.Votes = Marionette.CompositeView.extend({
       itemView: View.Vote,
       tagName: "table",
-      className: "table table-hover",
+      className: "table table-hover table-condensed",
       id: "vote-list",
       template: "#member-vote-list-template",
-      itemViewContainer: "tbody"
+      itemViewContainer: "tbody",
+
+      onShow: function() {
+        $("#vote-list").dataTable({
+          "bFilter": false,
+          "bSort": false,
+          "sPaginationType": "two_button"
+        });
+      }
     });
   });
   return GeneralAssemblyApp.MembersApp.Show.View;
