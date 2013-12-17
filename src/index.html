@@ -89,7 +89,7 @@
         </ul>
         <div id="batting-average">
           <% if (batting_average) { %>
-            <h3>Legislative Batting Average: <%= batting_average %></h3>
+            <h3>Legislative Batting Average: <%= _.str.ltrim(_.str.sprintf("%.3f", parseFloat(batting_average)), "0") %></h3>
             <p>With <%= bill_count %> bills introduced in <%= session_count %> previous sessions.</p>
           <% }else { %>
             <p><%= full_name %> is a Freshman legislator.</p>
