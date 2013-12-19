@@ -104,9 +104,11 @@ margin:0px;
   width: 60px;
   height: 60px;
   border: 2px solid white;
+  opacity:0.8;
 }
-#bill-authors a:hover {
-  border: 2px solid gray;
+#bill-authors .media-object:hover {
+  border: 2px solid #ddd;
+  opacity:1.0;
 }
 
 ul#bill-authors li {
@@ -150,20 +152,42 @@ body{
       width:200px;
       float:right;
     }
-    .breadcrumbs{
-      margin:5px 0px 0px 0px;
+    #app-nav{
+      border-bottom:1px solid #efefef;
+      background-color:#fff;
+      z-index:100000;
     }
-    .breadcrumbs a{
+    #app-nav div{
+      position:relative;
+    }
+    #navigation-list{
+      position:relative;
+      margin-left:0px;
+      padding-left:0px;
+    }
+    #navigation-list li{
+      list-style-type:none;
+      float:left;
+      padding:5px 10px;
       text-transform: uppercase;
-      color:#000;
+      font-size:16px;
+      border-right:1px solid #efefef;
     }
-    .breadcrumbs a:hover{
-      text-decoration:underline;
+    #navigation-list li:last-child{
+      border-right:none;
     }
 
+    #navigation-list a{
+      color:#000;
+    }
+    #navigation-list li:hover{
+      background-color:#efefef;
+    }
     /* title styles */
     #content-head{
-      padding:0px 0px 15px 0px;
+      padding:0px 0px 10px 0px;
+      border-bottom:1px solid #efefef;
+      margin-bottom:15px;
     }
     #content-head h1{
       font-size:44px;
@@ -174,11 +198,11 @@ body{
       font-size:16px;
     }
     .card{
-      border:1px solid #e5e5e5;
+      border:1px solid #efefef;
       margin:10px 0px;
     }
     .card-header{
-      background-color:#e5e5e5;
+      background-color:#efefef;
       margin:0px;
     }
     .card-header h2{
@@ -187,8 +211,8 @@ body{
       padding:10px;
     }
     .card-content{
-      padding:15px;
-      border-top:1px solid #e5e5e5;
+      padding:15px 15px 0px 15px;
+      border-top:1px solid #efefef;
     }
     .bill-cat{
       background-color:#efefef;
@@ -198,16 +222,9 @@ body{
       text-align:center;
       height:120px;
     }
-    .bill-cat a{
-      color:#000;
-      text-decoration:underline;
-    }
-    .bill-cat a:hover{
-      text-decoration:none;
-    }
     .bill-summary .col-lg-6{
       text-align:center;
-      border-right:1px solid #e5e5e5;
+      border-right:1px solid #efefef;
       margin:0px;
       padding:5px 0px;
       font-size:18px;
