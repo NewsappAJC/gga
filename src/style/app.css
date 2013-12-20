@@ -138,3 +138,76 @@ td.voted.Excused {
 td.voted.NotVoting {
   color: lightgray;
 }
+
+#footer{
+  height:200px;
+  background-color:#333;
+  width:100%;
+  margin:0px;
+}
+#footer-content{
+  color:#eee;
+  padding:50px 0px;
+}
+
+/* header styles */
+#top{
+  width:100%;
+  margin:0px;
+  padding:2px 0px;
+  border-bottom:5px solid #003896;
+  opacity:0.9;
+  background-color:#fff;
+}
+#inside-top{
+  width:100%;
+  padding:5px 20px;
+  border-bottom:3px solid #888;
+}
+#masthead{
+  float:left;
+}
+#masthead-tag{
+  text-align:right;
+  font-size:18px;
+  line-height: 1em;
+  text-transform: uppercase;
+  width:200px;
+  float:right;
+}
+#content-head{
+  padding:7% 0%;
+  width:100%;
+  margin-bottom:0px;
+  background-image:url('/images/dome_1.jpg');
+  background-attachment: fixed;
+  background-size:100%;
+}
+#header{
+  padding:50px 0px;
+}
+.home-head{
+  font-size:48px;
+}
+#content-home{
+  margin-top:3px;
+  padding:0px;
+  /*border-top:1px solid #888;*/
+}
+#full-width{
+  width:100%;
+  padding-bottom:2px;
+  margin:0px;
+  /*padding:0px;*/
+}
+#full-width .col-sm-6{
+  padding:0px;
+  margin-top:0px;
+}
+
+#home-nav{
+  background-color:#fff;
+  height:300px;
+}
+
+

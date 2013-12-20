@@ -32,9 +32,41 @@
 
 </head>
 <body>
+  <!-- header -->
+  <div id="top">
+    <div id="inside-top">
+      <div class="row" id="masthead-row">
+        <div id="masthead">
+          <a href="http://www.myajc.com" target="_blank" alt="myajc.com">
+          <img src="http://media.cmgdigital.com/shared/media/2013-12-11-14-26-04/web/site/www_myajc_com/images/logo.svg" width="200px">
+          </a>
+        </div>
+        <div id="masthead-tag">
+          INVESTIGATIONS<br/>
+          & DATA
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="main-region">
     <p>Loading ...</p>
   </div>
+
+  <!-- footer -->
+  <div id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="footer-content">
+            <p>Footer content goes here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEMPLATES -->
 
   <script type = "text/template" id="member-icon-template">
     <div class="member js-show-member-detail <%- party %> <%- district_type %> <%- district_address_city %>" id="member<%- id %>" style="background-image: url('images/cropped/<%- id %>.jpg')" title="<%- tooltip_info %>">
@@ -116,7 +148,7 @@
 
   <script type="text/template" id="member-list-layout">
     <div class="row-fluid">
-      <div id="panel-region" class="navbar navbar-fixed-top"></div>
+      <div id="panel-region" class="navbar navbar-static-top"></div>
       <div id="members-region"></div>
     </div>
   </script>
