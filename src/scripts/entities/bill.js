@@ -46,6 +46,16 @@ define(["app"], function(GeneralAssemblyApp) {
       model: Entities.BillVersion
     });
 
+    // BillVotes
+    Entities.BillVote = Backbone.Model.extend({
+      initialize: function() {
+        this.set("vote_date", new Date(this.get("vote_date")));
+      }
+    });
+    Entities.BillVotes = Backbone.Collection.extend({
+      model: Entities.BillVote
+    });
+
     var API = {
       getBillsCount: function() {
         var defer = $.Deferred();

@@ -98,8 +98,8 @@
     <div class="accordion">
       <h3>Bills Sponsored</h3>
       <div id="bills-list-region">No bills sonsored thus far this session</div>
-      <h3>Votes</h3>
-      <div id="vote-list">List of recent votes goes here ...</div>
+      <h3>Recent Votes</h3>
+      <div id="vote-list-region">List of recent votes goes here ...</div>
       <h3>Committees</h3>
       <div id="committee-list-region">Committee list goes here ...</div>
       <h3>Top Contributors</h3>
@@ -109,19 +109,41 @@
 
   <script type="text/template" id="member-detail-template">
     <div class="row-">
-      <div class="col-lg-3">
+      <div class="col-sm-3">
         <img src="images/mugs/<%- id %>.jpg" alt="<%- full_name %>" height="195">
       </div>
-      <div class="col-lg-9">
+      <div class="col-sm-9">
         <h1><%- full_name %></h1>
         <h3><%- party %>, <%- district_type %> District <%- district_number %></h3>
         <ul>
-          <li><strong>Leadership role:</strong> <%- title %></li>
-          <li><strong>Occupation:</strong> <%- occupation %></li>
-          <li><strong>Education:</strong> <%- education %></li>
-          <li><strong>Religion:</strong> <%- religion %></li>
-          <li><strong>Home town:</strong> <%- district_address_city %></li>
+          <% if (title) { %>
+            <li><strong>Leadership role:</strong> <%- title %></li>
+          <% } %>
+
+          <% if (occupation) { %>
+            <li><strong>Occupation:</strong> <%- occupation %></li>
+          <% } %>
+
+          <% if (education) { %>
+            <li><strong>Education:</strong> <%- education %></li>
+          <% } %>
+
+          <% if (religion) { %>
+            <li><strong>Religion:</strong> <%- religion %></li>
+          <% } %>
+
+          <% if (district_address_city) { %>
+            <li><strong>Home town:</strong> <%- district_address_city %></li>
+          <% } %>
         </ul>
+        <div id="batting-average">
+          <% if (batting_average) { %>
+            <h3>Legislative Batting Average: <%= _.str.ltrim(_.str.sprintf("%.3f", parseFloat(batting_average)), "0") %></h3>
+            <p>With <%= bill_count %> bills introduced in <%= session_count %> previous sessions.</p>
+          <% }else { %>
+            <p><%= full_name %> is a Freshman legislator.</p>
+          <% } %>
+        </div>
       </div>
     </div>
   </script>
@@ -280,6 +302,10 @@
             <div id="coauthors-region"></div>
           </div>
         </div>
+        <div class="well">
+          <h4>Versions</h4>
+        </div>
+        <div class="panel-body" id="version-region"></div>
       </div>
 
       <div class="col-sm-8" id="actions">
@@ -288,9 +314,9 @@
         </div>
         <div id="status-region"></div>
         <div class="well">
-          <h4>Versions</h4>
+          <h4>Votes</h4>
         </div>
-        <div id="version-region"></div>
+        <div id="vote-region"></div>
       </div>
 
     </div>
@@ -337,6 +363,46 @@
 
   <script type="text/template" id="bill-version-template">
     <%- version %>: <a href="<%- url %>" target="_blank"><%- description %></a>
+  </script>
+
+  <script type="text/template" id="bill-vote-template">
+    <td><%= vote_date.toString("MMM d, yyyy") %></td>
+    <td><%= caption %> (<%= branch %>)</td>
+    <td><%= yeas %></td>
+    <td><%= nays %></td>
+    <td><%= not_voting %></td>
+    <td><%= excused %></td>
+  </script>
+
+  <script type="text/template" id="bill-votes-listing-template">
+    <thead>
+      <th>Vote Date</th>
+      <th>Description</th>
+      <th>Yeas</th>
+      <th>Nays</th>
+      <th>Not<br/>Voting</th>
+      <th>Excused</th>
+    </thead>
+    <tbody></tbody>
+  </script>
+
+  <script type="text/template" ID="member-vote-template">
+    <td><%= vote_date.toString("MMM d, yyyy") %></td>
+    <td><%= document_type %><%= number %></td>
+    <td><%= caption %></td>
+    <td class="voted <%= voted %>"><%= voted %></td>
+  </script>
+
+  <script type="text/template" id="member-vote-list-template">
+    <thead>
+     <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+     </tr>
+    </thead>
+    <tbody></tbody>
   </script>
 
   <script src="scripts/lib/require.js"></script>

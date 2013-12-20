@@ -8,7 +8,8 @@ module.exports = function(grunt) {
         files: [
           { expand: true, flatten: true, src: ['src/images/cropped/*.jpg'], dest: 'build/images/cropped/' },
           { expand: true, flatten: true, src: ['src/images/mugs/*.jpg'], dest: 'build/images/mugs/' },
-          { expand: true, flatten: true, src: ['src/images/datatables/*.png'], dest: 'build/images/datatables/' }
+          { expand: true, flatten: true, src: ['src/images/datatables/*.png'], dest: 'build/images/datatables/' },
+          { expand: true, flatten: true, src: ['src/style/images/*.png'], dest: 'build/style/images/' }
         ]
       }
     },
@@ -104,6 +105,7 @@ module.exports = function(grunt) {
           'build/style/bootstrap.css': ['src/style/bootstrap.css'],
           'build/style/jquery-ui-1.10.3.custom.css': ['src/style/jquery-ui-1.10.3.custom.css'],
           'build/style/jquery.dataTables.css': ['src/style/jquery.dataTables.css'],
+          'build/style/dist/css/bootstrap.css': ['src/style/dist/css/bootstrap.css']
         }
       }
     },
@@ -116,7 +118,7 @@ module.exports = function(grunt) {
       debug: false,
       maxOperations: 10,
       upload: [
-        { src: 'build/index.html', dest: '.' },
+        { src: 'build/index.html', dest: 'index.html' },
         { src: 'build/scripts/app.js', dest: 'scripts/app.js' },
         { src: 'build/scripts/require_main.built.js', dest: 'scripts/require_main.built.js' },
         { src: 'build/scripts/require_main.js', dest: 'scripts/require_main.js' },
@@ -136,7 +138,9 @@ module.exports = function(grunt) {
         // { src: 'build/images/cropped/*', dest: 'images/cropped/' },
         // { src: 'build/images/datatables/*', dest: 'images/datatables/' },
         // { src: 'build/images/mugs/*', dest: 'images/mugs/' },
-        { src: 'build/style/*', dest: 'style/' }
+        { src: 'build/style/*', dest: 'style/' },
+        { src: 'build/style/images/*', dest: 'style/images/' },
+        { src: 'build/style/dist/bootstrap.css', dest: 'style/dist/bootstrap.css' }
       ]
     }
   });

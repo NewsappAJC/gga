@@ -1,5 +1,4 @@
 body {
-  padding-top: 70px;
   /* MyAJC style */
   font-family: Publico,Georgia,"Times New Roman",Times,serif;
   font-size: 14px;
@@ -80,6 +79,7 @@ margin:0px;
 }
 .dataTables_paginate a {
   margin: 20px 10px;
+  cursor: pointer;
 }
 
 .watched-bill-icon {
@@ -124,6 +124,7 @@ ul#bill-authors li.I {
   background-color: lightgray;
 }
 
+<<<<<<< HEAD
 
 body{
       padding:0px;
@@ -236,3 +237,21 @@ body{
       font-weight:bold;
       color:#000;
     }
+=======
+.member-vote {
+  cursor: pointer;
+}
+
+td.voted.Yea {
+  color: green;
+}
+td.voted.Nay {
+  color: red;
+}
+td.voted.Excused {
+  color: lightgray;
+}
+td.voted.NotVoting {
+  color: lightgray;
+}
+>>>>>>> upstream/master
