@@ -92,10 +92,10 @@
 
   <script type="text/template" id="member-detail-template">
     <div class="row-">
-      <div class="col-lg-3">
+      <div class="col-sm-3">
         <img src="images/mugs/<%- id %>.jpg" alt="<%- full_name %>" height="195">
       </div>
-      <div class="col-lg-9">
+      <div class="col-sm-9">
         <h1><%- full_name %></h1>
         <h3><%- party %>, <%- district_type %> District <%- district_number %></h3>
         <ul>
@@ -119,6 +119,14 @@
             <li><strong>Home town:</strong> <%- district_address_city %></li>
           <% } %>
         </ul>
+        <div id="batting-average">
+          <% if (batting_average) { %>
+            <h3>Legislative Batting Average: <%= _.str.ltrim(_.str.sprintf("%.3f", parseFloat(batting_average)), "0") %></h3>
+            <p>With <%= bill_count %> bills introduced in <%= session_count %> previous sessions.</p>
+          <% }else { %>
+            <p><%= full_name %> is a Freshman legislator.</p>
+          <% } %>
+        </div>
       </div>
     </div>
   </script>
