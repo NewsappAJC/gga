@@ -10,11 +10,19 @@ h1, h2, h3, h4, h5, h6 {
   font-family: inherit;
   text-rendering: optimizelegibility;
 }
+
+a{
+  color:#2a6496;
+}
+.container{
+  max-width:960px;
+}
+
 .jumbotron {
   text-align: center;
 }
 #main-region {
-  margin: 50px;
+  /*margin: 50px;*/
 }
 #members-region {
   background-color: lightgrey;
@@ -22,14 +30,14 @@ h1, h2, h3, h4, h5, h6 {
 .member {
   width: 78px;
   height: 92px;
-  margin: 9px;
+  margin:10px 0px;
   border: 2px solid white;
-  -webkit-border-radius: 5px;
+/*  -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
           border-radius: 5px;
   -webkit-border-radius-topleft:  20px;
      -moz-border-radius-topleft:  20px;
-          border-top-left-radius: 20px;
+          border-top-left-radius: 20px;*/
   text-align: center;
   font-family: Tahoma, Arial, Helvetica, sans-serif;
   background-repeat: no-repeat;
@@ -46,7 +54,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-right: 2px;
   border-top: 3px solid white;
   background-color: grey;
-  color: white;
+  color: #F1E5E7;
 }
 .member-info p {
   font-size: 11px;
@@ -54,7 +62,7 @@ h1, h2, h3, h4, h5, h6 {
 .member.Senate {
   width: 95px;
   height: 112px;
-  margin: 8px;
+  margin: 10px 0px;
 }
 .House .member-info {
   top: 74px;
@@ -63,10 +71,19 @@ h1, h2, h3, h4, h5, h6 {
   top: 94px;
 }
 .Republican .member-info {
-  background-color: #FF0F0F;
+  background-color: #C63737;
 }
 .Democrat .member-info {
-  background-color: #0F0FFF;
+  background-color: #39416B;
+}
+
+.member-detail-row{
+  width:100%;
+  padding:50px 0px;
+  background-color:#eee;
+}
+.Republican{
+  /*background-color:rgba(198,55,55,0.4);*/
 }
 .hidden {
   display: none;
@@ -103,20 +120,35 @@ h1, h2, h3, h4, h5, h6 {
 #bill-authors .media-object {
   width: 60px;
   height: 60px;
-  border: 2px solid white;
+  margin-right:10px;
 }
-#bill-authors a:hover {
-  border: 2px solid gray;
+
+#bill-authors a{
+  color:#333;
+}
+
+#bill-authors .media-object:hover {
+
 }
 
 ul#bill-authors li {
   padding: 5px;
 }
 ul#bill-authors li.D {
-  background-color: lightblue;
+  background-color: rgba(57,65,107,0.4);
+  border: 2px solid rgba(57,65,107,0.2);
 }
 ul#bill-authors li.R {
-  background-color: pink;
+  background-color: rgba(198,55,55,0.4);
+  border: 2px solid rgba(198,55,55,0.2); 
+}
+ul#bill-authors li.D:hover {
+  background-color: rgba(57,65,107,0.4);
+  border: 2px solid rgba(57,65,107,1.0);
+}
+ul#bill-authors li.R:hover {
+  background-color: rgba(198,55,55,0.4);
+  border: 2px solid rgba(198,55,55,1.0);
 }
 ul#bill-authors li.I {
   background-color: lightgray;
@@ -143,7 +175,7 @@ td.voted.NotVoting {
   height:200px;
   background-color:#333;
   width:100%;
-  margin:0px;
+  margin:20px 0px 0px 0px;
 }
 #footer-content{
   color:#eee;
@@ -151,6 +183,14 @@ td.voted.NotVoting {
 }
 
 /* header styles */
+.navbar{
+  height:auto;
+  padding:10px 0px;
+  background-color:rgba(255,255,255,0.7) ;
+}
+.navbar button{
+  margin:0px;
+}
 #top{
   width:100%;
   margin:0px;
@@ -208,6 +248,92 @@ td.voted.NotVoting {
 #home-nav{
   background-color:#fff;
   height:300px;
+}
+
+#watched-bills-home{
+  width:100%;
+  background-image:url('/images/bills1.png');
+  background-repeat:none;
+  background-size:100%;
+  margin:0px;
+}
+
+.watched-bill{
+  padding:10px;
+  border:1px solid #ddd;
+  margin:20px 0px 0px 0px;
+  min-height:150px;
+  text-align:center;
+  cursor:pointer;
+}
+
+#bills-count-region{
+  margin:40px 0px;
+  padding:10px 0px;
+  background-color:rgba(255, 255, 255, 0.9);
+  text-align:center;
+}
+
+.watched-bill:hover {
+  background-color:#eee;
+}
+.watched-bill:hover a{
+  text-decoration:underline;
+  color:#2a6496;
+}
+
+#bills-count-region h1{
+  padding:30px 0px;
+  margin:0px;
+  text-align:center;
+}
+#bills-count-region p{
+  padding:15px 0px;
+  margin:0px;
+  line-height:1em;
+  font-size:18px;
+  text-align:center;
+}
+#bills-count-region p i{
+  padding-top:5px;
+  color:#333;
+}
+#bill-cat-top{
+  margin-top:0px;
+}
+
+#breadcrumbs{
+  width:100%;
+  /*font-family:Arial,sans-serif;*/
+  padding:10px 0px;
+}
+.fixed{
+  position:fixed;
+  top:0;
+  z-index:1000;
+  width:100%;
+}
+.fixed div{
+  position:relative;
+  top:inherit;
+}
+
+.ui-accordion-header{
+  cursor:pointer;
+  padding:20px 0px;
+  margin:0px;
+  border-top:1px solid #ddd;
+  color:#202435;
+}
+.ui-accordion-header:first-child{
+  border:none;
+}
+.ui-accordion-header:hover{
+  color:#4F5882;
+}
+
+*:focus {
+    outline: 0;
 }
 
 
