@@ -42,7 +42,7 @@
           <img src="http://media.cmgdigital.com/shared/media/2013-12-11-14-26-04/web/site/www_myajc_com/images/logo.svg" width="200px">
           </a>
         </div>
-        <div id="masthead-tag">
+        <div class="hidden-xs hidden-sm" id="masthead-tag">
           INVESTIGATIONS<br/>
           & DATA
         </div>
@@ -51,12 +51,21 @@
   </div>
 
   
-  <div id="breadcrumbs">
+  <div id="top-nav">
     <div class="container">
       <div class="row">
-        <div class="col-sm-12">
-          Breadcrumbs breadcrumbs breadcrumbs
-        </div>
+          <div class="col-sm-3">
+            <a href="/">HOME</a>
+          </div>
+          <div class="col-sm-3">
+            <a href="/#watched_bills">BILLS</a>
+          </div>
+          <div class="col-sm-3">
+            <a href="/#members">MEMBERS</a>
+          </div>
+          <div class="col-sm-3">
+            <a href="/#about">ABOUT</a>
+          </div>
       </div>
     </div>
   </div>
@@ -80,12 +89,10 @@
   <!-- TEMPLATES -->
 
   <script type = "text/template" id="member-icon-template">
-    <div class="col-sm-1">
     <div class="member js-show-member-detail <%- party %> <%- district_type %> <%- district_address_city %>" id="member<%- id %>" style="background-image: url('images/cropped/<%- id %>.jpg')" title="<%- tooltip_info %>">
       <div class="member-info">
         <%- district_type %> <%- district_number %>
       </div>
-    </div>
     </div>
   </script>
 
@@ -93,13 +100,13 @@
     <div id="detail-region"></div>
     <div class="container">
       <div class="accordion">
-        <h3>Bills Sponsored</h3>
+        <h3>Bills Sponsored<i class="fa fa-plus-square-o plus"></i></h3>
         <div id="bills-list-region">No bills sonsored thus far this session</div>
-        <h3>Recent Votes</h3>
+        <h3>Recent Votes<i class="fa fa-plus-square-o plus"></i></h3>
         <div id="vote-list-region">List of recent votes goes here ...</div>
-        <h3>Committees</h3>
+        <h3>Committees<i class="fa fa-plus-square-o plus"></i></h3>
         <div id="committee-list-region">Committee list goes here ...</div>
-        <h3>Top Contributors</h3>
+        <h3>Top Contributors<i class="fa fa-plus-square-o plus"></i></h3>
         <div id="top-contributors-region"></div>
       </div>
     </div>
@@ -108,41 +115,52 @@
   <script type="text/template" id="member-detail-template">
       <div class="member-detail-row <%- party %>">
         <div class="container">
+          
           <div class="row">
-            <div class="col-sm-3">
-              <img src="images/mugs/<%- id %>.jpg" alt="<%- full_name %>" height="195">
+            <div class="col-sm-2">
+              <img src="images/mugs/<%- id %>.jpg" alt="<%- full_name %>" width="100%">
             </div>
-            <div class="col-sm-9">
-              <h1><%- full_name %></h1>
-              <h3><%- party %>, <%- district_type %> District <%- district_number %></h3>
-              <ul>
-                <% if (title) { %>
-                  <li><strong>Leadership role:</strong> <%- title %></li>
-                <% } %>
+            <div class="col-sm-10">
+              <div class="row">
+                <div class="col-sm-12" id="member-title">
+                  <h1><%- full_name %></h1>
+                  <h3><%- party %>, <%- district_type %> District <%- district_number %></h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <ul id="member-info">
+                    <% if (title) { %>
+                      <li><strong>Leadership role:</strong> <%- title %></li>
+                    <% } %>
 
-                <% if (occupation) { %>
-                  <li><strong>Occupation:</strong> <%- occupation %></li>
-                <% } %>
+                    <% if (occupation) { %>
+                      <li><strong>Occupation:</strong> <%- occupation %></li>
+                    <% } %>
 
-                <% if (education) { %>
-                  <li><strong>Education:</strong> <%- education %></li>
-                <% } %>
+                    <% if (education) { %>
+                      <li><strong>Education:</strong> <%- education %></li>
+                    <% } %>
 
-                <% if (religion) { %>
-                  <li><strong>Religion:</strong> <%- religion %></li>
-                <% } %>
+                    <% if (religion) { %>
+                      <li><strong>Religion:</strong> <%- religion %></li>
+                    <% } %>
 
-                <% if (district_address_city) { %>
-                  <li><strong>Home town:</strong> <%- district_address_city %></li>
-                <% } %>
-              </ul>
-              <div id="batting-average">
-                <% if (batting_average) { %>
-                  <h3>Legislative Batting Average: <%= _.str.ltrim(_.str.sprintf("%.3f", parseFloat(batting_average)), "0") %></h3>
-                  <p>With <%= bill_count %> bills introduced in <%= session_count %> previous sessions.</p>
-                <% }else { %>
-                  <p><%= full_name %> is a Freshman legislator.</p>
-                <% } %>
+                    <% if (district_address_city) { %>
+                      <li><strong>Home town:</strong> <%- district_address_city %></li>
+                    <% } %>
+                  </ul>
+                </div>
+                <div class="col-sm-8">
+                  <div id="batting-average">
+                    <% if (batting_average) { %>
+                      <h3>Legislative Batting Average: <%= _.str.ltrim(_.str.sprintf("%.3f", parseFloat(batting_average)), "0") %></h3>
+                      <p>With <%= bill_count %> bills introduced in <%= session_count %> previous sessions.</p>
+                    <% }else { %>
+                      <p><%= full_name %> is a Freshman legislator.</p>
+                    <% } %>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -178,7 +196,7 @@
     <div id="panel-region" class="navbar navbar-static-top"></div>
     <div class="container">
       <div class="row">
-        <div id="members-region"></div>
+        <div class="col-sm-12" id="members-region"></div>
       </div>
     </div>
   </script>
@@ -225,10 +243,10 @@
   </script>
 
   <script type="text/template" id="bill-category-layout">
-    <div id="watched-bills-home">
-      <div class="container" id="bill-cat-top">
-        <div class="row" id="bills-count-region"></div>
-      </div>
+    <div class="container" id="bill-cat-top">
+        <div class="jumbotron">
+          <div class="row" id="bills-count-region"></div>
+        </div>
     </div>
     <div class="container">
       <div class="row" id="bill-category-region"></div>
@@ -432,7 +450,6 @@
           var offset = $(window).scrollTop();
 
           if (navPos.top < offset){
-            console.log(offset + ', '+navPos.top);
             $('#panel-region').addClass('fixed');
             $('#members-region').css({'margin-top':'70px'});
           } if (navPos.top >= offset){
@@ -440,10 +457,6 @@
             $('#panel-region').removeClass('fixed');
           }
     });
-
-
-
-
   </script>
 
   <script src="scripts/lib/require.js"></script>

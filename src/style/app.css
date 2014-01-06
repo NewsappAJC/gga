@@ -17,19 +17,40 @@ a{
 .container{
   max-width:960px;
 }
+#bill-region{
+  margin-top:20px;
+}
 
 .jumbotron {
   text-align: center;
+  margin-top:20px;
+  border:1px solid #ccc;
+  border-radius:0px;
 }
+
+
+#top-nav{
+  width:100%;
+  padding:8px;
+  border-bottom:1px solid #ddd;
+  text-align:center;
+  letter-spacing: 0.1em;
+  margin-bottom:20px;
+}
+#top-nav a{
+  color:#333;
+}
+#top-nav a:hover{
+  color:#888;
+}
+
+
 #main-region {
   /*margin: 50px;*/
 }
-#members-region {
-  background-color: lightgrey;
-}
 .member {
   width: 78px;
-  height: 92px;
+  height: 100px;
   margin:10px 0px;
   border: 2px solid white;
 /*  -webkit-border-radius: 5px;
@@ -52,6 +73,7 @@ a{
   position: relative;
   padding-left: 2px;
   padding-right: 2px;
+  margin-top:20px;
   border-top: 3px solid white;
   background-color: grey;
   color: #F1E5E7;
@@ -65,10 +87,10 @@ a{
   margin: 10px 0px;
 }
 .House .member-info {
-  top: 74px;
+  top: 55px;
 }
 .Senate .member-info {
-  top: 94px;
+  top: 75px;
 }
 .Republican .member-info {
   background-color: #C63737;
@@ -80,11 +102,37 @@ a{
 .member-detail-row{
   width:100%;
   padding:50px 0px;
-  background-color:#eee;
+  margin-top:50px;
+  /*background-color:#eee;*/
 }
-.Republican{
-  /*background-color:rgba(198,55,55,0.4);*/
+
+.member-detail-row h1{
+  font-size:42px;
+  margin:0px;
+  padding:0px;
 }
+
+#member-info{
+  padding:0px;
+  margin:0px;
+}
+#member-info li{
+  margin:5px 0px;
+  padding:0px;
+  list-style-type:none;
+
+}
+
+#member-title {
+  
+}
+#member-title h3{
+  margin:5px 0px 10px 0px;
+  padding:0px 0px 10px 0px;
+  border-bottom:1px solid #ccc;
+}
+
+
 .hidden {
   display: none;
 }
@@ -175,7 +223,7 @@ td.voted.NotVoting {
   height:200px;
   background-color:#333;
   width:100%;
-  margin:20px 0px 0px 0px;
+  margin:60px 0px 0px 0px;
 }
 #footer-content{
   color:#eee;
@@ -186,7 +234,7 @@ td.voted.NotVoting {
 .navbar{
   height:auto;
   padding:10px 0px;
-  background-color:rgba(255,255,255,0.7) ;
+  background-color:rgba(255,255,255,0.9) ;
 }
 .navbar button{
   margin:0px;
@@ -210,10 +258,12 @@ td.voted.NotVoting {
 #masthead-tag{
   text-align:right;
   font-size:18px;
+  margin-top:2px;
   line-height: 1em;
   text-transform: uppercase;
   width:200px;
   float:right;
+  letter-spacing:1px;
 }
 #content-head{
   padding:7% 0%;
@@ -250,13 +300,14 @@ td.voted.NotVoting {
   height:300px;
 }
 
-#watched-bills-home{
+/*#watched-bills-home{
   width:100%;
+  background-color:#eee;
   background-image:url('/images/bills1.png');
   background-repeat:none;
   background-size:100%;
   margin:0px;
-}
+}*/
 
 .watched-bill{
   padding:10px;
@@ -268,9 +319,8 @@ td.voted.NotVoting {
 }
 
 #bills-count-region{
-  margin:40px 0px;
   padding:10px 0px;
-  background-color:rgba(255, 255, 255, 0.9);
+  /*background-color:rgba(255, 255, 255, 0.9);*/
   text-align:center;
 }
 
@@ -284,6 +334,7 @@ td.voted.NotVoting {
 
 #bills-count-region h1{
   padding:30px 0px;
+  font-size:36px;
   margin:0px;
   text-align:center;
 }
@@ -301,12 +352,6 @@ td.voted.NotVoting {
 #bill-cat-top{
   margin-top:0px;
 }
-
-#breadcrumbs{
-  width:100%;
-  /*font-family:Arial,sans-serif;*/
-  padding:10px 0px;
-}
 .fixed{
   position:fixed;
   top:0;
@@ -318,18 +363,43 @@ td.voted.NotVoting {
   top:inherit;
 }
 
-.ui-accordion-header{
+.accordion{
+  margin-top:20px;
+}
+.ui-accordion .ui-accordion-header{
   cursor:pointer;
   padding:20px 0px;
   margin:0px;
   border-top:1px solid #ddd;
-  color:#202435;
+  color:#333;
 }
-.ui-accordion-header:first-child{
+.ui-accordion .ui-accordion-header:first-child{
   border:none;
 }
-.ui-accordion-header:hover{
-  color:#4F5882;
+.ui-accordion .ui-accordion-header:hover{
+  text-decoration:underline;
+  color:#666;
+}
+.ui-accordion .ui-accordion-header:hover .plus{
+  color:#666;
+}
+.plus{
+  float:right;
+  color:#333;
+}
+
+.ui-tooltip {
+  padding: 8px;
+  position: absolute;
+  z-index: 9999;
+  max-width: 300px;
+  /*-webkit-box-shadow: 0 0 5px #aaa;*/
+  /*box-shadow: 0 0 5px #aaa;*/
+  background-color:#fff;
+  border:1px solid #ccc;
+}
+body .ui-tooltip {
+  border-width: 2px;
 }
 
 *:focus {
