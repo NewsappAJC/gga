@@ -16,11 +16,12 @@ define(["marionette"], function(Marionette) {
 
   GeneralAssemblyApp.on("initialize:after", function() {
     if (Backbone.history) {
-      require(["apps/members/members_app","apps/watched_bills/watched_bills_app","apps/bills/bills_app","entities/common"], function() {
+      require(["apps/welcome/welcome_app","apps/members/members_app","apps/watched_bills/watched_bills_app","apps/bills/bills_app","entities/common"], function() {
         Backbone.history.start();
 
         if (GeneralAssemblyApp.getCurrentRoute() === "") {
-          GeneralAssemblyApp.trigger("watchedbills:categories:list");
+          GeneralAssemblyApp.trigger("welcome:show");
+          // GeneralAssemblyApp.trigger("watchedbills:categories:list");
           // GeneralAssemblyApp.trigger("members:list");
         }
       });
