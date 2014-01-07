@@ -230,6 +230,26 @@ td.voted.NotVoting {
   padding:50px 0px;
 }
 
+.panel{
+  border-radius:0px;
+}
+
+.panel-heading{
+  background-color:#eee;
+}
+
+.list-group-item:first-child, .list-group-item:last-child{
+  border-radius:0px;
+}
+
+.table-top{
+  border-top:1px solid #ddd;
+  border-left:1px solid #ddd;
+  border-right:1px solid #ddd;
+  padding:10px;
+  background-color:#eee;
+  margin:0px;
+}
 /* header styles */
 .navbar{
   height:auto;
@@ -286,6 +306,7 @@ td.voted.NotVoting {
 }
 #full-width{
   width:100%;
+  max-width:100%;
   padding-bottom:2px;
   margin:0px;
   /*padding:0px;*/
@@ -300,14 +321,9 @@ td.voted.NotVoting {
   height:300px;
 }
 
-/*#watched-bills-home{
-  width:100%;
-  background-color:#eee;
-  background-image:url('/images/bills1.png');
-  background-repeat:none;
-  background-size:100%;
-  margin:0px;
-}*/
+#batting-average h3{
+  margin-top:5px;
+}
 
 .watched-bill{
   padding:10px;
