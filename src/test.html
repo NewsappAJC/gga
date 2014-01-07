@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+  <!-- Basic Page Needs
+  ================================================== -->
+  <meta charset="utf-8">
+  <title>Georgia General Assembly -- Members</title>
+  <meta name="description" content="">
+  <meta name="author" content="John Perry">
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <!-- CSS
+  ================================================== -->
+  <link rel="stylesheet" type="text/css" href="//normalize-css.googlecode.com/svn/trunk/normalize.css">
+  <link rel="stylesheet" type="text/css" href="style/jquery-ui-1.10.3.custom.css">
+  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style/app.css">
+<!--
+  <link rel="stylesheet" href="http://host.coxmediagroup.com/ajc/digitalprojects/global/css/iFrame_Medley.css" type="text/css"/>
+-->
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+<style>
+  #people {
+    background-image: url('images/people.jpg');
+    height: 250px;
+    cursor: pointer;
+  }
+  #bills {
+    background-image: url('images/bills.jpg');
+    height: 250px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+  <div id="main-region">
+    <div class="page-header">
+      <h1>Georgia Legislative Navigator</h1>
+    </div>
+    <div class="row-fluid">
+      <div id="people" class="col-sm-6">
+        <h2>The People</h2>
+      </div>
+      <div id="bills" class="col-sm-6">
+        <h2>The Bills</h2>
+      </div>
+    </div>
+  </div>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script>
+    $("#people").click(function() { window.location = '/#members' });
+    $("#bills").click(function() { window.location = '/#watched_bills' });
+  </script>
+</body>
+</html>
