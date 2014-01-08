@@ -85,7 +85,9 @@ module.exports = function(grunt) {
 
           'build/scripts/apps/welcome/welcome_app.js'        : ['src/scripts/apps/welcome/welcome_app.js'],
           'build/scripts/apps/welcome/welcome_controller.js' : ['src/scripts/apps/welcome/welcome_controller.js'],
-          'build/scripts/apps/welcome/welcome_view.js'       : ['src/scripts/apps/welcome/welcome_view.js']
+          'build/scripts/apps/welcome/welcome_view.js'       : ['src/scripts/apps/welcome/welcome_view.js'],
+
+          'build/scripts/common/views.js' : ['src/scripts/common/views.js']
         }
       }
     },
@@ -141,6 +143,7 @@ module.exports = function(grunt) {
         { src: 'build/scripts/apps/watched_bills/list/*', dest: 'scripts/apps/watched_bills/list/' },
         { src: 'build/scripts/apps/watched_bills/show/*', dest: 'scripts/apps/watched_bills/show/' },
         { src: 'build/scripts/apps/welcome/*', dest: 'scripts/apps/welcome/'},
+        { src: 'build/scripts/common/*', dest: 'scripts/common/'},
 
         // { src: 'build/images/cropped/*', dest: 'images/cropped/' },
         // { src: 'build/images/datatables/*', dest: 'images/datatables/' },
