@@ -17,11 +17,6 @@ define(["app"], function(GeneralAssemblyApp) {
       itemView: View.CategoryView,
       className: "container"
     });
-
-    View.BillsCountView = Marionette.ItemView.extend({
-      template: "#bills-count-template",
-      className: "jumbotron"
-    });
   });
   return GeneralAssemblyApp.WatchedBillsApp.List.View;
 });

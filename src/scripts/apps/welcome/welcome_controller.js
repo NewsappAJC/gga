@@ -6,7 +6,7 @@ define(["app","apps/welcome/welcome_view"], function(GeneralAssemblyApp, View) {
           var welcomeLayout = new View.WelcomeLayout();
           var fetchingBillsCount = GeneralAssemblyApp.request("bills:count");
           $.when(fetchingBillsCount).done(function(bills_count) {
-            billsCountView = new View.BillsCountView({
+            billsCountView = new GeneralAssemblyApp.Common.View.BillsCountView({
               model: bills_count
             });
 

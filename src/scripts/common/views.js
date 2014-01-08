@@ -1,6 +1,6 @@
 define(["app"], function(GeneralAssemblyApp) {
-  GeneralAssemblyApp.module("Common.Views", function(Views, GeneralAssemblyApp, Backbone, Marionette, $, _) {
-    Views.Loading = Marionette.ItemView.extend({
+  GeneralAssemblyApp.module("Common.View", function(View, GeneralAssemblyApp, Backbone, Marionette, $, _) {
+    View.Loading = Marionette.ItemView.extend({
       template: "#loading-template",
       onShow: function() {
         var opts = {
@@ -24,5 +24,10 @@ define(["app"], function(GeneralAssemblyApp) {
         $("#spinner").spin(opts);
       }
     });
+
+    View.BillsCountView = Marionette.ItemView.extend({
+      template: "#bills-count-template"
+    });
   });
+  return GeneralAssemblyApp.Common.View
 });

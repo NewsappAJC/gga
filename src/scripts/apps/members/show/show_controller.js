@@ -3,7 +3,7 @@ define(["app","apps/members/show/show_view"], function(GeneralAssemblyApp, View)
     Show.Controller = {
       showMember: function(id) {
         require(["entities/member","entities/top_contributors"], function() {
-          var loadingView = new GeneralAssemblyApp.Common.Views.Loading();
+          var loadingView = new GeneralAssemblyApp.Common.View.Loading();
           GeneralAssemblyApp.mainRegion.show(loadingView);
 
           var fetchingMembers = GeneralAssemblyApp.request("members:member", id);

@@ -20,10 +20,6 @@ define(["app"], function(GeneralAssemblyApp) {
         GeneralAssemblyApp.trigger("members:list");
       }
     });
-
-    View.BillsCountView = Marionette.ItemView.extend({
-      template: "#bills-count-template"
-    });
   });
   return GeneralAssemblyApp.WelcomeApp.View;
 });
