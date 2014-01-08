@@ -19,10 +19,11 @@
 	<!-- CSS
   ================================================== -->
   <link rel="stylesheet" type="text/css" href="//normalize-css.googlecode.com/svn/trunk/normalize.css">
-  <link rel="stylesheet" type="text/css" href="style/jquery-ui-1.10.3.custom.css">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" type="text/css" href="style/app.css">
+  <!-- <link rel="stylesheet" type="text/css" href="style/jquery-ui-1.10.3.custom.css"> -->
+  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
+	
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style/app.css">
 <!--
 	<link rel="stylesheet" href="http://host.coxmediagroup.com/ajc/digitalprojects/global/css/iFrame_Medley.css" type="text/css"/>
 -->
@@ -34,8 +35,8 @@
 
 </head>
 <body>
-  <!-- data page header -->
-    <div id="top">
+  <!-- header -->
+  <div id="top">
     <div id="inside-top">
       <div class="row" id="masthead-row">
         <div id="masthead">
@@ -43,22 +44,50 @@
           <img src="http://media.cmgdigital.com/shared/media/2013-12-11-14-26-04/web/site/www_myajc_com/images/logo.svg" width="200px">
           </a>
         </div>
-        <div id="masthead-tag">
+        <div class="hidden-xs hidden-sm" id="masthead-tag">
           INVESTIGATIONS<br/>
           & DATA
         </div>
       </div>
     </div>
   </div>
-  
 
-  <div class="container">
-    <div class="row">
-      <div id="main-region">
-        <p>Loading ...</p>
+  <div id="top-nav">
+    <div class="container">
+      <div class="row">
+          <div class="col-sm-3">
+            <a href="/">HOME</a>
+          </div>
+          <div class="col-sm-3">
+            <a href="/#watched_bills">BILLS</a>
+          </div>
+          <div class="col-sm-3">
+            <a href="/#members">MEMBERS</a>
+          </div>
+          <div class="col-sm-3">
+            <a href="/#about">ABOUT</a>
+          </div>
       </div>
     </div>
   </div>
+  <div id="main-region">
+    <p>Loading ...</p>
+  </div>
+
+  <!-- footer -->
+  <div id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="footer-content">
+            <p>Footer content goes here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEMPLATES -->
 
   <script type = "text/template" id="member-icon-template">
     <div class="member js-show-member-detail <%- party %> <%- district_type %> <%- district_address_city %>" id="member<%- id %>" style="background-image: url('images/cropped/<%- id %>.jpg')" title="<%- tooltip_info %>">
@@ -69,55 +98,78 @@
   </script>
 
   <script type="text/template" id="member-show-layout">
-    <div id="detail-region" class="row"></div>
-    <div class="accordion">
-      <h3>Bills Sponsored</h3>
-      <div id="bills-list-region">No bills sonsored thus far this session</div>
-      <h3>Recent Votes</h3>
-      <div id="vote-list-region">List of recent votes goes here ...</div>
-      <h3>Committees</h3>
-      <div id="committee-list-region">Committee list goes here ...</div>
-      <h3>Top Contributors</h3>
-      <div id="top-contributors-region"></div>
+    <div id="detail-region"></div>
+    <div class="container">
+      <div class="accordion">
+        <h3>Bills Sponsored<i class="fa fa-plus-square-o plus"></i></h3>
+        <div id="bills-list-region">No bills sonsored thus far this session</div>
+        <h3>Recent Votes<i class="fa fa-plus-square-o plus"></i></h3>
+        <div id="vote-list-region">List of recent votes goes here ...</div>
+        <h3>Committees<i class="fa fa-plus-square-o plus"></i></h3>
+        <div id="committee-list-region">Committee list goes here ...</div>
+        <h3>Top Contributors<i class="fa fa-plus-square-o plus"></i></h3>
+        <div id="top-contributors-region"></div>
+      </div>
     </div>
   </script>
 
   <script type="text/template" id="member-detail-template">
-    <div class="row-">
-      <div class="col-sm-3">
-        <img src="images/mugs/<%- id %>.jpg" alt="<%- full_name %>" height="195">
-      </div>
-      <div class="col-sm-9">
-        <h1><%- full_name %></h1>
-        <h3><%- party %>, <%- district_type %> District <%- district_number %></h3>
-        <ul>
-          <% if (title) { %>
-            <li><strong>Leadership role:</strong> <%- title %></li>
-          <% } %>
+      <div class="member-detail-row <%- party %>">
+        <div class="container">
+          
+          <div class="row">
+            <div class="col-sm-2">
+              <img src="images/mugs/<%- id %>.jpg" alt="<%- full_name %>" width="100%">
+            </div>
+            <div class="col-sm-10">
+              <div class="row">
+                <div class="col-sm-12" id="member-title">
+                  <h1><%- full_name %></h1>
+                  <h3><%- party %>, <%- district_type %> District <%- district_number %></h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <ul id="member-info">
+                    <% if (title) { %>
+                      <li><strong>Leadership role:</strong> <%- title %></li>
+                    <% } %>
 
-          <% if (occupation) { %>
-            <li><strong>Occupation:</strong> <%- occupation %></li>
-          <% } %>
+                    <% if (occupation) { %>
+                      <li><strong>Occupation:</strong> <%- occupation %></li>
+                    <% } %>
 
-          <% if (education) { %>
-            <li><strong>Education:</strong> <%- education %></li>
-          <% } %>
+                    <% if (education) { %>
+                      <li><strong>Education:</strong> <%- education %></li>
+                    <% } %>
 
-          <% if (religion) { %>
-            <li><strong>Religion:</strong> <%- religion %></li>
-          <% } %>
+                    <% if (religion) { %>
+                      <li><strong>Religion:</strong> <%- religion %></li>
+                    <% } %>
 
-          <% if (district_address_city) { %>
-            <li><strong>Home town:</strong> <%- district_address_city %></li>
-          <% } %>
-        </ul>
-        <div id="batting-average">
-          <% if (batting_average) { %>
-            <h3>Legislative Batting Average: <%= _.str.ltrim(_.str.sprintf("%.3f", parseFloat(batting_average)), "0") %></h3>
-            <p>With <%= bill_count %> bills introduced in <%= session_count %> previous sessions.</p>
-          <% }else { %>
-            <p><%= full_name %> is a Freshman legislator.</p>
-          <% } %>
+                    <% if (district_address_city) { %>
+                      <li><strong>Home town:</strong> <%- district_address_city %></li>
+                    <% } %>
+                  </ul>
+                </div>
+                <div class="col-sm-8">
+                  <div id="batting-average">
+                    <% if (batting_average) { %>
+                      <h3>Legislative Batting Average: <%= _.str.ltrim(_.str.sprintf("%.3f", parseFloat(batting_average)), "0") %>
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle-o fa-stack-2x"></i>
+                          <i class="fa fa-info fa-stack-1x"></i>
+                        </span>
+                      </h3>
+                      <p>With <%= bill_count %> bills introduced in <%= session_count %> previous sessions.</p>
+                    <% }else { %>
+                      <p><%= full_name %> is a Freshman legislator.</p>
+                    <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -147,24 +199,40 @@
   </script>
 
   <script type="text/template" id="member-list-layout">
-    <div class="row-fluid">
-      <div id="panel-region" class="navbar navbar-fixed-top"></div>
-      <div id="members-region"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="jumbotron" id="member-jumbotron">
+            <h2 id="bill-header">The Members</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar navbar-static-top" id="panel-region" ></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12" id="members-region"></div>
+      </div>
     </div>
   </script>
 
   <script type="text/template" id="member-list-panel">
   <div class="row">
-    <div id="filter-party" class="nav btn-group">
-      <button id="filter-Democrat" class="btn btn-small navbar-btn filter">Democrat</button>
-      <button id="filter-Republican" class="btn btn-small navbar-btn filter">Republican</button>
-      <button id="filter-Independent" class="btn btn-small navbar-btn filter">Independent</button>
-      <button id="filter-all-parties" class="btn btn-small btn-default navbar-btn filter">All parties</button>
-    </div>
-    <div id="filter-district_type" class="nav btn-group">
-      <button id="filter-Senate" class="btn btn-small navbar-btn filter">Senate</button>
-      <button id="filter-House" class="btn btn-small navbar-btn filter">House</button>
-      <button id="filter-all-districtTypes" class="btn btn-small btn-default navbar-btn filter">Both chambers</button>
+    <div class="col-sm-12"> 
+      <div id="buttons">
+      <div id="filter-party" class="nav btn-group">
+        <button id="filter-Democrat" class="btn btn-small navbar-btn filter">Democrat</button>
+        <button id="filter-Republican" class="btn btn-small navbar-btn filter">Republican</button>
+        <button id="filter-Independent" class="btn btn-small navbar-btn filter">Independent</button>
+        <button id="filter-all-parties" class="btn btn-small btn-default navbar-btn filter">All parties</button>
+      </div>
+
+      <div id="filter-district_type" class="nav btn-group">
+        <button id="filter-Senate" class="btn btn-small navbar-btn filter">Senate</button>
+        <button id="filter-House" class="btn btn-small navbar-btn filter">House</button>
+        <button id="filter-all-districtTypes" class="btn btn-small btn-default navbar-btn filter">Both chambers</button>
+      </div>
+      </div>
     </div>
   </div>
   </script>
@@ -193,22 +261,26 @@
   </script>
 
   <script type="text/template" id="bill-category-layout">
-      <div class="col-lg-12">
-        <div class="card">
-          <div id="bills-count-region"></div>
-          <div class="card-content">
-            <div class="row" id="bill-category-region"></div>
+    <div class="container" id="bill-cat-top">
+        <div class="jumbotron">
+          <div class="row">
+            <div class="col-sm-12">
+              <h2 class="bill-header">The Bills</h2>
+            </div>
           </div>
         </div>
-      </div>
+    </div>
+    <div class="container">
+      <div class="row" id="bill-category-region"></div>
+    </div>
   </script>
 
 
 
 
   <script type="text/template" id="bill-category-template">
-    <div class="bill-cat">
-      <h4><a href="#watched_bills/category/<%- name %>"><%- name.replace(/_/g, ' ') %></a></h4>
+    <div class="watched-bill">
+      <h3><a href="#watched_bills/category/<%- name %>"><%- name.replace(/_/g, ' ') %></a></h3>
       <p>
         Watching <%- count %> bill<% if(count > 1) { %>s<% } %>
       </p>
@@ -216,34 +288,44 @@
   </script>
 
   <script type="text/template" id="bills-count-template">
-    <div class="card-header">
-      <h2><%- bills %> Bills</h1>
-    </div>
-    <div class="bill-summary">
-    <div class="row">
-      <div class="col-lg-6">
-      <% if(passed_house > 0) { %>
-        <p><span class="count"><%- passed_house %></span> passed the House.</p>
-      <% } %>
-      <% if(passed_senate > 0) { %>
-        <p><span class="count"><%- passed_senate %></span> passed the Senate.</p>
-      <% } %>
+      <div class="col-sm-4">
+        <h1><%- bills %> total bills</h1>
       </div>
-      <div class="col-lg-6">
-      <% if(sent_to_gov > 0) { %>
-        <p><span class="count"><%- sent_to_gov %></span> sent to governor.</p>
-      <% } %>
-      <% if(signed_by_gov > 0) { %>
-        <p><span class="count"><%- signed_by_gov %></span> signed by governor.</p>
-      <% } %>
+      <div class="col-sm-8">
+        <div class="row">
+          <div class="col-sm-6">
+            <% if(passed_house > 0) { %>
+              <p><i class="fa fa-check-circle"></i> <%- passed_house %> Passed the House.</p>
+            <% } %>
+            <% if(passed_senate > 0) { %>
+              <p><i class="fa fa-check-circle"></i> <%- passed_senate %> Passed the Senate.</p>
+            <% } %>
+          </div>
+          <div class="col-sm-6">
+            <% if(sent_to_gov > 0) { %>
+              <p><i class="fa fa-envelope"></i> <%- sent_to_gov %> Sent to governor.</p>
+            <% } %>
+            <% if(signed_by_gov > 0) { %>
+              <p><i class="fa fa-pencil"></i> <%- signed_by_gov %> Signed by governor.</p>
+            <% } %>
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
   </script>
 
   <script type="text/template" id="show-category-layout">
-    <div class="jumbotron" id="headline-region"></div>
-    <div id="watched-bill-list"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="jumbotron" id="headline-region"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="watched-bill-list"></div>
+        </div>
+      </div>
+    </div>
   </script>
 
   <script type="text/template" id="category-headline-template">
@@ -256,7 +338,9 @@
   </script>
 
   <script type="text/template" id="bill-detail-layout">
-    <div class="row" id="bill-region"></div>
+    <div class="row">
+      <div class="col-sm-12" id="bill-region"></div>
+    </div>
 
     <div class="row" id="supplemental">
 
@@ -277,18 +361,18 @@
             <div id="coauthors-region"></div>
           </div>
         </div>
-        <div class="well">
+        <div class="table-top">
           <h4>Versions</h4>
         </div>
         <div class="panel-body" id="version-region"></div>
       </div>
 
       <div class="col-sm-8" id="actions">
-        <div class="well">
+        <div class="table-top">
           <h4>Actions</h4>
         </div>
         <div id="status-region"></div>
-        <div class="well">
+        <div class="table-top">
           <h4>Votes</h4>
         </div>
         <div id="vote-region"></div>
@@ -314,14 +398,16 @@
   </script>
 
   <script type="text/template" id="bill-author-template">
-    <a class="pull-left" href="#members/<%- member_id %>">
-      <img class="media-object" src="images/cropped/<%- member_id %>.jpg">
+    <a href="#members/<%- member_id %>">
+      <div class="media-body">
+        <div class="pull-left">
+         <img class="pull-left media-object" src="images/cropped/<%- member_id %>.jpg">
+        </div>
+        <%- full_name %><br />
+        <%- district_type %> <%- district_number %><br />
+        <%- party %>-<%- hometown %><br />
+      </div>
     </a>
-    <div class="media-body">
-      <%- full_name %><br />
-      <%- district_type %> <%- district_number %><br />
-      <%- party %>-<%- hometown %><br />
-    </div>
   </script>
 
   <script type="text/template" id="bill-status-template">
@@ -378,6 +464,25 @@
      </tr>
     </thead>
     <tbody></tbody>
+  </script>
+
+  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript">
+
+
+    $(window).scroll(function(){
+          var navPos = $('#member-jumbotron').offset();
+          var jumboHeight = $('#member-jumbotron').height()+100;
+          var offset = $(window).scrollTop();
+
+          if ((navPos.top+jumboHeight) < offset){
+            $('#panel-region').addClass('fixed');
+            $('#members-region').css({'margin-top':'70px'});
+          } if ((navPos.top+jumboHeight) >= offset){
+            $('#members-region').css({'margin-top':'0px'});
+            $('#panel-region').removeClass('fixed');
+          }
+    });
   </script>
 
   <script src="scripts/lib/require.js"></script>

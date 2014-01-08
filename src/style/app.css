@@ -10,26 +10,69 @@ h1, h2, h3, h4, h5, h6 {
   font-family: inherit;
   text-rendering: optimizelegibility;
 }
+
+a{
+  color:#2a6496;
+}
+.container{
+  max-width:960px;
+}
+#bill-region{
+  margin-top:20px;
+}
+
 .jumbotron {
   text-align: center;
+  margin-top:20px;
+  border:1px solid #ccc;
+  border-radius:0px;
 }
+
+#top-nav{
+  width:100%;
+  padding:8px;
+  border-bottom:1px solid #ddd;
+  text-align:center;
+  letter-spacing: 0.1em;
+  margin-bottom:20px;
+}
+#top-nav a{
+  color:#333;
+}
+#top-nav a:hover{
+  color:#888;
+}
+
+#filter-district_type{
+  float:right;
+}
+
+#member-jumbotron{
+  border-bottom:0px;
+  margin-bottom:0px;
+}
+
+#buttons{
+  background-color:#eee;
+  border:1px solid #ccc;
+  border-top:0px;
+}
+
+
 #main-region {
-margin:0px;
-}
-#members-region {
-  background-color: lightgrey;
+  /*margin: 50px;*/
 }
 .member {
   width: 78px;
-  height: 92px;
-  margin: 9px;
+  height: 100px;
+  margin:10px 0px;
   border: 2px solid white;
-  -webkit-border-radius: 5px;
+/*  -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
           border-radius: 5px;
   -webkit-border-radius-topleft:  20px;
      -moz-border-radius-topleft:  20px;
-          border-top-left-radius: 20px;
+          border-top-left-radius: 20px;*/
   text-align: center;
   font-family: Tahoma, Arial, Helvetica, sans-serif;
   background-repeat: no-repeat;
@@ -44,9 +87,10 @@ margin:0px;
   position: relative;
   padding-left: 2px;
   padding-right: 2px;
+  margin-top:20px;
   border-top: 3px solid white;
   background-color: grey;
-  color: white;
+  color: #F1E5E7;
 }
 .member-info p {
   font-size: 11px;
@@ -54,25 +98,75 @@ margin:0px;
 .member.Senate {
   width: 95px;
   height: 112px;
-  margin: 8px;
+  margin: 10px 0px;
 }
 .House .member-info {
-  top: 74px;
+  top: 55px;
 }
 .Senate .member-info {
-  top: 94px;
+  top: 75px;
 }
 .Republican .member-info {
-  background-color: #FF0F0F;
+  background-color: #C63737;
 }
 .Democrat .member-info {
-  background-color: #0F0FFF;
+  background-color: #39416B;
 }
+
+.member-detail-row{
+  width:100%;
+  padding:50px 0px;
+  margin-top:50px;
+  /*background-color:#eee;*/
+}
+
+.member-detail-row h1{
+  font-size:42px;
+  margin:0px;
+  padding:0px;
+}
+
+#member-info{
+  padding:0px;
+  margin:0px;
+}
+#member-info li{
+  margin:5px 0px;
+  padding:0px;
+  list-style-type:none;
+
+}
+
+#member-title {
+  
+}
+#member-title h3{
+  margin:5px 0px 10px 0px;
+  padding:0px 0px 10px 0px;
+  border-bottom:1px solid #ccc;
+}
+
+
 .hidden {
   display: none;
 }
 .filter {
   cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding:5px 20px;
+}
+.filter:hover{
+  color:#aaa;
+}
+.btn{
+    background-color:#eee;
+    border-radius:0px;
+}
+.btn-default{
+  background-color: #474949;
+border-color: #474949;
+border-radius:0px;
 }
 .selected {
   font-weight: bold;
@@ -103,141 +197,41 @@ margin:0px;
 #bill-authors .media-object {
   width: 60px;
   height: 60px;
-  border: 2px solid white;
-  opacity:0.8;
+  margin-right:10px;
 }
+
+#bill-authors a{
+  color:#333;
+}
+
 #bill-authors .media-object:hover {
-  border: 2px solid #ddd;
-  opacity:1.0;
+
+
 }
 
 ul#bill-authors li {
   padding: 5px;
 }
 ul#bill-authors li.D {
-  background-color: lightblue;
+  background-color: rgba(57,65,107,0.4);
+  border: 2px solid rgba(57,65,107,0.2);
 }
 ul#bill-authors li.R {
-  background-color: pink;
+  background-color: rgba(198,55,55,0.4);
+  border: 2px solid rgba(198,55,55,0.2); 
+}
+ul#bill-authors li.D:hover {
+  background-color: rgba(57,65,107,0.4);
+  border: 2px solid rgba(57,65,107,1.0);
+}
+ul#bill-authors li.R:hover {
+  background-color: rgba(198,55,55,0.4);
+  border: 2px solid rgba(198,55,55,1.0);
 }
 ul#bill-authors li.I {
   background-color: lightgray;
 }
 
-<<<<<<< HEAD
-
-body{
-      padding:0px;
-      margin:0px;
-      font-family:Georgia,Times,serif;
-    }
-    /* header styles */
-    #top{
-      width:100%;
-      padding:2px 0px;
-      border-bottom:5px solid #003896;
-    }
-    #inside-top{
-      width:100%;
-      padding:5px 20px;
-      border-bottom:3px solid #888;
-    }
-    #masthead{
-      float:left;
-    }
-    #masthead-tag{
-      text-align:right;
-      font-size:18px;
-      line-height: 1em;
-      text-transform: uppercase;
-      width:200px;
-      float:right;
-    }
-    #app-nav{
-      border-bottom:1px solid #efefef;
-      background-color:#fff;
-      z-index:100000;
-    }
-    #app-nav div{
-      position:relative;
-    }
-    #navigation-list{
-      position:relative;
-      margin-left:0px;
-      padding-left:0px;
-    }
-    #navigation-list li{
-      list-style-type:none;
-      float:left;
-      padding:5px 10px;
-      text-transform: uppercase;
-      font-size:16px;
-      border-right:1px solid #efefef;
-    }
-    #navigation-list li:last-child{
-      border-right:none;
-    }
-
-    #navigation-list a{
-      color:#000;
-    }
-    #navigation-list li:hover{
-      background-color:#efefef;
-    }
-    /* title styles */
-    #content-head{
-      padding:0px 0px 10px 0px;
-      border-bottom:1px solid #efefef;
-      margin-bottom:15px;
-    }
-    #content-head h1{
-      font-size:44px;
-      margin:0px;
-      padding:10px 0px;
-    }
-    #content-head p{
-      font-size:16px;
-    }
-    .card{
-      border:1px solid #efefef;
-      margin:10px 0px;
-    }
-    .card-header{
-      background-color:#efefef;
-      margin:0px;
-    }
-    .card-header h2{
-      font-size:36px;
-      margin:0px;
-      padding:10px;
-    }
-    .card-content{
-      padding:15px 15px 0px 15px;
-      border-top:1px solid #efefef;
-    }
-    .bill-cat{
-      background-color:#efefef;
-      border-radius:5px;
-      padding:10px;
-      margin-bottom:15px;
-      text-align:center;
-      height:120px;
-    }
-    .bill-summary .col-lg-6{
-      text-align:center;
-      border-right:1px solid #efefef;
-      margin:0px;
-      padding:5px 0px;
-      font-size:18px;
-    }
-    .bill-summary .col-lg-6:last-child{
-      border:none;
-    }
-    .count{
-      font-weight:bold;
-      color:#000;
-    }
-=======
 .member-vote {
   cursor: pointer;
 }
@@ -254,4 +248,328 @@ td.voted.Excused {
 td.voted.NotVoting {
   color: lightgray;
 }
->>>>>>> upstream/master
+
+
+#footer{
+  height:200px;
+  background-color:#333;
+  width:100%;
+  margin:60px 0px 0px 0px;
+}
+#footer-content{
+  color:#eee;
+  padding:50px 0px;
+}
+
+#panel-region {
+  margin-top:0px;
+}
+
+.panel{
+  border-radius:0px;
+}
+
+.panel-heading{
+  background-color:#eee;
+}
+
+.list-group-item:first-child, .list-group-item:last-child{
+  border-radius:0px;
+}
+
+.table-top{
+  border-top:1px solid #ddd;
+  border-left:1px solid #ddd;
+  border-right:1px solid #ddd;
+  padding:10px;
+  background-color:#eee;
+  margin:0px;
+}
+/* header styles */
+.navbar{
+  min-height:0px;
+  height:auto;
+  padding:0px;
+  background-color:rgba(255,255,255,0.9) ;
+}
+.navbar button{
+  margin:0px;
+}
+#top{
+  width:100%;
+  margin:0px;
+  padding:2px 0px;
+  border-bottom:5px solid #003896;
+  opacity:0.9;
+  background-color:#fff;
+}
+#inside-top{
+  width:100%;
+  padding:5px 20px;
+  border-bottom:3px solid #888;
+}
+#masthead{
+  float:left;
+}
+#masthead-tag{
+  text-align:right;
+  font-size:18px;
+  margin-top:2px;
+  line-height: 1em;
+  text-transform: uppercase;
+  width:200px;
+  float:right;
+  letter-spacing:1px;
+}
+#content-head{
+  padding:7% 0%;
+  width:100%;
+  margin-bottom:0px;
+  background-image:url('/images/dome_1.jpg');
+  background-attachment: fixed;
+  background-size:100%;
+}
+#header{
+  padding:0px 0px 50px 0px;
+}
+.home-head{
+  font-size:48px;
+}
+#content-home{
+  margin-top:3px;
+  padding:0px;
+  /*border-top:1px solid #888;*/
+}
+#full-width{
+  width:100%;
+  max-width:100%;
+  padding-bottom:2px;
+  margin:0px;
+  /*padding:0px;*/
+}
+#full-width .col-sm-6{
+  padding:0px;
+  margin-top:0px;
+}
+
+#home-nav{
+  background-color:#fff;
+  height:300px;
+}
+
+#batting-average h3{
+  margin-top:5px;
+}
+
+.watched-bill{
+  padding:10px;
+  border:1px solid #ddd;
+  margin:20px 0px 0px 0px;
+  min-height:150px;
+  text-align:center;
+  cursor:pointer;
+}
+
+#bills-count-region{
+  padding:10px 0px;
+  /*background-color:rgba(255, 255, 255, 0.9);*/
+  text-align:center;
+}
+
+.watched-bill:hover {
+  background-color:#eee;
+}
+.watched-bill:hover a{
+  text-decoration:underline;
+  color:#2a6496;
+}
+
+#bills-count-region h1{
+  padding:30px 0px;
+  font-size:36px;
+  margin:0px;
+  text-align:center;
+}
+#bills-count-region p{
+  padding:15px 0px;
+  margin:0px;
+  line-height:1em;
+  font-size:18px;
+  text-align:center;
+}
+#bills-count-region p i{
+  padding-top:5px;
+  color:#333;
+}
+#bill-cat-top{
+  margin-top:0px;
+}
+.fixed{
+  position:fixed;
+  top:0;
+  z-index:1000;
+  width:100%;
+}
+.fixed div{
+  position:relative;
+  top:inherit;
+}
+
+.accordion{
+  margin-top:20px;
+}
+.ui-accordion .ui-accordion-header{
+  cursor:pointer;
+  padding:20px 0px;
+  margin:0px;
+  border-top:1px solid #ddd;
+  color:#333;
+}
+.ui-accordion .ui-accordion-header:first-child{
+  border:none;
+}
+.ui-accordion .ui-accordion-header:hover{
+  text-decoration:underline;
+  color:#666;
+}
+.ui-accordion .ui-accordion-header:hover .plus{
+  color:#666;
+}
+.plus{
+  float:right;
+  color:#333;
+}
+
+.fa-info, .fa-stack-1x{
+  font-size:14px;
+  vertical-align: top;
+  margin-top:-19px;
+  margin-left:-10px;
+}
+.fa-stack-2x {
+  font-size: 0.8em;
+  vertical-align:top;
+  margin-left:-10px;
+}
+
+.ui-tooltip {
+  padding: 8px;
+  position: absolute;
+  z-index: 9999;
+  max-width: 300px;
+  /*-webkit-box-shadow: 0 0 5px #aaa;*/
+  /*box-shadow: 0 0 5px #aaa;*/
+  background-color:#fff;
+  border:1px solid #ccc;
+}
+body .ui-tooltip {
+  border-width: 2px;
+}
+
+*:focus {
+    outline: 0;
+}
+
+
+#full-width{
+      width:100%;
+      padding-bottom:2px;
+      margin:0px;
+      /*padding:0px;*/
+    }
+    #full-width .col-sm-6{
+      padding:0px;
+      margin-top:0px;
+    }
+
+    #home-nav{
+      background-color:#fff;
+      height:300px;
+    }
+    #bills{
+      background-image:url('/images/bills.jpg');
+      background-size:100%;
+      background-position:0px -70px;
+      height:300px;
+      margin-right:0px;
+      padding:0px;
+    }
+    #bills, #members{
+      opacity:0.9;
+      cursor:pointer;
+    }
+    #bills:hover, #members:hover{
+      opacity:1.0;
+    }
+    #bills:hover h3, #members:hover h3{
+      text-decoration: underline;
+    }
+    #members{
+      background-image:url('/images/people.jpg');
+      background-size:100%;
+      height:300px;
+      padding:0px;
+      margin-left:0px;
+    }
+
+    .nav-box h3{
+      width:350px;
+      text-align:center;
+      padding-top:100px;
+      padding:100px 0px 10px 0px;
+      margin:0px auto;
+      font-size:46px;
+      font-style:italic;
+      color:#000;
+        text-align: center;
+        position:relative;
+    }
+
+    h2.bill-header{
+      text-align:center;
+      font-style:italic;
+      color:#000;
+      font-size:42px;
+    }
+
+    .bottom-third{
+      border-right:1px solid #ddd;
+      margin:50px 0px;
+      padding:15px;
+      border:1px solid #ddd;
+      min-height:250px;
+    }
+    .col-sm-4:last-child .bottom-third{
+      /*border:none;*/
+    }
+    .bottom-third h3{
+      text-transform:uppercase;
+      margin-top:0px;
+      padding:5px 0px;
+      /*text-align:center;*/
+    }
+    #tag{
+      padding:100px 0px;
+    }
+    #majority h5, #minority h5{
+      text-align:center;
+    }
+    #news-list, #recent-bills {
+      padding-left:0px;
+    }
+    #news-list li, #recent-bills li{
+      list-style-type:none;
+      margin:10px 0px;
+      padding:10px;
+      background-color:#eee;
+      cursor:pointer;
+    }
+    #news-list li:hover, #recent-bills li:hover{
+      background-color:#d9e1ef;
+    }
+    #footer-content{
+      color:#eee;
+      padding:50px 0px;
+    }
+
+

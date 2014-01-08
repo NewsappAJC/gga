@@ -22,176 +22,11 @@
   	<link rel="stylesheet" type="text/css" href="style/jquery-ui-1.10.3.custom.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-	
-	<!--<link rel="stylesheet" type="text/css" href="style/app.css">-->
+
+	<link rel="stylesheet" type="text/css" href="style/app.css">
 <!--
 	<link rel="stylesheet" href="http://host.coxmediagroup.com/ajc/digitalprojects/global/css/iFrame_Medley.css" type="text/css"/>
 -->
-	<style>
-		body{
-			padding:0px;
-			margin:0px;
-			font-family:Georgia,Times,serif;
-			/*background-image:url('/images/dome.jpg');*/
-			/*background-position:0px -170px;*/
-			/*background-size:140%;*/
-			/*background-attachment: fixed;*/
-		}
-		.container{
-		}
-		h1, h2, h3, h4, h5 {
-			font-family:Georgia, Times, serif;
-		}
-		/* header styles */
-		#top{
-			width:100%;
-			margin:0px;
-			padding:2px 0px;
-			border-bottom:5px solid #003896;
-			opacity:0.9;
-			background-color:#fff;
-		}
-		#inside-top{
-			width:100%;
-			padding:5px 20px;
-			border-bottom:3px solid #888;
-		}
-		#masthead{
-			float:left;
-		}
-		#masthead-tag{
-			text-align:right;
-			font-size:18px;
-			line-height: 1em;
-			text-transform: uppercase;
-			width:200px;
-			float:right;
-		}
-		#content-head{
-			padding:7% 0%;
-			width:100%;
-			margin-bottom:0px;
-			background-image:url('/images/dome_1.jpg');
-			background-attachment: fixed;
-			background-size:100%;
-		}
-		#header{
-			padding:50px 0px;
-		}
-		.home-head{
-			font-size:48px;
-		}
-		#content-home{
-			margin-top:3px;
-			padding:0px;
-			/*border-top:1px solid #888;*/
-		}
-		#full-width{
-			width:100%;
-			padding-bottom:2px;
-			margin:0px;
-			/*padding:0px;*/
-		}
-		#full-width .col-sm-6{
-			padding:0px;
-			margin-top:0px;
-		}
-
-		#home-nav{
-			background-color:#fff;
-			height:300px;
-		}
-		#bills{
-			background-image:url('/images/bills.jpg');
-			background-size:100%;
-			height:350px;
-			margin-right:0px;
-			padding:0px;
-			/*border-right:1px solid #aaa;*/
-			/*border-bottom:1px solid #aaa;*/
-		}
-		#bills, #members{
-			opacity:0.9;
-			cursor:pointer;
-		}
-		#bills:hover, #members:hover{
-			opacity:1.0;
-		}
-		#bills:hover h3, #members:hover h3{
-			text-decoration: underline;
-		}
-		#members{
-			background-image:url('/images/people.jpg');
-			background-size:100%;
-			height:350px;
-			padding:0px;
-			margin-left:0px;
-			/*border-bottom:1px solid #aaa;*/
-		}
-
-		.nav-box h3{
-			width:350px;
-			text-align:center;
-			padding-top:100px;
-			padding:100px 0px 10px 0px;
-			margin:0px auto;
-			font-size:46px;
-			font-style:italic;
-			color:#000;
-		    text-align: center;
-		    position:relative;
-		}
-
-		.bottom-third{
-			border-right:1px solid #ddd;
-			margin:50px 0px;
-			padding:15px;
-			border:1px solid #ddd;
-			min-height:250px;
-		}
-		.col-sm-4:last-child .bottom-third{
-			/*border:none;*/
-		}
-		.bottom-third h3{
-			text-transform:uppercase;
-			margin-top:0px;
-			padding:5px 0px;
-			/*text-align:center;*/
-		}
-		#tag{
-			padding:100px 0px;
-		}
-		#bottom-row{
-			padding:50px 10px;
-			/*padding:50px 0px;*/
-		}
-		#footer{
-			height:200px;
-			background-color:#333;
-			width:100%;
-			margin:0px;
-		}
-		#majority h5, #minority h5{
-			text-align:center;
-		}
-		#news-list, #recent-bills {
-			padding-left:0px;
-		}
-		#news-list li, #recent-bills li{
-			list-style-type:none;
-			margin:10px 0px;
-			padding:10px;
-			background-color:#eee;
-			cursor:pointer;
-		}
-		#news-list li:hover, #recent-bills li:hover{
-			background-color:#d9e1ef;
-		}
-		#footer-content{
-			color:#eee;
-			padding:50px 0px;
-		}
-	</style>
 
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -216,13 +51,33 @@
 		</div>
 	</div>
 
+	<div id="top-nav">
+    <div class="container">
+      <div class="row">
+          <div class="col-sm-3">
+            <a href="/">HOME</a>
+          </div>
+          <div class="col-sm-3">
+            <a href="/#watched_bills">BILLS</a>
+          </div>
+          <div class="col-sm-3">
+            <a href="/#members">MEMBERS</a>
+          </div>
+          <div class="col-sm-3">
+            <a href="/#about">ABOUT</a>
+          </div>
+      </div>
+    </div>
+  </div>
+
 	<!--<div id="content-head">
 		<div class="container">
-			
+
 			<div class="row">
 				<div class="col-lg-12">
 					<h1 class="home-head">
-						Georgia Legislative Database 
+						Georgia Legislative Database
+>>>>>>> feature/welcome-page
 					</h1>
 				</div>
 			</div>
@@ -235,8 +90,8 @@
 			<!-- content header row -->
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="home-head"> 
-						Georgia Legislative Database
+					<h1 class="home-head">
+						Georgia Legislative Navigator
 					</h1>
 					<p>Chatter about the database, how it works, what it does, etc. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</div>
