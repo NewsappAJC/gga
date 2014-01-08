@@ -16,7 +16,7 @@ define(["marionette"], function(Marionette) {
 
   GeneralAssemblyApp.on("initialize:after", function() {
     if (Backbone.history) {
-      require(["apps/welcome/welcome_app","apps/members/members_app","apps/watched_bills/watched_bills_app","apps/bills/bills_app","entities/common"], function() {
+      require(["apps/welcome/welcome_app","apps/members/members_app","apps/watched_bills/watched_bills_app","apps/bills/bills_app","entities/common","common/views"], function() {
         Backbone.history.start();
 
         if (GeneralAssemblyApp.getCurrentRoute() === "") {

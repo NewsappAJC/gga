@@ -11,7 +11,9 @@ requirejs.config({
     "underscore.string": "lib/underscore.string.min",
     backbone: "lib/backbone",
     marionette: "lib/backbone.marionette",
-    datejs: "lib/date"
+    datejs: "lib/date",
+    spin: "lib/spin",
+    "spin.jquery": "lib/spin.jquery"
   },
 
   shim: {
@@ -35,10 +37,12 @@ requirejs.config({
       deps: [],
       exports: "Date"
     },
+    "spin": ["jquery"],
+    "spin.jquery": ["spin"]
   }
 });
 
-require(["app","jquery-ui","jquery-scrolltofixed","jquery-datatables","datejs","underscore.string"],
+require(["app","jquery-ui","jquery-scrolltofixed","jquery-datatables","datejs","underscore.string", "spin","spin.jquery"],
   function(GeneralAssemblyApp) {
     GeneralAssemblyApp.start();
 });
