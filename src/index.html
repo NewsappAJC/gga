@@ -21,8 +21,9 @@
   <link rel="stylesheet" type="text/css" href="//normalize-css.googlecode.com/svn/trunk/normalize.css">
   <!-- <link rel="stylesheet" type="text/css" href="style/jquery-ui-1.10.3.custom.css"> -->
   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="style/app.css">
+	
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style/app.css">
 <!--
 	<link rel="stylesheet" href="http://host.coxmediagroup.com/ajc/digitalprojects/global/css/iFrame_Medley.css" type="text/css"/>
 -->
@@ -154,7 +155,12 @@
                 <div class="col-sm-8">
                   <div id="batting-average">
                     <% if (batting_average) { %>
-                      <h3>Legislative Batting Average: <%= _.str.ltrim(_.str.sprintf("%.3f", parseFloat(batting_average)), "0") %></h3>
+                      <h3>Legislative Batting Average: <%= _.str.ltrim(_.str.sprintf("%.3f", parseFloat(batting_average)), "0") %>
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle-o fa-stack-2x"></i>
+                          <i class="fa fa-info fa-stack-1x"></i>
+                        </span>
+                      </h3>
                       <p>With <%= bill_count %> bills introduced in <%= session_count %> previous sessions.</p>
                     <% }else { %>
                       <p><%= full_name %> is a Freshman legislator.</p>
@@ -193,7 +199,16 @@
   </script>
 
   <script type="text/template" id="member-list-layout">
-    <div id="panel-region" class="navbar navbar-static-top"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="jumbotron" id="member-jumbotron">
+            <h2 id="bill-header">The Members</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar navbar-static-top" id="panel-region" ></div>
     <div class="container">
       <div class="row">
         <div class="col-sm-12" id="members-region"></div>
@@ -204,16 +219,19 @@
   <script type="text/template" id="member-list-panel">
   <div class="row">
     <div class="col-sm-12"> 
+      <div id="buttons">
       <div id="filter-party" class="nav btn-group">
         <button id="filter-Democrat" class="btn btn-small navbar-btn filter">Democrat</button>
         <button id="filter-Republican" class="btn btn-small navbar-btn filter">Republican</button>
         <button id="filter-Independent" class="btn btn-small navbar-btn filter">Independent</button>
         <button id="filter-all-parties" class="btn btn-small btn-default navbar-btn filter">All parties</button>
       </div>
+
       <div id="filter-district_type" class="nav btn-group">
         <button id="filter-Senate" class="btn btn-small navbar-btn filter">Senate</button>
         <button id="filter-House" class="btn btn-small navbar-btn filter">House</button>
         <button id="filter-all-districtTypes" class="btn btn-small btn-default navbar-btn filter">Both chambers</button>
+      </div>
       </div>
     </div>
   </div>
@@ -245,7 +263,11 @@
   <script type="text/template" id="bill-category-layout">
     <div class="container" id="bill-cat-top">
         <div class="jumbotron">
-          <div class="row" id="bills-count-region"></div>
+          <div class="row">
+            <div class="col-sm-12">
+              <h2 class="bill-header">The Bills</h2>
+            </div>
+          </div>
         </div>
     </div>
     <div class="container">
@@ -446,13 +468,14 @@
 
 
     $(window).scroll(function(){
-          var navPos = $('#main-region').offset();
+          var navPos = $('#member-jumbotron').offset();
+          var jumboHeight = $('#member-jumbotron').height()+100;
           var offset = $(window).scrollTop();
 
-          if (navPos.top < offset){
+          if ((navPos.top+jumboHeight) < offset){
             $('#panel-region').addClass('fixed');
             $('#members-region').css({'margin-top':'70px'});
-          } if (navPos.top >= offset){
+          } if ((navPos.top+jumboHeight) >= offset){
             $('#members-region').css({'margin-top':'0px'});
             $('#panel-region').removeClass('fixed');
           }
