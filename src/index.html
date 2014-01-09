@@ -19,9 +19,10 @@
 	<!-- CSS
   ================================================== -->
   <link rel="stylesheet" type="text/css" href="//normalize-css.googlecode.com/svn/trunk/normalize.css">
-  <link rel="stylesheet" type="text/css" href="style/jquery-ui-1.10.3.custom.css">
   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="style/app.css">
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style/app.css">
 <!--
 	<link rel="stylesheet" href="http://host.coxmediagroup.com/ajc/digitalprojects/global/css/iFrame_Medley.css" type="text/css"/>
 -->
@@ -29,6 +30,9 @@
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
+
+  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -41,19 +45,36 @@
           <img src="http://media.cmgdigital.com/shared/media/2013-12-11-14-26-04/web/site/www_myajc_com/images/logo.svg" width="200px">
           </a>
         </div>
-        <div id="masthead-tag">
+        <div class="hidden-xs hidden-sm" id="masthead-tag">
           <a href="http://www.myajc.com/s/news/georgia-legislature/" target="_blank">LEGISLATIVE NEWS</a>
         </div>
       </div>
     </div>
   </div>
 
+  <div id="top-nav">
+    <div class="container">
+      <div class="row">
+          <div class="col-sm-3">
+            <a href="/">HOME</a>
+          </div>
+          <div class="col-sm-3">
+            <a href="/#watched_bills">BILLS</a>
+          </div>
+          <div class="col-sm-3">
+            <a href="/#members">MEMBERS</a>
+          </div>
+          <div class="col-sm-3">
+            <a href="/#about">ABOUT</a>
+          </div>
+      </div>
+    </div>
+  </div>
   <div id="main-region">
-    <p>Loading ...</p>
   </div>
 
   <!-- footer -->
-  <div id="footer">
+  <footer id="footer">
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
@@ -64,15 +85,12 @@
         </div>
       </div>
     </div>
-  </div>
+  </footer>
 
   <!-- TEMPLATES -->
 
   <script type="text/template" id="welcome-layout">
-    <!-- content container -->
-    <!-- <div id="content-head"> -->
       <div class="container" id="header">
-        <!-- content header row -->
         <div class="row">
           <div class="col-lg-12">
             <h1 class="home-head">
@@ -88,24 +106,25 @@
           </div>
         </div>
       </div>
-    <!-- </div> -->
 
-    <div class="container" id="full-width">
-      <!-- content home -->
-      <div class="row" id="content-home">
-        <div class="col-sm-6">
-          <div class="nav-box" id="bills">
-            <h3>The Bills</h3>
+
+
+      <div class="container" id="full-width">
+        <!-- content home -->
+        <div class="row" id="content-home">
+          <div class="col-sm-6">
+            <div class="nav-box" id="bills">
+              <h3>Bills</h3>
+            </div>
           </div>
-
-        </div>
-        <div class="col-sm-6">
-          <div class="nav-box" id="members">
-            <h3>The People</h3>
+          <div class="col-sm-6">
+            <div class="nav-box" id="members">
+              <h3>Members</h3>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+
 
     <div class="container" id="bottom-row">
       <div class="row">
@@ -134,7 +153,7 @@
         <div class="col-sm-4">
           <div class="bottom-third">
             <h3>Days left in session</h3>
-            <h1>40</h1>
+            <h1 id="counter">40</h1>
           </div>
         </div>
       </div>
@@ -150,48 +169,75 @@
   </script>
 
   <script type="text/template" id="member-show-layout">
-    <div id="detail-region" class="row"></div>
-    <div class="accordion">
-      <h3>Bills Sponsored</h3>
-      <div id="bills-list-region">No bills sonsored thus far this session</div>
-      <h3>Recent Votes</h3>
-      <div id="vote-list-region">List of recent votes goes here ...</div>
-      <h3>Committees</h3>
-      <div id="committee-list-region">Committee list goes here ...</div>
-      <h3>Top Contributors</h3>
-      <div id="top-contributors-region"></div>
+    <div id="detail-region"></div>
+    <div class="container">
+      <div class="accordion">
+        <h3>Bills Sponsored<i class="fa fa-plus-square-o plus"></i></h3>
+        <div id="bills-list-region">No bills sonsored thus far this session</div>
+        <h3>Recent Votes<i class="fa fa-plus-square-o plus"></i></h3>
+        <div id="vote-list-region">List of recent votes goes here ...</div>
+        <h3>Committees<i class="fa fa-plus-square-o plus"></i></h3>
+        <div id="committee-list-region">Committee list goes here ...</div>
+        <h3>Top Contributors<i class="fa fa-plus-square-o plus"></i></h3>
+        <div id="top-contributors-region"></div>
+      </div>
     </div>
   </script>
 
   <script type="text/template" id="member-detail-template">
-    <div class="row-">
-      <div class="col-lg-3">
-        <img src="images/mugs/<%- id %>.jpg" alt="<%- full_name %>" height="195">
-      </div>
-      <div class="col-lg-9">
-        <h1><%- full_name %></h1>
-        <h3><%- party %>, <%- district_type %> District <%- district_number %></h3>
-        <ul>
-          <% if (title) { %>
-            <li><strong>Leadership role:</strong> <%- title %></li>
-          <% } %>
+      <div class="member-detail-row <%- party %>">
+        <div class="container">
 
-          <% if (occupation) { %>
-            <li><strong>Occupation:</strong> <%- occupation %></li>
-          <% } %>
+          <div class="row">
+            <div class="col-sm-2">
+              <img src="images/mugs/<%- id %>.jpg" alt="<%- full_name %>" width="100%">
+            </div>
+            <div class="col-sm-10">
+              <div class="row">
+                <div class="col-sm-12" id="member-title">
+                  <h1><%- full_name %></h1>
+                  <h3><%- party %>, <%- district_type %> District <%- district_number %></h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <ul id="member-info">
+                    <% if (title) { %>
+                      <li><strong>Leadership role:</strong> <%- title %></li>
+                    <% } %>
 
-          <% if (education) { %>
-            <li><strong>Education:</strong> <%- education %></li>
-          <% } %>
+                    <% if (occupation) { %>
+                      <li><strong>Occupation:</strong> <%- occupation %></li>
+                    <% } %>
 
-          <% if (religion) { %>
-            <li><strong>Religion:</strong> <%- religion %></li>
-          <% } %>
+                    <% if (education) { %>
+                      <li><strong>Education:</strong> <%- education %></li>
+                    <% } %>
 
-          <% if (district_address_city) { %>
-            <li><strong>Home town:</strong> <%- district_address_city %></li>
-          <% } %>
-        </ul>
+                    <% if (religion) { %>
+                      <li><strong>Religion:</strong> <%- religion %></li>
+                    <% } %>
+
+                    <% if (district_address_city) { %>
+                      <li><strong>Home town:</strong> <%- district_address_city %></li>
+                    <% } %>
+                  </ul>
+                </div>
+                <div class="col-sm-8">
+                  <div id="batting-average">
+                    <% if (batting_average) { %>
+                      <h3>Legislative Batting Average: <span id="bat-avg"><%= _.str.ltrim(_.str.sprintf("%.3f", parseFloat(batting_average)), "0") %></span>
+                      </h3>
+                      <p>With <%= bill_count %> bills introduced in <%= session_count %> previous sessions.</p>
+                    <% }else { %>
+                      <p><%= full_name %> is a Freshman legislator.</p>
+                    <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </script>
@@ -220,26 +266,46 @@
   </script>
 
   <script type="text/template" id="member-list-layout">
-    <div class="row">
-      <div id="panel-region" class="navbar navbar-static-top"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="jumbotron" id="member-jumbotron">
+            <h2 class="bill-header">The Members</h2>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="row">
-      <div id="members-region"></div>
+    <div class="navbar navbar-static-top" id="panel-region" ></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12" id="members-region"></div>
+      </div>
     </div>
   </script>
 
   <script type="text/template" id="member-list-panel">
   <div class="row">
-    <div id="filter-party" class="nav btn-group">
-      <button id="filter-Democrat" class="btn btn-small navbar-btn filter">Democrat</button>
-      <button id="filter-Republican" class="btn btn-small navbar-btn filter">Republican</button>
-      <button id="filter-Independent" class="btn btn-small navbar-btn filter">Independent</button>
-      <button id="filter-all-parties" class="btn btn-small btn-default navbar-btn filter">All parties</button>
-    </div>
-    <div id="filter-district_type" class="nav btn-group">
-      <button id="filter-Senate" class="btn btn-small navbar-btn filter">Senate</button>
-      <button id="filter-House" class="btn btn-small navbar-btn filter">House</button>
-      <button id="filter-all-districtTypes" class="btn btn-small btn-default navbar-btn filter">Both chambers</button>
+    <div class="col-sm-12">
+      <div id="buttons">
+        <div class="row">
+          <div class="col-sm-8">
+            <div id="filter-party" class="nav btn-group">
+              <button id="filter-Democrat" class="btn btn-small navbar-btn filter">Democrat</button>
+              <button id="filter-Republican" class="btn btn-small navbar-btn filter">Republican</button>
+              <button id="filter-Independent" class="btn btn-small navbar-btn filter">Independent</button>
+              <button id="filter-all-parties" class="btn btn-small btn-default navbar-btn filter">All parties</button>
+            </div>
+          </div>
+
+          <div class="col-sm-4"
+            <div id="filter-district_type" class="nav btn-group">
+              <button id="filter-Senate" class="btn btn-small navbar-btn filter">Senate</button>
+              <button id="filter-House" class="btn btn-small navbar-btn filter">House</button>
+              <button id="filter-all-districtTypes" class="btn btn-small btn-default navbar-btn filter">Both chambers</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   </script>
@@ -268,36 +334,62 @@
   </script>
 
   <script type="text/template" id="bill-category-layout">
-    <div class="row-fluid" id="bills-count-region"></div>
-    <div class="row-fluid" id="bill-category-region"></div>
+    <div class="container" id="bill-cat-top">
+        <div class="jumbotron">
+          <div class="row">
+            <div class="col-sm-12">
+              <h2 class="bill-header">The Bills</h2>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="container">
+      <div class="row" id="bill-category-region"></div>
+    </div>
   </script>
 
+
+
+
   <script type="text/template" id="bill-category-template">
-    <h3><a href="#watched_bills/category/<%- name %>"><%- name.replace(/_/g, ' ') %></a></h3>
-    <p>
-      Watching <%- count %> bill<% if(count > 1) { %>s<% } %>
-    </p>
+    <div class="watched-bill">
+      <h3><a href="#watched_bills/category/<%- name %>"><%- name.replace(/_/g, ' ') %></a></h3>
+      <p>
+        Watching <%- count %> bill<% if(count > 1) { %>s<% } %>
+      </p>
+    </div>
   </script>
 
   <script type="text/template" id="bills-count-template">
-    <h1><%- bills %> Bills</h1>
-    <% if(passed_house > 0) { %>
-      <p><%- passed_house %> Passed the House.</p>
-    <% } %>
-    <% if(passed_senate > 0) { %>
-      <p><%- passed_senate %> Passed the Senate.</p>
-    <% } %>
-    <% if(sent_to_gov > 0) { %>
-      <p><%- sent_to_gov %> Sent to governor.</p>
-    <% } %>
-    <% if(signed_by_gov > 0) { %>
-      <p><%- signed_by_gov %> Signed by governor.</p>
-    <% } %>
+        <h3><%- bills %> total bills</h3>
+            <% if(passed_house > 0) { %>
+              <p><i class="fa fa-check-circle"></i> <%- passed_house %> Passed the House.</p>
+            <% } %>
+            <% if(passed_senate > 0) { %>
+              <p><i class="fa fa-check-circle"></i> <%- passed_senate %> Passed the Senate.</p>
+            <% } %>
+
+            <% if(sent_to_gov > 0) { %>
+              <p><i class="fa fa-envelope"></i> <%- sent_to_gov %> Sent to governor.</p>
+            <% } %>
+            <% if(signed_by_gov > 0) { %>
+              <p><i class="fa fa-pencil"></i> <%- signed_by_gov %> Signed by governor.</p>
+            <% } %>
   </script>
 
   <script type="text/template" id="show-category-layout">
-    <div class="jumbotron" id="headline-region"></div>
-    <div id="watched-bill-list"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="jumbotron" id="headline-region"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="watched-bill-list"></div>
+        </div>
+      </div>
+    </div>
   </script>
 
   <script type="text/template" id="category-headline-template">
@@ -310,7 +402,9 @@
   </script>
 
   <script type="text/template" id="bill-detail-layout">
-    <div class="row" id="bill-region"></div>
+    <div class="row">
+      <div class="col-sm-12" id="bill-region"></div>
+    </div>
 
     <div class="row" id="supplemental">
 
@@ -331,18 +425,18 @@
             <div id="coauthors-region"></div>
           </div>
         </div>
-        <div class="well">
+        <div class="table-top">
           <h4>Versions</h4>
         </div>
         <div class="panel-body" id="version-region"></div>
       </div>
 
       <div class="col-sm-8" id="actions">
-        <div class="well">
+        <div class="table-top">
           <h4>Actions</h4>
         </div>
         <div id="status-region"></div>
-        <div class="well">
+        <div class="table-top">
           <h4>Votes</h4>
         </div>
         <div id="vote-region"></div>
@@ -368,14 +462,16 @@
   </script>
 
   <script type="text/template" id="bill-author-template">
-    <a class="pull-left" href="#members/<%- member_id %>">
-      <img class="media-object" src="images/cropped/<%- member_id %>.jpg">
+    <a href="#members/<%- member_id %>">
+      <div class="media-body">
+        <div class="pull-left">
+         <img class="pull-left media-object" src="images/cropped/<%- member_id %>.jpg">
+        </div>
+        <%- full_name %><br />
+        <%- district_type %> <%- district_number %><br />
+        <%- party %>-<%- hometown %><br />
+      </div>
     </a>
-    <div class="media-body">
-      <%- full_name %><br />
-      <%- district_type %> <%- district_number %><br />
-      <%- party %>-<%- hometown %><br />
-    </div>
   </script>
 
   <script type="text/template" id="bill-status-template">
@@ -439,24 +535,35 @@
   </script>
 
   <script type="text/type" id="about-template">
-    <div class="jumbotron">
-      <h1>About the Georgia Legislative Navigator</h1>
+    <div class="container">
+      <div class="row">
+        <div class="jumbotron">
+          <h2>About the Georgia Legislative Navigator</h2>
+        </div>
+      </div>
     </div>
     <div class="container about-text">
-      <p>
-       The Georgia Legislative Navigator is the most ambitious project underataken
-       by the Interactive Team at the Atlanta Journal Constitution. It is a site devoted
-       to helping our readers follow the action at the Georgia General Assembly. It is
-       also a work in progress. We hope to continually add new features and tools to
-       understand the legislative process. Feature we hope to add soon include the
-       ability to search for any bill, the ability to find your legislators by location and
-       a statistical model that estimates the probability of a bill passing the
-       legislature and being sent to the governor. If you have requests
-       for features or ideas for imrpovemts you would like to see, contact
-        <a href="http://www.myajc.com/staff/john-perry/">John Perry</a>.
-      </p>
+      <div class="row">
+        <div class="col-sm-12">
+          <p>
+           The Georgia Legislative Navigator is the most ambitious project underataken
+           by the Interactive Team at the Atlanta Journal Constitution. It is a site devoted
+           to helping our readers follow the action at the Georgia General Assembly. It is
+           also a work in progress. We hope to continually add new features and tools to
+           understand the legislative process. Feature we hope to add soon include the
+           ability to search for any bill, the ability to find your legislators by location and
+           a statistical model that estimates the probability of a bill passing the
+           legislature and being sent to the governor. If you have requests
+           for features or ideas for imrpovemts you would like to see, contact
+            <a href="http://www.myajc.com/staff/john-perry/">John Perry</a>.
+          </p>
+        </div>
+      </div>
     </div>
   </script>
+
+
+  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 
   <script src="scripts/lib/require.js"></script>
   <script src="scripts/require_main.built.js"></script>
