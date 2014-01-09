@@ -285,20 +285,26 @@
 
   <script type="text/template" id="member-list-panel">
   <div class="row">
-    <div class="col-sm-12"> 
+    <div class="col-sm-12">
       <div id="buttons">
-      <div id="filter-party" class="nav btn-group">
-        <button id="filter-Democrat" class="btn btn-small navbar-btn filter">Democrat</button>
-        <button id="filter-Republican" class="btn btn-small navbar-btn filter">Republican</button>
-        <button id="filter-Independent" class="btn btn-small navbar-btn filter">Independent</button>
-        <button id="filter-all-parties" class="btn btn-small btn-default navbar-btn filter">All parties</button>
-      </div>
+        <div class="row">
+          <div class="col-sm-8">
+            <div id="filter-party" class="nav btn-group">
+              <button id="filter-Democrat" class="btn btn-small navbar-btn filter">Democrat</button>
+              <button id="filter-Republican" class="btn btn-small navbar-btn filter">Republican</button>
+              <button id="filter-Independent" class="btn btn-small navbar-btn filter">Independent</button>
+              <button id="filter-all-parties" class="btn btn-small btn-default navbar-btn filter">All parties</button>
+            </div>
+          </div>
 
-      <div id="filter-district_type" class="nav btn-group">
-        <button id="filter-Senate" class="btn btn-small navbar-btn filter">Senate</button>
-        <button id="filter-House" class="btn btn-small navbar-btn filter">House</button>
-        <button id="filter-all-districtTypes" class="btn btn-small btn-default navbar-btn filter">Both chambers</button>
-      </div>
+          <div class="col-sm-4"
+            <div id="filter-district_type" class="nav btn-group">
+              <button id="filter-Senate" class="btn btn-small navbar-btn filter">Senate</button>
+              <button id="filter-House" class="btn btn-small navbar-btn filter">House</button>
+              <button id="filter-all-districtTypes" class="btn btn-small btn-default navbar-btn filter">Both chambers</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -355,10 +361,7 @@
   </script>
 
   <script type="text/template" id="bills-count-template">
-      <div class="col-sm-12">
         <h3><%- bills %> total bills</h3>
-      </div>
-      <div class="col-sm-12">
             <% if(passed_house > 0) { %>
               <p><i class="fa fa-check-circle"></i> <%- passed_house %> Passed the House.</p>
             <% } %>
@@ -372,7 +375,6 @@
             <% if(signed_by_gov > 0) { %>
               <p><i class="fa fa-pencil"></i> <%- signed_by_gov %> Signed by governor.</p>
             <% } %>
-      </div>
   </script>
 
   <script type="text/template" id="show-category-layout">
