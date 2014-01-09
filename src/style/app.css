@@ -46,9 +46,6 @@ a{
   color:#888;
 }
 
-#filter-district_type{
-  float:right;
-}
 
 #member-jumbotron{
   border-bottom:0px;
@@ -107,7 +104,6 @@ a{
 
 .member-detail-row{
   width:100%;
-  padding:50px 0px;
   margin-top:50px;
   /*background-color:#eee;*/
 }
@@ -145,6 +141,7 @@ a{
   letter-spacing: 1px;
   padding:5px 20px;
 }
+
 .filter:hover{
   color:#aaa;
 }
@@ -573,11 +570,10 @@ body .ui-tooltip {
 #bills{
   background-image:url('/images/bills.jpg');
   background-size:100%;
-  height:350px;
+  max-height:350px;
   margin-right:0px;
   padding:0px;
-  /*border-right:1px solid #aaa;*/
-  /*border-bottom:1px solid #aaa;*/
+  background-repeat:no-repeat;
 }
 #bills, #members{
   opacity:0.9;
@@ -592,10 +588,10 @@ body .ui-tooltip {
 #members{
   background-image:url('/images/people.jpg');
   background-size:100%;
-  height:350px;
+  max-height:350px;
   padding:0px;
   margin-left:0px;
-  /*border-bottom:1px solid #aaa;*/
+  background-repeat:no-repeat;
 }
 .nav-box h3{
   width:350px;
@@ -633,4 +629,50 @@ body .ui-tooltip {
 #bottom-row{
   padding:50px 10px;
   /*padding:50px 0px;*/
+}
+
+
+/* mobile styles */
+
+@media all and (min-width : 320px) and (max-width : 480px) {
+
+  .container{
+    padding:0px 10px;
+  }
+
+  #bills, #members{
+    height:200px;
+  }
+
+  #batting-average{
+    text-align:center;
+    padding:10px;
+    border:1px solid #ccc;
+    background-color:#eee;
+    margin:10px;
+    display:block;
+  }
+
+  #filter-party{
+    border:0px;
+    text-align:center;
+    border-bottom:1px solid #ccc;
+    margin:0px 15px 0px 5px;
+    padding-bottom:10px;
+  }
+  #filter-party .filter{
+    width:49%;
+    margin:1px;
+  }
+
+
+  #filter-district_type {
+    border:0px;
+    margin-top:10px;
+    text-align:center;
+    margin-bottom:5px;
+  }
+  #filter-district_type .filter {
+    padding:5px 10px;
+  }
 }
