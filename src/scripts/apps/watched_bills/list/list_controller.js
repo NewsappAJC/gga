@@ -21,8 +21,9 @@ define(["app","apps/watched_bills/list/list_view"], function(GeneralAssemblyApp,
               collection: categories
             });
 
-            bills_count_view = new View.BillsCountView({
-              model: bills_count
+            bills_count_view = new GeneralAssemblyApp.Common.View.BillsCountView({
+              model: bills_count,
+              className: "jumbotron"
             });
 
             categories_layout.on("show", function() {

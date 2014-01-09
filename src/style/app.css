@@ -1,4 +1,6 @@
 body {
+  padding:0px;
+  margin:0px;
   /* MyAJC style */
   font-family: Publico,Georgia,"Times New Roman",Times,serif;
   font-size: 14px;
@@ -6,6 +8,7 @@ body {
   font-weight: normal;
 }
 h1, h2, h3, h4, h5, h6 {
+  font-family:Georgia, Times, serif;
   /* MyAJC style */
   font-family: inherit;
   text-rendering: optimizelegibility;
@@ -15,7 +18,7 @@ a{
   color:#2a6496;
 }
 .container{
-  max-width:960px;
+  max-width:1000px;
 }
 #bill-region{
   margin-top:20px;
@@ -57,22 +60,11 @@ a{
   border:1px solid #ccc;
   border-top:0px;
 }
-
-
-#main-region {
-  /*margin: 50px;*/
-}
 .member {
   width: 78px;
   height: 100px;
   margin:10px 0px;
   border: 2px solid white;
-/*  -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-          border-radius: 5px;
-  -webkit-border-radius-topleft:  20px;
-     -moz-border-radius-topleft:  20px;
-          border-top-left-radius: 20px;*/
   text-align: center;
   font-family: Tahoma, Arial, Helvetica, sans-serif;
   background-repeat: no-repeat;
@@ -137,9 +129,6 @@ a{
 
 }
 
-#member-title {
-  
-}
 #member-title h3{
   margin:5px 0px 10px 0px;
   padding:0px 0px 10px 0px;
@@ -249,7 +238,7 @@ td.voted.NotVoting {
   color: lightgray;
 }
 
-
+/* footer styles */
 #footer{
   height:200px;
   background-color:#333;
@@ -356,6 +345,7 @@ td.voted.NotVoting {
   background-color:#fff;
   height:300px;
 }
+
 
 #batting-average h3{
   margin-top:5px;
@@ -572,4 +562,74 @@ body .ui-tooltip {
       padding:50px 0px;
     }
 
+.article-credit {
+  font-size: 12px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+}
 
+/* welcome page nav links */
+#bills{
+  background-image:url('/images/bills.jpg');
+  background-size:100%;
+  height:350px;
+  margin-right:0px;
+  padding:0px;
+  /*border-right:1px solid #aaa;*/
+  /*border-bottom:1px solid #aaa;*/
+}
+#bills, #members{
+  opacity:0.9;
+  cursor:pointer;
+}
+#bills:hover, #members:hover{
+  opacity:1.0;
+}
+#bills:hover h3, #members:hover h3{
+  text-decoration: underline;
+}
+#members{
+  background-image:url('/images/people.jpg');
+  background-size:100%;
+  height:350px;
+  padding:0px;
+  margin-left:0px;
+  /*border-bottom:1px solid #aaa;*/
+}
+.nav-box h3{
+  width:350px;
+  text-align:center;
+  padding-top:100px;
+  padding:100px 0px 10px 0px;
+  margin:0px auto;
+  font-size:46px;
+  font-style:italic;
+  color:#000;
+    text-align: center;
+    position:relative;
+}
+
+/* welcome page bottom thirdf */
+.bottom-third{
+  border-right:1px solid #ddd;
+  margin:50px 0px;
+  padding:15px;
+  border:1px solid #ddd;
+  min-height:250px;
+}
+.col-sm-4:last-child .bottom-third{
+  /*border:none;*/
+}
+.bottom-third h3{
+  text-transform:uppercase;
+  margin-top:0px;
+  padding:5px 0px;
+  /*text-align:center;*/
+}
+#tag{
+  padding:100px 0px;
+}
+#bottom-row{
+  padding:50px 10px;
+  /*padding:50px 0px;*/
+}

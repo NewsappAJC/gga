@@ -91,6 +91,75 @@
 
   <!-- TEMPLATES -->
 
+  <script type="text/template" id="welcome-layout">
+      <div class="container" id="header">
+        <div class="row">
+          <div class="col-lg-12">
+            <h1 class="home-head">
+              Georgia Legislative Navigator
+            </h1>
+            <p class="article-credit">
+              By <a href="http://www.myajc.com/staff/john-perry/">John Perry</a>,
+                 <a href="http://www.myajc.com/staff/ashlyn-still/">Ashlyn Still</a> and
+                 <a href="http://www.myajc.com/staff/jeff-ernsthausen/">Jeff Ernsthausen</a>
+            </p>
+
+            <p>Chatter about the database, how it works, what it does, etc. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+        </div>
+      </div>
+
+    <div class="container" id="full-width">
+      <!-- content home -->
+      <div class="row" id="content-home">
+        <div class="col-sm-6">
+          <div class="nav-box" id="bills">
+            <h3>The Bills</h3>
+          </div>
+
+        </div>
+        <div class="col-sm-6">
+          <div class="nav-box" id="members">
+            <h3>The People</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" id="bottom-row">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="bottom-third" id="bill-count-region"></div>
+        </div>
+        <div class="col-sm-4">
+          <div class="bottom-third">
+            <h3>Leadership</h3>
+            <div class="row">
+              <div class="col-xs-6">
+                <div id="majority">
+                  <h5>MAJORITY LEADER</h5>
+                  <h5>MAJORITY WHIP</h5>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div id="minority">
+                  <h5>MINORITY LEADER</h5>
+                  <h5>MINORITY WHIP</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="bottom-third">
+            <h3>Days left in session</h3>
+            <h4>Counter goes here</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+
   <script type = "text/template" id="member-icon-template">
     <div class="member js-show-member-detail <%- party %> <%- district_type %> <%- district_address_city %>" id="member<%- id %>" style="background-image: url('images/cropped/<%- id %>.jpg')" title="<%- tooltip_info %>">
       <div class="member-info">
@@ -286,28 +355,23 @@
   </script>
 
   <script type="text/template" id="bills-count-template">
-      <div class="col-sm-4">
-        <h1><%- bills %> total bills</h1>
+      <div class="col-sm-12">
+        <h3><%- bills %> total bills</h3>
       </div>
-      <div class="col-sm-8">
-        <div class="row">
-          <div class="col-sm-6">
+      <div class="col-sm-12">
             <% if(passed_house > 0) { %>
               <p><i class="fa fa-check-circle"></i> <%- passed_house %> Passed the House.</p>
             <% } %>
             <% if(passed_senate > 0) { %>
               <p><i class="fa fa-check-circle"></i> <%- passed_senate %> Passed the Senate.</p>
             <% } %>
-          </div>
-          <div class="col-sm-6">
+
             <% if(sent_to_gov > 0) { %>
               <p><i class="fa fa-envelope"></i> <%- sent_to_gov %> Sent to governor.</p>
             <% } %>
             <% if(signed_by_gov > 0) { %>
               <p><i class="fa fa-pencil"></i> <%- signed_by_gov %> Signed by governor.</p>
             <% } %>
-          </div>
-        </div>
       </div>
   </script>
 
@@ -465,7 +529,7 @@
   </script>
 
   <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-  <script type="text/javascript">
+  <!--<script type="text/javascript">
 
 
     $(window).scroll(function(){
@@ -481,6 +545,9 @@
             $('#panel-region').removeClass('fixed');
           }
     });
+  </script>-->
+  <script type="text/type" id="loading-template">
+    <div id="spinner"></div>
   </script>
 
   <script src="scripts/lib/require.js"></script>

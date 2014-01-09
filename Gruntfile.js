@@ -9,7 +9,9 @@ module.exports = function(grunt) {
           { expand: true, flatten: true, src: ['src/images/cropped/*.jpg'], dest: 'build/images/cropped/' },
           { expand: true, flatten: true, src: ['src/images/mugs/*.jpg'], dest: 'build/images/mugs/' },
           { expand: true, flatten: true, src: ['src/images/datatables/*.png'], dest: 'build/images/datatables/' },
-          { expand: true, flatten: true, src: ['src/style/images/*.png'], dest: 'build/style/images/' }
+          { expand: true, flatten: true, src: ['src/style/images/*.png'], dest: 'build/style/images/' },
+          { expand: true, flatten: true, src: ['src/images/*.jpg'], dest: 'build/images/' },
+          { expand: true, flatten: true, src: ['src/images/*.svg'], dest: 'build/images/' }
         ]
       }
     },
@@ -79,7 +81,13 @@ module.exports = function(grunt) {
           'build/scripts/apps/watched_bills/show/show_controller.js' : ['src/scripts/apps/watched_bills/show/show_controller.js'],
           'build/scripts/apps/watched_bills/show/show_view.js'       : ['src/scripts/apps/watched_bills/show/show_view.js'],
           'build/scripts/apps/watched_bills/list/list_controller.js' : ['src/scripts/apps/watched_bills/list/list_controller.js'],
-          'build/scripts/apps/watched_bills/list/list_view.js'       : ['src/scripts/apps/watched_bills/list/list_view.js']
+          'build/scripts/apps/watched_bills/list/list_view.js'       : ['src/scripts/apps/watched_bills/list/list_view.js'],
+
+          'build/scripts/apps/welcome/welcome_app.js'        : ['src/scripts/apps/welcome/welcome_app.js'],
+          'build/scripts/apps/welcome/welcome_controller.js' : ['src/scripts/apps/welcome/welcome_controller.js'],
+          'build/scripts/apps/welcome/welcome_view.js'       : ['src/scripts/apps/welcome/welcome_view.js'],
+
+          'build/scripts/common/views.js' : ['src/scripts/common/views.js']
         }
       }
     },
@@ -134,13 +142,16 @@ module.exports = function(grunt) {
         { src: 'build/scripts/apps/watched_bills/watched_bills_app.js', dest: 'scripts/apps/watched_bills/watched_bills_app.js' },
         { src: 'build/scripts/apps/watched_bills/list/*', dest: 'scripts/apps/watched_bills/list/' },
         { src: 'build/scripts/apps/watched_bills/show/*', dest: 'scripts/apps/watched_bills/show/' },
+        { src: 'build/scripts/apps/welcome/*', dest: 'scripts/apps/welcome/'},
+        { src: 'build/scripts/common/*', dest: 'scripts/common/'},
 
         // { src: 'build/images/cropped/*', dest: 'images/cropped/' },
         // { src: 'build/images/datatables/*', dest: 'images/datatables/' },
         // { src: 'build/images/mugs/*', dest: 'images/mugs/' },
         { src: 'build/style/*', dest: 'style/' },
         { src: 'build/style/images/*', dest: 'style/images/' },
-        { src: 'build/style/dist/bootstrap.css', dest: 'style/dist/bootstrap.css' }
+        { src: 'build/style/dist/bootstrap.css', dest: 'style/dist/bootstrap.css' },
+        { src: 'build/images/*', dest: 'images/' }
       ]
     }
   });

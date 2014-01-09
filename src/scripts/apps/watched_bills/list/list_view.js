@@ -18,10 +18,6 @@ define(["app"], function(GeneralAssemblyApp) {
       // className: "container"
     });
 
-    View.BillsCountView = Marionette.ItemView.extend({
-      template: "#bills-count-template",
-      className: "bill-sum-header"
-    });
   });
   return GeneralAssemblyApp.WatchedBillsApp.List.View;
 });

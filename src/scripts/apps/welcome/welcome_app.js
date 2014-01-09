@@ -2,14 +2,15 @@ define(["app"], function(GeneralAssemblyApp) {
   GeneralAssemblyApp.module("WelcomeApp", function(WelcomeApp, GeneralAssemblyApp, Backbone, Marionette, $, _) {
     WelcomeApp.Router = Marionette.AppRouter.extend({
       appRoutes: {
-        "/": "welcome"
+        // "/": "welcome",
+        "": "welcome"
       }
     });
 
     var API = {
       welcome: function() {
         require(["apps/welcome/welcome_controller"], function() {
-          WelcomeApp.Controller.showWelcome();
+          WelcomeApp.Controler.showWelcome();
         });
       }
     };
