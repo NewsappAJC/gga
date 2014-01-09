@@ -20,7 +20,7 @@
   ================================================== -->
   <link rel="stylesheet" type="text/css" href="//normalize-css.googlecode.com/svn/trunk/normalize.css">
   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
-	
+
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style/app.css">
 <!--
@@ -30,7 +30,7 @@
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-  
+
   <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
@@ -125,7 +125,7 @@
         </div>
       </div>
 
-        
+
     <div class="container" id="bottom-row">
       <div class="row">
         <div class="col-sm-4">
@@ -187,7 +187,7 @@
   <script type="text/template" id="member-detail-template">
       <div class="member-detail-row <%- party %>">
         <div class="container">
-          
+
           <div class="row">
             <div class="col-sm-2">
               <img src="images/mugs/<%- id %>.jpg" alt="<%- full_name %>" width="100%">
@@ -564,23 +564,6 @@
 
 
   <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-  <script type="text/javascript">
-
-
-    $(window).scroll(function(){
-          var navPos = $('#member-jumbotron').offset();
-          var jumboHeight = $('#member-jumbotron').height()+100;
-          var offset = $(window).scrollTop();
-
-          if ((navPos.top+jumboHeight) < offset){
-            $('#panel-region').addClass('fixed');
-            $('#members-region').css({'margin-top':'50px'});
-          } if ((navPos.top+jumboHeight) >= offset){
-            $('#members-region').css({'margin-top':'0px'});
-            $('#panel-region').removeClass('fixed');
-          }
-    });
-  </script>
 
   <script src="scripts/lib/require.js"></script>
   <script src="scripts/require_main.built.js"></script>

@@ -21,8 +21,6 @@ define(["marionette"], function(Marionette) {
 
         if (GeneralAssemblyApp.getCurrentRoute() === "") {
           GeneralAssemblyApp.trigger("welcome:show");
-          // GeneralAssemblyApp.trigger("watchedbills:categories:list");
-          // GeneralAssemblyApp.trigger("members:list");
         }
       });
     }
