@@ -31,6 +31,8 @@
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
+  
+  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
 </head>
@@ -156,10 +158,6 @@
                   <div id="batting-average">
                     <% if (batting_average) { %>
                       <h3>Legislative Batting Average: <%= _.str.ltrim(_.str.sprintf("%.3f", parseFloat(batting_average)), "0") %>
-                        <span class="fa-stack fa-lg">
-                          <i class="fa fa-circle-o fa-stack-2x"></i>
-                          <i class="fa fa-info fa-stack-1x"></i>
-                        </span>
                       </h3>
                       <p>With <%= bill_count %> bills introduced in <%= session_count %> previous sessions.</p>
                     <% }else { %>
@@ -203,7 +201,7 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="jumbotron" id="member-jumbotron">
-            <h2 id="bill-header">The Members</h2>
+            <h2 class="bill-header">The Members</h2>
           </div>
         </div>
       </div>
