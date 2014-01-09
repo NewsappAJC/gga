@@ -17,6 +17,9 @@ h1, h2, h3, h4, h5, h6 {
 a{
   color:#2a6496;
 }
+footer a{
+  color: #4780B2;
+}
 .container{
   /*max-width:1080px;*/
 }
@@ -376,20 +379,18 @@ td.voted.NotVoting {
   color:#2a6496;
 }
 
-#bills-count-region h1{
+#bill-count-region h1{
   padding:30px 0px;
   font-size:36px;
   margin:0px;
   text-align:center;
 }
-#bills-count-region p{
-  padding:15px 0px;
-  margin:0px;
-  line-height:1em;
+#bill-count-region p{
+  line-height:1.5em;
   font-size:18px;
   text-align:center;
 }
-#bills-count-region p i{
+#bill-count-region p i{
   padding-top:5px;
   color:#333;
 }

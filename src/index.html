@@ -19,7 +19,6 @@
 	<!-- CSS
   ================================================== -->
   <link rel="stylesheet" type="text/css" href="//normalize-css.googlecode.com/svn/trunk/normalize.css">
-  <!-- <link rel="stylesheet" type="text/css" href="style/jquery-ui-1.10.3.custom.css"> -->
   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
 	
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -75,7 +74,7 @@
   </div>
 
   <!-- footer -->
-  <div id="footer">
+  <footer id="footer">
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
@@ -86,7 +85,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </footer>
 
   <!-- TEMPLATES -->
 
@@ -529,8 +528,36 @@
     <tbody></tbody>
   </script>
 
+  <script type="text/type" id="loading-template">
+    <div id="spinner"></div>
+  </script>
+
+  <script type="text/type" id="about-template">
+    <div class="container">
+      <div class="row">
+        <div class="jumbotron">
+          <h2>About the Georgia Legislative Navigator</h2>
+        </div>
+      </div>
+    </div>
+    <div class="container about-text">
+      <div class="row">
+        <div class="col-sm-12">
+          <p>
+           The Georgia Legislative Navigator is the most ambitious project underataken
+           by the Interactive Team at the Atlanta Journal Constitution. It is a site devoted
+           to helping our readers follow the action at the Georgia General Assembly. It is
+           also a work in progress. We hope to continually add new features and tools to
+           understand the legislative process.
+          </p>
+        </div>
+      </div>
+    </div>
+  </script>
+
+
   <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-  <!--<script type="text/javascript">
+  <script type="text/javascript">
 
 
     $(window).scroll(function(){
@@ -540,30 +567,12 @@
 
           if ((navPos.top+jumboHeight) < offset){
             $('#panel-region').addClass('fixed');
-            $('#members-region').css({'margin-top':'70px'});
+            $('#members-region').css({'margin-top':'50px'});
           } if ((navPos.top+jumboHeight) >= offset){
             $('#members-region').css({'margin-top':'0px'});
             $('#panel-region').removeClass('fixed');
           }
     });
-  </script>-->
-  <script type="text/type" id="loading-template">
-    <div id="spinner"></div>
-  </script>
-
-  <script type="text/type" id="about-template">
-    <div class="jumbotron">
-      <h1>About the Georgia Legislative Navigator</h1>
-    </div>
-    <div class="container about-text">
-      <p>
-       The Georgia Legislative Navigator is the most ambitious project underataken
-       by the Interactive Team at the Atlanta Journal Constitution. It is a site devoted
-       to helping our readers follow the action at the Georgia General Assembly. It is
-       also a work in progress. We hope to continually add new features and tools to
-       understand the legislative process.
-      </p>
-    </div>
   </script>
 
   <script src="scripts/lib/require.js"></script>
