@@ -303,10 +303,15 @@ td.voted.NotVoting {
   margin-top:2px;
   line-height: 1em;
   text-transform: uppercase;
-  width:200px;
+  width:300px;
   float:right;
   letter-spacing:1px;
 }
+#masthead-tag a:link    { color: #000; }
+#masthead-tag a:visited { color: #000; }
+#masthead-tag a:hover   { color: #000; }
+#masthead-tag a:active  { color: #000; }
+
 #content-head{
   padding:7% 0%;
   width:100%;
