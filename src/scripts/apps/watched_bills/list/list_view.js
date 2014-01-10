@@ -10,7 +10,17 @@ define(["app"], function(GeneralAssemblyApp) {
 
     View.CategoryView = Marionette.ItemView.extend({
       template: "#bill-category-template",
-      className: "col-sm-3"
+      className: "col-sm-3",
+      events: {
+        "click div.watched-bill": "showBillsCategory"
+      },
+      showBillsCategory: function(e) {
+        console.log(e);
+        console.log(this.model)
+        e.preventDefault();
+        e.stopPropagation();
+        GeneralAssemblyApp.trigger("watchedbills:categories:show", this.model.get("name"))
+      }
     });
 
     View.CategoriesView = Marionette.CollectionView.extend({
