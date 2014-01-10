@@ -20,6 +20,7 @@ define(["app"], function(GeneralAssemblyApp) {
         GeneralAssemblyApp.trigger("members:list");
       },
       onShow: function() {
+        console.log("fired")
         var feed = new google.feeds.Feed("http://www.myajc.com/list/rss/news/state-regional-govt-politics/georgia-politics-news/aKdb/");
         feed.load(function(result) {
           if (!result.error) {

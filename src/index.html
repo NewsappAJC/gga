@@ -160,7 +160,7 @@
   </script>
 
   <script type = "text/template" id="member-icon-template">
-    <div class="member js-show-member-detail <%- party %> <%- district_type %> <%- district_address_city %>" id="member<%- id %>" style="background-image: url('images/cropped/<%- id %>.jpg')" title="<%- tooltip_info %>">
+    <div class="member js-show-member-detail <%- party %> <%- district_type %> <%- district_address_city %> <%- vacant %>" id="member<%- id %>" style="background-image: url('images/cropped/<%- vacant === 'vacant' ? 'vacant' : id %>.jpg')" title="<%- tooltip_info %>">
       <div class="member-info">
         <%- district_type %> <%- district_number %>
       </div>
@@ -195,7 +195,11 @@
               <div class="row">
                 <div class="col-sm-12" id="member-title">
                   <h1><%- full_name %></h1>
-                  <h3><%- party %>, <%- district_type %> District <%- district_number %></h3>
+                  <% if (vacant === 'vacant') { %>
+                    <h3>Retired</h3>
+                  <% } else { %>
+                    <h3><%- party %>, <%- district_type %> District <%- district_number %></h3>
+                  <% } %>
                 </div>
               </div>
               <div class="row">

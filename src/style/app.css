@@ -104,6 +104,9 @@ footer a{
 .Democrat .member-info {
   background-color: #39416B;
 }
+.vacant .member-info {
+  background-color: black;
+}
 
 .member-detail-row{
   width:100%;
@@ -202,7 +205,7 @@ ul#bill-authors li.D {
 }
 ul#bill-authors li.R {
   background-color: rgba(198,55,55,0.4);
-  border: 2px solid rgba(198,55,55,0.2); 
+  border: 2px solid rgba(198,55,55,0.2);
 }
 ul#bill-authors li.D:hover {
   background-color: rgba(57,65,107,0.4);
