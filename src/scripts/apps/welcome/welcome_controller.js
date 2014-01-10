@@ -2,7 +2,7 @@ define(["app","apps/welcome/welcome_view"], function(GeneralAssemblyApp, View) {
   GeneralAssemblyApp.module("WelcomeApp", function(WelcomeApp, GeneralAssemblyApp, Backbone, Marionette, $, _) {
     WelcomeApp.Controler = {
       showWelcome: function() {
-        require(["entities/bill"], function() {
+        require(["entities/bill","goog!feeds,1"], function() {
           var welcomeLayout = new View.WelcomeLayout();
           var fetchingBillsCount = GeneralAssemblyApp.request("bills:count");
           $.when(fetchingBillsCount).done(function(bills_count) {
