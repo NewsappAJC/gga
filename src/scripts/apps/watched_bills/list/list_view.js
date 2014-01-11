@@ -15,8 +15,6 @@ define(["app"], function(GeneralAssemblyApp) {
         "click div.watched-bill": "showBillsCategory"
       },
       showBillsCategory: function(e) {
-        console.log(e);
-        console.log(this.model)
         e.preventDefault();
         e.stopPropagation();
         GeneralAssemblyApp.trigger("watchedbills:categories:show", this.model.get("name"))

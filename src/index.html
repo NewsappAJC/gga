@@ -231,7 +231,7 @@
                     <% if (batting_average) { %>
                       <h3>Legislative Batting Average: <span id="bat-avg"><%= _.str.ltrim(_.str.sprintf("%.3f", parseFloat(batting_average)), "0") %></span>
                       </h3>
-                      <p>With <%= bill_count %> bills introduced in <%= session_count %> previous sessions.</p>
+                      <p>(Proportion of the <%= bill_count %> bills introduced in previous sessions that were passed by the legislature.)</p>
                     <% }else { %>
                       <p><%= full_name %> is a Freshman legislator.</p>
                     <% } %>
@@ -478,7 +478,7 @@
   </script>
 
   <script type="text/template" id="bill-status-template">
-    <%- status_date.toString("MMM d") %>: <%- description %>
+    <%- status_date.toString("MMM d, yyyy") %>: <%- description %>
   </script>
 
   <script type="text/template" id="bill_status_listings_template">

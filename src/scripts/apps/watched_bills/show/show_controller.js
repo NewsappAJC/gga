@@ -12,7 +12,6 @@ define(["app","apps/watched_bills/show/show_view"], function(GeneralAssemblyApp,
             });
 
             billsForCategory.filter({category: category});
-            console.log(category);
 
             categoryView = new View.CategoryCollectionView({
               collection: billsForCategory
