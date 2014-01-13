@@ -32,6 +32,7 @@ define(["app"], function(GeneralAssemblyApp) {
             }
           }
         });
+        GeneralAssemblyApp.Common.tweet(document);
       }
     });
   });
