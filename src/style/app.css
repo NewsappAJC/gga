@@ -38,7 +38,7 @@ footer a{
   width:100%;
   padding:8px;
   border-bottom:1px solid #ddd;
-  text-align:center;
+  /*text-align:center;*/
   letter-spacing: 0.1em;
   margin-bottom:20px;
 }
@@ -47,6 +47,22 @@ footer a{
 }
 #top-nav a:hover{
   color:#888;
+}
+#nav-container{
+  width:100%;
+
+}
+
+/*social */
+
+#social{
+  float:right;
+  margin-right:0px;
+  padding-right:5px;
+  text-align: right;
+}
+#social span{
+  text-align:right;
 }
 
 

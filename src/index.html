@@ -31,9 +31,13 @@
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
+<!--
   <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-
+-->
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "a696bb5e-ad41-4adf-bd74-5161d947f19c", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </head>
 <body>
   <!-- header -->
@@ -53,23 +57,31 @@
   </div>
 
   <div id="top-nav">
-    <div class="container">
+    <div class="container" id="nav-container">
       <div class="row">
-          <div class="col-sm-3">
+          <div class="col-sm-2">
             <a href="/">HOME</a>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-2">
             <a href="/#watched_bills">BILLS</a>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-2">
             <a href="/#members">MEMBERS</a>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-2">
             <a href="/#about">ABOUT</a>
+          </div>
+          <div class="col-sm-2" id="social">
+              <span class='st_facebook' displayText=''></span>
+              <span class='st_twitter' displayText=''></span>
+              <span class='st_googleplus' displayText=''></span>
+              <span class='st_email' displayText=''></span>
+              <span class='st_sharethis' displayText=''></span>
           </div>
       </div>
     </div>
   </div>
+
   <div id="main-region">
   </div>
 
@@ -101,7 +113,8 @@
                  <a href="http://www.myajc.com/staff/ashlyn-still/">Ashlyn Still</a> and
                  <a href="http://www.myajc.com/staff/jeff-ernsthausen/">Jeff Ernsthausen</a>
             </p>
-            <p><a href="https://twitter.com/share" class="twitter-share-button">Tweet</a></p>
+          </div>
+          <div class="col-lg-12">
             <p>
               The second year of the 152nd Georgia General Assembly is upon us and the
               AJC is proud is to offer readers this new tool to track legislation and
@@ -564,9 +577,6 @@
       </div>
     </div>
   </script>
-
-
-  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 
   <script src="scripts/lib/require.js"></script>
   <script src="scripts/require_main.built.js"></script>

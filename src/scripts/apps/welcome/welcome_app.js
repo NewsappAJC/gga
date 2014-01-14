@@ -10,7 +10,6 @@ define(["app"], function(GeneralAssemblyApp) {
       welcome: function() {
         require(["apps/welcome/welcome_controller"], function() {
           WelcomeApp.Controler.showWelcome();
-          // GeneralAssemblyApp.Common.tweet(document);
         });
       }
     };
