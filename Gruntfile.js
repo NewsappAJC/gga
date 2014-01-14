@@ -91,7 +91,8 @@ module.exports = function(grunt) {
           'build/scripts/apps/about/about_controller.js' : ['src/scripts/apps/about/about_controller.js'],
           'build/scripts/apps/about/about_view.js'       : ['src/scripts/apps/about/about_view.js'],
 
-          'build/scripts/common/views.js' : ['src/scripts/common/views.js']
+          'build/scripts/common/views.js' : ['src/scripts/common/views.js'],
+          'build/scripts/common/app.js' : ['src/scripts/common/app.js']
         }
       }
     },
