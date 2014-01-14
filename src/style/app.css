@@ -38,7 +38,7 @@ footer a{
   width:100%;
   padding:8px;
   border-bottom:1px solid #ddd;
-  text-align:center;
+  /*text-align:center;*/
   letter-spacing: 0.1em;
   margin-bottom:20px;
 }
@@ -48,18 +48,21 @@ footer a{
 #top-nav a:hover{
   color:#888;
 }
+#nav-container{
+  width:100%;
 
+}
 
 /*social */
 
-#social ul{
-  padding-left:0px;
+#social{
+  float:right;
+  margin-right:0px;
+  padding-right:5px;
+  text-align: right;
 }
-#social ul li{
-  list-style-type:none;
-  padding:0px 10px 15px 0px;
-  display:inline;
-  float:left;
+#social span{
+  text-align:right;
 }
 
 
