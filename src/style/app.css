@@ -667,6 +667,14 @@ body .ui-tooltip {
     padding:0px 10px;
   }
 
+  #top-nav{
+    text-align:center;
+  }
+  #social {
+    text-align:center;
+    float:none;
+  }
+
   #bills, #members{
     height:200px;
   }
