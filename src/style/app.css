@@ -49,6 +49,20 @@ footer a{
   color:#888;
 }
 
+
+/*social */
+
+#social ul{
+  padding-left:0px;
+}
+#social ul li{
+  list-style-type:none;
+  padding:0px 10px 15px 0px;
+  display:inline;
+  float:left;
+}
+
+
 #member-jumbotron{
   border-bottom:0px;
   margin-bottom:0px;
