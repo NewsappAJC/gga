@@ -27,7 +27,7 @@ define(["app"], function(GeneralAssemblyApp) {
 
     GeneralAssemblyApp.on( "watchedbills:categories:show", function(category) {
       GeneralAssemblyApp.navigate("watched_bills/category/" + category);
-      API.showBillCategories(category);
+      API.showBillsCategory(category);
     });
 
     GeneralAssemblyApp.addInitializer(function() {

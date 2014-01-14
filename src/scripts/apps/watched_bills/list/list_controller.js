@@ -7,8 +7,8 @@ define(["app","apps/watched_bills/list/list_view"], function(GeneralAssemblyApp,
           var fetchingBillsCount = GeneralAssemblyApp.request("bills:count");
           var categories_layout = new View.CategoriesLayout();
 
-          $.when(fetchingWatchedBills, fetchingBillsCount).done(function(watcehd_bills, bills_count) {
-            category_model_data = _.chain(watcehd_bills.models)
+          $.when(fetchingWatchedBills, fetchingBillsCount).done(function(watched_bills, bills_count) {
+            category_model_data = _.chain(watched_bills.models)
               .countBy(function(model) { return model.get("category") })
               .pairs()
               .map(function(model) { return {name: model[0], count: model[1]}; })
@@ -21,8 +21,9 @@ define(["app","apps/watched_bills/list/list_view"], function(GeneralAssemblyApp,
               collection: categories
             });
 
-            bills_count_view = new View.BillsCountView({
-              model: bills_count
+            bills_count_view = new GeneralAssemblyApp.Common.View.BillsCountView({
+              model: bills_count,
+              className: "jumbotron"
             });
 
             categories_layout.on("show", function() {

@@ -54,6 +54,20 @@ define(["app"], function(GeneralAssemblyApp) {
             collision: "flipfit"
           }
         });
+
+        $(window).scroll(function(){
+          var navPos = $('#member-jumbotron').offset();
+          var jumboHeight = $('#member-jumbotron').height()+100;
+          var offset = $(window).scrollTop();
+
+          if ((navPos.top+jumboHeight) < offset){
+            $('#panel-region').addClass('fixed');
+            $('#members-region').css({'margin-top':'50px'});
+          } if ((navPos.top+jumboHeight) >= offset){
+            $('#members-region').css({'margin-top':'0px'});
+            $('#panel-region').removeClass('fixed');
+          }
+        });
       }
     });
 

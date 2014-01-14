@@ -10,18 +10,22 @@ define(["app"], function(GeneralAssemblyApp) {
 
     View.CategoryView = Marionette.ItemView.extend({
       template: "#bill-category-template",
-      className: "watched-bill-icon"
+      className: "col-sm-3",
+      events: {
+        "click div.watched-bill": "showBillsCategory"
+      },
+      showBillsCategory: function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        GeneralAssemblyApp.trigger("watchedbills:categories:show", this.model.get("name"))
+      }
     });
 
     View.CategoriesView = Marionette.CollectionView.extend({
-      itemView: View.CategoryView,
-      className: "container"
+      itemView: View.CategoryView
+      // className: "container"
     });
 
-    View.BillsCountView = Marionette.ItemView.extend({
-      template: "#bills-count-template",
-      className: "jumbotron"
-    });
   });
   return GeneralAssemblyApp.WatchedBillsApp.List.View;
 });

@@ -2,8 +2,11 @@ requirejs.config({
   // enforceDefine: true,
   baseUrl: "scripts",
   paths: {
+    async: "lib/async",
+    propertyParser: "lib/propertyParser",
+    goog: "lib/goog",
     undescore: "lib/underscore",
-    jquery: "lib/jquery",
+    jquery: "lib/jquery-1.10.2",
     "jquery-ui": "lib/jquery-ui-1.10.3.custom",
     "jquery-scrolltofixed": "lib/jquery-scrolltofixed-min",
     "jquery-datatables": "lib/jquery.dataTables",
@@ -11,10 +14,16 @@ requirejs.config({
     "underscore.string": "lib/underscore.string.min",
     backbone: "lib/backbone",
     marionette: "lib/backbone.marionette",
-    datejs: "lib/date"
+    datejs: "lib/date",
+    spin: "lib/spin",
+    "spin.jquery": "lib/spin.jquery"
   },
 
   shim: {
+    google: {
+      deps: ["jquery"],
+      exports: "google"
+    },
     underscore: {
       exports: "_"
     },
@@ -35,10 +44,12 @@ requirejs.config({
       deps: [],
       exports: "Date"
     },
+    "spin": ["jquery"],
+    "spin.jquery": ["spin"]
   }
 });
 
-require(["app","jquery-ui","jquery-scrolltofixed","jquery-datatables","datejs","underscore.string"],
+require(["app","jquery-ui","jquery-scrolltofixed","jquery-datatables","datejs","underscore.string", "spin","spin.jquery","goog"],
   function(GeneralAssemblyApp) {
     GeneralAssemblyApp.start();
 });
