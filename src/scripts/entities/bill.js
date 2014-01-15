@@ -69,9 +69,13 @@ define(["app"], function(GeneralAssemblyApp) {
         return defer.promise();
       },
 
-      getBill: function(id) {
+      getBill: function(param) {
+        // param is appended to the end of hte api request url -- it can be
+        // either the bill id or a string with the doc type (i.e. HB) and
+        // bill number separated by a '/'
         var defer = $.Deferred();
-        bill = new Entities.Bill(id);
+        bill = new Entities.Bill(param);
+        console.log(bill.url);
         bill.fetch({
           dataType: "jsonp",
           success: function(data) {
@@ -86,8 +90,15 @@ define(["app"], function(GeneralAssemblyApp) {
       return API.getBillsCount();
     });
 
-    GeneralAssemblyApp.reqres.setHandler("bills:bill", function(id) {
-      return API.getBill(id);
+    GeneralAssemblyApp.reqres.setHandler("bills:bill", function(param) {
+      // param is appended to the end of hte api request url -- it can be
+      // either the bill id or a string with the doc type (i.e. HB) and
+      // bill number separated by a '/'
+      return API.getBill(param);
+    });
+
+    GeneralAssemblyApp.reqres.setHandler("bills:bill:bynumber", function(doctype, number) {
+      return API.getBillByNumber(doctype, number);
     });
   });
   return GeneralAssemblyApp.Entities.Bill;
