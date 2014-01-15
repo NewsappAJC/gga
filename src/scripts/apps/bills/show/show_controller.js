@@ -1,9 +1,12 @@
 define(["app","apps/bills/show/show_view"], function(GeneralAssemblyApp, View) {
   GeneralAssemblyApp.module("BillsApp.Show", function(Show, GeneralAssemblyApp, Backbone, Marionette, $, _) {
     Show.Controller = {
-      showBill: function(id) {
+      showBill: function(param) {
+        // param is appended to the end of hte api request url -- it can be
+        // either the bill id or a string with the doc type (i.e. HB) and
+        // bill number separated by a '/'
         require(["entities/bill"], function() {
-          var fetchingBill = GeneralAssemblyApp.request("bills:bill", id);
+          var fetchingBill = GeneralAssemblyApp.request("bills:bill", param);
           var billLayout = new View.BillLayout();
 
           $.when(fetchingBill).done(function(bill) {

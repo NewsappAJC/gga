@@ -3,6 +3,7 @@ define(["app"], function(GeneralAssemblyApp) {
     BillsApp.Router = Marionette.AppRouter.extend({
       appRoutes: {
         "bills/:id": "showBill",
+        "bills/:doctype/:number": "showBillByNumber"
       }
     });
 
@@ -10,6 +11,11 @@ define(["app"], function(GeneralAssemblyApp) {
       showBill: function(id) {
         require(["apps/bills/show/show_controller"], function() {
           BillsApp.Show.Controller.showBill(id);
+        });
+      },
+      showBillByNumber: function(doctype, number) {
+        require(["apps/bills/show/show_controller"], function() {
+          BillsApp.Show.Controller.showBill(doctype + '/' + number);
         });
       }
     };
