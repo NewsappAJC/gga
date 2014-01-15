@@ -361,15 +361,16 @@
     </div>
     <div class="container">
       <div class="row">
-        <form id="bill-search" class="form-inline">
+        <form id="bill-search" class="form-search">
+          <span>Find a bill:</span>
           <select id="document-type" class="span2">
-            <option>HB</option>
-            <option>HR</option>
-            <option>SB</option>
-            <option>SR</option>
+            <option value="HB">House Bill</option>
+            <option value="HR">House Resolution</option>
+            <option value="SB">Senate Bill</option>
+            <option value="SR">Senate Resolution</option>
           </select>
-          <input type="text" class="input-small span1" id="number">
-          <button type="submit" class="btn btn-small">Search</button>
+          <input type="text" class="input-mini span1" id="number">
+          <button type="submit" class="btn btn-mini">Go</button>
         </form>
       </div>
       <div class="row" id="bill-category-region"></div>
