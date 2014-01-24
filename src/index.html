@@ -349,7 +349,7 @@
           <h4><%= caption %></h3></h4>
           <p><b>Status:</b> <%= status_description %></p>
         </div>
-        <% if ( $.isNumeric(predictions) ) { %>
+        <% if ( $.isNumeric(predictions) && bill_passed === 0) { %>
         <div class="col-sm-2 well" align="center">
           <p>Chance of passing</p>
           <h1><%- (predictions * 100).toFixed() %>%</h1>
@@ -501,7 +501,7 @@
               <p><b>Current Version:</b> <a href="<%- latest_version_url %>" target="_blank"><%- latest_version_description %></a></p>
               <p><b>Official Summary:</b> <%- summary %></p>
             </div>
-            <% if ( $.isNumeric(predictions) ) { %>
+            <% if ( $.isNumeric(predictions) && bill_passed === 0) { %>
             <div>
               <hr>
               <h3>Chance of passing</h3>
