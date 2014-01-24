@@ -343,15 +343,19 @@
 
   <script type="text/template" id="bill-compact-template">
     <div id="bill-<%= document_type %><%= number %>" class="container">
-    <div class="row">
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <a href="#bills/<%= bill_id %>"><h3><%= document_type %> <%= number %></a>
-        <h4><%= caption %></h3></h4>
-        <p><b>Status:</b> <%= status_description %></p>
+      <div class="row">
+        <div class="col-sm-10">
+          <a href="#bills/<%= bill_id %>"><h3><%= document_type %> <%= number %></a>
+          <h4><%= caption %></h3></h4>
+          <p><b>Status:</b> <%= status_description %></p>
+        </div>
+        <% if ( $.isNumeric(predictions) ) { %>
+        <div class="col-sm-2 well" align="center">
+          <p>Chance of passing</p>
+          <h1><%- (predictions * 100).toFixed() %>%</h1>
+        </div>
+        <% } %>
       </div>
-    </div>
     </div>
   </script>
 
@@ -488,10 +492,35 @@
       <h3><%- document_type %> <%- number %></h3>
     </div>
     <div class="panel-body">
-      <p><b><%- caption %></b><p>
-      <p><b>Current Status:</b> <%- status_description %></p>
-      <p><b>Current Version:</b> <a href="<%- latest_version_url %>" target="_blank"><%- latest_version_description %></a></p>
-      <p><b>Official Summary:</b> <%- summary %></p>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div>
+              <p><b><%- caption %></b><p>
+              <p><b>Current Status:</b> <%- status_description %></p>
+              <p><b>Current Version:</b> <a href="<%- latest_version_url %>" target="_blank"><%- latest_version_description %></a></p>
+              <p><b>Official Summary:</b> <%- summary %></p>
+            </div>
+            <% if ( $.isNumeric(predictions) ) { %>
+            <div>
+              <hr>
+              <h3>Chance of passing</h3>
+                <div class="progress">
+                  <div class="progress-bar"
+                       role="progressbar"
+                       aria-valuenow="<%- (predictions * 100).toFixed() %>"
+                       aria-valuemin="0"
+                       aria-valuemax="100"
+                       style="width: <%- (predictions * 100).toFixed() %>%">
+                    <span class="sr-only"><%- (predictions * 100).toFixed() %>%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
     </div>
   </script>
 
@@ -518,10 +547,6 @@
 
   <script type="text/template" id="bill_status_listings_template">
     <ul id="bill_statuses"></ul>
-  </script>
-
-  <script type="text/template" id="bill-versions-listing-template">
-    <ul id="bill-versions"></ul>
   </script>
 
   <script type="text/template" id="bill-version-template">
