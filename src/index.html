@@ -165,7 +165,7 @@
         <div class="col-sm-4">
           <div class="bottom-third">
             <h3>Days left in session</h3>
-            <h1 id="counter">33</h1>
+            <h1 id="counter">32</h1>
           </div>
         </div>
       </div>
@@ -346,16 +346,10 @@
     <div class="row">
     </div>
     <div class="row">
-      <div class="col-sm-9">
+      <div class="col-sm-12">
         <a href="#bills/<%= bill_id %>"><h3><%= document_type %> <%= number %></a>
         <h4><%= caption %></h3></h4>
         <p><b>Status:</b> <%= status_description %></p>
-      </div>
-      <div class="col-sm-3">
-      <div class="well">
-        <h4>Chance of passing</h4>
-        <h1><%- (predictions * 100).toFixed() %>%</h1>
-      </div>
       </div>
     </div>
     </div>
