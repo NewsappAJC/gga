@@ -15,7 +15,19 @@ define(["app"], function(GeneralAssemblyApp) {
 
     View.BillView = Marionette.ItemView.extend({
       template: "#bill-detail-template",
-      className: "panel panel-default"
+      className: "panel panel-default",
+
+      onShow: function() {
+        var bar = $(".progress-bar");
+        console.log(bar);
+        var prog = bar.attr("aria-valuenow");
+        console.log(prog);
+        $(bar).addClass(function() {
+          return prog <= 20 ? "progress-bar-danger" :
+                 prog < 80 ? "progress-bar-warning" :
+                 "progress-bar-success";
+        });
+      }
     });
 
     // Bill author views
