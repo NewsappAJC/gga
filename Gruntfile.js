@@ -11,6 +11,7 @@ module.exports = function(grunt) {
           { expand: true, flatten: true, src: ['src/images/datatables/*.png'], dest: 'build/images/datatables/' },
           { expand: true, flatten: true, src: ['src/style/images/*.png'], dest: 'build/style/images/' },
           { expand: true, flatten: true, src: ['src/images/*.jpg'], dest: 'build/images/' },
+          { expand: true, flatten: true, src: ['src/images/*.png'], dest: 'build/images/' },
           { expand: true, flatten: true, src: ['src/images/*.svg'], dest: 'build/images/' }
         ]
       }
