@@ -31,9 +31,7 @@ define(["app"], function(GeneralAssemblyApp) {
 
       onShow: function() {
         var bar = $(".progress-bar");
-        console.log(bar);
         var prog = bar.attr("aria-valuenow");
-        console.log(prog);
         $(bar).addClass(function() {
           return prog <= 20 ? "progress-bar-danger" :
                  prog < 80 ? "progress-bar-warning" :

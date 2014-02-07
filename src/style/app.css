@@ -711,3 +711,7 @@ body .ui-tooltip {
     padding:5px 10px;
   }
 }
+
+img.info {
+  cursor: pointer;
+}
