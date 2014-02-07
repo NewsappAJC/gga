@@ -27,8 +27,11 @@ define(["marionette"], function(Marionette) {
         Tabletop.init({
           key: 'https://docs.google.com/spreadsheet/pub?key=0Ap9h1zLSgOWUdEhsQi1Yb0JZV3REUVExV1hqT2h6NHc&output=html',
           simpleSheet: true,
+          proxie: 'https://s3.amazonaws.com/obscure-atoll-3469',
           callback: function(data, tabletop) {
-            GeneralAssemblyApp.text = data;
+            text = {};
+            _.each(data, function(row) { text[row.id] = row.text });
+            GeneralAssemblyApp.text = text;
           }
         });
       });
