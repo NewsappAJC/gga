@@ -10,6 +10,18 @@ define(["app"], function(GeneralAssemblyApp) {
         statusRegion: "#status-region",
         versionRegion: "#version-region",
         voteRegion: "#vote-region"
+      },
+      onShow: function() {
+        $(document).tooltip({
+          items: "img.info",
+          predelay: 0,
+          cancelDefault: true,
+          position: {
+            my: "center bottom",
+            at: "center top",
+            collision: "flipfit"
+          }
+        });
       }
     });
 
