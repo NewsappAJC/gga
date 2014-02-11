@@ -5,7 +5,7 @@ define(["app"], function(GeneralAssemblyApp) {
     Entities.TopContributorsCollection = Backbone.Collection.extend({
       model: Entities.TopContributor,
       initialize: function(id) {
-        this.url = 'http://ajcgga-api.herokuapp.com/api/members/' + id + '/top_contributors';
+        this.url = Entities.members_url + id + '/top_contributors';
       },
       comparator: function(contributor) {
         return contributor.get("contribution_ranking");
