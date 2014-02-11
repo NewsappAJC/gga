@@ -1,7 +1,9 @@
 define(["app"], function(GeneralAssemblyApp) {
   GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Backbone, Marionette, $, _){
+    Entities.watched_bills_url = Entities.api_base + 'watched_bills/';
+
     Entities.WatchedBill = Backbone.Model.extend({
-      base_url: "http://ajcgga-api.herokuapp.com/api/watched_bills/",
+      base_url: Entities.watched_bills_url,
       initialize: function() {
         if ( this.get("category") ) this.set("category", this.get("category").replace(/ /g,'_'));
       }
@@ -9,7 +11,7 @@ define(["app"], function(GeneralAssemblyApp) {
 
     Entities.WatchedBills = Backbone.Collection.extend({
       model: Entities.WatchedBill,
-      url: "http://ajcgga-api.herokuapp.com/api/watched_bills"
+      url: Entities.watched_bills_url
     });
 
     Entities.BillCategory = Backbone.Model.extend();
