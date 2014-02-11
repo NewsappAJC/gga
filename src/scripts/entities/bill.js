@@ -1,19 +1,21 @@
 define(["app"], function(GeneralAssemblyApp) {
   GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Backbone, Marionette, $, _){
     // Bills
+    Entities.bills_url = Entities.api_base + 'bills/';
+
     Entities.Bill = Backbone.Model.extend({
       initialize: function(id) {
-        this.url = "http://ajcgga-api.herokuapp.com/api/bills/" + id
+        this.url = Entities.bills_url + id
       }
     });
     Entities.Bills = Backbone.Collection.extend({
       model: Entities.Bill,
-      url: "http://ajcgga-api.herokuapp.com/api/bills/"
+      url: Entities.bills_url
     });
 
     // BillsCount
     Entities.BillsCount = Backbone.Model.extend({
-      url: "http://ajcgga-api.herokuapp.com/api/bills/count/"
+      url: Entities.bills_url + "count/"
     });
 
     // BillAuthors
