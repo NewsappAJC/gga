@@ -343,15 +343,19 @@
 
   <script type="text/template" id="bill-compact-template">
     <div id="bill-<%= document_type %><%= number %>" class="container">
-    <div class="row">
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <a href="#bills/<%= bill_id %>"><h3><%= document_type %> <%= number %></a>
-        <h4><%= caption %></h3></h4>
-        <p><b>Status:</b> <%= status_description %></p>
+      <div class="row">
+        <div class="col-sm-10">
+          <a href="#bills/<%= bill_id %>"><h3><%= document_type %> <%= number %></a>
+          <h4><%= caption %></h3></h4>
+          <p><b>Status:</b> <%= status_description %></p>
+        </div>
+        <% if ( $.isNumeric(predictions) && bill_passed === 0) { %>
+        <div class="col-sm-2 well" align="center">
+          <p>Chance of passing <img class="info" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from a statistical model developed by the AJC based on the success or failure of bills from the two previous legislative sessions (2009-2010 and 2011-2012). The model considers a variety of factors, including the party affiliation of the sponsor and co-sponsors, whether the sponsor is a key leadership figure, how early in the session a bill was submitted and textual clues gleaned from the bill’s summary. The technique used by the AJC was tested on previous legislative sessions and the results were reviewed by academics familiar with predictive models."></p>
+          <h1><%- (predictions * 100).toFixed() %>%</h1>
+        </div>
+        <% } %>
       </div>
-    </div>
     </div>
   </script>
 
@@ -457,7 +461,7 @@
         </div>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h4>Co-authors</h4>
+            <h4>Co-authors <img class="info" src="images/icon_info.png" title="The House Clerk records only the first six bill sponsors"></h4>
           </div>
           <div class="panel-body">
             <div id="coauthors-region"></div>
@@ -488,10 +492,35 @@
       <h3><%- document_type %> <%- number %></h3>
     </div>
     <div class="panel-body">
-      <p><b><%- caption %></b><p>
-      <p><b>Current Status:</b> <%- status_description %></p>
-      <p><b>Current Version:</b> <a href="<%- latest_version_url %>" target="_blank"><%- latest_version_description %></a></p>
-      <p><b>Official Summary:</b> <%- summary %></p>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div>
+              <p><b><%- caption %></b><p>
+              <p><b>Current Status:</b> <%- status_description %></p>
+              <p><b>Current Version:</b> <a href="<%- latest_version_url %>" target="_blank"><%- latest_version_description %></a></p>
+              <p><b>Official Summary:</b> <%- summary %></p>
+            </div>
+            <% if ( $.isNumeric(predictions) && bill_passed === 0) { %>
+            <div>
+              <hr>
+              <h3>Chance of passing  <img class="info" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from a statistical model developed by the AJC based on the success or failure of bills from the two previous legislative sessions (2009-2010 and 2011-2012). The model considers a variety of factors, including the party affiliation of the sponsor and co-sponsors, whether the sponsor is a key leadership figure, how early in the session a bill was submitted and textual clues gleaned from the bill’s summary. The technique used by the AJC was tested on previous legislative sessions and the results were reviewed by academics familiar with predictive models."></h3>
+                <div class="progress">
+                  <div class="progress-bar"
+                       role="progressbar"
+                       aria-valuenow="<%- (predictions * 100).toFixed() %>"
+                       aria-valuemin="0"
+                       aria-valuemax="100"
+                       style="width: <%- (predictions * 100).toFixed() %>%">
+                    <span class="sr-only"><%- (predictions * 100).toFixed() %>%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
     </div>
   </script>
 
@@ -518,10 +547,6 @@
 
   <script type="text/template" id="bill_status_listings_template">
     <ul id="bill_statuses"></ul>
-  </script>
-
-  <script type="text/template" id="bill-versions-listing-template">
-    <ul id="bill-versions"></ul>
   </script>
 
   <script type="text/template" id="bill-version-template">
@@ -584,8 +609,7 @@
       <div class="row">
         <div class="col-sm-12">
           <p>
-           The Georgia Legislative Navigator is the most ambitious project yet underataken
-           by the Interactive Team at The Atlanta Journal-Constitution. It is a site devoted
+           The Georgia Legislative Navigator is a site devoted
            to helping our readers follow the action at the Georgia General Assembly. It is
            also a work in progress. We hope to continually add new features and tools to
            understand the legislative process. Features we hope to add soon include the
@@ -595,7 +619,37 @@
            for features or ideas for improvements you would like to see, contact
             <a href="http://www.myajc.com/staff/john-perry/">John Perry</a>.
           </p>
-        </div>
+          <h3>About the data</h3>
+          <p>
+            The Navigator is built on top of two data sources.
+            <a href="http://www.legis.ga.gov/">The Georgias General Assembly</a>
+            provides data on members of the legislature and on the status of bills.
+            This data is made available to the public through an Application programming
+            interface, or API. This allows the public to send data requests over the internet, and
+            instantaniously receive data in a format that allows a programmer to use it
+            in a website or mobile application. This is an example of transparency
+            that state agencies would do well to follow.
+          </p>
+          <p>
+            The second data source is
+            <a href="http://www.followthemoney.org/">The Institute for Money in State Politics.</a>
+            The institute is a nonpartisan nonprofit organization that collects state-level campaign
+            finance and lobbying data from all 50 states, standardizes and categorizes it,
+            and them makes it available to the public, both through a search interface on
+            their website and through an API.
+          </p>
+          <h3>About the predictions</h3>
+          <p class="article-credit">
+            By <a href="http://www.myajc.com/staff/jeff-ernsthausen/">Jeff Ernsthausen</a>
+          </p>
+          <p>To create the Georgia Legislative Navigator, the Atlanta Journal-Constitution assembled information on more than 14,000 bills introduced since 2001, each labeled with votes, sponsorship and text summaries. Then we recognized this would create a rare opportunity. We could use that enormously detailed data to, in essence, calculate the odds that a bill would pass.  That could shine a light on the often murky legislative process and the factors that hurt or help bills.</p>
+          <p>So the AJC consulted with experts in quantitative methods of social science, starting with Professor Charles Bullock, chair of the Political Science Department at the University of Georgia and a close observer of the Georgia Legislature. To identify the factors that might influence a bill’s outcome, he recommended a technique, logistic regression, originally developed for diagnosing diseases and their risk factors.</p>
+          <p>A book by Professor Frank Harrell, chairman of the Department of Biostatistics at the Vanderbilt University School of Medicine became our bible, and Harrell also provided advice and reviewed the AJC’s work.  Gary King, director of the Institute for Quantitative Social Science at Harvard University also provided insights., and Professor John Stasko of the Georgia Institute of Technology provided advice and software used to identify key terms in bill text.</p>
+          <p>The model is based on obvious factors influencing a bill’s fate – the party of the bill’s sponsor, the number of co-sponsors, and whether a leadership figure was a sponsor -  and some not so obvious ones. In the latter category were how close to the end of the session a bill was submitted, and some of the wording in the bill’s summary. We looked at whether the summary included certain social issues terms that refer to abortion, gun control, prayer in school, alcohol or controlled substances. And we included variable for terms like “city of” and “county of,” since so many bills that move through the Legislature are local.</p>
+          <p>We tested our model by comparing its predictions with the actual outcomes of bills in earlier sessions.  The result: It does a reasonably good job of predicting the odds of passage for the bulk of bills that pass through the Legislature each year.</p>
+          <p>We’ll be working to refine the model and may even try to predict how individual legislators will vote. If you want to take a shot at improving our model:</p>
+          <p><a href="http://ajcgga-api.herokuapp.com/api/bill_attributes.csv" title="It's a big file. Please be patient">Download our model data here</a>
+          <p><a href="https://github.com/NewsappAJC/gga-services/blob/master/bin/legislative_tracker_model.R" target="_blank">See the model, written in R, here</a>
       </div>
     </div>
   </script>

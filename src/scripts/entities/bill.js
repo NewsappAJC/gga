@@ -77,10 +77,21 @@ define(["app"], function(GeneralAssemblyApp) {
         // bill number separated by a '/'
         var defer = $.Deferred();
         bill = new Entities.Bill(param);
-        console.log(bill.url);
         bill.fetch({
           dataType: "jsonp",
           success: function(data) {
+            defer.resolve(data)
+          }
+        });
+        return defer.promise();
+      },
+
+      getBills: function() {
+        var defer = $.Deferred();
+        bills = new Entities.Bills();
+        bills.fetch({
+          dataType: "jsonp",
+          success: function() {
             defer.resolve(data)
           }
         });
@@ -101,6 +112,10 @@ define(["app"], function(GeneralAssemblyApp) {
 
     GeneralAssemblyApp.reqres.setHandler("bills:bill:bynumber", function(doctype, number) {
       return API.getBillByNumber(doctype, number);
+    });
+
+    GeneralAssemblyApp.reqres.setHandler("bills:list", function() {
+      return API.getBills();
     });
   });
   return GeneralAssemblyApp.Entities.Bill;

@@ -22,6 +22,18 @@ define(["marionette"], function(Marionette) {
         if (GeneralAssemblyApp.getCurrentRoute() === "") {
           GeneralAssemblyApp.trigger("welcome:show");
         }
+
+        var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0Ap9h1zLSgOWUdEhsQi1Yb0JZV3REUVExV1hqT2h6NHc&output=html';
+        Tabletop.init({
+          key: 'https://docs.google.com/spreadsheet/pub?key=0Ap9h1zLSgOWUdEhsQi1Yb0JZV3REUVExV1hqT2h6NHc&output=html',
+          simpleSheet: true,
+          proxie: 'https://s3.amazonaws.com/obscure-atoll-3469',
+          callback: function(data, tabletop) {
+            text = {};
+            _.each(data, function(row) { text[row.id] = row.text });
+            GeneralAssemblyApp.text = text;
+          }
+        });
       });
     }
   });

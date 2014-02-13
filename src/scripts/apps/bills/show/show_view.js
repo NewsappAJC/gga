@@ -10,12 +10,34 @@ define(["app"], function(GeneralAssemblyApp) {
         statusRegion: "#status-region",
         versionRegion: "#version-region",
         voteRegion: "#vote-region"
+      },
+      onShow: function() {
+        $(document).tooltip({
+          items: "img.info",
+          predelay: 0,
+          cancelDefault: true,
+          position: {
+            my: "center bottom",
+            at: "center top",
+            collision: "flipfit"
+          }
+        });
       }
     });
 
     View.BillView = Marionette.ItemView.extend({
       template: "#bill-detail-template",
-      className: "panel panel-default"
+      className: "panel panel-default",
+
+      onShow: function() {
+        var bar = $(".progress-bar");
+        var prog = bar.attr("aria-valuenow");
+        $(bar).addClass(function() {
+          return prog <= 20 ? "progress-bar-danger" :
+                 prog < 80 ? "progress-bar-warning" :
+                 "progress-bar-success";
+        });
+      }
     });
 
     // Bill author views

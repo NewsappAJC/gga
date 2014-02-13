@@ -59,7 +59,19 @@ define(["app"], function(GeneralAssemblyApp){
       template: "#bill-compact-template"
     });
     View.Bills = Marionette.CollectionView.extend({
-      itemView: View.Bill
+      itemView: View.Bill,
+      onShow: function() {
+        $(document).tooltip({
+          items: "img.info",
+          predelay: 0,
+          cancelDefault: true,
+          position: {
+            my: "center bottom",
+            at: "center top",
+            collision: "flipfit"
+          }
+        });
+      }
     });
 
     View.Vote = Marionette.ItemView.extend({
