@@ -14,7 +14,6 @@ define(["app"], function(GeneralAssemblyApp) {
         e.stopPropagation();
         var doctype = $("#document-type").val();
         var number = $("#number").val();
-        console.log(doctype + '/' + number);
         GeneralAssemblyApp.trigger("bills:show", doctype + '/' + number);
       }
     });

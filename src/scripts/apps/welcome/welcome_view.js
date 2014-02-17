@@ -7,7 +7,15 @@ define(["app"], function(GeneralAssemblyApp) {
       },
       events: {
         "click #bills": "showWatchedBills",
-        "click #members": "showMembers"
+        "click #members": "showMembers",
+        "submit form#bill-search": "showBill"
+      },
+      showBill: function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var doctype = $("#document-type").val();
+        var number = $("#number").val();
+        GeneralAssemblyApp.trigger("bills:show", doctype + '/' + number);
       },
       showWatchedBills: function(e) {
         e.preventDefault();
