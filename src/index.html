@@ -460,7 +460,7 @@
       </div>
       <div class="col-sm-2">
         <% if ( $.isNumeric(predictions) && bill_passed === 0) { %>
-        <div class="alert" id="<%- bill_id %>">
+        <div class="alert" id="<%- bill_id %>" align="center">
           <p>Chance of passing</p>
           <h1><%- (predictions * 100).toFixed() %>%</h1>
         </div>
