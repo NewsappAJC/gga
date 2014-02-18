@@ -453,8 +453,20 @@
   </script>
 
   <script type="text/template" id="category-item-template">
-    <h3><a href="#bills/<%- bill_id %>"><%- document_type %> <%- number %>: <%- title %></a></h3>
-    <p><%- description %></p>
+    <div class="row">
+      <div class="col-sm-10">
+        <h3><a href="#bills/<%- bill_id %>"><%- document_type %> <%- number %>: <%- title %></a></h3>
+        <p><%- description %></p>
+      </div>
+      <div class="col-sm-2">
+        <% if ( $.isNumeric(predictions) && bill_passed === 0) { %>
+        <div class="alert" id="<%- bill_id %>">
+          <p>Chance of passing</p>
+          <h1><%- (predictions * 100).toFixed() %>%</h1>
+        </div>
+        <% } %>
+      </div>
+    </div>
   </script>
 
   <script type="text/template" id="bill-detail-layout">
