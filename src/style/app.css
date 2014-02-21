@@ -50,9 +50,11 @@ footer a{
 }
 #nav-container{
   width:100%;
-
 }
-
+.display-ul li{
+  font-size: 20px;
+  padding-bottom: 2px;
+}
 /*social */
 
 #social{

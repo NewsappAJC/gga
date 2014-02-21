@@ -387,17 +387,19 @@
     </div>
     <div class="container">
       <div class="row">
-        <form id="bill-search" class="form-search">
-          <span>Find a bill:</span>
-          <select id="document-type" class="span2">
-            <option value="HB">House Bill</option>
-            <option value="HR">House Resolution</option>
-            <option value="SB">Senate Bill</option>
-            <option value="SR">Senate Resolution</option>
-          </select>
-          <input type="text" class="input-mini span1" id="number">
-          <button type="submit" class="btn btn-mini">Go</button>
-        </form>
+        <div class="col-sm-12">
+          <form id="bill-search" class="form-search">
+            <span>Find a bill:</span>
+            <select id="document-type" class="span2">
+              <option value="HB">House Bill</option>
+              <option value="HR">House Resolution</option>
+              <option value="SB">Senate Bill</option>
+              <option value="SR">Senate Resolution</option>
+            </select>
+            <input type="text" class="input-mini span1" id="number">
+            <button type="submit" class="btn btn-mini">Go</button>
+          </form>
+        </div>
       </div>
       <div class="row" id="bill-category-region"></div>
     </div>
@@ -417,22 +419,24 @@
 
   <script type="text/template" id="bills-count-template">
         <h3><%- bills %> total bills</h3>
+        <ul class="fa-ul display-ul">
             <% if(passed_house > 0) { %>
-              <p><i class="fa fa-check-circle"></i> <%- passed_house %> Passed the House.</p>
+              <li><i class="fa-li fa fa-check-circle"></i> <%- passed_house %> Passed the House.</li>
             <% } %>
             <% if(passed_senate > 0) { %>
-              <p><i class="fa fa-check-circle"></i> <%- passed_senate %> Passed the Senate.</p>
+              <li><i class="fa-li fa fa-check-circle"></i> <%- passed_senate %> Passed the Senate.</li>
             <% } %>
 
             <% if(sent_to_gov > 0) { %>
-              <p><i class="fa fa-envelope"></i> <%- sent_to_gov %> Sent to governor.</p>
+              <li><i class="fa-li fa fa-envelope"></i> <%- sent_to_gov %> Sent to governor.</li>
             <% } %>
             <% if(signed_by_gov > 0) { %>
-              <p><i class="fa fa-pencil"></i> <%- signed_by_gov %> Signed by governor.</p>
+              <li><i class="fa-li fa fa-pencil"></i> <%- signed_by_gov %> Signed by governor.</li>
             <% } %>
             <% if(vetoed > 0) { %>
-              <p><i class="fa fa-thumbs-down"></i> <%- vetoed %> Vetoed.</p>
+              <li><i class="fa-li fa fa-thumbs-down"></i> <%- vetoed %> Vetoed.</li>
             <% } %>
+          </ul>
   </script>
 
   <script type="text/template" id="show-category-layout">
