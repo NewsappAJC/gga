@@ -361,7 +361,7 @@
     <div id="bill-<%= document_type %><%= number %>" class="container">
       <div class="row">
         <div class="col-sm-10">
-          <a href="#bills/<%= bill_id %>"><h3><%= document_type %> <%= number %></a>
+          <a href="#bills/<%= bill_id %>"><h3 class="billnumhed"><%= document_type %> <%= number %></a>
           <h4><%= caption %></h3></h4>
           <p><b>Status:</b> <%= status_description %></p>
         </div>
@@ -461,7 +461,7 @@
   <script type="text/template" id="category-item-template">
     <div class="row">
       <div class="col-sm-10">
-        <h3><a href="#bills/<%- bill_id %>"><%- document_type %> <%- number %>: <%- title %></a></h3>
+        <h3 class="billnumhed"><a href="#bills/<%- bill_id %>" id="billhed<%- bill_id %>"><%- document_type %> <%- number %>: <%- title %></a></h3>
         <p><%- description %></p>
       </div>
       <div class="col-sm-2">
@@ -521,13 +521,18 @@
 
   <script type="text/template" id="bill-detail-template">
     <div class="panel-heading">
-      <h3><%- document_type %> <%- number %></h3>
+      <h3 class="billnumhed"><%- document_type %> <%- number %></h3>
     </div>
     <div class="panel-body">
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
             <div>
+              <% if ( passed_over === -1 ) { %>
+                <p class="red"><b>This bill will no longer be active if it does not pass out of its chamber or origin by crossover day</b></p>
+              <% } else if ( passed_over === 1 ) { %>
+                <p class="green"><b>This has been passed out of its chamber or origin and will remain active after crossover day</b></p>
+              <% } %>
               <p><b><%- caption %></b><p>
               <p><b>Current Status:</b> <%- status_description %></p>
               <p><b>Current Version:</b> <a href="<%- latest_version_url %>" target="_blank"><%- latest_version_description %></a></p>
