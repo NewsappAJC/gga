@@ -6,6 +6,7 @@ define(["app"], function(GeneralAssemblyApp) {
       base_url: Entities.watched_bills_url,
       initialize: function() {
         if ( this.get("category") ) this.set("category", this.get("category").replace(/ /g,'_'));
+        this.set("status_date", new Date(this.get("status_date")));
       }
     });
 
