@@ -25,6 +25,10 @@ define(["app","apps/watched_bills/show/show_view"], function(GeneralAssemblyApp,
             categoryLayout.on("show", function() {
               categoryLayout.headlineRegion.show(headlineView);
               categoryLayout.billListRegion.show(categoryView);
+              $(document).tooltip({
+                predelay: 0,
+                cancelDefault: true
+              });
             });
 
             GeneralAssemblyApp.mainRegion.show(categoryLayout);

@@ -724,6 +724,9 @@ img.info {
 .green {
   color: green;
 }
+.blue {
+  color: #39416B;
+}
 .hover {
   cursor: pointer;
 }
