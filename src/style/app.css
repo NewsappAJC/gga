@@ -717,3 +717,16 @@ body .ui-tooltip {
 img.info {
   cursor: pointer;
 }
+
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+.blue {
+  color: #39416B;
+}
+.hover {
+  cursor: pointer;
+}

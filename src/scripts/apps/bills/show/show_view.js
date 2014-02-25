@@ -13,14 +13,14 @@ define(["app"], function(GeneralAssemblyApp) {
       },
       onShow: function() {
         $(document).tooltip({
-          items: "img.info",
+          // items: "img.info",
           predelay: 0,
-          cancelDefault: true,
-          position: {
-            my: "center bottom",
-            at: "center top",
-            collision: "flipfit"
-          }
+          cancelDefault: true
+          // position: {
+          //   my: "center bottom",
+          //   at: "center top",
+          //   collision: "flipfit"
+          // }
         });
       }
     });
@@ -30,6 +30,7 @@ define(["app"], function(GeneralAssemblyApp) {
       className: "panel panel-default",
 
       onShow: function() {
+        var crossover_status = this.model.get("passed_over");
         var bar = $(".progress-bar");
         var prog = bar.attr("aria-valuenow");
         $(bar).addClass(function() {
@@ -37,6 +38,17 @@ define(["app"], function(GeneralAssemblyApp) {
                  prog < 80 ? "progress-bar-warning" :
                  "progress-bar-success";
         });
+
+        if (crossover_status === -1) {
+          var billnum = $(".billnumhed")
+          $(billnum).addClass("red hover");
+          $(billnum).attr("title","This bill will no longer be active if it does not pass out of its chamber of origin by crossover day")
+        } else if (crossover_status === 1) {
+          console.log(crossover_status);
+          var billnum = $(".billnumhed")
+          $(billnum).addClass("green hover");
+          $(billnum).attr("title","This bill has passed out of its chamber of origin and will remain active after crossover day")
+        }
       }
     });
 
