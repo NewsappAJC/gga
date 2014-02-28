@@ -376,8 +376,12 @@
         </div>
         <% if ( $.isNumeric(predictions) && bill_passed === 0) { %>
         <div class="col-sm-2 well" align="center">
-          <p>Chance of passing <img class="info" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from a statistical model developed by the AJC based on the success or failure of bills from the two previous legislative sessions (2009-2010 and 2011-2012). The model considers a variety of factors, including the party affiliation of the sponsor and co-sponsors, whether the sponsor is a key leadership figure, how early in the session a bill was submitted and textual clues gleaned from the bill’s summary. The technique used by the AJC was tested on previous legislative sessions and the results were reviewed by academics familiar with predictive models."></p>
-          <h1><%- (predictions * 100).toFixed() %>%</h1>
+          <% if (bill_id === 40560) { %>
+            <p>This bill carries the state budget for the next fiscal year and must pass for state government to be funded. Because of this special circumstance, we do not assign a probability to this bill.<p>
+          <% } else { %>
+            <p>Chance of passing <img class="info" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from a statistical model developed by the AJC based on the success or failure of bills from the two previous legislative sessions (2009-2010 and 2011-2012). The model considers a variety of factors, including the party affiliation of the sponsor and co-sponsors, whether the sponsor is a key leadership figure, how early in the session a bill was submitted and textual clues gleaned from the bill’s summary. The technique used by the AJC was tested on previous legislative sessions and the results were reviewed by academics familiar with predictive models."></p>
+            <h1><%- (predictions * 100).toFixed() %>%</h1>
+          <% } %>
         </div>
         <% } %>
       </div>
@@ -564,16 +568,20 @@
             <div>
               <hr>
               <h3>Chance of passing  <img class="info" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from a statistical model developed by the AJC based on the success or failure of bills from the two previous legislative sessions (2009-2010 and 2011-2012). The model considers a variety of factors, including the party affiliation of the sponsor and co-sponsors, whether the sponsor is a key leadership figure, how early in the session a bill was submitted and textual clues gleaned from the bill’s summary. The technique used by the AJC was tested on previous legislative sessions and the results were reviewed by academics familiar with predictive models."></h3>
-                <div class="progress">
-                  <div class="progress-bar"
-                       role="progressbar"
-                       aria-valuenow="<%- (predictions * 100).toFixed() %>"
-                       aria-valuemin="0"
-                       aria-valuemax="100"
-                       style="width: <%- (predictions * 100).toFixed() %>%">
-                    <span class="sr-only"><%- (predictions * 100).toFixed() %>%</span>
+                <% if ( id === 40560 ) { %>
+                  <div><p>This bill carries the state budget for the next fiscal year and must pass for state government to be funded. Because of this special circumstance, we do not assign a probability to this bill.<p></div>
+                <% } else { %>
+                  <div class="progress">
+                    <div class="progress-bar"
+                         role="progressbar"
+                         aria-valuenow="<%- (predictions * 100).toFixed() %>"
+                         aria-valuemin="0"
+                         aria-valuemax="100"
+                         style="width: <%- (predictions * 100).toFixed() %>%">
+                      <span class="sr-only"><%- (predictions * 100).toFixed() %>%</span>
+                    </div>
                   </div>
-                </div>
+                <% } %>
               </div>
             </div>
             <% } %>
