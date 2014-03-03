@@ -347,7 +347,7 @@
           <h3 class="billnumhed">
             <a href="#bills/<%= bill_id %>"><%= document_type %> <%= number %></a>
             <% if (passed_over === -1) { %>
-              <i class="fa fa-times red hover" title="This bill did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules"></i>
+              <i class="fa fa-times red hover" title="This bill or constitutional amendment resolution did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules. Local bills and private resolutions are not affected by the crossover day deadline."></i>
             <% } %>
           </h3>
           <h4><%= caption %></h3></h4>
@@ -457,7 +457,7 @@
         <h3 class="billnumhed">
           <a href="#bills/<%- bill_id %>" id="billhed<%- bill_id %>"><%- document_type %> <%- number %>: <%- title %></a>
           <% if (passed_over === -1) { %>
-            <i class="fa fa-times red hover" title="This bill did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules"></i>
+            <i class="fa fa-times red hover" title="This general bill or constitutional amendment resolution did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules. Local bills and private resolutions are not affected by the crossover day deadline."></i>
           <% } %>
         </h3>
 
@@ -529,7 +529,7 @@
           <div class="col-sm-12">
             <div>
               <% if ( passed_over === -1 ) { %>
-                <p class="red"><b>Note:</b> This bill did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules</p>
+                <p class="red"><b>Note:</b> This general bill did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules. Local bills and provate resolutions are not affected by the crossover day deadline.</p>
               <% } %>
               <p><b><%- caption %></b><p>
               <p><b>Current Status:</b> <%- status_description %></p>
