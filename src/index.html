@@ -465,7 +465,7 @@
         <p><b>Latest status:</b> <%= status_description %> (<%- status_date.toString("MMM d, yyyy") %>)</p>
       </div>
       <div class="col-sm-2">
-        <% if ( $.isNumeric(predictions) && bill_passed === 0) { %>
+        <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
         <div class="alert" id="<%- bill_id %>" align="center">
           <p>Chance of passing</p>
           <h1><%- (predictions * 100).toFixed() %>%</h1>
