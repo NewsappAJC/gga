@@ -255,7 +255,7 @@
                     <% if (batting_average) { %>
                       <h3>Legislative Batting Average:
                           <span id="bat-avg"><%= _.str.ltrim(_.str.sprintf("%.3f", parseFloat(batting_average)), "0") %></span>
-                          <img class="info" src="images/icon_info_alert.png" title="Batting averages were recalculated Feb. 20 to exclude resolutions and to exclude bills introduced during special sessions. We believe this gives a more realistic measure of a legislator's success in passing legislation.">
+                          <img class="info" src="images/icon_info.png" title="Batting averages show the ratio of bills passed out of the general assymbly to bills introduced by a member in previous sessions. The calculation excludes resolutions and bills introduced during special sessions.">
                       </h3>
                       <p>(Proportion of the <%= bill_count %> bills introduced in previous sessions that were passed by the legislature.)</p>
                     <% }else { %>
