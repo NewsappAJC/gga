@@ -41,10 +41,8 @@ define(["app"], function(GeneralAssemblyApp) {
 
         if (crossover_status === -1) {
           var billnum = $(".billnumhed")
-          $(billnum).addClass("red hover");
-          $(billnum).attr("title","This bill will no longer be active if it does not pass out of its chamber of origin by crossover day")
+          $(billnum).addClass("red");
         } else if (crossover_status === 1) {
-          console.log(crossover_status);
           var billnum = $(".billnumhed")
           $(billnum).addClass("green hover");
           $(billnum).attr("title","This bill has passed out of its chamber of origin and will remain active after crossover day")
