@@ -36,10 +36,6 @@ define(["app"], function(GeneralAssemblyApp) {
         if (crossover_status === -1) {
           var billnum = $(".billnumhed")
           $(billnum).addClass("red");
-        // } else if (crossover_status === 1) {
-        //   var billnum = $(".billnumhed")
-        //   $(billnum).addClass("green hover");
-        //   $(billnum).attr("title","This bill has passed out of its chamber of origin and will remain active after crossover day")
         }
       }
     });
