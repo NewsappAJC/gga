@@ -102,67 +102,50 @@
   <!-- TEMPLATES -->
 
   <script type="text/template" id="welcome-layout">
-      <div class="container" id="header">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="alert alert-success">
-              <p>
+    <div class="container" id="header">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="home-head">
+            Georgia Legislative Navigator
+          </h1>
+          <p class="article-credit">
+            By <a href="http://www.myajc.com/staff/john-perry/">John Perry</a>,
+               <a href="http://www.myajc.com/staff/ashlyn-still/">Ashlyn Still</a> and
+               <a href="http://www.myajc.com/staff/jeff-ernsthausen/">Jeff Ernsthausen</a>
+          </p>
+        </div>
+        <div class="col-lg-12">
+          <p>
+            The second year of the 152nd Georgia General Assembly is upon us and the
+            AJC is proud is to offer readers this new tool to track legislation and
+            meet those in power at the Gold Dome. All bills in the tool are
+            categorized by topic, and the AJC staff highlighted legislation with the
+            most significant impact on the general public. Links to lawmakers will
+            show bill sponsorship, recent votes, committee assignments and top campaign
+            donors. The bills and votes reflected are from both sessions of the
+            assembly. Even if a bill was submitted but not voted on before the 2013
+            session closed, it is technically still active. Information in the tool
+            will be updated daily during the 40-day legislative session.
+          </p>
+        </div>
+      </div>
+    </div>
 
-                <form id="bill-search" class="form-search">
-                  <span><b>New Feature:</b> See the chances that a bill will pass this session. </span>
-                  <select id="document-type" class="span2">
-                    <option value="HB">House Bill</option>
-                    <option value="SB">Senate Bill</option>
-                  </select>
-                  <input type="text" class="input-mini span1" id="number">
-                  <button type="submit" class="btn btn-mini">Go</button>
-                </form>
-              </b>
-            </div>
-            <h1 class="home-head">
-              Georgia Legislative Navigator
-            </h1>
-            <p class="article-credit">
-              By <a href="http://www.myajc.com/staff/john-perry/">John Perry</a>,
-                 <a href="http://www.myajc.com/staff/ashlyn-still/">Ashlyn Still</a> and
-                 <a href="http://www.myajc.com/staff/jeff-ernsthausen/">Jeff Ernsthausen</a>
-            </p>
+    <div class="container" id="full-width">
+      <!-- content home -->
+      <div class="row" id="content-home">
+        <div class="col-sm-6">
+          <div class="nav-box" id="bills">
+            <h3>Bills</h3>
           </div>
-          <div class="col-lg-12">
-            <p>
-              The second year of the 152nd Georgia General Assembly is upon us and the
-              AJC is proud is to offer readers this new tool to track legislation and
-              meet those in power at the Gold Dome. All bills in the tool are
-              categorized by topic, and the AJC staff highlighted legislation with the
-              most significant impact on the general public. Links to lawmakers will
-              show bill sponsorship, recent votes, committee assignments and top campaign
-              donors. The bills and votes reflected are from both sessions of the
-              assembly. Even if a bill was submitted but not voted on before the 2013
-              session closed, it is technically still active. Information in the tool
-              will be updated daily during the 40-day legislative session.
-            </p>
+        </div>
+        <div class="col-sm-6">
+          <div class="nav-box" id="members">
+            <h3>Members</h3>
           </div>
         </div>
       </div>
-
-
-
-      <div class="container" id="full-width">
-        <!-- content home -->
-        <div class="row" id="content-home">
-          <div class="col-sm-6">
-            <div class="nav-box" id="bills">
-              <h3>Bills</h3>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="nav-box" id="members">
-              <h3>Members</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-
+    </div>
 
     <div class="container" id="bottom-row">
       <div class="row">
@@ -179,7 +162,7 @@
         <div class="col-sm-4">
           <div class="bottom-third">
             <h3>Days left in session</h3>
-            <h1 id="counter">10</h1>
+            <h1 id="counter">7</h1>
           </div>
         </div>
       </div>
@@ -258,7 +241,7 @@
                     <% if (batting_average) { %>
                       <h3>Legislative Batting Average:
                           <span id="bat-avg"><%= _.str.ltrim(_.str.sprintf("%.3f", parseFloat(batting_average)), "0") %></span>
-                          <img class="info" src="images/icon_info_alert.png" title="Batting averages were recalculated Feb. 20 to exclude resolutions and to exclude bills introduced during special sessions. We believe this gives a more realistic measure of a legislator's success in passing legislation.">
+                          <img class="info" src="images/icon_info.png" title="Batting averages show the ratio of bills passed out of the general assymbly to bills introduced by a member in previous sessions. The calculation excludes resolutions and bills introduced during special sessions.">
                       </h3>
                       <p>(Proportion of the <%= bill_count %> bills introduced in previous sessions that were passed by the legislature.)</p>
                     <% }else { %>
@@ -363,20 +346,17 @@
         <div class="col-sm-10">
           <h3 class="billnumhed">
             <a href="#bills/<%= bill_id %>"><%= document_type %> <%= number %></a>
-            <% if (passed_over === 1) { %>
-              <i class="fa fa-circle green hover" title="This bill has passed out of its chamber of origin and will remain active after crossover day"></i>
-            <% } else if (passed_over === -1) { %>
-              <i class="fa fa-circle red hover" title="This bill will no longer be active if it does not pass out of its chamber of origin by crossover day"></i>
-            <% } else { %>
-              <i class="fa fa-circle blue hover" title="Resolutions and local bills are not affected by crossover day"></i>
+            <% if (passed_over === -1) { %>
+              <i class="fa fa-times red hover" title="This bill or constitutional amendment resolution did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules. The substance of this bill could also be amended to a live bill later in the session. Local bills and private resolutions are not affected by the crossover day deadline."></i>
             <% } %>
           </h3>
           <h4><%= caption %></h3></h4>
           <p><b>Status:</b> <%= status_description %></p>
         </div>
-        <% if ( $.isNumeric(predictions) && bill_passed === 0) { %>
+
+        <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
         <div class="col-sm-2 well" align="center">
-          <% if (bill_id === 40560) { %>
+          <% if (caption.match(/General appropriations.*2015/)) { %>
             <p>This bill carries the state budget for the next fiscal year and must pass for state government to be funded. Because of this special circumstance, we do not assign a probability to this bill.<p>
           <% } else { %>
             <p>Chance of passing <img class="info" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from a statistical model developed by the AJC based on the success or failure of bills from the two previous legislative sessions (2009-2010 and 2011-2012). The model considers a variety of factors, including the party affiliation of the sponsor and co-sponsors, whether the sponsor is a key leadership figure, how early in the session a bill was submitted and textual clues gleaned from the bill’s summary. The technique used by the AJC was tested on previous legislative sessions and the results were reviewed by academics familiar with predictive models."></p>
@@ -476,12 +456,8 @@
       <div class="col-sm-10">
         <h3 class="billnumhed">
           <a href="#bills/<%- bill_id %>" id="billhed<%- bill_id %>"><%- document_type %> <%- number %>: <%- title %></a>
-          <% if (passed_over === 1) { %>
-            <i class="fa fa-circle green hover" title="This bill has passed out of its chamber of origin and will remain active after crossover day"></i>
-          <% } else if (passed_over === -1) { %>
-            <i class="fa fa-circle red hover" title="This bill will no longer be active if it does not pass out of its chamber of origin by crossover day"></i>
-          <% } else { %>
-            <i class="fa fa-circle blue hover" title="Resolutions and local bills are not affected by crossover day"></i>
+          <% if (passed_over === -1) { %>
+            <i class="fa fa-times red hover" title="This general bill or constitutional amendment resolution did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules. The substance of this bill could also be amended to a live bill later in the session. Local bills and private resolutions are not affected by the crossover day deadline."></i>
           <% } %>
         </h3>
 
@@ -489,7 +465,7 @@
         <p><b>Latest status:</b> <%= status_description %> (<%- status_date.toString("MMM d, yyyy") %>)</p>
       </div>
       <div class="col-sm-2">
-        <% if ( $.isNumeric(predictions) && bill_passed === 0) { %>
+        <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
         <div class="alert" id="<%- bill_id %>" align="center">
           <p>Chance of passing</p>
           <h1><%- (predictions * 100).toFixed() %>%</h1>
@@ -553,18 +529,14 @@
           <div class="col-sm-12">
             <div>
               <% if ( passed_over === -1 ) { %>
-                <p class="red"><b>Note:</b> This bill will no longer be active if it does not pass out of its chamber or origin by crossover day</p>
-              <% } else if ( passed_over === 1 ) { %>
-                <p class="green"><b>Note:</b> This has been passed out of its chamber or origin and will remain active after crossover day</p>
-              <% } else { %>
-                <p class="blue"><b>Note:</b> Resolutions and local bills are not affected by crossover day</p>
+                <p class="red"><b>Note:</b> This general bill or constitutional amendment resolution did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules. The substance of this bill could also be amended to a live bill later in the session. Local bills and private resolutions are not affected by the crossover day deadline.</p>
               <% } %>
               <p><b><%- caption %></b><p>
               <p><b>Current Status:</b> <%- status_description %></p>
               <p><b>Current Version:</b> <a href="<%- latest_version_url %>" target="_blank"><%- latest_version_description %></a></p>
               <p><b>Official Summary:</b> <%- summary %></p>
             </div>
-            <% if ( $.isNumeric(predictions) && bill_passed === 0) { %>
+            <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
             <div>
               <hr>
               <h3>Chance of passing  <img class="info" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from a statistical model developed by the AJC based on the success or failure of bills from the two previous legislative sessions (2009-2010 and 2011-2012). The model considers a variety of factors, including the party affiliation of the sponsor and co-sponsors, whether the sponsor is a key leadership figure, how early in the session a bill was submitted and textual clues gleaned from the bill’s summary. The technique used by the AJC was tested on previous legislative sessions and the results were reviewed by academics familiar with predictive models."></h3>
