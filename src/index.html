@@ -117,7 +117,7 @@
                 <input type="text" class="input-mini span1" id="number">
                 <button type="submit" class="btn btn-mini">Go</button>
               </form>
-            </b>
+            </p>
           </div>
           <h1 class="home-head">
             Georgia Legislative Navigator
@@ -373,7 +373,7 @@
           <% if (caption.match(/General appropriations.*2015/)) { %>
             <p>This bill carries the state budget for the next fiscal year and must pass for state government to be funded. Because of this special circumstance, we do not assign a probability to this bill.<p>
           <% } else { %>
-            <p>Chance of passing <img class="info" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from a statistical model developed by the AJC based on the success or failure of bills that survived the crossover day daeadline during the three previous legislative sessions (2008-2009, 2009-2010 and 2011-2012). The model considers a variety of factors, including the party affiliation of the sponsor and co-sponsors, whether the sponsor is a key leadership figure, how recently the bill had any activity and where it stands in the process. The technique used by the AJC was tested on previous legislative sessions and the results were reviewed by academics familiar with predictive models."></p>
+            <p>Chance of passing <img class="info" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from statistical models developed by the AJC based on the success or failure of bills that survived the crossover day deadline during the three previous legislative sessions (2008-2009, 2009-2010 and 2011-2012). The models consider a variety of factors, including whether the sponsor is a key leadership figure, how recently the bill had any activity and where it stands in the process. The technique used by the AJC was tested on previous legislative sessions."></p>
             <h1><%- (predictions * 100).toFixed() %>%</h1>
           <% } %>
         </div>
@@ -481,7 +481,7 @@
       <div class="col-sm-2">
         <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
         <div class="alert" id="<%- bill_id %>" align="center">
-          <p>Chance of passing <img class="info" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from a statistical model developed by the AJC based on the success or failure of bills that survived the crossover day daeadline during the three previous legislative sessions (2008-2009, 2009-2010 and 2011-2012). The model considers a variety of factors, including the party affiliation of the sponsor and co-sponsors, whether the sponsor is a key leadership figure, how recently the bill had any activity and where it stands in the process. The technique used by the AJC was tested on previous legislative sessions and the results were reviewed by academics familiar with predictive models."></p>
+          <p>Chance of passing <img class="info" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from statistical models developed by the AJC based on the success or failure of bills that survived the crossover day deadline during the three previous legislative sessions (2008-2009, 2009-2010 and 2011-2012). The models consider a variety of factors, including whether the sponsor is a key leadership figure, how recently the bill had any activity and where it stands in the process. The technique used by the AJC was tested on previous legislative sessions."></p>
           <h1><%- (predictions * 100).toFixed() %>%</h1>
         </div>
         <% } %>
@@ -554,7 +554,7 @@
             <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
               <div>
                 <hr>
-                <h3>Chance of passing  <img class="info" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from a statistical model developed by the AJC based on the success or failure of bills that survived the crossover day daeadline during the three previous legislative sessions (2008-2009, 2009-2010 and 2011-2012). The model considers a variety of factors, including the party affiliation of the sponsor and co-sponsors, whether the sponsor is a key leadership figure, how recently the bill had any activity and where it stands in the process. The technique used by the AJC was tested on previous legislative sessions and the results were reviewed by academics familiar with predictive models."></h3>
+                <h3>Chance of passing  <img class="info" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from statistical models developed by the AJC based on the success or failure of bills that survived the crossover day deadline during the three previous legislative sessions (2008-2009, 2009-2010 and 2011-2012). The models consider a variety of factors, including whether the sponsor is a key leadership figure, how recently the bill had any activity and where it stands in the process. The technique used by the AJC was tested on previous legislative sessions."></h3>
                   <% if ( id === 40560 ) { %>
                     <div><p>This bill carries the state budget for the next fiscal year and must pass for state government to be funded. Because of this special circumstance, we do not assign a probability to this bill.<p></div>
                   <% } else { %>
