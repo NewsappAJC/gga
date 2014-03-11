@@ -44,6 +44,10 @@ define(["app"], function(GeneralAssemblyApp) {
         GeneralAssemblyApp.Common.tweet(document);
       }
     });
+
+    View.DaysLeftView = Marionette.ItemView.extend({
+      template: "#days-left-template"
+    });
   });
   return GeneralAssemblyApp.WelcomeApp.View;
 });
