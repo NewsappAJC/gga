@@ -67,6 +67,7 @@ module.exports = function(grunt) {
           'build/scripts/entities/member.js'           : ['src/scripts/entities/member.js'],
           'build/scripts/entities/top_contributors.js' : ['src/scripts/entities/top_contributors.js'],
           'build/scripts/entities/watched_bill.js'     : ['src/scripts/entities/watched_bill.js'],
+          'build/scripts/entities/days_left.js'        : ['src/scripts/entities/days_left.js'],
 
           'build/scripts/apps/bills/bills_app.js'            : ['src/scripts/apps/bills/bills_app.js'],
           'build/scripts/apps/bills/show/show_controller.js' : ['src/scripts/apps/bills/show/show_controller.js'],
