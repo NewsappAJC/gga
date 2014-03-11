@@ -3,7 +3,8 @@ define(["app"], function(GeneralAssemblyApp) {
     View.WelcomeLayout = Marionette.Layout.extend({
       template: "#welcome-layout",
       regions: {
-        billsCountRegion: "#bill-count-region"
+        billsCountRegion: "#bill-count-region",
+        daysLeftRegion: "#days-left-region"
       },
       events: {
         "click #bills": "showWatchedBills",
