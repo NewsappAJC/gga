@@ -19,9 +19,9 @@ define(["marionette"], function(Marionette) {
       require(["apps/welcome/welcome_app","apps/members/members_app","apps/watched_bills/watched_bills_app","apps/bills/bills_app","apps/about/about_app","entities/common","common/views","common/app"], function() {
         Backbone.history.start();
 
-        if (GeneralAssemblyApp.getCurrentRoute() === "") {
-          GeneralAssemblyApp.trigger("welcome:show");
-        }
+        // if (GeneralAssemblyApp.getCurrentRoute() === "") {
+        //   GeneralAssemblyApp.trigger("welcome:show");
+        // }
 
         var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0Ap9h1zLSgOWUdEhsQi1Yb0JZV3REUVExV1hqT2h6NHc&output=html';
         Tabletop.init({
