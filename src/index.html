@@ -169,19 +169,21 @@
         </div>
         <div class="col-sm-4">
           <div class="bottom-third">
-            <h3>Latest News</h3>
-            <div id="news-feeds">
-            </div>
+            <div id="news-feeds"></div>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="bottom-third">
-            <h3>Days left in session</h3>
-            <h1 id="counter">4</h1>
+            <div id="days-left-region"></div>
           </div>
         </div>
       </div>
     </div>
+  </script>
+
+  <script type="text/template" id="days-left-template">
+    <h3>Days left in session</h3>
+    <h1 id="counter"><%- days_left %></h1>
   </script>
 
   <script type = "text/template" id="member-icon-template">

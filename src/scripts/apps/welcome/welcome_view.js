@@ -3,7 +3,8 @@ define(["app"], function(GeneralAssemblyApp) {
     View.WelcomeLayout = Marionette.Layout.extend({
       template: "#welcome-layout",
       regions: {
-        billsCountRegion: "#bill-count-region"
+        billsCountRegion: "#bill-count-region",
+        daysLeftRegion: "#days-left-region"
       },
       events: {
         "click #bills": "showWatchedBills",
@@ -43,6 +44,10 @@ define(["app"], function(GeneralAssemblyApp) {
         GeneralAssemblyApp.Common.facebook(document);
         GeneralAssemblyApp.Common.tweet(document);
       }
+    });
+
+    View.DaysLeftView = Marionette.ItemView.extend({
+      template: "#days-left-template"
     });
   });
   return GeneralAssemblyApp.WelcomeApp.View;
