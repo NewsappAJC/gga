@@ -17,19 +17,6 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      files: [
-        'Gruntfile.js',
-        'src/scripts/*.js',
-        'src/scripts/entities/*.js',
-        'src/scripts/apps/bills/*.js',
-        'src/scripts/apps/bills/show/*.js',
-        'src/scripts/apps/members/*.js',
-        'src/scripts/apps/members/list/*.js',
-        'src/scripts/apps/members/show/*.js',
-        'src/scripts/apps/watched_bills/*.js',
-        'src/scripts/apps/watched_bills/list/*.js',
-        'src/scripts/apps/watched_bills/show/*.js'
-      ],
       options: {
         browser: true,
         curly: true,
@@ -38,13 +25,46 @@ module.exports = function(grunt) {
         //quotmark: true,
         undef: true,
         unused: true,
-        strict: true,
+        // TODO: Re-enable
+        //strict: true,
         trailing: true,
         smarttabs: true,
-        indent: 2,
-        globals: {
-          JQuery: true,
-          $: true
+        indent: 2
+      },
+      src: {
+        options: {
+          globals: {
+            JQuery: true,
+            $: true,
+            require: true,
+            define: true,
+            _: true,
+            Backbone: true
+          }
+        },
+        files: {
+          src: [
+            'src/scripts/*.js',
+            // TODO: Remove built files from `src/` directory
+            '!src/scripts/require_main.built*',
+            'src/scripts/entities/*.js',
+            'src/scripts/apps/bills/*.js',
+            'src/scripts/apps/bills/show/*.js',
+            'src/scripts/apps/members/*.js',
+            'src/scripts/apps/members/list/*.js',
+            'src/scripts/apps/members/show/*.js',
+            'src/scripts/apps/watched_bills/*.js',
+            'src/scripts/apps/watched_bills/list/*.js',
+            'src/scripts/apps/watched_bills/show/*.js'
+          ]
+        }
+      },
+      build: {
+        options: {
+          node: true
+        },
+        files: {
+          src: ['Gruntfile.js']
         }
       }
     },

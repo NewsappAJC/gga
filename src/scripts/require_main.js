@@ -1,4 +1,4 @@
-requirejs.config({
+require.config({
   // enforceDefine: true,
   baseUrl: "scripts",
   paths: {
