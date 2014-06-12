@@ -5,6 +5,9 @@ var chrome = require('selenium-webdriver/chrome');
 var chromeService = new chrome.ServiceBuilder(chromeDriver.path);
 var port = process.env.__TEST_PORT;
 
+var hasClass = require('./util/has-class');
+var filter = require('./util/filter');
+
 describe('homepage', function() {
   var driver;
 
@@ -50,6 +53,26 @@ describe('homepage', function() {
         .then(function(memberEls) {
           assert.equal(memberEls.length, 236);
         });
+    });
+
+    describe('filtering', function() {
+      this.timeout(8000);
+
+      it('republicans', function() {
+        return filter(driver, 'republicans').then(function(result) {
+          assert.equal(result.republicans, 157);
+          assert.equal(result.democrats, 0);
+          assert.equal(result.independents, 0);
+        });
+      });
+
+      it('democrats', function() {
+        return filter(driver, 'democrats').then(function(result) {
+          assert.equal(result.republicans, 0);
+          assert.equal(result.democrats, 78);
+          assert.equal(result.independents, 0);
+        });
+      });
     });
   });
 });
