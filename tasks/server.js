@@ -10,5 +10,9 @@ module.exports = function(grunt) {
 
     app.listen(port);
     grunt.log.writeln('Now running server on port ' + port);
+
+    if (this.flags.hang) {
+      this.async();
+    }
   });
 };
