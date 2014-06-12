@@ -1,4 +1,6 @@
 define(["app"], function(GeneralAssemblyApp) {
+  "use strict";
+
   GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Backbone, Marionette, $, _){
     Entities.members_url = Entities.api_base + "members/";
 

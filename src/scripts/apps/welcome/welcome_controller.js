@@ -1,4 +1,6 @@
 define(["app","apps/welcome/welcome_view"], function(GeneralAssemblyApp, View) {
+  "use strict";
+
   GeneralAssemblyApp.module("WelcomeApp", function(WelcomeApp, GeneralAssemblyApp, Backbone, Marionette, $) {
     WelcomeApp.Controler = {
       showWelcome: function() {

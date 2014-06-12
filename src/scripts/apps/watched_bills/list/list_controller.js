@@ -1,4 +1,6 @@
 define(["app","apps/watched_bills/list/list_view"], function(GeneralAssemblyApp, View) {
+  "use strict";
+
   GeneralAssemblyApp.module("WatchedBillsApp.List", function(List, GeneralAssemblyApp, Backbone, Marionette, $, _) {
     List.Controller = {
       listCategories: function() {

@@ -1,4 +1,6 @@
 define(["marionette"], function(Marionette) {
+  "use strict";
+
   var GeneralAssemblyApp = new Marionette.Application();
 
   GeneralAssemblyApp.addRegions({

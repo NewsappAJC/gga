@@ -1,4 +1,6 @@
 define(["app"], function(GeneralAssemblyApp) {
+  "use strict";
+
   GeneralAssemblyApp.module("BillsApp.List.View", function(View, GeneralAssemblyApp, Backbone, Marionette) {
     // TODO: Determine if this is dead code and remove if so.
     View.BillView = Marionette.ItemView.extend({

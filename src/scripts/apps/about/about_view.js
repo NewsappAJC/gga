@@ -1,4 +1,6 @@
 define(["app"], function(GeneralAssemblyApp) {
+  "use strict";
+
   GeneralAssemblyApp.module("AboutApp.View", function(View, GeneralAssemblyApp, Backbone, Marionette, $) {
     View.AboutView = Marionette.ItemView.extend({
       template: "#about-template",

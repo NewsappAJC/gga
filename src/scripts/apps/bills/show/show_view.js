@@ -1,4 +1,6 @@
 define(["app"], function(GeneralAssemblyApp) {
+  "use strict";
+
   GeneralAssemblyApp.module("BillsApp.Show.View", function(View, GeneralAssemblyApp, Backbone, Marionette, $) {
     View.BillLayout = Marionette.Layout.extend({
       template: "#bill-detail-layout",

@@ -1,4 +1,6 @@
 define(["app"], function(GeneralAssemblyApp) {
+  "use strict";
+
   GeneralAssemblyApp.module("WatchedBillsApp.Show.View", function(View, GeneralAssemblyApp, Backbone, Marionette, $) {
     View.CategoryLayout = Marionette.Layout.extend({
       template: "#show-category-layout",

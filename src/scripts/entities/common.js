@@ -1,4 +1,6 @@
 define(["app"], function(GeneralAssemblyApp) {
+  "use strict";
+
   GeneralAssemblyApp.module("Entities", function(Entities, ContactManager, Backbone, Marionette, $, _){
     Entities.api_base = "http://ajcgga-api.herokuapp.com/api/";
     // Entities.api_base = "http://gga-api-staging.herokuapp.com/api/";

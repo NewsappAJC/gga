@@ -1,4 +1,6 @@
 define(["app","apps/bills/show/show_view"], function(GeneralAssemblyApp, View) {
+  "use strict";
+
   GeneralAssemblyApp.module("BillsApp.Show", function(Show, GeneralAssemblyApp, Backbone, Marionette, $) {
     Show.Controller = {
       showBill: function(param) {

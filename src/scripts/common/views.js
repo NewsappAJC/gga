@@ -1,4 +1,6 @@
 define(["app"], function(GeneralAssemblyApp) {
+  "use strict";
+
   GeneralAssemblyApp.module("Common.View", function(View, GeneralAssemblyApp, Backbone, Marionette, $) {
     View.Loading = Marionette.ItemView.extend({
       template: "#loading-template",

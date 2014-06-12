@@ -1,4 +1,6 @@
 define(["app","apps/members/list/list_view"], function(GeneralAssemblyApp, View) {
+  "use strict";
+
   GeneralAssemblyApp.module("MembersApp.List", function(List, GeneralAssemblyApp, Backbone, Marionette, $) {
     List.Controller = {
       listMembers: function(criterion) {

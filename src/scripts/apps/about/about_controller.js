@@ -1,4 +1,6 @@
 define(["app","apps/about/about_view"], function(GeneralAssemblyApp, View) {
+  "use strict";
+
   GeneralAssemblyApp.module("AboutApp", function(AboutApp, GeneralAssemblyApp) {
     AboutApp.Controler = {
       showAbout: function() {

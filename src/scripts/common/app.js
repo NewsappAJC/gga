@@ -1,4 +1,6 @@
 define(["app"], function(GeneralAssemblyApp) {
+  "use strict";
+
   GeneralAssemblyApp.module("Common", function(Common) {
     Common.tweet = function(d, s, id){
       s = typeof s !== "undefined" ? s : "script";

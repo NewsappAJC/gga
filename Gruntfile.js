@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = function(grunt) {
   // Project configuration
   grunt.initConfig({
@@ -25,8 +27,7 @@ module.exports = function(grunt) {
         //quotmark: true,
         undef: true,
         unused: true,
-        // TODO: re-enable the "strict" option
-        //strict: true,
+        strict: true,
         trailing: true,
         smarttabs: true,
         indent: 2
