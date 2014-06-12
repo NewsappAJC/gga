@@ -57,8 +57,6 @@ module.exports = function(grunt) {
       },
       my_target: {
         files: {
-          'build/scripts/require_main.js'       : ['src/scripts/require_main.js'],
-          'build/scripts/require_main.built.js' : ['src/scripts/require_main.built.js'],
           'build/scripts/app.js'                : ['src/scripts/app.js'],
           'build/scripts/lib/require.js'        : ['src/scripts/lib/require.js'],
 
@@ -124,6 +122,17 @@ module.exports = function(grunt) {
         }
       }
     },
+    requirejs: {
+      compile: {
+        options: {
+          baseUrl: "src/scripts",
+          name: "require_main",
+          mainConfigFile: "src/scripts/require_main.js",
+          out: "build/scripts/require_main.js",
+          optimize: "uglify2"
+        }
+      }
+    },
     s3: {
       options: {
         key: "<%= aws.key %>",
@@ -172,8 +181,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-s3');
 
-  grunt.registerTask('default', ['copy','uglify','htmlmin','cssmin','s3']);
+  grunt.registerTask('build', ['copy', 'requirejs', 'uglify', 'htmlmin', 'cssmin']);
+  grunt.registerTask('default', ['build','s3']);
 };
 
