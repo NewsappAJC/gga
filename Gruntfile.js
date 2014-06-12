@@ -197,6 +197,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-s3');
 
+  grunt.loadTasks('tasks');
+
+  grunt.registerTask('test-integration', ['server', 'mochaTest']);
+
   grunt.registerTask('build', ['copy', 'requirejs', 'uglify', 'htmlmin', 'cssmin']);
   grunt.registerTask('default', ['build','s3']);
 };
