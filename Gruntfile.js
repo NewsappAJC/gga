@@ -124,6 +124,16 @@ module.exports = function(grunt) {
         }
       }
     },
+    requirejs: {
+      compile: {
+        options: {
+          baseUrl: "src/scripts",
+          name: "require_main",
+          mainConfigFile: "src/scripts/require_main.js",
+          out: "src/scripts/require_main.built.js"
+        }
+      }
+    },
     s3: {
       options: {
         key: "<%= aws.key %>",
@@ -172,8 +182,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-s3');
 
-  grunt.registerTask('default', ['copy','uglify','htmlmin','cssmin','s3']);
+  grunt.registerTask('build', ['requirejs', 'copy', 'uglify', 'htmlmin', 'cssmin']);
+  grunt.registerTask('default', ['build','s3']);
 };
 
