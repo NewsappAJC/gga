@@ -187,6 +187,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-s3');
 
+  grunt.loadTasks('tasks');
+
+  grunt.registerTask('test-integration', ['server', 'mochaTest']);
+
   grunt.registerTask('default', ['copy','uglify','htmlmin','cssmin','s3']);
 };
 
