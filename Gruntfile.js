@@ -59,6 +59,22 @@ module.exports = function(grunt) {
         files: {
           src: ['Gruntfile.js']
         }
+      },
+      test: {
+        options: {
+          node: true,
+          globals: {
+            describe: true,
+            it: true,
+            beforeEach: true,
+            afterEach: true,
+            before: true,
+            after: true
+          }
+        },
+        files: {
+          src: ['test/**/*.js']
+        }
       }
     },
     uglify: {
