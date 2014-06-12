@@ -2,7 +2,6 @@
 
 var webdriver = require('selenium-webdriver');
 var assert = require('assert');
-var path = require('path');
 var chromeDriver = require('selenium-chromedriver');
 var chrome = require('selenium-webdriver/chrome');
 var chromeService = new chrome.ServiceBuilder(chromeDriver.path);
@@ -43,7 +42,7 @@ describe('homepage', function() {
         .then(function(membersElement) {
           return membersElement.click();
         })
-        .then(function(membersElement) {
+        .then(function() {
           return driver.isElementPresent(webdriver.By.css('#members-region'));
         });
     });
