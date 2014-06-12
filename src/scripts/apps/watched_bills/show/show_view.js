@@ -1,5 +1,5 @@
 define(["app"], function(GeneralAssemblyApp) {
-  GeneralAssemblyApp.module("WatchedBillsApp.Show.View", function(View, GeneralAssemblyApp, Backbone, Marionette, $, _) {
+  GeneralAssemblyApp.module("WatchedBillsApp.Show.View", function(View, GeneralAssemblyApp, Backbone, Marionette, $) {
     View.CategoryLayout = Marionette.Layout.extend({
       template: "#show-category-layout",
       regions: {

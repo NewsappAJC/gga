@@ -1,5 +1,5 @@
 define(["app"], function(GeneralAssemblyApp) {
-  GeneralAssemblyApp.module("Common.View", function(View, GeneralAssemblyApp, Backbone, Marionette, $, _) {
+  GeneralAssemblyApp.module("Common.View", function(View, GeneralAssemblyApp, Backbone, Marionette, $) {
     View.Loading = Marionette.ItemView.extend({
       template: "#loading-template",
       onShow: function() {
@@ -29,5 +29,5 @@ define(["app"], function(GeneralAssemblyApp) {
       template: "#bills-count-template"
     });
   });
-  return GeneralAssemblyApp.Common.View
+  return GeneralAssemblyApp.Common.View;
 });

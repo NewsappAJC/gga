@@ -1,5 +1,5 @@
 define(["app"], function(GeneralAssemblyApp) {
-  GeneralAssemblyApp.module("AboutApp", function(AboutApp, GeneralAssemblyApp, Backbone, Marionette, $, _) {
+  GeneralAssemblyApp.module("AboutApp", function(AboutApp, GeneralAssemblyApp, Backbone, Marionette) {
     AboutApp.Router = Marionette.AppRouter.extend({
       appRoutes: {
         "about": "about"

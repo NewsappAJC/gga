@@ -1,5 +1,5 @@
 define(["app"], function(GeneralAssemblyApp) {
-  GeneralAssemblyApp.module("BillsApp", function(BillsApp, GeneralAssemblyApp, Backbone, Marionette, $, _) {
+  GeneralAssemblyApp.module("BillsApp", function(BillsApp, GeneralAssemblyApp, Backbone, Marionette) {
     BillsApp.Router = Marionette.AppRouter.extend({
       appRoutes: {
         "bills(?:query)": "listBills",
@@ -9,8 +9,9 @@ define(["app"], function(GeneralAssemblyApp) {
     });
 
     var API = {
-      listBills: function(query) {
-        require(["apps/bills/list/list_controller"], function (ListController) {
+      listBills: function() {
+        require(["apps/bills/list/list_controller"], function () {
+          // TODO: Do something with required module?
         });
       },
       showBill: function(id) {

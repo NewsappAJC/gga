@@ -1,5 +1,5 @@
 define(["app"], function(GeneralAssemblyApp) {
-  GeneralAssemblyApp.module("WatchedBillsApp.List.View", function(View, GeneralAssemblyApp, Backbone, Marionette, $, _) {
+  GeneralAssemblyApp.module("WatchedBillsApp.List.View", function(View, GeneralAssemblyApp, Backbone, Marionette, $) {
     View.CategoriesLayout = Marionette.Layout.extend({
       template: "#bill-category-layout",
       regions: {
@@ -27,7 +27,7 @@ define(["app"], function(GeneralAssemblyApp) {
       showBillsCategory: function(e) {
         e.preventDefault();
         e.stopPropagation();
-        GeneralAssemblyApp.trigger("watchedbills:categories:show", this.model.get("name"))
+        GeneralAssemblyApp.trigger("watchedbills:categories:show", this.model.get("name"));
       }
     });
 

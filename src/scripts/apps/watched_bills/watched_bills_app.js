@@ -1,5 +1,5 @@
 define(["app"], function(GeneralAssemblyApp) {
-  GeneralAssemblyApp.module("WatchedBillsApp", function(WatchedBillsApp, GeneralAssemblyApp, Backbone, Marionette, $, _) {
+  GeneralAssemblyApp.module("WatchedBillsApp", function(WatchedBillsApp, GeneralAssemblyApp, Backbone, Marionette) {
     WatchedBillsApp.Router = Marionette.AppRouter.extend({
       appRoutes: {
         "watched_bills": "listBillCategories",

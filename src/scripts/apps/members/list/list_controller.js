@@ -1,5 +1,5 @@
 define(["app","apps/members/list/list_view"], function(GeneralAssemblyApp, View) {
-  GeneralAssemblyApp.module("MembersApp.List", function(List, GeneralAssemblyApp, Backbone, Marionette, $, _) {
+  GeneralAssemblyApp.module("MembersApp.List", function(List, GeneralAssemblyApp, Backbone, Marionette, $) {
     List.Controller = {
       listMembers: function(criterion) {
         require(["entities/member"], function() {
@@ -9,7 +9,7 @@ define(["app","apps/members/list/list_view"], function(GeneralAssemblyApp, View)
           var membersListPanel = new View.MemberPanel();
 
           $.when(fetchingMembers).done(function(members) {
-            filteredMembers = GeneralAssemblyApp.Entities.FilteredCollection({
+            var filteredMembers = GeneralAssemblyApp.Entities.FilteredCollection({
               collection: members,
               filterCriterion: criterion
             });

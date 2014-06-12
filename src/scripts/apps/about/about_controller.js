@@ -1,5 +1,5 @@
 define(["app","apps/about/about_view"], function(GeneralAssemblyApp, View) {
-  GeneralAssemblyApp.module("AboutApp", function(AboutApp, GeneralAssemblyApp, Backbone, Marionette, $, _) {
+  GeneralAssemblyApp.module("AboutApp", function(AboutApp, GeneralAssemblyApp) {
     AboutApp.Controler = {
       showAbout: function() {
         var aboutView = new View.AboutView();

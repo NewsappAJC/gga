@@ -5,7 +5,7 @@ define(["app"], function(GeneralAssemblyApp) {
 
     Entities.Bill = Backbone.Model.extend({
       initialize: function(id) {
-        this.url = Entities.bills_url + id
+        this.url = Entities.bills_url + id;
       }
     });
     Entities.Bills = Backbone.Collection.extend({
@@ -22,8 +22,13 @@ define(["app"], function(GeneralAssemblyApp) {
     Entities.BillAuthor = Backbone.Model.extend({
       initialize: function() {
         var full_name = this.get("name_first") + " ";
-        if ( ! _.isNull(this.get("name_middle")) ) full_name += this.get("name_middle") + " ";
-        if ( ! _.isNull(this.get("name_nickname")) ) full_name += "'" + this.get("name_nickname") + "' ";
+        if ( ! _.isNull(this.get("name_middle")) ) {
+          full_name += this.get("name_middle") + " ";
+        }
+        if ( ! _.isNull(this.get("name_nickname")) ) {
+          full_name += "'" + this.get("name_nickname") + "' ";
+        }
+
         full_name += this.get("name_last");
         this.set("full_name", full_name);
       }
@@ -61,7 +66,7 @@ define(["app"], function(GeneralAssemblyApp) {
     var API = {
       getBillsCount: function() {
         var defer = $.Deferred();
-        Entities.bills_count = new Entities.BillsCount()
+        Entities.bills_count = new Entities.BillsCount();
         Entities.bills_count.fetch({
           dataType: "jsonp",
           success: function(data) {
@@ -76,11 +81,11 @@ define(["app"], function(GeneralAssemblyApp) {
         // either the bill id or a string with the doc type (i.e. HB) and
         // bill number separated by a '/'
         var defer = $.Deferred();
-        bill = new Entities.Bill(param);
+        var bill = new Entities.Bill(param);
         bill.fetch({
           dataType: "jsonp",
           success: function(data) {
-            defer.resolve(data)
+            defer.resolve(data);
           }
         });
         return defer.promise();
@@ -88,11 +93,12 @@ define(["app"], function(GeneralAssemblyApp) {
 
       getBills: function() {
         var defer = $.Deferred();
-        bills = new Entities.Bills();
+        var bills = new Entities.Bills();
         bills.fetch({
           dataType: "jsonp",
           success: function() {
-            defer.resolve(data)
+            // TODO: Ensure this is not dead code and resolve with data
+            defer.resolve();
           }
         });
         return defer.promise();

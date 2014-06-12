@@ -25,7 +25,8 @@ module.exports = function(grunt) {
         //quotmark: true,
         undef: true,
         unused: true,
-        strict: true,
+        // TODO: re-enable the "strict" option
+        //strict: true,
         trailing: true,
         smarttabs: true,
         indent: 2
@@ -34,21 +35,23 @@ module.exports = function(grunt) {
         options: {
           globals: {
             JQuery: true,
-            $: true
+            $: true,
+            require: true,
+            define: true,
+            _: true,
+            Backbone: true,
+            Tabletop: true,
+            google: true
           }
         },
         files: {
           src: [
-            'src/scripts/*.js',
-            'src/scripts/entities/*.js',
-            'src/scripts/apps/bills/*.js',
-            'src/scripts/apps/bills/show/*.js',
-            'src/scripts/apps/members/*.js',
-            'src/scripts/apps/members/list/*.js',
-            'src/scripts/apps/members/show/*.js',
-            'src/scripts/apps/watched_bills/*.js',
-            'src/scripts/apps/watched_bills/list/*.js',
-            'src/scripts/apps/watched_bills/show/*.js'
+            'src/scripts/**/*.js',
+            '!src/scripts/build.js',
+            // TODO: Remove built files from `src/` directory
+            '!src/scripts/require_main.built*',
+            '!src/scripts/underscore*',
+            '!src/scripts/lib/**/*'
           ]
         }
       },

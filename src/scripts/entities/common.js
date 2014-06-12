@@ -10,7 +10,7 @@ define(["app"], function(GeneralAssemblyApp) {
       filtered.filterCriterion = options.filterCriterion || {};
 
       var applyFilter = function(filterCriterion, collection) {
-        var collection = collection || original;
+        collection = collection || original;
         var criterion = filterCriterion;
 
         var items = _.isEmpty(criterion) ? collection.models : collection.where(criterion);

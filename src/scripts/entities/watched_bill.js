@@ -1,11 +1,13 @@
 define(["app"], function(GeneralAssemblyApp) {
-  GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Backbone, Marionette, $, _){
+  GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Backbone, Marionette, $){
     Entities.watched_bills_url = Entities.api_base + 'watched_bills/';
 
     Entities.WatchedBill = Backbone.Model.extend({
       base_url: Entities.watched_bills_url,
       initialize: function() {
-        if ( this.get("category") ) this.set("category", this.get("category").replace(/ /g,'_'));
+        if ( this.get("category") ) {
+          this.set("category", this.get("category").replace(/ /g,'_'));
+        }
         this.set("status_date", new Date(this.get("status_date")));
       }
     });
@@ -25,7 +27,7 @@ define(["app"], function(GeneralAssemblyApp) {
     var API = {
       getWatchedBills: function() {
         var defer = $.Deferred();
-        if (! Entities.watched_bills || Entities.watched_bills.length == 0) {
+        if (! Entities.watched_bills || Entities.watched_bills.length === 0) {
           Entities.watched_bills = new Entities.WatchedBills();
           Entities.watched_bills.fetch({
             dataType: "jsonp",

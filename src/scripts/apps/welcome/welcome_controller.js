@@ -1,5 +1,5 @@
 define(["app","apps/welcome/welcome_view"], function(GeneralAssemblyApp, View) {
-  GeneralAssemblyApp.module("WelcomeApp", function(WelcomeApp, GeneralAssemblyApp, Backbone, Marionette, $, _) {
+  GeneralAssemblyApp.module("WelcomeApp", function(WelcomeApp, GeneralAssemblyApp, Backbone, Marionette, $) {
     WelcomeApp.Controler = {
       showWelcome: function() {
         require(["entities/bill","entities/days_left","goog!feeds,1"], function() {
@@ -8,11 +8,11 @@ define(["app","apps/welcome/welcome_view"], function(GeneralAssemblyApp, View) {
           var fetchingDaysLeft = GeneralAssemblyApp.request("days:left");
 
           $.when(fetchingBillsCount, fetchingDaysLeft).done(function(billsCount, daysLeft) {
-            billsCountView = new GeneralAssemblyApp.Common.View.BillsCountView({
+            var billsCountView = new GeneralAssemblyApp.Common.View.BillsCountView({
               model: billsCount
             });
 
-            daysLeftView = new View.DaysLeftView({
+            var daysLeftView = new View.DaysLeftView({
               model: daysLeft
             });
 

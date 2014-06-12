@@ -1,5 +1,5 @@
 define(["app"], function(GeneralAssemblyApp) {
-  GeneralAssemblyApp.module("BillsApp.Show.View", function(View, GeneralAssemblyApp, Backbone, Marionette, $, _) {
+  GeneralAssemblyApp.module("BillsApp.Show.View", function(View, GeneralAssemblyApp, Backbone, Marionette, $) {
     View.BillLayout = Marionette.Layout.extend({
       template: "#bill-detail-layout",
       className: "container",
@@ -34,7 +34,7 @@ define(["app"], function(GeneralAssemblyApp) {
         });
 
         if (crossover_status === -1) {
-          var billnum = $(".billnumhed")
+          var billnum = $(".billnumhed");
           $(billnum).addClass("red");
         }
       }
@@ -44,7 +44,7 @@ define(["app"], function(GeneralAssemblyApp) {
     View.AuthorView = Marionette.ItemView.extend({
       tagName: "li",
       className: function() {
-        return "media " + this.model.get("party")
+        return "media " + this.model.get("party");
       },
       template: "#bill-author-template"
     });

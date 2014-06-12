@@ -1,5 +1,5 @@
 define(["app"], function(GeneralAssemblyApp) {
-  GeneralAssemblyApp.module("MembersApp.List.View", function(View, GeneralAssemblyApp, Backbone, Marionette, $, _) {
+  GeneralAssemblyApp.module("MembersApp.List.View", function(View, GeneralAssemblyApp, Backbone, Marionette, $) {
     View.MemberLayout = Marionette.Layout.extend({
       template: "#member-list-layout",
       regions: {
@@ -63,7 +63,8 @@ define(["app"], function(GeneralAssemblyApp) {
           if ((navPos.top+jumboHeight) < offset){
             $('#panel-region').addClass('fixed');
             $('#members-region').css({'margin-top':'50px'});
-          } if ((navPos.top+jumboHeight) >= offset){
+          }
+          if ((navPos.top+jumboHeight) >= offset){
             $('#members-region').css({'margin-top':'0px'});
             $('#panel-region').removeClass('fixed');
           }
