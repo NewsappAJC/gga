@@ -33,4 +33,20 @@ describe('homepage', function() {
       });
     });
   });
+
+  it('lists all members when the user clicks on the "members" element', function() {
+    return driver.findElement(webdriver.By.css('#members'))
+      .then(function(membersElement) {
+        return membersElement.click();
+      })
+      .then(function(membersElement) {
+        return driver.isElementPresent(webdriver.By.css('#members-region'));
+      })
+      .then(function() {
+        return driver.findElements(webdriver.By.css('.member'));
+      })
+      .then(function(memberEls) {
+        assert.equal(memberEls.length, 236);
+      });
+  });
 });
