@@ -10,7 +10,9 @@
       "filters": {
         "republicans": "#filter-Republican",
         "democrats": "#filter-Democrat",
-        "independents": "#filter-Independent"
+        "independents": "#filter-Independent",
+        "senate": "#filter-Senate",
+        "house": "#filter-House"
       }
     }
   },

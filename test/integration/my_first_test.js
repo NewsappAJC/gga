@@ -75,6 +75,34 @@ describe('homepage', function() {
           assert.equal(result.independents, 0);
         });
       });
+
+      it('independents', function() {
+        return filter(driver, 'independents').then(function(result) {
+          assert.equal(result.republicans, 0);
+          assert.equal(result.democrats, 0);
+          assert.equal(result.independents, 1);
+        });
+      });
+
+      it('democrats in the senate', function() {
+        return filter(driver, 'senate').then(function() {
+          return filter(driver, 'democrats');
+        }).then(function(result) {
+          assert.equal(result.republicans, 0);
+          assert.equal(result.democrats, 18);
+          assert.equal(result.independents, 0);
+        });
+      });
+
+      it('republicans in the house', function() {
+        return filter(driver, 'house').then(function() {
+          return filter(driver, 'republicans');
+        }).then(function(result) {
+          assert.equal(result.republicans, 119);
+          assert.equal(result.democrats, 0);
+          assert.equal(result.independents, 0);
+        });
+      });
     });
   });
 });
