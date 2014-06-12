@@ -1,0 +1,18 @@
+{
+  "homeHeader": ".home-head",
+  "nav": {
+    "members": "#members"
+  },
+  "layouts": {
+    "members": {
+      "region": "#members-region",
+      "thumbnail": ".member",
+      "filters": {
+        "republicans": "#filter-Republican",
+        "democrats": "#filter-Democrat",
+        "independents": "#filter-Independent"
+      }
+    }
+  },
+  "memberThumbnail": ".member"
+}
