@@ -5,6 +5,7 @@ var chrome = require('selenium-webdriver/chrome');
 var chromeService = new chrome.ServiceBuilder(chromeDriver.path);
 var port = process.env.__TEST_PORT;
 
+var selectors = require('./selectors.json');
 var hasClass = require('./util/has-class');
 var filter = require('./util/filter');
 
@@ -20,7 +21,7 @@ describe('homepage', function() {
     driver.get('http://localhost:' + port);
     driver.manage().timeouts().implicitlyWait(timeout);
     return driver.wait(function() {
-      return driver.isElementPresent(webdriver.By.css('.home-head'));
+      return driver.isElementPresent(webdriver.By.css(selectors.homeHeader));
     }, 3000);
   });
 
@@ -29,7 +30,7 @@ describe('homepage', function() {
   });
 
   it('displays the header', function() {
-    return driver.findElement(webdriver.By.css('.home-head')).then(function(head) {
+    return driver.findElement(webdriver.By.css(selectors.homeHeader)).then(function(head) {
       return head.getText().then(function(headText) {
         assert.equal(headText, 'Georgia Legislative Navigator');
       });
@@ -39,17 +40,17 @@ describe('homepage', function() {
   describe('members index', function() {
 
     beforeEach(function() {
-      return driver.findElement(webdriver.By.css('#members'))
+      return driver.findElement(webdriver.By.css(selectors.nav.members))
         .then(function(membersElement) {
           return membersElement.click();
         })
         .then(function() {
-          return driver.isElementPresent(webdriver.By.css('#members-region'));
+          return driver.isElementPresent(webdriver.By.css(selectors.layouts.members.region));
         });
     });
 
     it('lists all members from both chambers when the user clicks on the "members" element', function() {
-      return driver.findElements(webdriver.By.css('.member'))
+      return driver.findElements(webdriver.By.css(selectors.layouts.members.thumbnail))
         .then(function(memberEls) {
           assert.equal(memberEls.length, 236);
         });

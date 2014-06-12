@@ -1,6 +1,7 @@
 var webdriver = require('selenium-webdriver');
 var all = webdriver.promise.all;
 
+var selectors = require('../selectors.json');
 var hasClass = require('./has-class');
 
 /**
@@ -10,9 +11,16 @@ var hasClass = require('./has-class');
  * @returns {Promise} eventual value reflecting the result of the filtering
  *                    operation
  */
+
+var classNames = {
+  republicans: '#filter-Republican',
+  democrats: '#filter-Democrat',
+  independents: '#filter-Independent'
+};
+
 module.exports = function(driver, criteria) {
   var filterButton;
-  var buttonClass = '#filter-' + criteria[0].toUpperCase() + criteria.slice(1, criteria.length - 1);
+  var buttonClass = classNames[criteria];
 
   return driver.findElement(webdriver.By.css(buttonClass))
     .then(function(_filterButton) {
@@ -28,7 +36,7 @@ module.exports = function(driver, criteria) {
       }, 1000);
     })
     .then(function() {
-      return driver.findElements(webdriver.By.css('.member'));
+      return driver.findElements(webdriver.By.css(selectors.layouts.members.thumbnail));
     })
     .then(function(memberElements) {
       return all(memberElements.map(function(element) {

@@ -1,0 +1,13 @@
+{
+  "homeHeader": ".home-head",
+  "nav": {
+    "members": "#members"
+  },
+  "layouts": {
+    "members": {
+      "region": "#members-region",
+      "thumbnail": ".member"
+    }
+  },
+  "memberThumbnail": ".member"
+}
