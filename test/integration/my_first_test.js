@@ -87,4 +87,45 @@ describe('homepage', function() {
       });
     });
   });
+
+  describe('bills index', function(){
+    beforeEach(function() {
+      return driver.findElement(webdriver.By.css(selectors.nav.bills))
+        .then(function(billsElement) {
+          return billsElement.click();
+        })
+        .then(function() {
+          return driver.isElementPresent(webdriver.By.css(selectors.layouts.bills.region));
+        });
+    });
+
+    it('lists all bill categories when user clickes on bills homepage element', function() {
+      return driver.findElements(webdriver.By.css(selectors.layouts.bills.thumbnail))
+        .then(function(billCatEls) {
+          assert.equal(billCatEls.length, 10);
+        });
+    });
+
+    describe('search bills from bill category page', function(){
+
+      it('searches for HB1', function() {
+        return driver.findElement(webdriver.By.css(selectors.layouts.bills.search.searchform))
+          .then(function(billSearch) {
+            return billSearch.click()
+              .then(function() {
+                return billSearch.sendKeys('1');
+              });
+          })
+          .then(function() {
+            return driver.findElement(webdriver.By.css(selectors.layouts.bills.search.searchbutton))
+              .then(function(button) {
+                return button.click();
+              })
+              .then(function() {
+                return driver.isElementPresent(webdriver.By.css(selectors.layouts.bills.billpage));
+              });
+          });
+      });
+    });
+  });
 });

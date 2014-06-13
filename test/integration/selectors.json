@@ -1,7 +1,8 @@
 {
   "homeHeader": ".home-head",
   "nav": {
-    "members": "#members"
+    "members": "#members",
+    "bills": "#bills"
   },
   "layouts": {
     "members": {
@@ -19,6 +20,15 @@
         "democrat": ".Democrat",
         "independent": ".Independent"
       }
+    },
+    "bills": {
+      "region": "#bill-category-region",
+      "thumbnail": ".watched-bill",
+      "search": {
+        "searchform": "input#number",
+        "searchbutton": "#bill-search button"
+      },
+      "billpage": ".billnumhed"
     }
   },
   "memberThumbnail": ".member"
