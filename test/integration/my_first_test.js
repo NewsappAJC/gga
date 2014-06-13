@@ -39,6 +39,42 @@ describe('homepage', function() {
         });
     });
 
+    describe('member page', function() {
+      beforeEach(function() {
+        var firstMemberThumbnail;
+
+        // TODO: Conditionally increase test timeout only when web requests
+        // are not being mocked.
+        this.timeout(10000);
+
+        return driver
+          .findElement(webdriver.By.css(selectors.layouts.members.thumbnail))
+          .then(function(el) {
+            firstMemberThumbnail = el;
+            return driver.wait(function() {
+              return firstMemberThumbnail.isDisplayed();
+            });
+          }).then(function() {
+            // TODO: Remove this workaround when application is fixed
+            // to not scroll in response to the "members" route.
+            return driver.executeScript(function() {
+              scrollTo(0, 0);
+            });
+          }).then(function() {
+            return firstMemberThumbnail.click();
+          })
+          .then(function() {
+            return driver.wait(function() {
+              return driver.isElementPresent(
+                webdriver.By.css(selectors.layouts.member.region)
+              );
+            });
+          });
+      });
+
+      it('behaves correctly');
+    });
+
     describe('filtering', function() {
       this.timeout(8000);
 

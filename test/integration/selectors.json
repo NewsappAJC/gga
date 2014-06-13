@@ -29,6 +29,9 @@
         "searchbutton": "#bill-search button"
       },
       "billpage": ".billnumhed"
+    },
+    "member": {
+      "region": ".member-detail-row"
     }
   },
   "memberThumbnail": ".member"
