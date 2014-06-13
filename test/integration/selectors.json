@@ -31,7 +31,9 @@
       "billpage": ".billnumhed"
     },
     "member": {
-      "region": ".member-detail-row"
+      "region": ".member-detail-row",
+      "accordian": ".ui-accordion-header",
+      "billList": "#bills-list-region"
     }
   },
   "memberThumbnail": ".member"

@@ -72,7 +72,21 @@ describe('homepage', function() {
           });
       });
 
-      it('behaves correctly');
+      it('Bills Sponsored area expands when link is clicked', function() {
+        return driver
+          .findElement(webdriver.By.css(selectors.layouts.member.accordian))
+          .then(function(el) {
+            return el.click();
+          })
+          .then(function() {
+            return driver.wait(function() {
+              return driver.findElement(webdriver.By.css(selectors.layouts.member.billList))
+                .then(function(el) {
+                  return el.isDisplayed();
+                });
+            });
+          });
+      });
     });
 
     describe('filtering', function() {
