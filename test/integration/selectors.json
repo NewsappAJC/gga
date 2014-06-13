@@ -14,6 +14,9 @@
         "senate": "#filter-Senate",
         "house": "#filter-House"
       }
+    },
+    "member": {
+      "region": ".member-detail-row"
     }
   },
   "memberThumbnail": ".member"
