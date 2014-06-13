@@ -13,7 +13,7 @@ describe('homepage', function() {
   var driver;
 
   beforeEach  (function() {
-    var timeout = 5000;
+    var timeout = 8000;
 
     this.timeout(timeout);
 
@@ -100,6 +100,49 @@ describe('homepage', function() {
           assert.equal(result.republicans, 119);
           assert.equal(result.democrats, 0);
           assert.equal(result.independents, 0);
+        });
+      });
+    });
+  });
+
+  describe.only('bills index', function(){
+    beforeEach(function() {
+      return driver.findElement(webdriver.By.css(selectors.nav.bills))
+        .then(function(billsElement) {
+          return billsElement.click();
+        })
+        .then(function() {
+          return driver.isElementPresent(webdriver.By.css(selectors.layouts.bills.region));
+        });
+    });
+
+    it('lists all bill categories when user clickes on bills homepage element', function() {
+      return driver.findElements(webdriver.By.css(selectors.layouts.bills.thumbnail))
+        .then(function(billCatEls) {
+          assert.equal(billCatEls.length, 10);
+        });
+    });
+
+    describe('search bills from bill category page', function(){
+      this.timeout(8000);
+
+      it('searches for HB1', function() {
+        return driver.findElement(webdriver.By.css(selectors.layouts.bills.search.searchform))
+        .then(function(billSearch) {
+          billSearch.click();
+          return billSearch
+          .then(function(billSearch){
+            return billSearch.sendKeys('1');
+          })
+        })
+        .then(function(){
+          return driver.findElement(webdriver.By.css(selectors.layouts.bills.search.searchbutton))
+          .then(function(button){
+            return button.click();
+          })
+          .then(function(){
+            return driver.isElementPresent(webdriver.By.css(selectors.layouts.bills.billpage))
+          });
         });
       });
     });
