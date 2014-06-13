@@ -13,7 +13,7 @@ describe('homepage', function() {
   var driver;
 
   beforeEach  (function() {
-    var timeout = 5000;
+    var timeout = 8000;
 
     this.timeout(timeout);
 
@@ -90,7 +90,23 @@ describe('homepage', function() {
           });
       });
 
-      it('behaves correctly');
+      it('Bills Sponsored area expands when link is clicked', function() {
+        return driver
+          .findElement(webdriver.By.css(selectors.layouts.member.accordian))
+          .then(function(el) {
+            return el.click();
+          })
+          .then(function() {
+            return driver.wait(function() {
+              console.log("waiting");
+              return driver.findElement(webdriver.By.css(selectors.layouts.member.billList))
+                .then(function(el) {
+                  console.log("checking if displayed");
+                  return el.isDisplayed();
+                });
+            });
+          });
+      });
     });
 
     describe('filtering', function() {
