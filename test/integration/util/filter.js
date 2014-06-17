@@ -34,29 +34,30 @@ module.exports = function(driver, criteria) {
     .then(function() {
       return driver.findElements(webdriver.By.css(selectors.layouts.members.thumbnail));
     })
-    .then(function(memberElements) {
-      return all(memberElements.map(function(element) {
-        return hasClass(element, 'Republican Democrat Independent');
-      })).then(function(vals) {
-        var result = {
-          republicans: 0,
-          democrats: 0,
-          independents: 0
-        };
+    .then(function() {
+      return driver.manage().timeouts().implicitlyWait(0);
+    }).then(function() {
+      var findAll = all([
+        driver.findElements(webdriver.By.css('.Republican')),
+        driver.findElements(webdriver.By.css('.Democrat')),
+        driver.findElements(webdriver.By.css('.Independent'))
+      ]);
 
-        vals.forEach(function(classNames) {
-          if (classNames.Democrat) {
-            result.democrats++;
-          }
-          if (classNames.Independent) {
-            result.independents++;
-          }
-          if (classNames.Republican) {
-            result.republicans++;
-          }
-        });
+      function restoreWait() {
+        return driver.manage().timeouts()
+          .implicitlyWait(driver.implicitlyWait);
+      }
 
-        return result;
-      });
+      findAll.then(restoreWait, restoreWait);
+
+      return findAll;
+    }).then(function(elems) {
+      var counts = {
+        republicans: elems[0].length,
+        democrats: elems[1].length,
+        independents: elems[2].length
+      };
+
+      return counts;
     });
 };
