@@ -13,6 +13,11 @@
         "independents": "#filter-Independent",
         "senate": "#filter-Senate",
         "house": "#filter-House"
+      },
+      "thumbnails": {
+        "republican": ".Republican",
+        "democrat": ".Democrat",
+        "independent": ".Independent"
       }
     }
   },
