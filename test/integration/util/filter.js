@@ -36,9 +36,15 @@ module.exports = function(driver, criteria) {
       return driver.manage().timeouts().implicitlyWait(0);
     }).then(function() {
       var findAll = all([
-        driver.findElements(webdriver.By.css('.Republican')),
-        driver.findElements(webdriver.By.css('.Democrat')),
-        driver.findElements(webdriver.By.css('.Independent'))
+        driver.findElements(
+          webdriver.By.css(selectors.layouts.members.thumbnails.republican)
+        ),
+        driver.findElements(
+          webdriver.By.css(selectors.layouts.members.thumbnails.democrat)
+        ),
+        driver.findElements(
+          webdriver.By.css(selectors.layouts.members.thumbnails.independent)
+        )
       ]);
 
       function restoreWait() {
