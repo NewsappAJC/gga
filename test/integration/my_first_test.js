@@ -1,39 +1,19 @@
 'use strict';
 
 var webdriver = require('selenium-webdriver');
-var assert = require('assert');
-var chromeDriver = require('selenium-chromedriver');
-var chrome = require('selenium-webdriver/chrome');
-var chromeService = new chrome.ServiceBuilder(chromeDriver.path);
-var port = process.env.__TEST_PORT;
 
-var selectors = require('./selectors.json');
 var filter = require('./util/filter');
 
 describe('homepage', function() {
-  var driver;
+  var driver, selectors;
 
-  beforeEach  (function() {
-    var timeout = 5000;
-
-    this.timeout(timeout);
-
-    driver = chrome.createDriver(null, chromeService.build());
-    driver.get('http://localhost:' + port);
-    driver.manage().timeouts().implicitlyWait(timeout);
-    driver.implicitlyWait = timeout;
-
-    return driver.wait(function() {
-      return driver.isElementPresent(webdriver.By.css(selectors.homeHeader));
-    }, 3000);
-  });
-
-  afterEach(function() {
-    return driver.quit();
+  beforeEach(function() {
+    driver = this.driver;
+    selectors = this.selectors;
   });
 
   it('displays the header', function() {
-    return driver.findElement(webdriver.By.css(selectors.homeHeader)).then(function(head) {
+    return this.driver.findElement(webdriver.By.css(selectors.homeHeader)).then(function(head) {
       return head.getText().then(function(headText) {
         assert.equal(headText, 'Georgia Legislative Navigator');
       });

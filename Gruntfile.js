@@ -69,7 +69,8 @@ module.exports = function(grunt) {
             beforeEach: true,
             afterEach: true,
             before: true,
-            after: true
+            after: true,
+            assert: true
           }
         },
         files: {

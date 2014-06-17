@@ -14,6 +14,9 @@
     "grunt-mocha-test": "^0.11.0",
     "grunt-s3": "~0.1.0",
     "selenium-chromedriver": "0.0.1",
-    "selenium-webdriver": "^2.42.0"
+    "selenium-webdriver": "^2.42.0",
+    "http-proxy": "^1.1.4",
+    "replay": "^1.10.3",
+    "connect": "^2.19.6"
   }
 }

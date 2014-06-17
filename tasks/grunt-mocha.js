@@ -5,7 +5,10 @@ module.exports = function(grunt) {
     options: {
       reporter: 'spec'
     },
-    files: ['test/integration/my_first_test.js']
+    files: [
+      'test/integration/setup.js',
+      'test/integration/my_first_test.js'
+    ]
   });
 
   grunt.loadNpmTasks('grunt-mocha-test');
