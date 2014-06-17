@@ -20,6 +20,8 @@ describe('homepage', function() {
     driver = chrome.createDriver(null, chromeService.build());
     driver.get('http://localhost:' + port);
     driver.manage().timeouts().implicitlyWait(timeout);
+    driver.implicitlyWait = timeout;
+
     return driver.wait(function() {
       return driver.isElementPresent(webdriver.By.css(selectors.homeHeader));
     }, 3000);
