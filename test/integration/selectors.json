@@ -6,7 +6,19 @@
   "layouts": {
     "members": {
       "region": "#members-region",
-      "thumbnail": ".member"
+      "thumbnail": ".member",
+      "filters": {
+        "republicans": "#filter-Republican",
+        "democrats": "#filter-Democrat",
+        "independents": "#filter-Independent",
+        "senate": "#filter-Senate",
+        "house": "#filter-House"
+      },
+      "thumbnails": {
+        "republican": ".Republican",
+        "democrat": ".Democrat",
+        "independent": ".Independent"
+      }
     }
   },
   "memberThumbnail": ".member"

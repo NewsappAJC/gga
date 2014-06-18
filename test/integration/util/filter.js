@@ -12,15 +12,9 @@ var hasClass = require('./has-class');
  *                    operation
  */
 
-var classNames = {
-  republicans: '#filter-Republican',
-  democrats: '#filter-Democrat',
-  independents: '#filter-Independent'
-};
-
 module.exports = function(driver, criteria) {
   var filterButton;
-  var buttonClass = classNames[criteria];
+  var buttonClass = selectors.layouts.members.filters[criteria];
 
   return driver.findElement(webdriver.By.css(buttonClass))
     .then(function(_filterButton) {
@@ -39,28 +33,35 @@ module.exports = function(driver, criteria) {
       return driver.findElements(webdriver.By.css(selectors.layouts.members.thumbnail));
     })
     .then(function(memberElements) {
-      return all(memberElements.map(function(element) {
-        return hasClass(element, 'Republican Democrat Independent');
-      })).then(function(vals) {
-        var result = {
-          republicans: 0,
-          democrats: 0,
-          independents: 0
-        };
+      return driver.manage().timeouts().implicitlyWait(0);
+    }).then(function() {
+      var findAll = all([
+        driver.findElements(
+          webdriver.By.css(selectors.layouts.members.thumbnails.republican)
+        ),
+        driver.findElements(
+          webdriver.By.css(selectors.layouts.members.thumbnails.democrat)
+        ),
+        driver.findElements(
+          webdriver.By.css(selectors.layouts.members.thumbnails.independent)
+        )
+      ]);
 
-        vals.forEach(function(classNames) {
-          if (classNames.Democrat) {
-            result.democrats++;
-          }
-          if (classNames.Independent) {
-            result.independents++;
-          }
-          if (classNames.Republican) {
-            result.republicans++;
-          }
-        });
+      function restoreWait() {
+        return driver.manage().timeouts()
+          .implicitlyWait(driver.implicitlyWait);
+      }
 
-        return result;
-      });
+      findAll.then(restoreWait, restoreWait);
+
+      return findAll;
+    }).then(function(elems) {
+      var counts = {
+        republicans: elems[0].length,
+        democrats: elems[1].length,
+        independents: elems[2].length
+      };
+
+      return counts;
     });
 };
