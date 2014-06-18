@@ -19,6 +19,11 @@
         "democrat": ".Democrat",
         "independent": ".Independent"
       }
+    },
+    "member": {
+      "region": ".member-detail-row",
+      "accordian": ".ui-accordion-header",
+      "billList": "#bills-list-region"
     }
   },
   "memberThumbnail": ".member"

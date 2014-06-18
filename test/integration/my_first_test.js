@@ -13,7 +13,7 @@ describe('homepage', function() {
   var driver;
 
   beforeEach  (function() {
-    var timeout = 5000;
+    var timeout = 8000;
 
     this.timeout(timeout);
 
@@ -56,6 +56,59 @@ describe('homepage', function() {
         .then(function(memberEls) {
           assert.equal(memberEls.length, 236);
         });
+    });
+
+    describe('member page', function() {
+      beforeEach(function() {
+        var firstMemberThumbnail;
+
+        // TODO: Conditionally increase test timeout only when web requests
+        // are not being mocked.
+        this.timeout(10000);
+
+        return driver
+          .findElement(webdriver.By.css(selectors.layouts.members.thumbnail))
+          .then(function(el) {
+            firstMemberThumbnail = el;
+            return driver.wait(function() {
+              console.log('checking if element is displayed');
+              return firstMemberThumbnail.isDisplayed();
+            });
+          }).then(function() {
+            // TODO: Remove this workaround when application is fixed
+            // to not scroll in response to the "members" route.
+            return driver.executeScript(function() {
+              scrollTo(0, 0);
+            });
+          }).then(function(data) {
+            return firstMemberThumbnail.click();
+          })
+          .then(function() {
+            return driver.wait(function() {
+              return driver.isElementPresent(
+                webdriver.By.css(selectors.layouts.member.region)
+              );
+            });
+          });
+      });
+
+      it('Bills Sponsored area expands when link is clicked', function() {
+        return driver
+          .findElement(webdriver.By.css(selectors.layouts.member.accordian))
+          .then(function(el) {
+            return el.click();
+          })
+          .then(function() {
+            return driver.wait(function() {
+              console.log("waiting");
+              return driver.findElement(webdriver.By.css(selectors.layouts.member.billList))
+                .then(function(el) {
+                  console.log("checking if displayed");
+                  return el.isDisplayed();
+                });
+            });
+          });
+      });
     });
 
     describe('filtering', function() {
