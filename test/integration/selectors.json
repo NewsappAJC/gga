@@ -21,12 +21,17 @@
         "independent": ".Independent"
       }
     },
+    "bill": {
+      "region": "#bill-region",
+      "title": ".billnumhed"
+    },
     "bills": {
       "region": "#bill-category-region",
       "thumbnail": ".watched-bill",
       "search": {
         "searchform": "input#number",
-        "searchbutton": "#bill-search button"
+        "searchbutton": "#bill-search button",
+        "documentType": "#document-type"
       },
       "billpage": ".billnumhed"
     },
