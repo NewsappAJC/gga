@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     },
     files: [
       'test/integration/setup.js',
-      'test/integration/my_first_test.js'
+      'test/integration/tests/*'
     ]
   });
 
