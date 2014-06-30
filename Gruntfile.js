@@ -59,6 +59,23 @@ module.exports = function(grunt) {
         files: {
           src: ['Gruntfile.js']
         }
+      },
+      test: {
+        options: {
+          node: true,
+          globals: {
+            describe: true,
+            it: true,
+            beforeEach: true,
+            afterEach: true,
+            before: true,
+            after: true,
+            assert: true
+          }
+        },
+        files: {
+          src: ['test/**/*.js']
+        }
       }
     },
     uglify: {
@@ -196,6 +213,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-s3');
+
+  grunt.loadTasks('tasks');
+
+  grunt.registerTask('test-integration', ['server', 'mochaTest']);
 
   grunt.registerTask('build', ['copy', 'requirejs', 'uglify', 'htmlmin', 'cssmin']);
   grunt.registerTask('default', ['build','s3']);

@@ -1,0 +1,45 @@
+{
+  "homeHeader": ".home-head",
+  "nav": {
+    "members": "#members",
+    "bills": "#bills"
+  },
+  "layouts": {
+    "members": {
+      "region": "#members-region",
+      "thumbnail": ".member",
+      "filters": {
+        "republicans": "#filter-Republican",
+        "democrats": "#filter-Democrat",
+        "independents": "#filter-Independent",
+        "senate": "#filter-Senate",
+        "house": "#filter-House"
+      },
+      "thumbnails": {
+        "republican": ".Republican",
+        "democrat": ".Democrat",
+        "independent": ".Independent"
+      }
+    },
+    "bill": {
+      "region": "#bill-region",
+      "title": ".billnumhed"
+    },
+    "bills": {
+      "region": "#bill-category-region",
+      "thumbnail": ".watched-bill",
+      "search": {
+        "searchform": "input#number",
+        "searchbutton": "#bill-search button",
+        "documentType": "#document-type"
+      },
+      "billpage": ".billnumhed"
+    },
+    "member": {
+      "region": ".member-detail-row",
+      "accordian": ".ui-accordion-header",
+      "billList": "#bills-list-region"
+    }
+  },
+  "memberThumbnail": ".member"
+}
