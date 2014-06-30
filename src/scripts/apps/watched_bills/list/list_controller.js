@@ -1,4 +1,6 @@
 define(["app","apps/watched_bills/list/list_view"], function(GeneralAssemblyApp, View) {
+  "use strict";
+
   GeneralAssemblyApp.module("WatchedBillsApp.List", function(List, GeneralAssemblyApp, Backbone, Marionette, $, _) {
     List.Controller = {
       listCategories: function() {
@@ -8,20 +10,19 @@ define(["app","apps/watched_bills/list/list_view"], function(GeneralAssemblyApp,
           var categories_layout = new View.CategoriesLayout();
 
           $.when(fetchingWatchedBills, fetchingBillsCount).done(function(watched_bills, bills_count) {
-            category_model_data = _.chain(watched_bills.models)
-              .countBy(function(model) { return model.get("category") })
+            var category_model_data = _.chain(watched_bills.models)
+              .countBy(function(model) { return model.get("category"); })
               .pairs()
               .map(function(model) { return {name: model[0], count: model[1]}; })
               .value();
-            window.category_model_data = category_model_data
 
-            categories = new GeneralAssemblyApp.Entities.BillCategories( category_model_data );
+            var categories = new GeneralAssemblyApp.Entities.BillCategories( category_model_data );
 
-            categories_view = new View.CategoriesView({
+            var categories_view = new View.CategoriesView({
               collection: categories
             });
 
-            bills_count_view = new GeneralAssemblyApp.Common.View.BillsCountView({
+            var bills_count_view = new GeneralAssemblyApp.Common.View.BillsCountView({
               model: bills_count,
               className: "jumbotron"
             });
@@ -35,9 +36,9 @@ define(["app","apps/watched_bills/list/list_view"], function(GeneralAssemblyApp,
           });
         });
       },
-      listWatchedBills: function(category) {
+      listWatchedBills: function() {
       }
-    }
+    };
   });
   return GeneralAssemblyApp.WatchedBillsApp.List.Controller;
 });

@@ -1,10 +1,12 @@
 define(["app"], function(GeneralAssemblyApp) {
+  "use strict";
+
   GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Backbone, Marionette, $, _){
     Entities.members_url = Entities.api_base + "members/";
 
     Entities.Member = Backbone.Model.extend({
       urlRoot: Entities.members_url,
-      initialize: function(id) {
+      initialize: function() {
         // Create tooltip info string
         var tooltipInfo = this.get("full_name") + ", " + this.get("district_address_city");
         if ( this.get("title") !== null ) {
@@ -41,12 +43,12 @@ define(["app"], function(GeneralAssemblyApp) {
 
     Entities.MemberVote = Backbone.Model.extend({
       initialize: function() {
-        this.set("vote_date", new Date(this.get("vote_date")))
+        this.set("vote_date", new Date(this.get("vote_date")));
       }
     });
     Entities.MemberVotes = Backbone.Collection.extend({
       initialize: function(id) {
-        this.url = Entities.members_url+ id + '/votes'
+        this.url = Entities.members_url+ id + '/votes';
       },
       model: Entities.MemberVote
     });
@@ -54,7 +56,7 @@ define(["app"], function(GeneralAssemblyApp) {
     var API = {
       getMembers: function() {
         var defer = $.Deferred();
-        if (! Entities.members || Entities.members.length == 0) {
+        if (! Entities.members || Entities.members.length === 0) {
           Entities.members = new Entities.MembersCollection();
           Entities.members.fetch({
             dataType: "jsonp",
@@ -71,7 +73,7 @@ define(["app"], function(GeneralAssemblyApp) {
       getMember: function(memberId) {
         // var member = Entities.members.where({id: memberId})[0];
         var defer = $.Deferred();
-        member = new Entities.Member({id: memberId});
+        var member = new Entities.Member({id: memberId});
         member.fetch({
           dataType: "jsonp",
           success: function(data) {

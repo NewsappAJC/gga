@@ -1,5 +1,7 @@
 define(["app"], function(GeneralAssemblyApp) {
-  GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Backbone, Marionette, $, _){
+  "use strict";
+
+  GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Backbone, Marionette, $){
     Entities.TopContributor = Backbone.Model.extend({});
 
     Entities.TopContributorsCollection = Backbone.Collection.extend({

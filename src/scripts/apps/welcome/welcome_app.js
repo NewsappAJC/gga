@@ -1,5 +1,7 @@
 define(["app"], function(GeneralAssemblyApp) {
-  GeneralAssemblyApp.module("WelcomeApp", function(WelcomeApp, GeneralAssemblyApp, Backbone, Marionette, $, _) {
+  "use strict";
+
+  GeneralAssemblyApp.module("WelcomeApp", function(WelcomeApp, GeneralAssemblyApp, Backbone, Marionette) {
     WelcomeApp.Router = Marionette.AppRouter.extend({
       appRoutes: {
         "": "welcome"

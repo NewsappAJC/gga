@@ -1,4 +1,6 @@
 define(["app"], function(GeneralAssemblyApp) {
+  "use strict";
+
   GeneralAssemblyApp.module("MembersApp", function(MembersApp, GeneralAssemblyApp, Backbone, Marionette, $, _) {
     MembersApp.Router = Marionette.AppRouter.extend({
       appRoutes: {

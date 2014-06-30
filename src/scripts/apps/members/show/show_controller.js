@@ -1,5 +1,7 @@
 define(["app","apps/members/show/show_view"], function(GeneralAssemblyApp, View) {
-  GeneralAssemblyApp.module("MembersApp.Show", function(Show, GeneralAssemblyApp, Backbone, Marionette, $, _) {
+  "use strict";
+
+  GeneralAssemblyApp.module("MembersApp.Show", function(Show, GeneralAssemblyApp, Backbone, Marionette, $) {
     Show.Controller = {
       showMember: function(id) {
         require(["entities/member","entities/top_contributors"], function() {

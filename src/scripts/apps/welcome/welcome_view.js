@@ -1,5 +1,7 @@
 define(["app"], function(GeneralAssemblyApp) {
-  GeneralAssemblyApp.module("WelcomeApp.View", function(View, GeneralAssemblyApp, Backbone, Marionette, $, _) {
+  "use strict";
+
+  GeneralAssemblyApp.module("WelcomeApp.View", function(View, GeneralAssemblyApp, Backbone, Marionette, $) {
     View.WelcomeLayout = Marionette.Layout.extend({
       template: "#welcome-layout",
       regions: {
