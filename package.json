@@ -3,6 +3,7 @@
   "name": "project_name",
   "version": "0.0.1",
   "devDependencies": {
+    "connect": "^2.19.6",
     "express": "^4.4.1",
     "grunt": "~0.4.1",
     "grunt-contrib-copy": "~0.4.1",
@@ -11,12 +12,14 @@
     "grunt-contrib-jshint": "~0.3.0",
     "grunt-contrib-requirejs": "^0.4.4",
     "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-express": "^1.4.1",
     "grunt-mocha-test": "^0.11.0",
+    "grunt-open": "^0.2.3",
     "grunt-s3": "~0.1.0",
-    "selenium-chromedriver": "0.0.1",
-    "selenium-webdriver": "^2.42.0",
     "http-proxy": "^1.1.4",
     "replay": "^1.10.3",
-    "connect": "^2.19.6"
+    "selenium-chromedriver": "0.0.1",
+    "selenium-webdriver": "^2.42.0"
   }
 }

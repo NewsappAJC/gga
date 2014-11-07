@@ -204,8 +204,35 @@ module.exports = function(grunt) {
           { src: 'build/images/*', dest: 'images/' }
         ]
       }
+    },
+
+    express: {
+      dev: {
+        options: {
+          hostname: '*',
+          port: 8000,
+          bases: 'src',
+          livereload: true,
+          showStack: true
+        }
+      }
+    },
+
+    open: {
+      dev: {
+        path: 'http://localhost:<%= express.dev.options.port %>',
+        app: 'Google Chrome'
+      }
+    },
+
+    watch: {
+      all: {
+        files: ['src/index.html','src/scripts/**/*.js','src/style/**/*.css'],
+        options: { livereload: true }
+      }
     }
   });
+
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -213,6 +240,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-s3');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-express');
+  grunt.loadNpmTasks('grunt-open');
 
   grunt.loadTasks('tasks');
 
@@ -220,5 +250,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', ['copy', 'requirejs', 'uglify', 'htmlmin', 'cssmin']);
   grunt.registerTask('default', ['build','s3']);
+  grunt.registerTask('server', ['express:dev','open:dev','watch','express-keepalive']);
 };
 
