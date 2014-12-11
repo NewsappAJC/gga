@@ -50,9 +50,11 @@ footer a{
 }
 #nav-container{
   width:100%;
-
 }
-
+.display-ul li{
+  font-size: 20px;
+  padding-bottom: 2px;
+}
 /*social */
 
 #social{
@@ -710,4 +712,21 @@ body .ui-tooltip {
   #filter-district_type .filter {
     padding:5px 10px;
   }
+}
+
+img.info {
+  cursor: pointer;
+}
+
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+.blue {
+  color: #39416B;
+}
+.hover {
+  cursor: pointer;
 }

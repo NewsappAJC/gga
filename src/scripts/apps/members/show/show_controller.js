@@ -44,6 +44,10 @@ define(["app","apps/members/show/show_view"], function(GeneralAssemblyApp, View)
               memberShowLayout.topContributorsRegion.show(topContributorsView);
               memberShowLayout.detailRegion.show(memberDetailView);
               memberShowLayout.votesRegion.show(votesListView);
+              $(document).tooltip({
+                predelay: 0,
+                cancelDefault: true
+              });
             });
 
             GeneralAssemblyApp.mainRegion.show(memberShowLayout);

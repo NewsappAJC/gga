@@ -5,6 +5,16 @@ define(["app"], function(GeneralAssemblyApp) {
       regions: {
         categoriesRegion: "#bill-category-region",
         billsCountRegion: "#bills-count-region"
+      },
+      events: {
+        "submit form#bill-search": "showBill"
+      },
+      showBill: function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var doctype = $("#document-type").val();
+        var number = $("#number").val();
+        GeneralAssemblyApp.trigger("bills:show", doctype + '/' + number);
       }
     });
 

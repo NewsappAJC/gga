@@ -1,7 +1,9 @@
 define(["app"], function(GeneralAssemblyApp) {
   GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Backbone, Marionette, $, _){
+    Entities.members_url = Entities.api_base + "members/";
+
     Entities.Member = Backbone.Model.extend({
-      urlRoot: "http://ajcgga-api.herokuapp.com/api/members",
+      urlRoot: Entities.members_url,
       initialize: function(id) {
         // Create tooltip info string
         var tooltipInfo = this.get("full_name") + ", " + this.get("district_address_city");
@@ -14,7 +16,7 @@ define(["app"], function(GeneralAssemblyApp) {
 
     Entities.MembersCollection = Backbone.Collection.extend({
       model: Entities.Member,
-      url: "http://ajcgga-api.herokuapp.com/api/members/",
+      url: Entities.members_url,
       comparator: function(member) {
         return ( (member.get("district_type") === "House" ? "A" : "B") + _.string.sprintf('%03s', member.get("district_number")) );
       },
@@ -24,7 +26,7 @@ define(["app"], function(GeneralAssemblyApp) {
     Entities.MemberCommittee = Backbone.Model.extend();
     Entities.MemberCommittees = Backbone.Collection.extend({
       initialize: function(id) {
-        this.url = 'http://ajcgga-api.herokuapp.com/api/members/' + id + '/committees';
+        this.url = Entities.members_url + id + '/committees';
       },
       model: Entities.MemberCommittee
     });
@@ -32,7 +34,7 @@ define(["app"], function(GeneralAssemblyApp) {
     Entities.MemberBill = Backbone.Model.extend();
     Entities.MemberBills = Backbone.Collection.extend({
       initialize: function(id) {
-        this.url = 'http://ajcgga-api.herokuapp.com/api/members/' + id + '/bills';
+        this.url = GeneralAssemblyApp.api_base + "members/" + id + '/bills';
       },
       model: Entities.MemberBill
     });
@@ -44,7 +46,7 @@ define(["app"], function(GeneralAssemblyApp) {
     });
     Entities.MemberVotes = Backbone.Collection.extend({
       initialize: function(id) {
-        this.url = 'ajcgga-api.herokuapp.com/api/members/' + id + '/votes'
+        this.url = Entities.members_url+ id + '/votes'
       },
       model: Entities.MemberVote
     });

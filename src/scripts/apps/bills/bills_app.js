@@ -2,14 +2,25 @@ define(["app"], function(GeneralAssemblyApp) {
   GeneralAssemblyApp.module("BillsApp", function(BillsApp, GeneralAssemblyApp, Backbone, Marionette, $, _) {
     BillsApp.Router = Marionette.AppRouter.extend({
       appRoutes: {
+        "bills(?:query)": "listBills",
         "bills/:id": "showBill",
+        "bills/:doctype/:number": "showBillByNumber"
       }
     });
 
     var API = {
+      listBills: function(query) {
+        require(["apps/bills/list/list_controller"], function (ListController) {
+        });
+      },
       showBill: function(id) {
-        require(["apps/bills/show/show_controller"], function() {
-          BillsApp.Show.Controller.showBill(id);
+        require(["apps/bills/show/show_controller"], function(ShowController) {
+          ShowController.showBill(id);
+        });
+      },
+      showBillByNumber: function(doctype, number) {
+        require(["apps/bills/show/show_controller"], function(ShowController) {
+          ShowController.showBill(doctype + '/' + number);
         });
       }
     };

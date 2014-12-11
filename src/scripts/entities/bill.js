@@ -1,19 +1,21 @@
 define(["app"], function(GeneralAssemblyApp) {
   GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Backbone, Marionette, $, _){
     // Bills
+    Entities.bills_url = Entities.api_base + 'bills/';
+
     Entities.Bill = Backbone.Model.extend({
       initialize: function(id) {
-        this.url = "http://ajcgga-api.herokuapp.com/api/bills/" + id
+        this.url = Entities.bills_url + id
       }
     });
     Entities.Bills = Backbone.Collection.extend({
       model: Entities.Bill,
-      url: "http://ajcgga-api.herokuapp.com/api/bills/"
+      url: Entities.bills_url
     });
 
     // BillsCount
     Entities.BillsCount = Backbone.Model.extend({
-      url: "http://ajcgga-api.herokuapp.com/api/bills/count/"
+      url: Entities.bills_url + "count/"
     });
 
     // BillAuthors
@@ -69,12 +71,27 @@ define(["app"], function(GeneralAssemblyApp) {
         return defer.promise();
       },
 
-      getBill: function(id) {
+      getBill: function(param) {
+        // param is appended to the end of hte api request url -- it can be
+        // either the bill id or a string with the doc type (i.e. HB) and
+        // bill number separated by a '/'
         var defer = $.Deferred();
-        bill = new Entities.Bill(id);
+        bill = new Entities.Bill(param);
         bill.fetch({
           dataType: "jsonp",
           success: function(data) {
+            defer.resolve(data)
+          }
+        });
+        return defer.promise();
+      },
+
+      getBills: function() {
+        var defer = $.Deferred();
+        bills = new Entities.Bills();
+        bills.fetch({
+          dataType: "jsonp",
+          success: function() {
             defer.resolve(data)
           }
         });
@@ -86,8 +103,19 @@ define(["app"], function(GeneralAssemblyApp) {
       return API.getBillsCount();
     });
 
-    GeneralAssemblyApp.reqres.setHandler("bills:bill", function(id) {
-      return API.getBill(id);
+    GeneralAssemblyApp.reqres.setHandler("bills:bill", function(param) {
+      // param is appended to the end of hte api request url -- it can be
+      // either the bill id or a string with the doc type (i.e. HB) and
+      // bill number separated by a '/'
+      return API.getBill(param);
+    });
+
+    GeneralAssemblyApp.reqres.setHandler("bills:bill:bynumber", function(doctype, number) {
+      return API.getBillByNumber(doctype, number);
+    });
+
+    GeneralAssemblyApp.reqres.setHandler("bills:list", function() {
+      return API.getBills();
     });
   });
   return GeneralAssemblyApp.Entities.Bill;
