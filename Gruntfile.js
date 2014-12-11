@@ -17,19 +17,6 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      files: [
-        'Gruntfile.js',
-        'src/scripts/*.js',
-        'src/scripts/entities/*.js',
-        'src/scripts/apps/bills/*.js',
-        'src/scripts/apps/bills/show/*.js',
-        'src/scripts/apps/members/*.js',
-        'src/scripts/apps/members/list/*.js',
-        'src/scripts/apps/members/show/*.js',
-        'src/scripts/apps/watched_bills/*.js',
-        'src/scripts/apps/watched_bills/list/*.js',
-        'src/scripts/apps/watched_bills/show/*.js'
-      ],
       options: {
         browser: true,
         curly: true,
@@ -41,10 +28,53 @@ module.exports = function(grunt) {
         strict: true,
         trailing: true,
         smarttabs: true,
-        indent: 2,
-        globals: {
-          JQuery: true,
-          $: true
+        indent: 2
+      },
+      src: {
+        options: {
+          globals: {
+            JQuery: true,
+            $: true
+          }
+        },
+        files: {
+          src: [
+            'src/scripts/*.js',
+            'src/scripts/entities/*.js',
+            'src/scripts/apps/bills/*.js',
+            'src/scripts/apps/bills/show/*.js',
+            'src/scripts/apps/members/*.js',
+            'src/scripts/apps/members/list/*.js',
+            'src/scripts/apps/members/show/*.js',
+            'src/scripts/apps/watched_bills/*.js',
+            'src/scripts/apps/watched_bills/list/*.js',
+            'src/scripts/apps/watched_bills/show/*.js'
+          ]
+        }
+      },
+      build: {
+        options: {
+          node: true
+        },
+        files: {
+          src: ['Gruntfile.js']
+        }
+      },
+      test: {
+        options: {
+          node: true,
+          globals: {
+            describe: true,
+            it: true,
+            beforeEach: true,
+            afterEach: true,
+            before: true,
+            after: true,
+            assert: true
+          }
+        },
+        files: {
+          src: ['test/**/*.js']
         }
       }
     },
@@ -57,8 +87,6 @@ module.exports = function(grunt) {
       },
       my_target: {
         files: {
-          'build/scripts/require_main.js'       : ['src/scripts/require_main.js'],
-          'build/scripts/require_main.built.js' : ['src/scripts/require_main.built.js'],
           'build/scripts/app.js'                : ['src/scripts/app.js'],
           'build/scripts/lib/require.js'        : ['src/scripts/lib/require.js'],
 
@@ -124,6 +152,17 @@ module.exports = function(grunt) {
         }
       }
     },
+    requirejs: {
+      compile: {
+        options: {
+          baseUrl: "src/scripts",
+          name: "require_main",
+          mainConfigFile: "src/scripts/require_main.js",
+          out: "build/scripts/require_main.js",
+          optimize: "uglify2"
+        }
+      }
+    },
     s3: {
       options: {
         key: "<%= aws.key %>",
@@ -172,8 +211,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-s3');
 
-  grunt.registerTask('default', ['copy','uglify','htmlmin','cssmin','s3']);
+  grunt.loadTasks('tasks');
+
+  grunt.registerTask('test-integration', ['server', 'mochaTest']);
+
+  grunt.registerTask('build', ['copy', 'requirejs', 'uglify', 'htmlmin', 'cssmin']);
+  grunt.registerTask('default', ['build','s3']);
 };
 

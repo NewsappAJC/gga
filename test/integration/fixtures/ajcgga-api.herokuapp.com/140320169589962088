@@ -1,0 +1,21 @@
+GET /api/days_left?callback=renameJsonp
+host: ajcgga-api.herokuapp.com
+accept: */*
+accept-encoding: gzip,deflate,sdch
+accept-language: en-US,en;q=0.8
+
+200 HTTP/1.1
+cache-control: max-age=0, private, must-revalidate
+content-type: text/javascript; charset=utf-8
+etag: "1e02756db616f0853787d4350e49eb42"
+server: thin 1.5.1 codename Straight Razor
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-request-id: a30939e8-36be-49cc-af34-71bd21afe6b3
+x-runtime: 0.016570
+x-ua-compatible: chrome=1
+x-xss-protection: 1; mode=block
+transfer-encoding: chunked
+connection: keep-alive
+
+renameJsonp({"id":1,"days_left":0})
