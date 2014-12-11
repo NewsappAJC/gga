@@ -1,0 +1,654 @@
+/*PUBLICO family*/
+
+	/*publico black and black italic*/
+	@font-face {
+		font-family: Publico-Black;
+		src: url('publico/Publico-Black.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: Publico-Black;
+		src: url('publico/Publico-BlackItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+
+	/*publico bold and bold italic */
+	@font-face {
+		font-family: Publico-Bold;
+		src: url('publico/Publico-Bold.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: Publico-Bold;
+		src: url('publico/Publico-BoldItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+
+	/*publico extra bold & extra bold italic */
+	@font-face {
+		font-family: Publico-ExtraBold;
+		src: url('publico/Publico-Extrabold.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: Publico-ExtraBold;
+		src: url('publico/Publico-ExtraboldItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+
+	/* publico roman and roman italic */
+	@font-face {
+		font-family: Publico;
+		src: url('publico/Publico-Roman.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: Publico;
+		src: url('publico/Publico-Italic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+
+	/* publico Medium and medium italic*/
+	@font-face {
+		font-family: Publico-Medium;
+		src: url('publico/Publico-Medium.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: Publico-Medium;
+		src: url('publico/Publico-MediumItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+
+	/* publico light and light italic */
+	@font-face {
+		font-family: Publico-Light;
+		src: url('publico/Publico-Light.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: Publico-Light;
+		src: url('publico/Publico-LightItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+	
+
+
+	/* publico text roman */
+	@font-face {
+		font-family: PublicoText;
+		src: url('publico/PublicoText-Roman.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: PublicoText;
+		src: url('publico/PublicoText-Italic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+
+	/* publico text bold */
+	@font-face {
+		font-family: PublicoText-Bold;
+		src: url('publico/PublicoText-Bold.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: PublicoText-Bold;
+		src: url('publico/PublicoText-BoldItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+
+	/* publico text roman */
+	@font-face {
+		font-family: PublicoText-Semibold;
+		src: url('publico/PublicoText-Semibold.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: PublicoText-Semibold;
+		src: url('publico/PublicoText-SemiboldItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+
+
+/* Boomer sans serif */
+
+	/* boomer black*/
+	@font-face {
+		font-family: Boomer-Black;
+		src: url('boomer/Boomer-Black.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	/* boomer black*/
+	@font-face {
+		font-family: Boomer-Black;
+		src: url('boomer/Boomer-BlackItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+	/* Boomer Book*/
+	/* Can use with bold weight, and italic style, both, or none */
+	@font-face {
+		font-family: Boomer-Book;
+		src: url('boomer/Boomer-Book.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: Boomer-Book;
+		src: url('boomer/Boomer-BookItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+	/*Boomer regular*/
+	@font-face {
+		font-family: Boomer;
+		src: url('boomer/Boomer-Regular.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: Boomer;
+		src: url('boomer/Boomer-RegularItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+	@font-face {
+		font-family: Boomer;
+		src: url('boomer/Boomer-Bold.otf');
+		font-weight:bold;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: Boomer;
+		src: url('boomer/Boomer-BoldItalic.otf');
+		font-weight:bold;
+		font-style:italic;
+	}
+
+	/*Boomer-Light*/
+	/* Can use with italic style*/
+	@font-face {
+		font-family: Boomer-Light;
+		src: url('boomer/Boomer-Light.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: Boomer-Light;
+		src: url('boomer/Boomer-LightItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+
+	/*Boomer-ExtraBold*/
+	/* Can use with italic style*/
+	@font-face {
+		font-family: Boomer-Extra;
+		src: url('boomer/Boomer-ExtraBold.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: Boomer-Extra;
+		src: url('boomer/Boomer-ExtraBoldItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+
+
+	/*Boomer Condensed*/
+	/* Can use with bold weight, and italic style, both, or none */
+	@font-face {
+		font-family: BoomerCond;
+		src: url('boomer_cond/BoomerCond-Regular.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerCond;
+		src: url('boomer_cond/BoomerCond-RegularItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+	@font-face {
+		font-family: BoomerCond;
+		src: url('boomer_cond/BoomerCond-Bold.otf');
+		font-weight:bold;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerCond;
+		src: url('boomer_cond/BoomerCond-BoldItalic.otf');
+		font-weight:bold;
+		font-style:italic;
+	}
+
+	@font-face {
+		font-family: BoomerCondBlack;
+		src: url('boomer_cond/BoomerCond-Black.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerCondBlack;
+		src: url('boomer_cond/BoomerCond-BlackItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+	@font-face {
+		font-family: BoomerCondLight;
+		src: url('boomer_cond/BoomerCond-Light.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerCondLight;
+		src: url('boomer_cond/BoomerCond-LightItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+	@font-face {
+		font-family: BoomerCondBook;
+		src: url('boomer_cond/BoomerCond-Book.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerCondBook;
+		src: url('boomer_cond/BoomerCond-BookItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+
+/*Boomer extra Condensed*/
+	/* Can use with bold weight, and italic style, both, or none */
+	@font-face {
+		font-family: BoomerExtraCond;
+		src: url('boomer_extracond/BoomerExtraCond-Regular.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerExtraCond;
+		src: url('boomer_extracond/BoomerExtraCond-RegularItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+	@font-face {
+		font-family: BoomerExtraCond;
+		src: url('boomer_extracond/BoomerExtraCond-Bold.otf');
+		font-weight:bold;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerExtraCond;
+		src: url('boomer_extracond/BoomerExtraCond-BoldItalic.otf');
+		font-weight:bold;
+		font-style:italic;
+	}
+
+	@font-face {
+		font-family: BoomerExtraCondBlack;
+		src: url('boomer_extracond/BoomerExtraCond-Black.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerExtraCondBlack;
+		src: url('boomer_extracond/BoomerExtraCond-BlackItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+	@font-face {
+		font-family: BoomerExtraCondLight;
+		src: url('boomer_extracond/BoomerExtraCond-Light.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerExtraCondLight;
+		src: url('boomer_extracond/BoomerExtraCond-LightItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+	@font-face {
+		font-family: BoomerExtraCondBook;
+		src: url('boomer_extracond/BoomerExtraCond-Book.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerExtraCondBook;
+		src: url('boomer_extracond/BoomerExtraCond-BookItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+
+
+
+
+/* boomer slab serif */
+	/*Boomer regular*/
+	@font-face {
+		font-family: BoomerSlab;
+		src: url('boomerslab/BoomerSerif-Regular.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerSlab;
+		src: url('boomerslab/BoomerSerif-RegularItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+	@font-face {
+		font-family: BoomerSlab;
+		src: url('boomerslab/BoomerSerif-Bold.otf');
+		font-weight:bold;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerSlab;
+		src: url('boomerslab/BoomerSerif-BoldItalic.otf');
+		font-weight:bold;
+		font-style:italic;
+	}
+	/* boomer black*/
+	@font-face {
+		font-family: BoomerSlab-Black;
+		src: url('boomerslab/BoomerSerif-Black.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	/* boomer black*/
+	@font-face {
+		font-family: BoomerSlab-Black;
+		src: url('boomerslab/BoomerSerif-BlackItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+	/* Boomer Book*/
+	/* Can use with bold weight, and italic style, both, or none */
+	@font-face {
+		font-family: BoomerSlab-Book;
+		src: url('boomerslab/BoomerSerif-Book.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerSlab-Book;
+		src: url('boomerslab/BoomerSerif-BookItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+
+	/*Boomer-Light*/
+	/* Can use with italic style*/
+	@font-face {
+		font-family: BoomerSlab-Light;
+		src: url('boomerslab/BoomerSerif-Light.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerSlab-Light;
+		src: url('boomerslab/BoomerSerif-LightItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+
+	/*Boomer-ExtraBold*/
+	/* Can use with italic style*/
+	@font-face {
+		font-family: BoomerSlab-Extra;
+		src: url('boomerslab/BoomerSerif-ExtraBold.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerSlab-Extra;
+		src: url('boomerslab/BoomerSerif-ExtraBoldItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+
+
+		/*Boomer Condensed*/
+	/* Can use with bold weight, and italic style, both, or none */
+	@font-face {
+		font-family: BoomerSlabCond;
+		src: url('boomerslab_cond/BoomerSerifCond-Regular.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerSlabCond;
+		src: url('boomerslab_cond/BoomerSerifCond-RegularItal.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+	@font-face {
+		font-family: BoomerSlabCond;
+		src: url('boomerslab_cond/BoomerSerifCond-Bold.otf');
+		font-weight:bold;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerSlabCond;
+		src: url('boomerslab_cond/BoomerSerifCond-BoldItalic.otf');
+		font-weight:bold;
+		font-style:italic;
+	}
+
+	@font-face {
+		font-family: BoomerSlabCondBlack;
+		src: url('boomerslab_cond/BoomerSerifCond-Black.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerSlabCondBlack;
+		src: url('boomerslab_cond/BoomerSerifCond-BlackItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+	@font-face {
+		font-family: BoomerSlabCondLight;
+		src: url('boomerslab_cond/BoomerSerifCond-Light.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerSlabCondLight;
+		src: url('boomerslab_cond/BoomerSerifCond-LightItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+	@font-face {
+		font-family: BoomerSlabCondBook;
+		src: url('boomerslab_cond/BoomerSerifCond-Book.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerSlabCondBook;
+		src: url('boomerslab_cond/BoomerSerifCond-BookItalic.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+
+/*Boomer extra Condensed*/
+	/* Can use with bold weight, and italic style, both, or none */
+	@font-face {
+		font-family: BoomerSlabExtraCond;
+		src: url('boomerslab_extracond/BoomerSerifExtraCond-Reg.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerSlabExtraCond;
+		src: url('boomerslab_extracond/BoomerSerifExtraCond-RegIta.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+	@font-face {
+		font-family: BoomerSlabExtraCond;
+		src: url('boomerslab_extracond/BoomerSerifExtraCond-Bold.otf');
+		font-weight:bold;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerSlabExtraCond;
+		src: url('boomerslab_extracond/BoomerSerifExtraCond-BldIt.otf');
+		font-weight:bold;
+		font-style:italic;
+	}
+
+	@font-face {
+		font-family: BoomerSlabExtraCondBlack;
+		src: url('boomerslab_extracond/BoomerSerifExtraCond-Black.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerSlabExtraCondBlack;
+		src: url('boomerslab_extracond/BoomerSerifExtraCond-BlakIt.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+	@font-face {
+		font-family: BoomerSlabExtraCondLight;
+		src: url('boomerslab_extracond/BoomerSerifExtraCond-Light.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerSlabExtraCondLight;
+		src: url('boomerslab_extracond/BoomerSerifExtraCond-LghtIt.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+	@font-face {
+		font-family: BoomerSlabExtraCondBook;
+		src: url('boomerslab_extracond/BoomerSerifExtraCond-Book.otf');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: BoomerSlabExtraCondBook;
+		src: url('boomerslab_extracond/BoomerSerifExtraCond-BookIt.otf');
+		font-weight:normal;
+		font-style:italic;
+	}
+
+
+
+
+
+
+
+
+/*/* Scout family */
+
+	/* Scout Condensed */
+	/* Can use with bold weight, and italic style, both, or none */
+	@font-face {
+		font-family: ScoutCond-Black;
+		src: url('http://alt.coxnewsweb.com/ajc/_newsapps/2014/fonts/Scout/SCOUTCOND-BLACK.OTF');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: ScoutCond-Black;
+		src: url('http://alt.coxnewsweb.com/ajc/_newsapps/2014/fonts/Scout/SCOUNTCOND-BLACKITALIC.OTF');
+		font-weight:normal;
+		font-style:italic;
+	}
+	@font-face {
+		font-family: ScoutCond;
+		src: url('http://alt.coxnewsweb.com/ajc/_newsapps/2014/fonts/Scout/SCOUTCOND-BOLD.OTF');
+		font-weight:bold;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: ScoutCond;
+		src: url('http://alt.coxnewsweb.com/ajc/_newsapps/2014/fonts/Scout/SCOUNTCOND-BOLDITALIC.OTF');
+		font-weight:bold;
+		font-style:italic;
+	}
+	@font-face {
+		font-family: ScoutCond;
+		src: url('http://alt.coxnewsweb.com/ajc/_newsapps/2014/fonts/Scout/SCOUTCOND-EXTRALIGHT.OTF');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: ScoutCond;
+		src: url('http://alt.coxnewsweb.com/ajc/_newsapps/2014/fonts/Scout/SCOUTCOND-EXTRALIGHTITALIC.OTF');
+		font-weight:normal;
+		font-style:italic;
+	}
+
+	/* scout bold */
+	@font-face {
+		font-family: Scout-Bold;
+		src: url('http://alt.coxnewsweb.com/ajc/_newsapps/2014/fonts/Scout/SCOUT-BOLD.OTF');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: Scout-Bold;
+		src: url('http://alt.coxnewsweb.com/ajc/_newsapps/2014/fonts/Scout/SCOUT-BOLDITALIC.OTF');
+		font-weight:normal;
+		font-style:italic;
+	}
+	/* scout regular */
+	@font-face {
+		font-family: Scout;
+		src: url('http://alt.coxnewsweb.com/ajc/_newsapps/2014/fonts/Scout/SCOUT-REGULAR.OTF');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: Scout;
+		src: url('http://alt.coxnewsweb.com/ajc/_newsapps/2014/fonts/Scout/SCOUT-REGULARITALIC.OTF');
+		font-weight:normal;
+		font-style:italic;
+	}
+	/* scout light */
+	@font-face {
+		font-family: Scout-Light;
+		src: url('http://alt.coxnewsweb.com/ajc/_newsapps/2014/fonts/Scout/SCOUT-LIGHT.OTF');
+		font-weight:normal;
+		font-style:normal;
+	}
+	@font-face {
+		font-family: Scout-Light;
+		src: url('http://alt.coxnewsweb.com/ajc/_newsapps/2014/fonts/Scout/SCOUT-LIGHTITALIC.OTF');
+		font-weight:normal;
+		font-style:italic;
+	}
+
+
+
+
