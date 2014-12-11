@@ -64,7 +64,7 @@ define(["app"], function(GeneralAssemblyApp) {
           dataType: "jsonp",
           success: function(data) {
             defer.resolve(data);
-          }
+          }it,
         });
         return defer.promise();
       },
