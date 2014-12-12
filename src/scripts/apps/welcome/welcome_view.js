@@ -30,6 +30,7 @@ define(["app"], function(GeneralAssemblyApp) {
       },
       onShow: function() {
         var feed = new google.feeds.Feed("http://www.myajc.com/list/rss/news/state-regional-govt-politics/georgia-politics-news/aKdb/");
+        feed.setNumEntries(3);
         feed.load(function(result) {
           if (!result.error) {
             var container = $("#news-feeds");
