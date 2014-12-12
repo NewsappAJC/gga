@@ -21,6 +21,7 @@ footer a{
   color: #4780B2;
 }
 .container{
+  padding:0; /*overriding this because Bootstrap 3.3.1 has -15px right/left padding and it's messing with what's already here*/
   /*max-width:1080px;*/
 }
 #bill-region{
@@ -34,6 +35,9 @@ footer a{
   border-radius:0px;
 }
 
+.container .jumbotron, .container-fluid .jumbotron {
+  border-radius: 0;
+}
 #top-nav{
   width:100%;
   padding:8px;
@@ -49,6 +53,7 @@ footer a{
   color:#888;
 }
 #nav-container{
+  padding:0;
   width:100%;
 }
 .display-ul li{
@@ -60,7 +65,6 @@ footer a{
 #social{
   float:right;
   margin-right:0px;
-  padding-right:5px;
   text-align: right;
 }
 #social span{
@@ -175,8 +179,12 @@ footer a{
 }
 .btn-default{
   background-color: #474949;
-border-color: #474949;
-border-radius:0px;
+  border-color: #474949;
+  border-radius:0px;
+  color:#fff;
+}
+.btn-sm, .btn-group-sm > .btn{
+  border-radius:0;
 }
 .selected {
   font-weight: bold;
@@ -282,6 +290,9 @@ td.voted.NotVoting {
   border-radius:0px;
 }
 
+#version-region.panel-body{
+  padding:0;
+}
 .table-top{
   border-top:1px solid #ddd;
   border-left:1px solid #ddd;
@@ -295,10 +306,13 @@ td.voted.NotVoting {
   min-height:0px;
   height:auto;
   padding:0px;
-  background-color:rgba(255,255,255,0.9) ;
+/*  background-color:rgba(255,255,255,0.9);*/
 }
 .navbar button{
   margin:0px;
+}
+.navbar-right{
+  margin-right:0;
 }
 #top{
   width:100%;
@@ -480,16 +494,6 @@ body .ui-tooltip {
 }
 
 
-#full-width{
-      width:100%;
-      padding-bottom:2px;
-      margin:0px;
-      /*padding:0px;*/
-    }
-    #full-width .col-sm-6{
-      padding:0px;
-      margin-top:0px;
-    }
 
     #home-nav{
       background-color:#fff;
@@ -714,7 +718,7 @@ body .ui-tooltip {
   }
 }
 
-img.info {
+img.info-tip {
   cursor: pointer;
 }
 
