@@ -33,10 +33,11 @@ define(["app"], function(GeneralAssemblyApp) {
                  "progress-bar-success";
         });
 
-        if (crossover_status === -1) {
-          var billnum = $(".billnumhed")
-          $(billnum).addClass("red");
-        }
+        // Code to style unpassed bills red after crossover day
+        // if (crossover_status === -1) {
+        //   var billnum = $(".billnumhed")
+        //   $(billnum).addClass("red");
+        // }
       }
     });
 
