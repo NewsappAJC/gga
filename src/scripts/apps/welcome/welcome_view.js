@@ -41,8 +41,9 @@ define(["app"], function(GeneralAssemblyApp) {
             }
           }
         });
-        GeneralAssemblyApp.Common.facebook(document);
-        GeneralAssemblyApp.Common.tweet(document);
+        // GeneralAssemblyApp.Common.facebook(document);
+        // GeneralAssemblyApp.Common.tweet(document);
+        GeneralAssemblyApp.Common.updatePanel(document);
       }
     });
 

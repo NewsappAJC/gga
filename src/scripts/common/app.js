@@ -1,5 +1,23 @@
 define(["app"], function(GeneralAssemblyApp) {
   GeneralAssemblyApp.module("Common", function(Common, GeneralAssemblyApp, Backbone, Marionette, $, _) {
+
+    Common.updatePanel = function(){
+      var $updateBox = $("#updateBox");
+      var timeout = setTimeout(function(){ $updateBox.collapse('show'); clearTimeout(timeout);}, 1000);
+
+      $('#closeUpdate').on("click", function(){
+        $updateBox.collapse('hide');
+        toggleArrow();
+      });
+
+      $("#whatsNew").on("click", toggleArrow);
+
+      function toggleArrow(){
+        $("#updatesArrow").toggleClass("fa-sort-desc fa-sort-asc");
+      }
+    }
+
+    /*removed social toolbar for now
     Common.tweet = function(d, s, id){
       var s = typeof s !== "undefined" ? s : "script";
       var id = typeof id !== "undefined" ? id : "twitter-wjs";
@@ -27,7 +45,7 @@ define(["app"], function(GeneralAssemblyApp) {
       js.id = id;
       js.src = "http://connect.facebook.net/en_US/all.js#xfbml=1&appId=1446015978947149";
       fjs.parentNode.insertBefore(js, fjs);
-    }
+    }*/
   });
   return GeneralAssemblyApp.Common
 });
