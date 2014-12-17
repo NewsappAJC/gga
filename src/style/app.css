@@ -41,6 +41,7 @@ footer a{
   color: #044eb6;
 }
 .container{
+  padding:0; /*overriding this because Bootstrap 3.3.1 has 15px right/left padding and it's messing with what's already here*/
   /*max-width:1080px;*/
 }
 #bill-region{
@@ -54,11 +55,18 @@ footer a{
   border-radius:0px;
 }
 
+.container .jumbotron, .container-fluid .jumbotron {
+  border-radius: 0;
+}
 #top-nav{
   width:100%;
   padding:8px;
   border-bottom:1px solid #ddd;
   letter-spacing: 0.1em;
+<<<<<<< HEAD
+=======
+  margin-bottom:0;
+>>>>>>> upstream/develop
 }
 
 #top-nav a{
@@ -68,22 +76,30 @@ footer a{
   color:#888;
 }
 #nav-container{
+  padding:0;
   width:100%;
+}
+#whatsNew{
+  font-size:.8em;
+  text-align:right;
+}
+#whatsNew .fa-sort-asc{
+  vertical-align:top;
+}
+#whatsNew .fa-sort-desc{
+  vertical-align:bottom;
+}
+#whatsNew a:focus{
+  text-decoration:none;
+  outline:none;
+}
+#updateBox .well{
+  margin-bottom:0;
+  border-radius:0;
 }
 .display-ul li{
   font-size: 20px;
   padding-bottom: 2px;
-}
-/*social */
-
-#social{
-  float:right;
-  margin-right:0px;
-  padding-right:5px;
-  text-align: right;
-}
-#social span{
-  text-align:right;
 }
 
 
@@ -194,8 +210,12 @@ footer a{
 }
 .btn-default{
   background-color: #474949;
-border-color: #474949;
-border-radius:0px;
+  border-color: #474949;
+  border-radius:0px;
+  color:#fff;
+}
+.btn-sm, .btn-group-sm > .btn{
+  border-radius:0;
 }
 .selected {
   font-weight: bold;
@@ -302,6 +322,9 @@ td.voted.NotVoting {
   border-radius:0px;
 }
 
+#version-region.panel-body{
+  padding:0;
+}
 .table-top{
   border-top:1px solid #ddd;
   border-left:1px solid #ddd;
@@ -315,10 +338,13 @@ td.voted.NotVoting {
   min-height:0px;
   height:auto;
   padding:0px;
-  background-color:rgba(255,255,255,0.9) ;
+/*  background-color:rgba(255,255,255,0.9);*/
 }
 .navbar button{
   margin:0px;
+}
+.navbar-right{
+  margin-right:0;
 }
 #top{
   width:100%;
@@ -512,6 +538,7 @@ body .ui-tooltip {
 }
 
 
+<<<<<<< HEAD
     #full-width{
       width:100%;
       padding-bottom:2px;
@@ -623,6 +650,103 @@ body .ui-tooltip {
     #footer-content{
       padding:50px 0px;
     }
+=======
+
+#home-nav{
+  background-color:#fff;
+  height:300px;
+}
+#bills{
+  background-image:url('/images/bills.jpg');
+  background-size:100%;
+  background-position:0px -70px;
+  height:300px;
+  margin-right:0px;
+  padding:0px;
+}
+#bills, #members{
+  opacity:0.9;
+  cursor:pointer;
+}
+#bills:hover, #members:hover{
+  opacity:1.0;
+}
+#bills:hover h3, #members:hover h3{
+  text-decoration: underline;
+}
+#members{
+  background-image:url('/images/people.jpg');
+  background-size:100%;
+  height:300px;
+  padding:0px;
+  margin-left:0px;
+}
+
+.nav-box h3{
+  width:350px;
+  text-align:center;
+  padding-top:100px;
+  padding:100px 0px 10px 0px;
+  margin:0px auto;
+  font-size:46px;
+  font-style:italic;
+  color:#000;
+    text-align: center;
+    position:relative;
+}
+
+h2.bill-header{
+  text-align:center;
+  font-style:italic;
+  color:#000;
+  font-size:36px;
+}
+
+.bottom-third{
+  border-right:1px solid #ddd;
+  margin:50px 0px;
+  padding:15px;
+  border:1px solid #ddd;
+  min-height:250px;
+}
+.col-sm-4:last-child .bottom-third{
+  /*border:none;*/
+}
+.bottom-third h3{
+  text-transform:uppercase;
+  margin-top:0px;
+  padding:5px 0px;
+  font-size:28px;
+  /*text-align:center;*/
+}
+h1#counter{
+  text-align:center;
+  font-size:60px;
+}
+#tag{
+  padding:100px 0px;
+}
+#majority h5, #minority h5{
+  text-align:center;
+}
+#news-list, #recent-bills {
+  padding-left:0px;
+}
+#news-list li, #recent-bills li{
+  list-style-type:none;
+  margin:10px 0px;
+  padding:10px;
+  background-color:#eee;
+  cursor:pointer;
+}
+#news-list li:hover, #recent-bills li:hover{
+  background-color:#d9e1ef;
+}
+#footer-content{
+  color:#eee;
+  padding:50px 0px;
+}
+>>>>>>> upstream/develop
 
 .article-credit {
   font-size: 12px;
@@ -733,7 +857,7 @@ body .ui-tooltip {
   }
 }
 
-img.info {
+img.info-tip {
   cursor: pointer;
 }
 
