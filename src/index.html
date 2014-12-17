@@ -23,9 +23,6 @@
 
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style/app.css">
-<!--
-	<link rel="stylesheet" href="http://host.coxmediagroup.com/ajc/digitalprojects/global/css/iFrame_Medley.css" type="text/css"/>
--->
 
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -103,14 +100,14 @@
       <div class="well well-sm">
         <button type="button" class="close" id="closeUpdate"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <form id="bill-search" class="form-search">
-          <span><b>Updated Bill Predictions:</b> See the chance that bills surviving crossover day will pass. </span>
-          <select id="document-type" class="span2">
+          <strong>Updated Bill Predictions:</strong> See the chance that bills surviving crossover day will pass. 
+          <select id="document-type">
             <option value="HB">House Bill</option>
             <option value="SB">Senate Bill</option>
           </select>
           <input type="text" class="input-mini" id="number">
           <button type="submit" class="btn btn-xs">Go</button>
-          <a href="http://ajcnewsapps.tumblr.com/" target="_blank">(Lean more about the changes)</a>
+          <a href="http://ajcnewsapps.tumblr.com/post/78920168714/predict-a-bill-has-been-updated" target="_blank">(Lean more about the changes)</a>
         </form>
       </div>
     </div>
@@ -305,7 +302,7 @@
         </div>
       </div>
     </div>
-    <div class="navbar navbar-static-top" id="panel-region" ></div>
+    <div class="navbar navbar-static-top" id="panel-region"></div>
     <div class="container">
       <div class="row">
         <div class="col-sm-12" id="members-region"></div>
@@ -366,7 +363,7 @@
             <% } %>
           </h3>
           <h4><%= caption %></h3></h4>
-          <p><b>Status:</b> <%= status_description %></p>
+          <p><strong>Status:</strong> <%= status_description %></p>
         </div>
 
         <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
@@ -397,14 +394,14 @@
       <div class="row">
         <div class="col-sm-12">
           <form id="bill-search" class="form-search">
-            <span>Find a bill:</span>
-            <select id="document-type" class="span2">
+            Find a bill:
+            <select id="document-type">
               <option value="HB">House Bill</option>
               <option value="HR">House Resolution</option>
               <option value="SB">Senate Bill</option>
               <option value="SR">Senate Resolution</option>
             </select>
-            <input type="text" class="input-mini span1" id="number">
+            <input type="text" class="input-mini" id="number">
             <button type="submit" class="btn btn-xs">Go</button>
           </form>
         </div>
@@ -477,7 +474,7 @@
         </h3>
 
         <p><%- description %></p>
-        <p><b>Latest status:</b> <%= status_description %> (<%- status_date.toString("MMM d, yyyy") %>)</p>
+        <p><strong>Latest status:</strong> <%= status_description %> (<%- status_date.toString("MMM d, yyyy") %>)</p>
       </div>
       <div class="col-sm-2">
         <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
@@ -543,12 +540,12 @@
         <div class="col-sm-12">
           <div>
             <% if ( passed_over === -1 ) { %>
-              <p class="red"><b>Note:</b> This general bill or constitutional amendment resolution did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules. The substance of this bill could also be amended to a live bill later in the session. Local bills and private resolutions are not affected by the crossover day deadline.</p>
+              <p class="red"><strong>Note:</strong> This general bill or constitutional amendment resolution did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules. The substance of this bill could also be amended to a live bill later in the session. Local bills and private resolutions are not affected by the crossover day deadline.</p>
             <% } %>
-            <p><b><%- caption %></b><p>
-            <p><b>Current Status:</b> <%- status_description %></p>
-            <p><b>Current Version:</b> <a href="<%- latest_version_url %>" target="_blank"><%- latest_version_description %></a></p>
-            <p><b>Official Summary:</b> <%- summary %></p>
+            <p><strong><%- caption %></strong><p>
+            <p><strong>Current Status:</strong> <%- status_description %></p>
+            <p><strong>Current Version:</strong> <a href="<%- latest_version_url %>" target="_blank"><%- latest_version_description %></a></p>
+            <p><strong>Official Summary:</strong> <%- summary %></p>
           </div>
 
           <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
