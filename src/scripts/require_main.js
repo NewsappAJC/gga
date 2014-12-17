@@ -6,7 +6,7 @@ requirejs.config({
     propertyParser: "lib/propertyParser",
     goog: "lib/goog",
     undescore: "lib/underscore",
-    jquery: "lib/jquery-1.10.2",
+    jquery: "lib/jquery-1.11.1.min",
     "jquery-ui": "lib/jquery-ui-1.10.3.custom",
     "jquery-scrolltofixed": "lib/jquery-scrolltofixed-min",
     "jquery-datatables": "lib/jquery.dataTables",
