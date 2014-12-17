@@ -65,13 +65,19 @@
             <div class="col-sm-2">
               <a href="/#about">ABOUT</a>
             </div>
+            <div  id="whatsNew" class="col-sm-2 pull-right">
+              <div id="updateHeading">
+                <a class="collapsed" data-toggle="collapse" data-parent="#whatsNew" href="#updateBox" aria-expanded="false" aria-controls="updateBox">
+                  WHAT'S NEW <i id="updatesArrow" class="fa fa-sort-asc"></i>
+                </a>
+              </div>
+            </div>
         </div>
       </div>
     </div>
   </nav>
 
-  <div id="main-region">
-  </div>
+  <div id="main-region"></div>
 
   <!-- footer -->
   <footer id="footer">
@@ -90,24 +96,28 @@
   <!-- TEMPLATES -->
 
   <script type="text/template" id="welcome-layout">
+
+    <!-- updates panel -->
+    <!--TODO this needs to move out of welcome-layout but I don't know how Marionette works so the form breaks -->
+    <div class="container collapse" id="updateBox">
+      <div class="well well-sm">
+        <button type="button" class="close" id="closeUpdate"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <form id="bill-search" class="form-search">
+          <span><b>Updated Bill Predictions:</b> See the chance that bills surviving crossover day will pass. </span>
+          <select id="document-type" class="span2">
+            <option value="HB">House Bill</option>
+            <option value="SB">Senate Bill</option>
+          </select>
+          <input type="text" class="input-mini" id="number">
+          <button type="submit" class="btn btn-xs">Go</button>
+          <a href="http://ajcnewsapps.tumblr.com/" target="_blank">(Lean more about the changes)</a>
+        </form>
+      </div>
+    </div>
+
     <div class="container" id="header">
       <div class="row">
         <div class="col-lg-12">
-          <div class="alert alert-success">
-            <p>
-
-              <form id="bill-search" class="form-search">
-                <span><b>Updated Bill Predictions:</b> See the chance that bills surviving crossover day will pass. </span>
-                <select id="document-type" class="span2">
-                  <option value="HB">House Bill</option>
-                  <option value="SB">Senate Bill</option>
-                </select>
-                <input type="text" class="input-mini span1" id="number">
-                <button type="submit" class="btn btn-xs">Go</button>
-                <a href="http://ajcnewsapps.tumblr.com/" target="_blank">(Lean more about the changes)</a>
-              </form>
-            </p>
-          </div>
           <h1 class="home-head">
             Georgia Legislative Navigator
           </h1>

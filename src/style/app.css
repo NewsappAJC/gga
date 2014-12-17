@@ -44,7 +44,7 @@ footer a{
   border-bottom:1px solid #ddd;
   /*text-align:center;*/
   letter-spacing: 0.1em;
-  margin-bottom:20px;
+  margin-bottom:0;
 }
 #top-nav a{
   color:#333;
@@ -55,6 +55,24 @@ footer a{
 #nav-container{
   padding:0;
   width:100%;
+}
+#whatsNew{
+  font-size:.8em;
+  text-align:right;
+}
+#whatsNew .fa-sort-asc{
+  vertical-align:top;
+}
+#whatsNew .fa-sort-desc{
+  vertical-align:bottom;
+}
+#whatsNew a:focus{
+  text-decoration:none;
+  outline:none;
+}
+#updateBox .well{
+  margin-bottom:0;
+  border-radius:0;
 }
 .display-ul li{
   font-size: 20px;
