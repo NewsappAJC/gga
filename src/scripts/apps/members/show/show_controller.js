@@ -2,7 +2,7 @@ define(["app","apps/members/show/show_view"], function(GeneralAssemblyApp, View)
   GeneralAssemblyApp.module("MembersApp.Show", function(Show, GeneralAssemblyApp, Backbone, Marionette, $, _) {
     Show.Controller = {
       showMember: function(id) {
-        require(["entities/member","entities/top_contributors"], function() {
+        require(["entities/member","entities/top_contributors","entities/districts"], function() {
           var loadingView = new GeneralAssemblyApp.Common.View.Loading();
           GeneralAssemblyApp.mainRegion.show(loadingView);
 
@@ -36,6 +36,10 @@ define(["app","apps/members/show/show_view"], function(GeneralAssemblyApp, View)
               collection: votes
             });
 
+            var districtView = new View.District
+
+            // var district = new GeneralAssemblyApp.Entities.District( member.get("district") );
+
             memberShowLayout.on("show", function() {
               if (bills.length > 0) {
                 memberShowLayout.billsListRegion.show(billsListView);
@@ -44,6 +48,7 @@ define(["app","apps/members/show/show_view"], function(GeneralAssemblyApp, View)
               memberShowLayout.topContributorsRegion.show(topContributorsView);
               memberShowLayout.detailRegion.show(memberDetailView);
               memberShowLayout.votesRegion.show(votesListView);
+              memberShowLayout.districtRegion.show(districtView);
               $(document).tooltip({
                 predelay: 0,
                 cancelDefault: true

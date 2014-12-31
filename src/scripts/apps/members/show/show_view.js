@@ -7,7 +7,8 @@ define(["app"], function(GeneralAssemblyApp){
         topContributorsRegion: "#top-contributors-region",
         committeesRegion: "#committee-list-region",
         billsListRegion: "#bills-list-region",
-        votesRegion: "#vote-list-region"
+        votesRegion: "#vote-list-region",
+        districtRegion: "#district-region"
       }
     });
 
@@ -90,6 +91,10 @@ define(["app"], function(GeneralAssemblyApp){
           "sPaginationType": "two_button"
         });
       }
+    });
+
+    View.District = Marionette.ItemView.extend({
+      template: "#member-district-template"
     });
   });
   return GeneralAssemblyApp.MembersApp.Show.View;
