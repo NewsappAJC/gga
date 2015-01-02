@@ -36,9 +36,11 @@ define(["app","apps/members/show/show_view"], function(GeneralAssemblyApp, View)
               collection: votes
             });
 
-            var districtView = new View.District
-
-            // var district = new GeneralAssemblyApp.Entities.District( member.get("district") );
+            var district = new GeneralAssemblyApp.Entities.District( member.get("district") );
+            console.log(district.attributes);
+            var districtView = new View.District({
+              model: district
+            });
 
             memberShowLayout.on("show", function() {
               if (bills.length > 0) {

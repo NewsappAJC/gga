@@ -278,7 +278,18 @@
   </script>
 
   <script type="text/template" id = "member-district-template">
-    <h1>District Demographics Here</h1>
+    <p>Population: <%= numeral(total_population).format('0,0') %></p>
+    <p>Median income: <%= numeral(median_household_income).format('$0,0') %></p>
+    <p>Median age: <%= median_age %> years</p>
+    <p>Percent with a college degree: <%= numeral(pct_college_grad).format('0.0') %>%</p>
+    <p>Percent Georgia natives: <%= pct_georgia_born %>%</p>
+    <p>White: <%= race.white.toFixed(1) %>%</p>
+    <p>Black: <%= race.black.toFixed(1) %>%</p>
+    <p>Hispanic: <%= race.hispanic.toFixed(1) %>%</p>
+    <p>Asian: <%= race.asian.toFixed(1) %>%</p>
+    <p>Multi-race: <%= race.multi.toFixed(1) %>%</p>
+    <p>Other race: <%= race.other.toFixed(1) %>%</p>
+    <p>Source: U.S. Census Bureau Amaerican Community Survey</p>
   </script>
 
   <script type="text/template" id="top-contributors-table-template">
@@ -421,9 +432,6 @@
       <div class="row" id="bill-category-region"></div>
     </div>
   </script>
-
-
-
 
   <script type="text/template" id="bill-category-template">
     <div class="watched-bill">
