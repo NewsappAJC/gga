@@ -43,12 +43,12 @@
             <div class="col-sm-12">
               <div id="masthead">
                 <a href="http://www.myajc.com" target="_blank" alt="myajc.com">
-                <img src="images/logo.png" width="200px">
+                <img src="images/logo.svg" height="50px">
                 </a>
-
               </div>
               <div id="masthead-tag">
-                 Georgia Legislative Navigator
+                 <span id="georgia">Georgia</span><br/>
+                 <span id="leg-nav">Legislative Navigator</span>
                 </div>
               <div class="hidden-xs hidden-sm">
 
@@ -60,25 +60,28 @@
     </div>
 
     <div id="top-nav">
-      <div class="container" id="nav-container">
+      <div class="container">
         <div class="row">
-            <div class="col-sm-2">
-              <a href="/">HOME</a>
+          <div class="col-sm-8">
+            <div class="row">
+              <div class="col-sm-2">
+                <a href="/">HOME</a>
+              </div>
+              <div class="col-sm-2">
+                <a href="/#watched_bills">BILLS</a>
+              </div>
+              <div class="col-sm-2">
+                <a href="/#members">MEMBERS</a>
+              </div>
+              <div class="col-sm-2">
+                <a href="/#about">ABOUT</a>
+              </div>
             </div>
-            <div class="col-sm-2">
-              <a href="/#watched_bills">BILLS</a>
-            </div>
-            <div class="col-sm-2">
-              <a href="/#members">MEMBERS</a>
-            </div>
-            <div class="col-sm-2">
-              <a href="/#about">ABOUT</a>
-            </div>
-
-            <div  id="whatsNew" class="col-sm-2 pull-right">
+          </div>
+            <div id="whatsNew" class="col-sm-4">
               <div id="updateHeading">
                 <a class="collapsed" data-toggle="collapse" data-parent="#whatsNew" href="#updateBox" aria-expanded="false" aria-controls="updateBox">
-                  WHAT'S NEW <i id="updatesArrow" class="fa fa-sort-asc"></i>
+                  WHAT'S NEW? <i id="updatesArrow" class="fa fa-sort-asc"></i>
                 </a>
               </div>
             </div>
@@ -114,50 +117,51 @@
   <!-- TEMPLATES -->
 
   <script type="text/template" id="welcome-layout">
+
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <!--<div class="alert alert-success">
-          /<!-- updates panel -->
-    <!--TODO this needs to move out of welcome-layout but I don't know how Marionette works so the form breaks -->
-    <div class="container collapse" id="updateBox">
-      <div class="well well-sm">
-        <button type="button" class="close" id="closeUpdate"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <form id="bill-search" class="form-search">
-          <strong>Updated Bill Predictions:</strong> See the chance that bills surviving crossover day will pass.
-          <select id="document-type">
-            <option value="HB">House Bill</option>
-            <option value="SB">Senate Bill</option>
-          </select>
-          <input type="text" class="input-mini" id="number">
-          <button type="submit" class="btn btn-xs">Go</button>
-          <a href="http://ajcnewsapps.tumblr.com/post/78920168714/predict-a-bill-has-been-updated" target="_blank">(Lean more about the changes)</a>
-        </form>
-      </div>
-    </div>
-
-    <div class="container" id="header">
-      <div class="row">
-        <div class="col-lg-12">
-          <h1 class="home-head">
-            Georgia Legislative Navigator
-          </h1>
+          <div class="container collapse" id="updateBox">
+            <div class="well well-sm">
+              <button type="button" class="close" id="closeUpdate"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <form id="bill-search" class="form-search">
+                <p><strong>Updated Bill Predictions:</strong> See the chance that bills surviving crossover day will pass.
+                <select id="document-type">
+                  <option value="HB">House Bill</option>
+                  <option value="SB">Senate Bill</option>
+                </select>
+                <input type="text" class="input-mini" id="number">
+                <button type="submit" class="btn btn-xs">Go</button>
+                <a href="http://ajcnewsapps.tumblr.com/post/78920168714/predict-a-bill-has-been-updated" target="_blank">(Learn more about the changes)</a></p>
+              </form>
+            </div>
           </div>
         </div>
       </div>
+
+    <div class="container" id="header">
+
       <!-- content home -->
       <div class="row">
-        <div class="col-sm-12">
-          <div id="content-home">
+        <div class="col-sm-6">
+          <div class="nav-box" id="bills">
+            <h3>Bills</h3>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="nav-box" id="members">
+            <h3>Members</h3>
+          </div>
+        </div>
+      </div>
+      <!--<div id="content-home">
             <div class="nav-box" id="bills">
               <h3>Bills</h3>
             </div>
             <div class="nav-box" id="members">
               <h3>Members</h3>
             </div>
-          </div>
-        </div>
-      </div>
+          </div>-->
       <div class="row">
         <div class="col-lg-12">
           <div id="bottom-row">
@@ -403,7 +407,7 @@
         <div class="jumbotron">
           <div class="row">
             <div class="col-sm-12">
-              <h2 class="bill-header">The Bills</h2>
+              <h2 class="bill-header">Bills</h2>
             </div>
           </div>
         </div>
@@ -731,6 +735,7 @@
       </div>
     </div>
   </script>
+
 
   <script data-main="scripts/require_main.js" src="scripts/lib/require.js"></script>
 <script>

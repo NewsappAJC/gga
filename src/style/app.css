@@ -35,11 +35,13 @@ p{
 }
 
 a{
+  color:#003896;
+}
+
+a:hover{
   color:#2a6496;
 }
-footer a{
-  color: #044eb6;
-}
+
 .container{
   padding:0; /*overriding this because Bootstrap 3.3.1 has 15px right/left padding and it's messing with what's already here*/
   /*max-width:1080px;*/
@@ -63,25 +65,27 @@ footer a{
   padding:8px;
   border-bottom:1px solid #ddd;
   letter-spacing: 0.1em;
-<<<<<<< HEAD
-=======
-  margin-bottom:0;
->>>>>>> upstream/develop
 }
 
-#top-nav a{
+#top-nav a, #whatsNew a{
   color:#333;
 }
 #top-nav a:hover{
-  color:#888;
+  color:#003896;
+  text-decoration:none;
 }
 #nav-container{
   padding:0;
   width:100%;
 }
 #whatsNew{
-  font-size:.8em;
+
   text-align:right;
+}
+.fa-sort-asc, .fa-sort-desc{
+  color:#003896;
+  font-size:20px;
+  line-height:.5em;
 }
 #whatsNew .fa-sort-asc{
   vertical-align:top;
@@ -93,15 +97,23 @@ footer a{
   text-decoration:none;
   outline:none;
 }
+
+#updateBox p{
+  margin-bottom:0px;
+}
+
 #updateBox .well{
-  margin-bottom:0;
+  margin-bottom:20px;
   border-radius:0;
 }
 .display-ul li{
   font-size: 20px;
   padding-bottom: 2px;
 }
-
+.close{
+  opacity:1;
+  color:#003896;
+}
 
 #member-jumbotron{
   border-bottom:0px;
@@ -190,6 +202,11 @@ footer a{
   border-bottom:1px solid #ccc;
 }
 
+#updateBox strong {
+  color:#03266D;
+  /* color is slightly different because it looked teal? keep this color in mind in case other blues do this too */
+  font-family:'Publico-Bold';
+}
 
 .hidden {
   display: none;
@@ -204,9 +221,23 @@ footer a{
 .filter:hover{
   color:#aaa;
 }
+.form-search p{
+  line-height:1.2em;
+}
+
+.form-search input{
+  line-height:1.2em;
+}
+
 .btn{
-    background-color:#eee;
+    background-color:#003896;
+    color:#fff;
     border-radius:0px;
+    text-transform:uppercase;
+}
+.btn:hover{
+  color:#fff;
+  background-color:#2a6496;
 }
 .btn-default{
   background-color: #474949;
@@ -241,6 +272,14 @@ footer a{
   -webkit-border-radius-topleft:  20px;
      -moz-border-radius-topleft:  20px;
           border-top-left-radius: 20px;
+}
+
+.watched-bill h3 a:hover{
+  text-decoration:none;
+}
+
+.watched-bill {
+  vertical-align:middle;
 }
 
 #bill-authors .media-object {
@@ -356,21 +395,26 @@ td.voted.NotVoting {
 }
 #inside-top{
   width:100%;
-  padding:5px 20px;
+  padding:3px 20px;
   border-bottom:3px solid #888;
 }
 #masthead{
+  display:inline;
   float:left;
   padding-right:10px;
-  margin-right:10px;
-  border-right:1px solid #aaa;
+  padding-bottom:2px;
 }
 #masthead-tag{
-  padding-top:10px;
-  font-size:20px;
+  display:inline;
+  float:left;
+  border-left:1px solid #aaa;
+  font-family:'Publico-Medium';
+  padding-top:2px;
+  margin-top:5px;
+  font-size:18px;
   padding-left:10px;
-  line-height: 1em;
-  text-transform: uppercase;
+  line-height: 20px;
+  /*text-transform: uppercase;*/
   letter-spacing:1px;
 }
 #masthead-tag a:link    { color: #000; }
@@ -440,8 +484,8 @@ p#home-text{
 .watched-bill:hover {
   background-color:#eee;
 }
-.watched-bill:hover a{
-  text-decoration:underline;
+.watched-bill:hover h3 a{
+  text-decoration:none;
   color:#2a6496;
 }
 
@@ -468,8 +512,9 @@ p#home-text{
   padding-top:5px;
   color:#333;
 }
-#bill-cat-top{
-  margin-top:0px;
+#bill-cat-top .jumbotron{
+  background-image:url('/images/bills_hero.jpg');
+  background-size:auto 100%;
 }
 .fixed{
   position:fixed;
@@ -537,120 +582,16 @@ body .ui-tooltip {
     outline: 0;
 }
 
-
-<<<<<<< HEAD
-    #full-width{
-      width:100%;
-      padding-bottom:2px;
-      margin:0px;
-      /*padding:0px;*/
-    }
-    #full-width .col-sm-6{
-      padding:0px;
-      margin-top:0px;
-    }
-
-    #home-nav{
-      background-color:#fff;
-      height:300px;
-    }
-    #bills{
-      background-image:url('/images/bills.jpg');
-      background-size:100%;
-      background-position:0px -70px;
-      height:350px;
-      margin-right:0px;
-      padding:0px;
-      border-right:1px solid #ddd;
-    }
-    #bills, #members{
-      opacity:0.9;
-      cursor:pointer;
-    }
-    #bills:hover, #members:hover{
-      opacity:1.0;
-    }
-    #members{
-      background-image:url('/images/people.jpg');
-      background-size:100%;
-      height:350px;
-      padding:0px;
-      margin-left:0px;
-    }
-
-    .nav-box{
-      width:50%;
-      float:left;
-    }
-
-    .nav-box h3{
-      font-family:'Publico';
-      letter-spacing:2px;
-      text-align:center;
-      padding-top:100px;
-      padding:140px 0px 10px 0px;
-      margin:0px auto;
-      font-size:48px;
-      font-style:italic;
-      color:#333;
-      text-align: center;
-      position:relative;
-    }
-
-    h2.bill-header{
-      text-align:center;
-      font-style:italic;
-      color:#000;
-      font-size:36px;
-    }
-
-    .bottom-third{
-      border-right:1px solid #ddd;
-      margin:20px 0px;
-      padding:15px;
-      border:1px solid #ddd;
-      min-height:250px;
-    }
-    .col-sm-4:last-child .bottom-third{
-      /*border:none;*/
-    }
-    .bottom-third h3{
-      text-transform:uppercase;
-      margin-top:0px;
-      padding:5px 0px;
-      font-size:28px;
-      /*text-align:center;*/
-    }
-    h1#counter{
-      text-align:center;
-      font-size:120px;
-    }
-    #tag{
-      padding:100px 0px;
-    }
-    #majority h5, #minority h5{
-      text-align:center;
-    }
-    #news-list, #recent-bills {
-      padding-left:0px;
-    }
-    #news-list li, #recent-bills li{
-      list-style-type:none;
-      margin:15px 0px;
-      padding:10px;
-      background-color:#eee;
-      cursor:pointer;
-    }
-    #news-list li p{
-      line-height:1.5em;
-    }
-    #news-list li:hover, #recent-bills li:hover{
-      background-color:#d9e1ef;
-    }
-    #footer-content{
-      padding:50px 0px;
-    }
-=======
+#full-width{
+  width:100%;
+  padding-bottom:2px;
+  margin:0px;
+  /*padding:0px;*/
+}
+#full-width .col-sm-6{
+  padding:0px;
+  margin-top:0px;
+}
 
 #home-nav{
   background-color:#fff;
@@ -660,51 +601,60 @@ body .ui-tooltip {
   background-image:url('/images/bills.jpg');
   background-size:100%;
   background-position:0px -70px;
-  height:300px;
+  height:350px;
   margin-right:0px;
   padding:0px;
+  
 }
 #bills, #members{
   opacity:0.9;
   cursor:pointer;
+  border:1px solid #ccc;
 }
 #bills:hover, #members:hover{
   opacity:1.0;
 }
-#bills:hover h3, #members:hover h3{
-  text-decoration: underline;
+#bills{
+  border-right:none;
 }
 #members{
   background-image:url('/images/people.jpg');
   background-size:100%;
-  height:300px;
+  height:350px;
   padding:0px;
   margin-left:0px;
 }
 
+.nav-box{
+  width:100%;
+  float:left;
+}
+
 .nav-box h3{
-  width:350px;
+  font-family:'Publico';
+  letter-spacing:2px;
   text-align:center;
   padding-top:100px;
-  padding:100px 0px 10px 0px;
+  padding:140px 0px 10px 0px;
   margin:0px auto;
-  font-size:46px;
-  font-style:italic;
-  color:#000;
-    text-align: center;
-    position:relative;
+  font-size:48px;
+  /*font-style:italic;*/
+  color:#003896;
+  text-align: center;
+  position:relative;
 }
 
 h2.bill-header{
   text-align:center;
-  font-style:italic;
+  /*font-style:italic;*/
   color:#000;
-  font-size:36px;
+  font-size:48px;
+  letter-spacing:2px;
 }
 
 .bottom-third{
   border-right:1px solid #ddd;
-  margin:50px 0px;
+  margin:20px 0px;
   padding:15px;
   border:1px solid #ddd;
   min-height:250px;
@@ -721,7 +671,7 @@ h2.bill-header{
 }
 h1#counter{
   text-align:center;
-  font-size:60px;
+  font-size:120px;
 }
 #tag{
   padding:100px 0px;
@@ -734,24 +684,19 @@ h1#counter{
 }
 #news-list li, #recent-bills li{
   list-style-type:none;
-  margin:10px 0px;
+  margin:15px 0px;
   padding:10px;
   background-color:#eee;
   cursor:pointer;
+}
+#news-list li p{
+  line-height:1.5em;
 }
 #news-list li:hover, #recent-bills li:hover{
   background-color:#d9e1ef;
 }
 #footer-content{
-  color:#eee;
   padding:50px 0px;
-}
->>>>>>> upstream/develop
-
-.article-credit {
-  font-size: 12px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
 }
 
 /* welcome page nav links */
