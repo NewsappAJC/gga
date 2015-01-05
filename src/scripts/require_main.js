@@ -6,7 +6,7 @@ requirejs.config({
     propertyParser: "lib/propertyParser",
     goog: "lib/goog",
     undescore: "lib/underscore",
-    jquery: "lib/jquery-1.10.2",
+    jquery: "lib/jquery-1.11.1.min",
     "jquery-ui": "lib/jquery-ui-1.10.3.custom",
     "jquery-scrolltofixed": "lib/jquery-scrolltofixed-min",
     "jquery-datatables": "lib/jquery.dataTables",
@@ -17,7 +17,8 @@ requirejs.config({
     datejs: "lib/date",
     spin: "lib/spin",
     "spin.jquery": "lib/spin.jquery",
-    tabletop: "lib/tabletop"
+    tabletop: "lib/tabletop",
+    bootstrap: "lib/bootstrap.min"
   },
 
   shim: {
@@ -41,6 +42,7 @@ requirejs.config({
     "jquery-scrolltofixed": ["jquery"],
     "jquery-datatables": ["jquery"],
     "underscore.string": ["underscore"],
+    "bootstrap": ["jquery"],
     datejs: {
       deps: [],
       exports: "Date"
@@ -51,7 +53,7 @@ requirejs.config({
   }
 });
 
-require(["app","jquery-ui","jquery-scrolltofixed","jquery-datatables","datejs","underscore.string", "spin","spin.jquery","tabletop","goog"],
+require(["app","bootstrap","jquery-ui","jquery-scrolltofixed","jquery-datatables","datejs","underscore.string","spin","spin.jquery","tabletop","goog"],
   function(GeneralAssemblyApp) {
     GeneralAssemblyApp.start();
 });
