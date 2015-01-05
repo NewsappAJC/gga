@@ -23,6 +23,7 @@
 
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style/app.css">
+  <link rel="stylesheet" type="text/css" href="style/fonts.css">
 <!--
 	<link rel="stylesheet" href="http://host.coxmediagroup.com/ajc/digitalprojects/global/css/iFrame_Medley.css" type="text/css"/>
 -->
@@ -31,125 +32,117 @@
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
-<!--
-  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
--->
-<script type="text/javascript">var switchTo5x=true;</script>
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "a696bb5e-ad41-4adf-bd74-5161d947f19c", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </head>
 <body>
   <!-- header -->
-  <div id="top">
-    <div id="inside-top">
-      <div class="row" id="masthead-row">
-        <div id="masthead">
-          <a href="http://www.myajc.com" target="_blank" alt="myajc.com">
-          <img src="images/logo.png" width="200px">
-          </a>
-        </div>
-        <div class="hidden-xs hidden-sm" id="masthead-tag">
-          <a href="http://www.myajc.com/s/news/georgia-legislature/" target="_blank">LEGISLATIVE NEWS</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div id="sticky-nav">
+    <div id="top">
+      <div id="inside-top">
+        <div class="container">
+          <div class="row" id="masthead-row">
+            <div class="col-sm-12">
+              <div id="masthead">
+                <a href="http://www.myajc.com" target="_blank" alt="myajc.com">
+                <img src="images/logo.svg" height="50px">
+                </a>
+              </div>
+              <div id="masthead-tag">
+                 <span id="georgia">Georgia</span><br/>
+                 <span id="leg-nav">Legislative Navigator</span>
+                </div>
+              <div class="hidden-xs hidden-sm">
 
-  <nav role="navigation" id="top-nav">
-    <div class="container">
-      <div id="nav-container">
-        <div class="row">
-            <div class="col-sm-2">
-              <a href="/">HOME</a>
+              </div>
             </div>
-            <div class="col-sm-2">
-              <a href="/#watched_bills">BILLS</a>
-            </div>
-            <div class="col-sm-2">
-              <a href="/#members">MEMBERS</a>
-            </div>
-            <div class="col-sm-2">
-              <a href="/#about">ABOUT</a>
-            </div>
-            <div class="col-sm-2" id="social">
-                <span class='st_facebook' displayText=''></span>
-                <span class='st_twitter' displayText=''></span>
-                <span class='st_googleplus' displayText=''></span>
-                <span class='st_email' displayText=''></span>
-                <span class='st_sharethis' displayText=''></span>
-            </div>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <div id="main-region">
-  </div>
-
-  <!-- footer -->
-  <footer id="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div id="footer-content">
-            <p>SOURCES: <a href="http://www.legis.ga.gov/en-US/default.aspx"> The Georgia General Assembly</a> and the <a href="http://www.followthemoney.org/">National Institute on Money in State Politics.</a></p>
-            <p>© 2014 <a href="http://www.coxmediagroup.com" target="_blank">Cox Media Group</a>.</p>
           </div>
         </div>
       </div>
     </div>
-  </footer>
+
+    <div id="top-nav">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="row">
+              <div class="col-sm-2">
+                <a href="/">HOME</a>
+              </div>
+              <div class="col-sm-2">
+                <a href="/#watched_bills">BILLS</a>
+              </div>
+              <div class="col-sm-2">
+                <a href="/#members">MEMBERS</a>
+              </div>
+              <div class="col-sm-2">
+                <a href="/#about">ABOUT</a>
+              </div>
+            </div>
+          </div>
+            <div id="whatsNew" class="col-sm-4">
+              <div id="updateHeading">
+                <a class="collapsed" data-toggle="collapse" data-parent="#whatsNew" href="#updateBox" aria-expanded="false" aria-controls="updateBox">
+                  WHAT'S NEW? <i id="updatesArrow" class="fa fa-sort-asc"></i>
+                </a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="not-sticky">
+    <div id="main-region">
+    </div>
+
+    <!-- footer -->
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div id="footer-content">
+              <p class="article-credit">
+                By <a href="http://www.myajc.com/staff/john-perry/">John Perry</a>,
+                   <a href="http://www.myajc.com/staff/ashlyn-still/">Ashlyn Still</a> and
+                   <a href="http://www.myajc.com/staff/jeff-ernsthausen/">Jeff Ernsthausen</a>
+              </p>
+              <p>SOURCES: <a href="http://www.legis.ga.gov/en-US/default.aspx"> The Georgia General Assembly</a> and the <a href="http://www.followthemoney.org/">National Institute on Money in State Politics.</a></p>
+              <p>© 2014 <a href="http://www.coxmediagroup.com" target="_blank">Cox Media Group</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
 
   <!-- TEMPLATES -->
 
   <script type="text/template" id="welcome-layout">
-    <div class="container" id="header">
+
+    <div class="container">
       <div class="row">
         <div class="col-lg-12">
-<!-- Welcom page alert message
-          <div class="alert alert-success">
-            <p>
+          <div class="container collapse" id="updateBox">
+            <div class="well well-sm">
+              <button type="button" class="close" id="closeUpdate"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
               <form id="bill-search" class="form-search">
-                <span><b>Updated Bill Predictions:</b> See the chance that bills surviving crossover day will pass. </span>
-                <select id="document-type" class="span2">
+                <p><strong>Updated Bill Predictions:</strong> See the chance that bills surviving crossover day will pass.
+                <select id="document-type">
                   <option value="HB">House Bill</option>
                   <option value="SB">Senate Bill</option>
                 </select>
-                <input type="text" class="input-mini span1" id="number">
+                <input type="text" class="input-mini" id="number">
                 <button type="submit" class="btn btn-xs">Go</button>
-                <a href="http://ajcnewsapps.tumblr.com/" target="_blank">(Lean more about the changes)</a>
+                <a href="http://ajcnewsapps.tumblr.com/post/78920168714/predict-a-bill-has-been-updated" target="_blank">(Learn more about the changes)</a></p>
               </form>
-            </p>
+            </div>
           </div>
--->
-          <h1 class="home-head">
-            Georgia Legislative Navigator
-          </h1>
-          <p class="article-credit">
-            By <a href="http://www.myajc.com/staff/john-perry/">John Perry</a>,
-               <a href="http://www.myajc.com/staff/ashlyn-still/">Ashlyn Still</a> and
-               <a href="http://www.myajc.com/staff/jeff-ernsthausen/">Jeff Ernsthausen</a>
-          </p>
-        </div>
-        <div class="col-lg-12">
-          <p>
-            The first year of the 153rd Georgia General Assembly is upon us and the
-            AJC is proud is to offer readers this tool to track legislation and
-            meet those in power at the Gold Dome. All bills in the tool are
-            categorized by topic, and the AJC staff highlighted legislation with the
-            most significant impact on the general public. Links to lawmakers will
-            show bill sponsorship, recent votes, committee assignments and top campaign
-            donors. Information in the tool
-            will be updated daily during the 40-day legislative session.
-          </p>
         </div>
       </div>
-    </div>
 
-    <div class="container" id="full-width">
+    <div class="container" id="header">
+
       <!-- content home -->
-      <div class="row" id="content-home">
+      <div class="row">
         <div class="col-sm-6">
           <div class="nav-box" id="bills">
             <h3>Bills</h3>
@@ -161,21 +154,43 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="container" id="bottom-row">
+      <!--<div id="content-home">
+            <div class="nav-box" id="bills">
+              <h3>Bills</h3>
+            </div>
+            <div class="nav-box" id="members">
+              <h3>Members</h3>
+            </div>
+          </div>-->
       <div class="row">
+        <div class="col-lg-12">
+          <div id="bottom-row">
+            <p id="home-text">
+              The first year of the 153rd Georgia General Assembly is upon us and the
+              AJC is proud is to offer readers this tool to track legislation and
+              meet those in power at the Gold Dome. All bills in the tool are
+              categorized by topic, and the AJC staff highlighted legislation with the
+              most significant impact on the general public. Links to lawmakers will
+              show bill sponsorship, recent votes, committee assignments and top campaign
+              donors. Information in the tool
+              will be updated daily during the 40-day legislative session.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="bottom-third" id="days-left-region"></div>
+        </div>
         <div class="col-sm-4">
           <div class="bottom-third" id="bill-count-region"></div>
         </div>
         <div class="col-sm-4">
-          <div class="bottom-third">
+          <div class="bottom-third" id="news-feed-region">
+            <h3>LEGISLATIVE NEWS</h3>
             <div id="news-feeds"></div>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="bottom-third">
-            <div id="days-left-region"></div>
           </div>
         </div>
       </div>
@@ -184,7 +199,8 @@
 
   <script type="text/template" id="days-left-template">
     <h3>Days left in session</h3>
-    <h1 id="counter"><%- days_left %></h1>
+    <h1 id="counter">40</h1>
+    <!--<h1 id="counter"><%- days_left %></h1>-->
   </script>
 
   <script type = "text/template" id="member-icon-template">
@@ -325,7 +341,7 @@
         </div>
       </div>
     </div>
-    <div class="navbar navbar-static-top" id="panel-region" ></div>
+    <div class="navbar navbar-static-top" id="panel-region"></div>
     <div class="container">
       <div class="row">
         <div class="col-sm-12" id="members-region"></div>
@@ -386,7 +402,7 @@
             <% } %>
           </h3>
           <h4><%= caption %></h3></h4>
-          <p><b>Status:</b> <%= status_description %></p>
+          <p><strong>Status:</strong> <%= status_description %></p>
         </div>
 
         <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
@@ -408,7 +424,7 @@
         <div class="jumbotron">
           <div class="row">
             <div class="col-sm-12">
-              <h2 class="bill-header">The Bills</h2>
+              <h2 class="bill-header">Bills</h2>
             </div>
           </div>
         </div>
@@ -417,14 +433,14 @@
       <div class="row">
         <div class="col-sm-12">
           <form id="bill-search" class="form-search">
-            <span>Find a bill:</span>
-            <select id="document-type" class="span2">
+            Find a bill:
+            <select id="document-type">
               <option value="HB">House Bill</option>
               <option value="HR">House Resolution</option>
               <option value="SB">Senate Bill</option>
               <option value="SR">Senate Resolution</option>
             </select>
-            <input type="text" class="input-mini span1" id="number">
+            <input type="text" class="input-mini" id="number">
             <button type="submit" class="btn btn-xs">Go</button>
           </form>
         </div>
@@ -494,7 +510,7 @@
         </h3>
 
         <p><%- description %></p>
-        <p><b>Latest status:</b> <%= status_description %> (<%- status_date.toString("MMM d, yyyy") %>)</p>
+        <p><strong>Latest status:</strong> <%= status_description %> (<%- status_date.toString("MMM d, yyyy") %>)</p>
       </div>
       <div class="col-sm-2">
         <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
@@ -560,12 +576,12 @@
         <div class="col-sm-12">
           <div>
             <% if ( passed_over === -1 ) { %>
-              <p class="red"><b>Note:</b> This general bill or constitutional amendment resolution did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules. The substance of this bill could also be amended to a live bill later in the session. Local bills and private resolutions are not affected by the crossover day deadline.</p>
+              <p class="red"><strong>Note:</strong> This general bill or constitutional amendment resolution did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules. The substance of this bill could also be amended to a live bill later in the session. Local bills and private resolutions are not affected by the crossover day deadline.</p>
             <% } %>
-            <p><b><%- caption %></b><p>
-            <p><b>Current Status:</b> <%- status_description %></p>
-            <p><b>Current Version:</b> <a href="<%- latest_version_url %>" target="_blank"><%- latest_version_description %></a></p>
-            <p><b>Official Summary:</b> <%- summary %></p>
+            <p><strong><%- caption %></strong><p>
+            <p><strong>Current Status:</strong> <%- status_description %></p>
+            <p><strong>Current Version:</strong> <a href="<%- latest_version_url %>" target="_blank"><%- latest_version_description %></a></p>
+            <p><strong>Official Summary:</strong> <%- summary %></p>
           </div>
 
           <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
@@ -733,6 +749,7 @@
       </div>
     </div>
   </script>
+
 
   <script data-main="scripts/require_main.js" src="scripts/lib/require.js"></script>
 <script>

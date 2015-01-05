@@ -2,26 +2,48 @@ body {
   padding:0px;
   margin:0px;
   /* MyAJC style */
-  font-family: Publico,Georgia,"Times New Roman",Times,serif;
+  font-family: 'Publico';
   font-size: 14px;
   font-style: normal;
   font-weight: normal;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family:Georgia, Times, serif;
+
+  font-family:'Publico-Medium';
   /* MyAJC style */
   font-family: inherit;
   text-rendering: optimizelegibility;
 }
+p{
+  font-family:'PublicoText';
+  line-height:1.7em;
+  font-size:14px;
+}
+
+#sticky-nav{
+  top:0px;
+  width:100%;
+  position:fixed;
+  background-color:#fff;
+  z-index:10000;
+}
+#not-sticky{
+  z-index:0;
+  width:100%;
+  position:relative;
+  margin-top:120px;
+}
 
 a{
+  color:#003896;
+}
+
+a:hover{
   color:#2a6496;
 }
-footer a{
-  color: #4780B2;
-}
+
 .container{
-  padding:0; /*overriding this because Bootstrap 3.3.1 has -15px right/left padding and it's messing with what's already here*/
+  padding:0; /*overriding this because Bootstrap 3.3.1 has 15px right/left padding and it's messing with what's already here*/
   /*max-width:1080px;*/
 }
 #bill-region{
@@ -42,35 +64,56 @@ footer a{
   width:100%;
   padding:8px;
   border-bottom:1px solid #ddd;
-  /*text-align:center;*/
   letter-spacing: 0.1em;
-  margin-bottom:20px;
 }
-#top-nav a{
+
+#top-nav a, #whatsNew a{
   color:#333;
 }
 #top-nav a:hover{
-  color:#888;
+  color:#003896;
+  text-decoration:none;
 }
 #nav-container{
   padding:0;
   width:100%;
 }
+#whatsNew{
+
+  text-align:right;
+}
+.fa-sort-asc, .fa-sort-desc{
+  color:#003896;
+  font-size:20px;
+  line-height:.5em;
+}
+#whatsNew .fa-sort-asc{
+  vertical-align:top;
+}
+#whatsNew .fa-sort-desc{
+  vertical-align:bottom;
+}
+#whatsNew a:focus{
+  text-decoration:none;
+  outline:none;
+}
+
+#updateBox p{
+  margin-bottom:0px;
+}
+
+#updateBox .well{
+  margin-bottom:20px;
+  border-radius:0;
+}
 .display-ul li{
   font-size: 20px;
   padding-bottom: 2px;
 }
-/*social */
-
-#social{
-  float:right;
-  margin-right:0px;
-  text-align: right;
+.close{
+  opacity:1;
+  color:#003896;
 }
-#social span{
-  text-align:right;
-}
-
 
 #member-jumbotron{
   border-bottom:0px;
@@ -159,6 +202,11 @@ footer a{
   border-bottom:1px solid #ccc;
 }
 
+#updateBox strong {
+  color:#03266D;
+  /* color is slightly different because it looked teal? keep this color in mind in case other blues do this too */
+  font-family:'Publico-Bold';
+}
 
 .hidden {
   display: none;
@@ -173,9 +221,23 @@ footer a{
 .filter:hover{
   color:#aaa;
 }
+.form-search p{
+  line-height:1.2em;
+}
+
+.form-search input{
+  line-height:1.2em;
+}
+
 .btn{
-    background-color:#eee;
+    background-color:#003896;
+    color:#fff;
     border-radius:0px;
+    text-transform:uppercase;
+}
+.btn:hover{
+  color:#fff;
+  background-color:#2a6496;
 }
 .btn-default{
   background-color: #474949;
@@ -210,6 +272,14 @@ footer a{
   -webkit-border-radius-topleft:  20px;
      -moz-border-radius-topleft:  20px;
           border-top-left-radius: 20px;
+}
+
+.watched-bill h3 a:hover{
+  text-decoration:none;
+}
+
+.watched-bill {
+  vertical-align:middle;
 }
 
 #bill-authors .media-object {
@@ -265,12 +335,13 @@ td.voted.NotVoting {
 /* footer styles */
 #footer{
   height:200px;
-  background-color:#333;
+  background-color:#efefef;
+  border-top:1px solid #ddd;
   width:100%;
   margin:60px 0px 0px 0px;
 }
 #footer-content{
-  color:#eee;
+  color:#222;
   padding:50px 0px;
 }
 
@@ -324,20 +395,26 @@ td.voted.NotVoting {
 }
 #inside-top{
   width:100%;
-  padding:5px 20px;
+  padding:3px 20px;
   border-bottom:3px solid #888;
 }
 #masthead{
+  display:inline;
   float:left;
+  padding-right:10px;
+  padding-bottom:2px;
 }
 #masthead-tag{
-  text-align:right;
-  font-size:20px;
-  margin-top:10px;
-  line-height: 1em;
-  text-transform: uppercase;
-  width:300px;
-  float:right;
+  display:inline;
+  float:left;
+  border-left:1px solid #aaa;
+  font-family:'Publico-Medium';
+  padding-top:2px;
+  margin-top:5px;
+  font-size:18px;
+  padding-left:10px;
+  line-height: 20px;
+  /*text-transform: uppercase;*/
   letter-spacing:1px;
 }
 #masthead-tag a:link    { color: #000; }
@@ -354,7 +431,7 @@ td.voted.NotVoting {
   background-size:100%;
 }
 #header{
-  padding:0px 0px 50px 0px;
+  padding:0px 0px 20px 0px;
 }
 .home-head{
   font-size:48px;
@@ -363,6 +440,9 @@ td.voted.NotVoting {
   padding:0px;
   margin:3px 0px 0px 0px;
   /*border-top:1px solid #888;*/
+}
+p#home-text{
+  color:#333;
 }
 #full-width{
   width:100%;
@@ -404,9 +484,17 @@ td.voted.NotVoting {
 .watched-bill:hover {
   background-color:#eee;
 }
-.watched-bill:hover a{
-  text-decoration:underline;
+.watched-bill:hover h3 a{
+  text-decoration:none;
   color:#2a6496;
+}
+
+#bill-count-region, #news-feed-region{
+  padding-left:15%;
+  padding-right:15%;
+}
+#days-left-region{
+  text-align:center;
 }
 
 #bill-count-region h1{
@@ -424,8 +512,9 @@ td.voted.NotVoting {
   padding-top:5px;
   color:#333;
 }
-#bill-cat-top{
-  margin-top:0px;
+#bill-cat-top .jumbotron{
+  background-image:url('/images/bills_hero.jpg');
+  background-size:auto 100%;
 }
 .fixed{
   position:fixed;
@@ -493,107 +582,121 @@ body .ui-tooltip {
     outline: 0;
 }
 
+#full-width{
+  width:100%;
+  padding-bottom:2px;
+  margin:0px;
+  /*padding:0px;*/
+}
+#full-width .col-sm-6{
+  padding:0px;
+  margin-top:0px;
+}
 
+#home-nav{
+  background-color:#fff;
+  height:300px;
+}
+#bills{
+  background-image:url('/images/bills.jpg');
+  background-size:100%;
+  background-position:0px -70px;
+  height:350px;
+  margin-right:0px;
+  padding:0px;
+  
+}
+#bills, #members{
+  opacity:0.9;
+  cursor:pointer;
+  border:1px solid #ccc;
+}
+#bills:hover, #members:hover{
+  opacity:1.0;
+}
+#bills{
+  border-right:none;
+}
+#members{
+  background-image:url('/images/people.jpg');
+  background-size:100%;
+  height:350px;
+  padding:0px;
+  margin-left:0px;
+}
 
-    #home-nav{
-      background-color:#fff;
-      height:300px;
-    }
-    #bills{
-      background-image:url('/images/bills.jpg');
-      background-size:100%;
-      background-position:0px -70px;
-      height:300px;
-      margin-right:0px;
-      padding:0px;
-    }
-    #bills, #members{
-      opacity:0.9;
-      cursor:pointer;
-    }
-    #bills:hover, #members:hover{
-      opacity:1.0;
-    }
-    #bills:hover h3, #members:hover h3{
-      text-decoration: underline;
-    }
-    #members{
-      background-image:url('/images/people.jpg');
-      background-size:100%;
-      height:300px;
-      padding:0px;
-      margin-left:0px;
-    }
+.nav-box{
+  width:100%;
+  float:left;
+}
 
-    .nav-box h3{
-      width:350px;
-      text-align:center;
-      padding-top:100px;
-      padding:100px 0px 10px 0px;
-      margin:0px auto;
-      font-size:46px;
-      font-style:italic;
-      color:#000;
-        text-align: center;
-        position:relative;
-    }
+.nav-box h3{
+  font-family:'Publico';
+  letter-spacing:2px;
+  text-align:center;
+  padding-top:100px;
+  padding:140px 0px 10px 0px;
+  margin:0px auto;
+  font-size:48px;
+  /*font-style:italic;*/
+  color:#003896;
+  text-align: center;
+  position:relative;
+}
 
-    h2.bill-header{
-      text-align:center;
-      font-style:italic;
-      color:#000;
-      font-size:36px;
-    }
+h2.bill-header{
+  text-align:center;
+  /*font-style:italic;*/
+  color:#000;
+  font-size:48px;
+  letter-spacing:2px;
+}
 
-    .bottom-third{
-      border-right:1px solid #ddd;
-      margin:50px 0px;
-      padding:15px;
-      border:1px solid #ddd;
-      min-height:250px;
-    }
-    .col-sm-4:last-child .bottom-third{
-      /*border:none;*/
-    }
-    .bottom-third h3{
-      text-transform:uppercase;
-      margin-top:0px;
-      padding:5px 0px;
-      font-size:28px;
-      /*text-align:center;*/
-    }
-    h1#counter{
-      text-align:center;
-      font-size:60px;
-    }
-    #tag{
-      padding:100px 0px;
-    }
-    #majority h5, #minority h5{
-      text-align:center;
-    }
-    #news-list, #recent-bills {
-      padding-left:0px;
-    }
-    #news-list li, #recent-bills li{
-      list-style-type:none;
-      margin:10px 0px;
-      padding:10px;
-      background-color:#eee;
-      cursor:pointer;
-    }
-    #news-list li:hover, #recent-bills li:hover{
-      background-color:#d9e1ef;
-    }
-    #footer-content{
-      color:#eee;
-      padding:50px 0px;
-    }
-
-.article-credit {
-  font-size: 12px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
+.bottom-third{
+  border-right:1px solid #ddd;
+  margin:20px 0px;
+  padding:15px;
+  border:1px solid #ddd;
+  min-height:250px;
+}
+.col-sm-4:last-child .bottom-third{
+  /*border:none;*/
+}
+.bottom-third h3{
+  text-transform:uppercase;
+  margin-top:0px;
+  padding:5px 0px;
+  font-size:28px;
+  /*text-align:center;*/
+}
+h1#counter{
+  text-align:center;
+  font-size:120px;
+}
+#tag{
+  padding:100px 0px;
+}
+#majority h5, #minority h5{
+  text-align:center;
+}
+#news-list, #recent-bills {
+  padding-left:0px;
+}
+#news-list li, #recent-bills li{
+  list-style-type:none;
+  margin:15px 0px;
+  padding:10px;
+  background-color:#eee;
+  cursor:pointer;
+}
+#news-list li p{
+  line-height:1.5em;
+}
+#news-list li:hover, #recent-bills li:hover{
+  background-color:#d9e1ef;
+}
+#footer-content{
+  padding:50px 0px;
 }
 
 /* welcome page nav links */
@@ -623,27 +726,8 @@ body .ui-tooltip {
   margin-left:0px;
   background-repeat:no-repeat;
 }
-.nav-box h3{
-  width:350px;
-  text-align:center;
-  padding-top:100px;
-  padding:100px 0px 10px 0px;
-  margin:0px auto;
-  font-size:46px;
-  font-style:italic;
-  color:#000;
-    text-align: center;
-    position:relative;
-}
 
 /* welcome page bottom thirdf */
-.bottom-third{
-  border-right:1px solid #ddd;
-  margin:50px 0px;
-  padding:15px;
-  border:1px solid #ddd;
-  min-height:250px;
-}
 .col-sm-4:last-child .bottom-third{
   /*border:none;*/
 }
@@ -657,8 +741,8 @@ body .ui-tooltip {
   padding:100px 0px;
 }
 #bottom-row{
-  padding:50px 10px;
-  /*padding:50px 0px;*/
+  padding-top: 20px;
+  padding-bottom:20px;
 }
 
 
