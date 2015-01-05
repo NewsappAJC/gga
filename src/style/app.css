@@ -2,23 +2,43 @@ body {
   padding:0px;
   margin:0px;
   /* MyAJC style */
-  font-family: Publico,Georgia,"Times New Roman",Times,serif;
+  font-family: 'Publico';
   font-size: 14px;
   font-style: normal;
   font-weight: normal;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family:Georgia, Times, serif;
+
+  font-family:'Publico-Medium';
   /* MyAJC style */
   font-family: inherit;
   text-rendering: optimizelegibility;
+}
+p{
+  font-family:'PublicoText';
+  line-height:1.7em;
+  font-size:14px;
+}
+
+#sticky-nav{
+  top:0px;
+  width:100%;
+  position:fixed;
+  background-color:#fff;
+  z-index:10000;
+}
+#not-sticky{
+  z-index:0;
+  width:100%;
+  position:relative;
+  margin-top:120px;
 }
 
 a{
   color:#2a6496;
 }
 footer a{
-  color: #4780B2;
+  color: #044eb6;
 }
 .container{
   padding:0; /*overriding this because Bootstrap 3.3.1 has 15px right/left padding and it's messing with what's already here*/
@@ -42,10 +62,13 @@ footer a{
   width:100%;
   padding:8px;
   border-bottom:1px solid #ddd;
-  /*text-align:center;*/
   letter-spacing: 0.1em;
+<<<<<<< HEAD
+=======
   margin-bottom:0;
+>>>>>>> upstream/develop
 }
+
 #top-nav a{
   color:#333;
 }
@@ -273,12 +296,13 @@ td.voted.NotVoting {
 /* footer styles */
 #footer{
   height:200px;
-  background-color:#333;
+  background-color:#efefef;
+  border-top:1px solid #ddd;
   width:100%;
   margin:60px 0px 0px 0px;
 }
 #footer-content{
-  color:#eee;
+  color:#222;
   padding:50px 0px;
 }
 
@@ -337,15 +361,16 @@ td.voted.NotVoting {
 }
 #masthead{
   float:left;
+  padding-right:10px;
+  margin-right:10px;
+  border-right:1px solid #aaa;
 }
 #masthead-tag{
-  text-align:right;
+  padding-top:10px;
   font-size:20px;
-  margin-top:10px;
+  padding-left:10px;
   line-height: 1em;
   text-transform: uppercase;
-  width:300px;
-  float:right;
   letter-spacing:1px;
 }
 #masthead-tag a:link    { color: #000; }
@@ -362,7 +387,7 @@ td.voted.NotVoting {
   background-size:100%;
 }
 #header{
-  padding:0px 0px 50px 0px;
+  padding:0px 0px 20px 0px;
 }
 .home-head{
   font-size:48px;
@@ -371,6 +396,9 @@ td.voted.NotVoting {
   padding:0px;
   margin:3px 0px 0px 0px;
   /*border-top:1px solid #888;*/
+}
+p#home-text{
+  color:#333;
 }
 #full-width{
   width:100%;
@@ -415,6 +443,14 @@ td.voted.NotVoting {
 .watched-bill:hover a{
   text-decoration:underline;
   color:#2a6496;
+}
+
+#bill-count-region, #news-feed-region{
+  padding-left:15%;
+  padding-right:15%;
+}
+#days-left-region{
+  text-align:center;
 }
 
 #bill-count-region h1{
@@ -502,6 +538,119 @@ body .ui-tooltip {
 }
 
 
+<<<<<<< HEAD
+    #full-width{
+      width:100%;
+      padding-bottom:2px;
+      margin:0px;
+      /*padding:0px;*/
+    }
+    #full-width .col-sm-6{
+      padding:0px;
+      margin-top:0px;
+    }
+
+    #home-nav{
+      background-color:#fff;
+      height:300px;
+    }
+    #bills{
+      background-image:url('/images/bills.jpg');
+      background-size:100%;
+      background-position:0px -70px;
+      height:350px;
+      margin-right:0px;
+      padding:0px;
+      border-right:1px solid #ddd;
+    }
+    #bills, #members{
+      opacity:0.9;
+      cursor:pointer;
+    }
+    #bills:hover, #members:hover{
+      opacity:1.0;
+    }
+    #members{
+      background-image:url('/images/people.jpg');
+      background-size:100%;
+      height:350px;
+      padding:0px;
+      margin-left:0px;
+    }
+
+    .nav-box{
+      width:50%;
+      float:left;
+    }
+
+    .nav-box h3{
+      font-family:'Publico';
+      letter-spacing:2px;
+      text-align:center;
+      padding-top:100px;
+      padding:140px 0px 10px 0px;
+      margin:0px auto;
+      font-size:48px;
+      font-style:italic;
+      color:#333;
+      text-align: center;
+      position:relative;
+    }
+
+    h2.bill-header{
+      text-align:center;
+      font-style:italic;
+      color:#000;
+      font-size:36px;
+    }
+
+    .bottom-third{
+      border-right:1px solid #ddd;
+      margin:20px 0px;
+      padding:15px;
+      border:1px solid #ddd;
+      min-height:250px;
+    }
+    .col-sm-4:last-child .bottom-third{
+      /*border:none;*/
+    }
+    .bottom-third h3{
+      text-transform:uppercase;
+      margin-top:0px;
+      padding:5px 0px;
+      font-size:28px;
+      /*text-align:center;*/
+    }
+    h1#counter{
+      text-align:center;
+      font-size:120px;
+    }
+    #tag{
+      padding:100px 0px;
+    }
+    #majority h5, #minority h5{
+      text-align:center;
+    }
+    #news-list, #recent-bills {
+      padding-left:0px;
+    }
+    #news-list li, #recent-bills li{
+      list-style-type:none;
+      margin:15px 0px;
+      padding:10px;
+      background-color:#eee;
+      cursor:pointer;
+    }
+    #news-list li p{
+      line-height:1.5em;
+    }
+    #news-list li:hover, #recent-bills li:hover{
+      background-color:#d9e1ef;
+    }
+    #footer-content{
+      padding:50px 0px;
+    }
+=======
 
 #home-nav{
   background-color:#fff;
@@ -597,6 +746,7 @@ h1#counter{
   color:#eee;
   padding:50px 0px;
 }
+>>>>>>> upstream/develop
 
 .article-credit {
   font-size: 12px;
@@ -631,27 +781,8 @@ h1#counter{
   margin-left:0px;
   background-repeat:no-repeat;
 }
-.nav-box h3{
-  width:350px;
-  text-align:center;
-  padding-top:100px;
-  padding:100px 0px 10px 0px;
-  margin:0px auto;
-  font-size:46px;
-  font-style:italic;
-  color:#000;
-    text-align: center;
-    position:relative;
-}
 
 /* welcome page bottom thirdf */
-.bottom-third{
-  border-right:1px solid #ddd;
-  margin:50px 0px;
-  padding:15px;
-  border:1px solid #ddd;
-  min-height:250px;
-}
 .col-sm-4:last-child .bottom-third{
   /*border:none;*/
 }
@@ -665,8 +796,8 @@ h1#counter{
   padding:100px 0px;
 }
 #bottom-row{
-  padding:50px 10px;
-  /*padding:50px 0px;*/
+  padding-top: 20px;
+  padding-bottom:20px;
 }
 
 

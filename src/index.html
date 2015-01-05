@@ -23,6 +23,10 @@
 
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style/app.css">
+  <link rel="stylesheet" type="text/css" href="style/fonts.css">
+<!--
+	<link rel="stylesheet" href="http://host.coxmediagroup.com/ajc/digitalprojects/global/css/iFrame_Medley.css" type="text/css"/>
+-->
 
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -31,24 +35,32 @@
 </head>
 <body>
   <!-- header -->
-  <div id="top">
-    <div id="inside-top">
-      <div class="row" id="masthead-row">
-        <div id="masthead">
-          <a href="http://www.myajc.com" target="_blank" alt="myajc.com">
-          <img src="images/logo.png" width="200px">
-          </a>
-        </div>
-        <div class="hidden-xs hidden-sm" id="masthead-tag">
-          <a href="http://www.myajc.com/s/news/georgia-legislature/" target="_blank">LEGISLATIVE NEWS</a>
+  <div id="sticky-nav">
+    <div id="top">
+      <div id="inside-top">
+        <div class="container">
+          <div class="row" id="masthead-row">
+            <div class="col-sm-12">
+              <div id="masthead">
+                <a href="http://www.myajc.com" target="_blank" alt="myajc.com">
+                <img src="images/logo.png" width="200px">
+                </a>
+                
+              </div>
+              <div id="masthead-tag">
+                 Georgia Legislative Navigator
+                </div>
+              <div class="hidden-xs hidden-sm">
+                
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <nav role="navigation" id="top-nav">
-    <div class="container">
-      <div id="nav-container">
+    <div id="top-nav">
+      <div class="container" id="nav-container">
         <div class="row">
             <div class="col-sm-2">
               <a href="/">HOME</a>
@@ -62,6 +74,7 @@
             <div class="col-sm-2">
               <a href="/#about">ABOUT</a>
             </div>
+
             <div  id="whatsNew" class="col-sm-2 pull-right">
               <div id="updateHeading">
                 <a class="collapsed" data-toggle="collapse" data-parent="#whatsNew" href="#updateBox" aria-expanded="false" aria-controls="updateBox">
@@ -74,27 +87,38 @@
     </div>
   </nav>
 
-  <div id="main-region"></div>
+  <div id="not-sticky">
+    <div id="main-region">
+    </div>
 
-  <!-- footer -->
-  <footer id="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div id="footer-content">
-            <p>SOURCES: <a href="http://www.legis.ga.gov/en-US/default.aspx"> The Georgia General Assembly</a> and the <a href="http://www.followthemoney.org/">National Institute on Money in State Politics.</a></p>
-            <p>© 2014 <a href="http://www.coxmediagroup.com" target="_blank">Cox Media Group</a>.</p>
+    <!-- footer -->
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div id="footer-content">
+              <p class="article-credit">
+                By <a href="http://www.myajc.com/staff/john-perry/">John Perry</a>,
+                   <a href="http://www.myajc.com/staff/ashlyn-still/">Ashlyn Still</a> and
+                   <a href="http://www.myajc.com/staff/jeff-ernsthausen/">Jeff Ernsthausen</a>
+              </p>
+              <p>SOURCES: <a href="http://www.legis.ga.gov/en-US/default.aspx"> The Georgia General Assembly</a> and the <a href="http://www.followthemoney.org/">National Institute on Money in State Politics.</a></p>
+              <p>© 2014 <a href="http://www.coxmediagroup.com" target="_blank">Cox Media Group</a>.</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
+  </div>
 
   <!-- TEMPLATES -->
 
   <script type="text/template" id="welcome-layout">
-
-    <!-- updates panel -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <!--<div class="alert alert-success">
+          /<!-- updates panel -->
     <!--TODO this needs to move out of welcome-layout but I don't know how Marionette works so the form breaks -->
     <div class="container collapse" id="updateBox">
       <div class="well well-sm">
@@ -118,58 +142,53 @@
           <h1 class="home-head">
             Georgia Legislative Navigator
           </h1>
-          <p class="article-credit">
-            By <a href="http://www.myajc.com/staff/john-perry/">John Perry</a>,
-               <a href="http://www.myajc.com/staff/ashlyn-still/">Ashlyn Still</a> and
-               <a href="http://www.myajc.com/staff/jeff-ernsthausen/">Jeff Ernsthausen</a>
-          </p>
-        </div>
-        <div class="col-lg-12">
-          <p>
-            The second year of the 152nd Georgia General Assembly is upon us and the
-            AJC is proud is to offer readers this new tool to track legislation and
-            meet those in power at the Gold Dome. All bills in the tool are
-            categorized by topic, and the AJC staff highlighted legislation with the
-            most significant impact on the general public. Links to lawmakers will
-            show bill sponsorship, recent votes, committee assignments and top campaign
-            donors. The bills and votes reflected are from both sessions of the
-            assembly. Even if a bill was submitted but not voted on before the 2013
-            session closed, it is technically still active. Information in the tool
-            will be updated daily during the 40-day legislative session.
-          </p>
+          </div>-->
         </div>
       </div>
-    </div>
-
-    <div class="container" id="full-width">
       <!-- content home -->
-      <div class="row" id="content-home">
-        <div class="col-sm-6">
-          <div class="nav-box" id="bills">
-            <h3>Bills</h3>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="nav-box" id="members">
-            <h3>Members</h3>
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="content-home">
+            <div class="nav-box" id="bills">
+              <h3>Bills</h3>
+            </div>
+            <div class="nav-box" id="members">
+              <h3>Members</h3>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="container" id="bottom-row">
       <div class="row">
+        <div class="col-lg-12">
+          <div id="bottom-row">
+            <p id="home-text">
+              The second year of the 152nd Georgia General Assembly is upon us and the
+              AJC is proud is to offer readers this new tool to track legislation and
+              meet those in power at the Gold Dome. All bills in the tool are
+              categorized by topic, and the AJC staff highlighted legislation with the
+              most significant impact on the general public. Links to lawmakers will
+              show bill sponsorship, recent votes, committee assignments and top campaign
+              donors. The bills and votes reflected are from both sessions of the
+              assembly. Even if a bill was submitted but not voted on before the 2013
+              session closed, it is technically still active. Information in the tool
+              will be updated daily during the 40-day legislative session.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="bottom-third" id="days-left-region"></div>
+        </div>
         <div class="col-sm-4">
           <div class="bottom-third" id="bill-count-region"></div>
         </div>
         <div class="col-sm-4">
-          <div class="bottom-third">
+          <div class="bottom-third" id="news-feed-region">
+            <h3>LEGISLATIVE NEWS</h3>
             <div id="news-feeds"></div>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="bottom-third">
-            <div id="days-left-region"></div>
           </div>
         </div>
       </div>
@@ -178,7 +197,8 @@
 
   <script type="text/template" id="days-left-template">
     <h3>Days left in session</h3>
-    <h1 id="counter"><%- days_left %></h1>
+    <h1 id="counter">88</h1>
+    <!--<h1 id="counter"><%- days_left %></h1>-->
   </script>
 
   <script type = "text/template" id="member-icon-template">
