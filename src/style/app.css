@@ -2,20 +2,20 @@ body {
   padding:0px;
   margin:0px;
   /* MyAJC style */
-  font-family: 'Publico';
+  font-family: 'Publico',Georgia,"Times New Roman",Times,serif;
   font-size: 14px;
   font-style: normal;
   font-weight: normal;
 }
 h1, h2, h3, h4, h5, h6 {
 
-  font-family:'Publico-Medium';
+  font-family:'Publico-Medium',Georgia,"Times New Roman",Times,serif;
   /* MyAJC style */
   font-family: inherit;
   text-rendering: optimizelegibility;
 }
 p{
-  font-family:'PublicoText';
+  font-family:'PublicoText',Georgia,"Times New Roman",Times,serif;
   line-height:1.7em;
   font-size:14px;
 }
@@ -205,7 +205,7 @@ a:hover{
 #updateBox strong {
   color:#03266D;
   /* color is slightly different because it looked teal? keep this color in mind in case other blues do this too */
-  font-family:'Publico-Bold';
+  font-family:'Publico-Bold',Georgia,"Times New Roman",Times,serif;
 }
 
 .hidden {
@@ -408,7 +408,7 @@ td.voted.NotVoting {
   display:inline;
   float:left;
   border-left:1px solid #aaa;
-  font-family:'Publico-Medium';
+  font-family:'Publico-Medium',Georgia,"Times New Roman",Times,serif;
   padding-top:2px;
   margin-top:5px;
   font-size:18px;
