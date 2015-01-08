@@ -695,9 +695,6 @@ h1#counter{
 #news-list li:hover, #recent-bills li:hover{
   background-color:#d9e1ef;
 }
-#footer-content{
-  padding:50px 0px;
-}
 
 /* welcome page nav links */
 #bills{
