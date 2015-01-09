@@ -24,9 +24,6 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style/app.css">
   <link rel="stylesheet" type="text/css" href="style/fonts.css">
-<!--
-	<link rel="stylesheet" href="http://host.coxmediagroup.com/ajc/digitalprojects/global/css/iFrame_Medley.css" type="text/css"/>
--->
 
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -43,15 +40,12 @@
             <div class="col-sm-12">
               <div id="masthead">
                 <a href="http://www.myajc.com" target="_blank" alt="myajc.com">
-                <img src="images/logo.svg" height="50px">
+                  <img src="images/logo.svg" height="50px">
                 </a>
               </div>
               <div id="masthead-tag">
-                 <span id="georgia">Georgia</span><br/>
-                 <span id="leg-nav">Legislative Navigator</span>
-                </div>
-              <div class="hidden-xs hidden-sm">
-
+               <span id="georgia">Georgia</span><br/>
+               <span id="leg-nav">Legislative Navigator</span>
               </div>
             </div>
           </div>
@@ -59,7 +53,7 @@
       </div>
     </div>
 
-    <div id="top-nav">
+    <nav role="navigation" id="top-nav">
       <div class="container">
         <div class="row">
           <div class="col-sm-8">
@@ -77,22 +71,33 @@
                 <a href="/#about">ABOUT</a>
               </div>
             </div>
-          </div>
-            <div id="whatsNew" class="col-sm-4">
-              <div id="updateHeading">
-                <a class="collapsed" data-toggle="collapse" data-parent="#whatsNew" href="#updateBox" aria-expanded="false" aria-controls="updateBox">
-                  WHAT'S NEW? <i id="updatesArrow" class="fa fa-sort-asc"></i>
-                </a>
+
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="container collapse" id="updateBox">
+                  <div class="well well-sm">
+                    <button type="button" class="close" id="closeUpdate"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <p>Welcome to the 2015 version of the Atlanta Journal-Constitution Legislative Navigator. We've freshend the stle, made the site more mobile-friendly and updated the bill prediction model from last year's version. We also have some planned changes that you will see over the next few weeks, including a better bill search facility, and the ability to find your representative and senator by entering your address. And we are continuing to work on our predictive model with a new partner.</p>
+                  </div>
+                </div>
               </div>
             </div>
+
+          </div>
+          <div id="whatsNew" class="col-sm-4">
+            <div id="updateHeading">
+              <a class="collapsed" data-toggle="collapse" data-parent="#whatsNew" href="#updateBox" aria-expanded="false" aria-controls="updateBox">
+                WHAT'S NEW? <i id="updatesArrow" class="fa fa-sort-asc"></i>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </nav>
   </div>
 
   <div id="not-sticky">
-    <div id="main-region">
-    </div>
+    <div id="main-region"></div>
 
     <!-- footer -->
     <footer id="footer">
@@ -117,27 +122,6 @@
   <!-- TEMPLATES -->
 
   <script type="text/template" id="welcome-layout">
-
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="container collapse" id="updateBox">
-            <div class="well well-sm">
-              <button type="button" class="close" id="closeUpdate"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-              <form id="bill-search" class="form-search">
-                <p><strong>Updated Bill Predictions:</strong> See the chance that bills surviving crossover day will pass.
-                <select id="document-type">
-                  <option value="HB">House Bill</option>
-                  <option value="SB">Senate Bill</option>
-                </select>
-                <input type="text" class="input-mini" id="number">
-                <button type="submit" class="btn btn-xs">Go</button>
-                <a href="http://ajcnewsapps.tumblr.com/post/78920168714/predict-a-bill-has-been-updated" target="_blank">(Learn more about the changes)</a></p>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
 
     <div class="container" id="header">
 
@@ -223,6 +207,8 @@
         <div id="committee-list-region">Committee list goes here ...</div>
         <h3>Top Contributors<i class="fa fa-plus-square-o plus"></i></h3>
         <div id="top-contributors-region"></div>
+        <h3>District Characteristics<i class="fa fa-plus-square-o plus"></i></h3>
+        <div id="district-region"></div>
       </div>
     </div>
   </script>
@@ -289,6 +275,21 @@
         </div>
       </div>
     </div>
+  </script>
+
+  <script type="text/template" id = "member-district-template">
+    <p>Population: <%= numeral(total_population).format('0,0') %></p>
+    <p>Median income: <%= numeral(median_household_income).format('$0,0') %></p>
+    <p>Median age: <%= median_age %> years</p>
+    <p>Percent with a college degree: <%= numeral(pct_college_grad).format('0.0') %>%</p>
+    <p>Percent Georgia natives: <%= pct_georgia_born %>%</p>
+    <p>White: <%= race.white.toFixed(1) %>%</p>
+    <p>Black: <%= race.black.toFixed(1) %>%</p>
+    <p>Hispanic: <%= race.hispanic.toFixed(1) %>%</p>
+    <p>Asian: <%= race.asian.toFixed(1) %>%</p>
+    <p>Multi-race: <%= race.multi.toFixed(1) %>%</p>
+    <p>Other race: <%= race.other.toFixed(1) %>%</p>
+    <p>Source: U.S. Census Bureau Amaerican Community Survey</p>
   </script>
 
   <script type="text/template" id="top-contributors-table-template">
@@ -393,7 +394,7 @@
           <% if (caption.match(/General appropriations.*2015/)) { %>
             <p>This bill carries the state budget for the next fiscal year and must pass for state government to be funded. Because of this special circumstance, we do not assign a probability to this bill.<p>
           <% } else { %>
-            <p>Chance of passing <img class="info-tip" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from statistical models developed by the AJC based on the success or failure of bills that survived the crossover day deadline during the three previous legislative sessions (2008-2009, 2009-2010 and 2011-2012). The models consider a variety of factors, including sponsors and cosponsors, how recently the bill saw activity and where it stood as of crossover day. The technique used by the AJC was tested on previous legislative sessions."></p>
+            <p>Chance of passing <img class="info-tip" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from a statistical model developed by the AJC based on the success or failure of bills introduced in the first year of the five previous legislative sessions (from 2005-2006 through 2013-2014). The model considers a variety of factors, including sponsors and cosponsors, bill summary text and when a bill was submitted. The technique used by the AJC was tested on previous legislative sessions."></p>
             <h1><%- (predictions * 100).toFixed() %>%</h1>
           <% } %>
         </div>
@@ -431,9 +432,6 @@
       <div class="row" id="bill-category-region"></div>
     </div>
   </script>
-
-
-
 
   <script type="text/template" id="bill-category-template">
     <div class="watched-bill">
@@ -561,9 +559,11 @@
       <div class="row">
         <div class="col-sm-12">
           <div>
+          <!-- Post passover day flag
             <% if ( passed_over === -1 ) { %>
               <p class="red"><strong>Note:</strong> This general bill or constitutional amendment resolution did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules. The substance of this bill could also be amended to a live bill later in the session. Local bills and private resolutions are not affected by the crossover day deadline.</p>
             <% } %>
+          -->
             <p><strong><%- caption %></strong><p>
             <p><strong>Current Status:</strong> <%- status_description %></p>
             <p><strong>Current Version:</strong> <a href="<%- latest_version_url %>" target="_blank"><%- latest_version_description %></a></p>
@@ -573,7 +573,7 @@
           <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
             <div>
               <hr>
-              <h3>Chance of passing  <img class="info-tip" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from statistical models developed by the AJC based on the success or failure of bills that survived the crossover day deadline during the three previous legislative sessions (2008-2009, 2009-2010 and 2011-2012). The models consider a variety of factors, including sponsors and cosponsors, how recently the bill saw activity and where it stood as of crossover day. The technique used by the AJC was tested on previous legislative sessions."></h3>
+              <h3>Chance of passing: <%- (predictions * 100).toFixed() %>%  <img class="info-tip" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from statistical models developed by the AJC based on the success or failure of bills that survived the crossover day deadline during the three previous legislative sessions (2008-2009, 2009-2010 and 2011-2012). The models consider a variety of factors, including sponsors and cosponsors, how recently the bill saw activity and where it stood as of crossover day. The technique used by the AJC was tested on previous legislative sessions."></h3>
                 <% if ( id === 40560 ) { %>
                   <div><p>This bill carries the state budget for the next fiscal year and must pass for state government to be funded. Because of this special circumstance, we do not assign a probability to this bill.<p></div>
                 <% } else { %>
@@ -710,20 +710,15 @@
             and them makes it available to the public, both through a search interface on
             their website and through an API.
           </p>
-<!--
           <h3>About the predictions</h3>
           <p class="article-credit">
             By <a href="http://www.myajc.com/staff/jeff-ernsthausen/">Jeff Ernsthausen</a>
           </p>
-          <div class="alert alert-success">
-            <p>UPDATE: The AJC has created a new model to update the chances of passage for bills still alive after Crossover Day on March 3. This model is based on bills that were still alive after the final Crossover Day in the previous three legislative sessions, which includes all local bills and any general bills that have passed from one legislative chamber to the other.</p>
-            <p>The new model leans heavily on the current status of a bill in the legislative process and how many days before Crossover Day the bill reached that status. For instance, many general bills cleared one chamber last year without passing the other by the time lawmakers headed home.  Such bills are still in play this year. But if a bill has collected dust since then, our model will give it relatively low chances of passing. Most bills submitted this year that are still alive post-Crossover will see their chances go up in the new model, while most bills submitted last year will see their chances decrease (unless they have been active in the past few weeks).</p>
-            <p>A key element missing in our post-Crossover Day model is how many votes each bill received when it cleared its originating chamber. We are still working out kinks with the Legislature’s data feed that need to be resolved before we can accurately pair that data with each bill. We hope to do so by the time the legislature reconvenes in 2015.</p>
-          </div>
-          <p>To create the Georgia Legislative Navigator, the Atlanta Journal-Constitution assembled information on more than 14,000 bills introduced since 2001, each labeled with votes, sponsorship and text summaries. Then we recognized this would create a rare opportunity. We could use that enormously detailed data to, in essence, calculate the chances that a bill would pass.  That could shine a light on the often murky legislative process and the factors that hurt or help bills.</p>
+          <p>The AJC has created a new predictive model for 2015. Instead of predicting the chance that a bill will pass during the overall 2-year legislative session (e.g. 2015-2016), our model now offers a forecast of whether each bill will pass this year.</p>
+          <p>To create the Georgia Legislative Navigator, the Atlanta Journal-Constitution assembled information on almost 15,000 bills introduced since 2001, each labeled with votes, sponsorship and text summaries. Then we recognized this would create a rare opportunity. We could use that enormously detailed data to, in essence, calculate the chances that a bill would pass.  That could shine a light on the often murky legislative process and the factors that hurt or help bills.</p>
           <p>So the AJC consulted with experts in quantitative methods of social science, starting with Professor Charles Bullock, chair of the Political Science Department at the University of Georgia and a close observer of the Georgia Legislature. To identify the factors that might influence a bill’s outcome, he recommended a technique, logistic regression, originally developed to predict patients’ risk of developing certain diseases.</p>
           <p>A book by Professor Frank Harrell, chairman of the Department of Biostatistics at the Vanderbilt University School of Medicine became our bible, and Harrell also provided advice and reviewed the AJC’s work.  Gary King, director of the Institute for Quantitative Social Science at Harvard University also provided insights., and Professor John Stasko of the Georgia Institute of Technology provided advice and software used to identify key terms in bill text.</p>
-          <p>The model is based on obvious factors influencing a bill’s fate – the party of the bill’s sponsor, the number of co-sponsors, and whether a leadership figure was a sponsor -  and some not so obvious ones. In the latter category were how close to the end of the session a bill was submitted, and some of the wording in the bill’s summary. We looked at whether the summary included certain social issues terms that refer to abortion, gun control, prayer in school, alcohol or controlled substances. And we included variable for terms like “city of” and “county of,” since so many bills that move through the Legislature are local.</p>
+          <p>The model is based on obvious factors influencing a bill’s fate – the party of the bill’s sponsor, the number of co-sponsors, and whether a leadership figure was a sponsor -  and some not so obvious ones. In the latter category were how close to the end of the session a bill was submitted, and some of the wording in the bill’s summary. We looked at whether the summary included certain social issues terms that refer to abortion, gun control, prayer in school, alcohol or controlled substances. And we included a variable for whether a bill is statewide or local, since so many bills that move through the Legislature are local and tend to pass at a higher rate.</p>
           <p>The model does not yet take into account the legislative hurdles that a bill has already cleared, such as getting out of committee or passing one chamber.</p>
           <p>We tested our model by comparing its predictions with the actual outcomes of bills in earlier sessions.  The result: It does a reasonably good job of predicting the chances of passage for the bulk of bills that pass through the Legislature each year.</p>
           <p>We’ll be working to refine the model and may even try to predict how individual legislators will vote. If you want to take a shot at improving our model:</p>
@@ -731,7 +726,6 @@
           <p><a href="https://gist.github.com/NewsappAJC/9418045" target="_blank">See the model, written in R, here</a>
           <p>Read more about how our model was developed on the <a href="http://ajcnewsapps.tumblr.com/" target="_blank">AJC Newsapp Team blog</a>.</p>
           <p>Read what we discovered about the legislative process at <a href="http://www.myajc.com/news/news/what-are-the-odds/ndPfx/" target="_blank">MyAJC.com</a>.</p>
--->
       </div>
     </div>
   </script>

@@ -18,6 +18,7 @@ requirejs.config({
     spin: "lib/spin",
     "spin.jquery": "lib/spin.jquery",
     tabletop: "lib/tabletop",
+    numeral: "lib/numeral",
     bootstrap: "lib/bootstrap.min"
   },
 
@@ -53,7 +54,7 @@ requirejs.config({
   }
 });
 
-require(["app","bootstrap","jquery-ui","jquery-scrolltofixed","jquery-datatables","datejs","underscore.string","spin","spin.jquery","tabletop","goog"],
+require(["app","bootstrap","jquery-ui","jquery-scrolltofixed","jquery-datatables","datejs","underscore.string","spin","spin.jquery","tabletop","numeral","goog"],
   function(GeneralAssemblyApp) {
     GeneralAssemblyApp.start();
 });
