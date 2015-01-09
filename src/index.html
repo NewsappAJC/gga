@@ -24,9 +24,6 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style/app.css">
   <link rel="stylesheet" type="text/css" href="style/fonts.css">
-<!--
-	<link rel="stylesheet" href="http://host.coxmediagroup.com/ajc/digitalprojects/global/css/iFrame_Medley.css" type="text/css"/>
--->
 
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -43,15 +40,12 @@
             <div class="col-sm-12">
               <div id="masthead">
                 <a href="http://www.myajc.com" target="_blank" alt="myajc.com">
-                <img src="images/logo.svg" height="50px">
+                  <img src="images/logo.svg" height="50px">
                 </a>
               </div>
               <div id="masthead-tag">
-                 <span id="georgia">Georgia</span><br/>
-                 <span id="leg-nav">Legislative Navigator</span>
-                </div>
-              <div class="hidden-xs hidden-sm">
-
+               <span id="georgia">Georgia</span><br/>
+               <span id="leg-nav">Legislative Navigator</span>
               </div>
             </div>
           </div>
@@ -59,7 +53,7 @@
       </div>
     </div>
 
-    <div id="top-nav">
+    <nav role="navigation" id="top-nav">
       <div class="container">
         <div class="row">
           <div class="col-sm-8">
@@ -78,21 +72,20 @@
               </div>
             </div>
           </div>
-            <div id="whatsNew" class="col-sm-4">
-              <div id="updateHeading">
-                <a class="collapsed" data-toggle="collapse" data-parent="#whatsNew" href="#updateBox" aria-expanded="false" aria-controls="updateBox">
-                  WHAT'S NEW? <i id="updatesArrow" class="fa fa-sort-asc"></i>
-                </a>
-              </div>
+          <div id="whatsNew" class="col-sm-4">
+            <div id="updateHeading">
+              <a class="collapsed" data-toggle="collapse" data-parent="#whatsNew" href="#updateBox" aria-expanded="false" aria-controls="updateBox">
+                WHAT'S NEW? <i id="updatesArrow" class="fa fa-sort-asc"></i>
+              </a>
             </div>
+          </div>
         </div>
       </div>
-    </div>
+    </nav>
   </div>
 
   <div id="not-sticky">
-    <div id="main-region">
-    </div>
+    <div id="main-region"></div>
 
     <!-- footer -->
     <footer id="footer">
@@ -125,14 +118,14 @@
             <div class="well well-sm">
               <button type="button" class="close" id="closeUpdate"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
               <form id="bill-search" class="form-search">
-                <p><strong>Updated Bill Predictions:</strong> See the chance that bills surviving crossover day will pass.
+                <strong>Updated Bill Predictions:</strong> See the chance that bills surviving crossover day will pass.
                 <select id="document-type">
                   <option value="HB">House Bill</option>
                   <option value="SB">Senate Bill</option>
                 </select>
                 <input type="text" class="input-mini" id="number">
                 <button type="submit" class="btn btn-xs">Go</button>
-                <a href="http://ajcnewsapps.tumblr.com/post/78920168714/predict-a-bill-has-been-updated" target="_blank">(Learn more about the changes)</a></p>
+                <a href="http://ajcnewsapps.tumblr.com/post/78920168714/predict-a-bill-has-been-updated" target="_blank">(Learn more about the changes)</a>
               </form>
             </div>
           </div>
