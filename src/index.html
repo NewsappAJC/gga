@@ -381,9 +381,11 @@
         <div class="col-sm-10">
           <h3 class="billnumhed">
             <a href="#bills/<%= bill_id %>"><%= document_type %> <%= number %></a>
+            <!--
             <% if (passed_over === -1) { %>
               <i class="fa fa-times red hover" title="This bill or constitutional amendment resolution did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules. The substance of this bill could also be amended to a live bill later in the session. Local bills and private resolutions are not affected by the crossover day deadline."></i>
             <% } %>
+            -->
           </h3>
           <h4><%= caption %></h3></h4>
           <p><strong>Status:</strong> <%= status_description %></p>
