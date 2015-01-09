@@ -589,7 +589,7 @@
           <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
             <div>
               <hr>
-              <h3>Chance of passing  <img class="info-tip" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from statistical models developed by the AJC based on the success or failure of bills that survived the crossover day deadline during the three previous legislative sessions (2008-2009, 2009-2010 and 2011-2012). The models consider a variety of factors, including sponsors and cosponsors, how recently the bill saw activity and where it stood as of crossover day. The technique used by the AJC was tested on previous legislative sessions."></h3>
+              <h3>Chance of passing: <%- (predictions * 100).toFixed() %>%  <img class="info-tip" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from statistical models developed by the AJC based on the success or failure of bills that survived the crossover day deadline during the three previous legislative sessions (2008-2009, 2009-2010 and 2011-2012). The models consider a variety of factors, including sponsors and cosponsors, how recently the bill saw activity and where it stood as of crossover day. The technique used by the AJC was tested on previous legislative sessions."></h3>
                 <% if ( id === 40560 ) { %>
                   <div><p>This bill carries the state budget for the next fiscal year and must pass for state government to be funded. Because of this special circumstance, we do not assign a probability to this bill.<p></div>
                 <% } else { %>

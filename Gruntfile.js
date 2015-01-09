@@ -9,10 +9,17 @@ module.exports = function(grunt) {
           { expand: true, flatten: true, src: ['src/images/cropped/*.jpg'], dest: 'build/images/cropped/' },
           { expand: true, flatten: true, src: ['src/images/mugs/*.jpg'], dest: 'build/images/mugs/' },
           { expand: true, flatten: true, src: ['src/images/datatables/*.png'], dest: 'build/images/datatables/' },
-          { expand: true, flatten: true, src: ['src/style/images/*.png'], dest: 'build/style/images/' },
           { expand: true, flatten: true, src: ['src/images/*.jpg'], dest: 'build/images/' },
           { expand: true, flatten: true, src: ['src/images/*.png'], dest: 'build/images/' },
-          { expand: true, flatten: true, src: ['src/images/*.svg'], dest: 'build/images/' }
+          { expand: true, flatten: true, src: ['src/images/*.svg'], dest: 'build/images/' },
+          { expand: true, flatten: true, src: ['src/style/images/*.png'], dest: 'build/style/images/' },
+          { expand: true, flatten: true, src: ['src/style/boomer/*.otf'], dest: 'build/style/boomer/' },
+          { expand: true, flatten: true, src: ['src/style/boomer_cond/*.otf'], dest: 'build/style/boomer_cond/' },
+          { expand: true, flatten: true, src: ['src/style/boomerslab/*.otf'], dest: 'build/style/boomerslab/' },
+          { expand: true, flatten: true, src: ['src/style/boomerslab_cond/*.otf'], dest: 'build/style/boomerslab_cond/' },
+          { expand: true, flatten: true, src: ['src/style/boomerslab_extracond/*.otf'], dest: 'build/style/boomerslab_extracond/' },
+          { expand: true, flatten: true, src: ['src/style/publico/*.otf'], dest: 'build/style/publico/' },
+          { expand: true, flatten: true, src: ['src/style/Scout/*.otf'], dest: 'build/style/Scout/' }
         ]
       }
     },
@@ -96,6 +103,7 @@ module.exports = function(grunt) {
           'build/scripts/entities/top_contributors.js' : ['src/scripts/entities/top_contributors.js'],
           'build/scripts/entities/watched_bill.js'     : ['src/scripts/entities/watched_bill.js'],
           'build/scripts/entities/days_left.js'        : ['src/scripts/entities/days_left.js'],
+          'build/scripts/entities/districts.js'        : ['src/scripts/entities/districts.js'],
 
           'build/scripts/apps/bills/bills_app.js'            : ['src/scripts/apps/bills/bills_app.js'],
           'build/scripts/apps/bills/show/show_controller.js' : ['src/scripts/apps/bills/show/show_controller.js'],
@@ -145,6 +153,7 @@ module.exports = function(grunt) {
         },
         files: {
           'build/style/app.css': ['src/style/app.css'],
+          'build/style/fonts.css': ['src/style/fonts.css'],
           'build/style/bootstrap.css': ['src/style/bootstrap.css'],
           'build/style/jquery-ui-1.10.3.custom.css': ['src/style/jquery-ui-1.10.3.custom.css'],
           'build/style/jquery.dataTables.css': ['src/style/jquery.dataTables.css'],
@@ -163,48 +172,63 @@ module.exports = function(grunt) {
         }
       }
     },
+
     s3: {
       options: {
-        key: "<%= aws.key %>",
-        secret: "<%= aws.secret %>",
+        accessKeyId: "<%= aws.key %>",
+        secretAccessKey: "<%= aws.secret %>",
         bucket: "<%= aws.bucket %>",
         access: "public-read",
         gzip: true,
-        debug: false,
-        maxOperations: 10
+        cache: false
       },
-      dev: {
-        upload: [
-          { src: 'build/index.html', dest: 'index.html' },
-          { src: 'build/scripts/app.js', dest: 'scripts/app.js' },
-          { src: 'build/scripts/require_main.built.js', dest: 'scripts/require_main.built.js' },
-          { src: 'build/scripts/require_main.js', dest: 'scripts/require_main.js' },
-          { src: 'build/scripts/underscore.js', dest: 'scripts/underscore.js' },
-          { src: 'build/scripts/underscore-amd.js', dest: 'scripts/underscore-amd.js' },
-          { src: 'build/scripts/lib/require.js', dest: 'scripts/lib/require.js' },
-          { src: 'build/scripts/entities/*', dest: 'scripts/entities/' },
-          { src: 'build/scripts/apps/bills/bills_app.js', dest: 'scripts/apps/bills/bills_app.js' },
-          { src: 'build/scripts/apps/bills/show/*', dest: 'scripts/apps/bills/show/' },
-          { src: 'build/scripts/apps/members/members_app.js', dest: 'scripts/apps/members/members_app.js' },
-          { src: 'build/scripts/apps/members/list/*', dest: 'scripts/apps/members/list/' },
-          { src: 'build/scripts/apps/members/show/*', dest: 'scripts/apps/members/show/' },
-          { src: 'build/scripts/apps/watched_bills/watched_bills_app.js', dest: 'scripts/apps/watched_bills/watched_bills_app.js' },
-          { src: 'build/scripts/apps/watched_bills/list/*', dest: 'scripts/apps/watched_bills/list/' },
-          { src: 'build/scripts/apps/watched_bills/show/*', dest: 'scripts/apps/watched_bills/show/' },
-          { src: 'build/scripts/apps/welcome/*', dest: 'scripts/apps/welcome/'},
-          { src: 'build/scripts/apps/about/*', dest: 'scripts/apps/about/'},
-          { src: 'build/scripts/common/*', dest: 'scripts/common/'},
-
-          // { src: 'build/images/cropped/*', dest: 'images/cropped/' },
-          // { src: 'build/images/datatables/*', dest: 'images/datatables/' },
-          // { src: 'build/images/mugs/*', dest: 'images/mugs/' },
-          { src: 'build/style/*', dest: 'style/' },
-          { src: 'build/style/images/*', dest: 'style/images/' },
-          { src: 'build/style/dist/bootstrap.css', dest: 'style/dist/bootstrap.css' },
-          { src: 'build/images/*', dest: 'images/' }
-        ]
+      build: {
+        cwd: "build/",
+        src: "**"
       }
     },
+    // s3: {
+    //   options: {
+    //     key: "<%= aws.key %>",
+    //     secret: "<%= aws.secret %>",
+    //     bucket: "<%= aws.bucket %>",
+    //     access: "public-read",
+    //     gzip: true,
+    //     debug: false,
+    //     maxOperations: 10
+    //   },
+    //   dev: {
+    //     upload: [
+    //       { src: 'build/index.html', dest: 'index.html' },
+    //       { src: 'build/scripts/app.js', dest: 'scripts/app.js' },
+    //       { src: 'build/scripts/require_main.built.js', dest: 'scripts/require_main.built.js' },
+    //       { src: 'build/scripts/require_main.js', dest: 'scripts/require_main.js' },
+    //       { src: 'build/scripts/underscore.js', dest: 'scripts/underscore.js' },
+    //       { src: 'build/scripts/underscore-amd.js', dest: 'scripts/underscore-amd.js' },
+    //       { src: 'build/scripts/lib/require.js', dest: 'scripts/lib/require.js' },
+    //       { src: 'build/scripts/entities/*', dest: 'scripts/entities/' },
+    //       { src: 'build/scripts/apps/bills/bills_app.js', dest: 'scripts/apps/bills/bills_app.js' },
+    //       { src: 'build/scripts/apps/bills/show/*', dest: 'scripts/apps/bills/show/' },
+    //       { src: 'build/scripts/apps/members/members_app.js', dest: 'scripts/apps/members/members_app.js' },
+    //       { src: 'build/scripts/apps/members/list/*', dest: 'scripts/apps/members/list/' },
+    //       { src: 'build/scripts/apps/members/show/*', dest: 'scripts/apps/members/show/' },
+    //       { src: 'build/scripts/apps/watched_bills/watched_bills_app.js', dest: 'scripts/apps/watched_bills/watched_bills_app.js' },
+    //       { src: 'build/scripts/apps/watched_bills/list/*', dest: 'scripts/apps/watched_bills/list/' },
+    //       { src: 'build/scripts/apps/watched_bills/show/*', dest: 'scripts/apps/watched_bills/show/' },
+    //       { src: 'build/scripts/apps/welcome/*', dest: 'scripts/apps/welcome/'},
+    //       { src: 'build/scripts/apps/about/*', dest: 'scripts/apps/about/'},
+    //       { src: 'build/scripts/common/*', dest: 'scripts/common/'},
+
+    //       { src: 'build/images/cropped/*', dest: 'images/cropped/' },
+    //       { src: 'build/images/datatables/*', dest: 'images/datatables/' },
+    //       { src: 'build/images/mugs/*', dest: 'images/mugs/' },
+    //       { src: 'build/style/*', dest: 'style/' },
+    //       { src: 'build/style/images/*', dest: 'style/images/' },
+    //       { src: 'build/style/dist/bootstrap.css', dest: 'style/dist/bootstrap.css' },
+    //       { src: 'build/images/*', dest: 'images/' }
+    //     ]
+    //   }
+    // },
 
     express: {
       dev: {
@@ -239,7 +263,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
-  grunt.loadNpmTasks('grunt-s3');
+  grunt.loadNpmTasks('grunt-aws');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-express');
   grunt.loadNpmTasks('grunt-open');
