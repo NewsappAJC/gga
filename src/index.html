@@ -183,8 +183,7 @@
 
   <script type="text/template" id="days-left-template">
     <h3>Days left in session</h3>
-    <h1 id="counter">40</h1>
-    <!--<h1 id="counter"><%- days_left %></h1>-->
+    <h1 id="counter"><%- days_left %></h1>
   </script>
 
   <script type = "text/template" id="member-icon-template">
@@ -501,7 +500,7 @@
       <div class="col-sm-2">
         <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
         <div class="alert" id="<%- bill_id %>" align="center">
-          <p>Chance of passing <img class="info-tip" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from statistical models developed by the AJC based on the success or failure of bills that survived the crossover day deadline during the three previous legislative sessions (2008-2009, 2009-2010 and 2011-2012). The models consider a variety of factors, including sponsors and cosponsors, how recently the bill saw activity and where it stood as of crossover day. The technique used by the AJC was tested on previous legislative sessions."></p>
+          <p>Chance of passing <img class="info-tip" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from a statistical model developed by the AJC based on the success or failure of bills introduced in the first year of the five previous legislative sessions (from 2005-2006 through 2013-2014). The model considers a variety of factors, including sponsors and cosponsors, bill summary text and when a bill was submitted. The technique used by the AJC was tested on previous legislative sessions."></p>
           <h1><%- (predictions * 100).toFixed() %>%</h1>
         </div>
         <% } %>

@@ -31,14 +31,23 @@ define(["app"], function(GeneralAssemblyApp) {
       onShow: function() {
         var feed = new google.feeds.Feed("http://www.myajc.com/list/rss/news/state-regional-govt-politics/georgia-politics-news/aKdb/");
         feed.setNumEntries(3);
+        feed.setResultFormat(google.feeds.Feed.XML_FORMAT);
+        // feed.setResultFormat(google.feeds.Feed.JSON_FORMAT);
         feed.load(function(result) {
           if (!result.error) {
             var container = $("#news-feeds");
             if (container[0].children.length === 0) {
-              for (var i = 0; i < result.feed.entries.length; i++) {
-                var entry = result.feed.entries[i];
-                container.append('<p><a calss="news-link" href="' + entry.link + '" target="_blank">' + entry.title + '</a></p>');
+              var xml = result.xmlDocument;
+              var links = $(xml).find('link');
+              var titles = $(xml).find('title');
+              for (var i = 1; i <= 3; i++) {
+                container.append('<p><a class="news-link" href="' + links[i].innerHTML + '" target="_blank">' + titles[i].innerHTML + '</a></p>')
               }
+              // for (var i = 0; i < result.feed.entries.length; i++) {
+              //   var entry = result.feed.entries[i];
+              //   console.log(entry)
+              //   container.append('<p><a calss="news-link" href="' + entry.link + '" target="_blank">' + entry.title + '</a></p>');
+              // }
             }
           }
         });
