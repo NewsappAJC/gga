@@ -379,9 +379,7 @@ td.voted.NotVoting {
   padding:0px;
 /*  background-color:rgba(255,255,255,0.9);*/
 }
-.navbar button{
-  margin:0px;
-}
+
 .navbar-right{
   margin-right:0;
 }
@@ -420,6 +418,10 @@ td.voted.NotVoting {
 #masthead-tag a:visited { color: #000; }
 #masthead-tag a:hover   { color: #000; }
 #masthead-tag a:active  { color: #000; }
+
+#logo {
+  height: 50px;
+}
 
 #content-head{
   padding:7% 0%;
@@ -767,13 +769,25 @@ h1#counter{
     margin:0px;
   }
 
+  #logo {
+    height:40px;
+  }
+
+  #masthead-tag{
+    font-size:14px;
+    margin-top:0;
+  }
 
   #top-nav{
     text-align:center;
   }
-  #social {
-    text-align:center;
-    float:none;
+
+  #whatsNew, #updateBox{
+    display:none;
+  }
+
+  #not-sticky{
+    margin-top:0;
   }
 
   #bills, #members{
