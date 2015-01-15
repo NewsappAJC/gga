@@ -2,7 +2,7 @@ define(["app","apps/watched_bills/list/list_view"], function(GeneralAssemblyApp,
   GeneralAssemblyApp.module("WatchedBillsApp.List", function(List, GeneralAssemblyApp, Backbone, Marionette, $, _) {
     List.Controller = {
       listCategories: function() {
-        require(["entities/watched_bill","entities/bill"], function() {
+        require(["entities/watched_bill","entities/bill","entities/events"], function() {
           var fetchingWatchedBills = GeneralAssemblyApp.request("watched_bills:collection");
           var fetchingBillsCount = GeneralAssemblyApp.request("bills:count");
           var fetchingDays = GeneralAssemblyApp.request("days");
