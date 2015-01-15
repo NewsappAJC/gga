@@ -16,7 +16,7 @@ define(["marionette"], function(Marionette) {
 
   GeneralAssemblyApp.on("initialize:after", function() {
     if (Backbone.history) {
-      require(["apps/welcome/welcome_app","apps/members/members_app","apps/watched_bills/watched_bills_app","apps/bills/bills_app","apps/about/about_app","entities/common","common/views","common/app"], function() {
+      require(["apps/welcome/welcome_app","apps/members/members_app","apps/watched_bills/watched_bills_app","apps/bills/bills_app","apps/about/about_app","entities/common","entities/legislative_days","common/views","common/app"], function() {
         Backbone.history.start();
 
         // if (GeneralAssemblyApp.getCurrentRoute() === "") {

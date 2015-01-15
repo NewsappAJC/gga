@@ -4,6 +4,7 @@ define(["app"], function(GeneralAssemblyApp) {
       template: "#bill-category-layout",
       regions: {
         categoriesRegion: "#bill-category-region",
+        eventsRegion: "#bill-event-region",
         billsCountRegion: "#bills-count-region"
       },
       events: {

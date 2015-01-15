@@ -5,9 +5,11 @@ define(["app","apps/watched_bills/list/list_view"], function(GeneralAssemblyApp,
         require(["entities/watched_bill","entities/bill"], function() {
           var fetchingWatchedBills = GeneralAssemblyApp.request("watched_bills:collection");
           var fetchingBillsCount = GeneralAssemblyApp.request("bills:count");
+          var fetchingDays = GeneralAssemblyApp.request("days");
           var categories_layout = new View.CategoriesLayout();
 
-          $.when(fetchingWatchedBills, fetchingBillsCount).done(function(watched_bills, bills_count) {
+          $.when(fetchingWatchedBills, fetchingBillsCount, fetchingDays).done(function(watched_bills, bills_count, days) {
+            console.log(days);
             category_model_data = _.chain(watched_bills.models)
               .countBy(function(model) { return model.get("category") })
               .pairs()

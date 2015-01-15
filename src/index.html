@@ -429,8 +429,18 @@
             <button type="submit" class="btn btn-xs">Go</button>
           </form>
         </div>
+        <hr>
       </div>
-      <div class="row" id="bill-category-region"></div>
+      <div class="row">
+        <ul class="nav nav-tabs">
+          <li><a href="#bill-category-region" data-toggle="tab">Watched Bills</a></li>
+          <li><a href="#bill-event-region" data-toggle="tab">Daily Journal</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane" id="bill-category-region"></div>
+          <div class="tab-pane" id="bill-event-region">Some Stuff Happened</div>
+        </div>
+      </div>
     </div>
   </script>
 
@@ -446,22 +456,11 @@
   <script type="text/template" id="bills-count-template">
         <h3><%- bills %> total bills</h3>
         <ul class="fa-ul display-ul">
-            <% if(passed_house > 0) { %>
-              <li><i class="fa-li fa fa-check-circle"></i> <%- passed_house %> Passed the House.</li>
-            <% } %>
-            <% if(passed_senate > 0) { %>
-              <li><i class="fa-li fa fa-check-circle"></i> <%- passed_senate %> Passed the Senate.</li>
-            <% } %>
-
-            <% if(sent_to_gov > 0) { %>
+              <li><i class="fa-li fa fa-check-circle"></i> <%- passed_house %> Passed by House.</li>
+              <li><i class="fa-li fa fa-check-circle"></i> <%- passed_senate %> Passed by Senate.</li>
               <li><i class="fa-li fa fa-envelope"></i> <%- sent_to_gov %> Sent to governor.</li>
-            <% } %>
-            <% if(signed_by_gov > 0) { %>
-              <li><i class="fa-li fa fa-pencil"></i> <%- signed_by_gov %> Signed by governor.</li>
-            <% } %>
-            <% if(vetoed > 0) { %>
+              <li><i class="fa-li fa fa-pencil"></i> <%- signed_by_gov %> Signed into law.</li>
               <li><i class="fa-li fa fa-thumbs-down"></i> <%- vetoed %> Vetoed.</li>
-            <% } %>
           </ul>
   </script>
 
