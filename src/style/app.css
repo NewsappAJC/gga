@@ -31,7 +31,7 @@ p{
   z-index:0;
   width:100%;
   position:relative;
-  margin-top:120px;
+  margin-top:140px;
 }
 
 a{
@@ -43,7 +43,7 @@ a:hover{
 }
 
 .container{
-  padding:0; /*overriding this because Bootstrap 3.3.1 has 15px right/left padding and it's messing with what's already here*/
+   /*overriding this because Bootstrap 3.3.1 has 15px right/left padding and it's messing with what's already here*/
   /*max-width:1080px;*/
 }
 #bill-region{
@@ -342,7 +342,7 @@ td.voted.NotVoting {
 }
 #footer-content{
   color:#222;
-  padding:50px 0px;
+  padding-top:50px;
 }
 
 #panel-region {
@@ -431,7 +431,7 @@ td.voted.NotVoting {
   background-size:100%;
 }
 #header{
-  padding:0px 0px 20px 0px;
+  padding-bottom:20px;
 }
 .home-head{
   font-size:48px;
@@ -614,9 +614,7 @@ body .ui-tooltip {
 #bills:hover, #members:hover{
   opacity:1.0;
 }
-#bills{
-  border-right:none;
-}
+
 #members{
   background-image:url('/images/people.jpg');
   background-size:100%;
@@ -699,8 +697,8 @@ h1#counter{
 /* welcome page nav links */
 #bills{
   background-image:url('/images/bills.jpg');
-  background-size:100%;
-  max-height:350px;
+  background-size:auto;
+  max-height:300px;
   margin-right:0px;
   padding:0px;
   background-repeat:no-repeat;
@@ -717,8 +715,8 @@ h1#counter{
 }
 #members{
   background-image:url('/images/people.jpg');
-  background-size:100%;
-  max-height:350px;
+  background-size:auto;
+  max-height:300px;
   padding:0px;
   margin-left:0px;
   background-repeat:no-repeat;
@@ -743,6 +741,25 @@ h1#counter{
 }
 
 
+/*tablet styles */
+@media all and (max-width: 768px) and (min-width : 480px) {
+
+  /* only use this while the nav is not a hamburger and is really tall */
+  #not-sticky{
+    margin-top:200px;
+  }
+
+  #nav-box{
+    margin-top:20px;
+    margin-bottom:20px;
+  }
+  #bills{
+    background-size:100% auto;
+  }
+
+}
+
+
 /* mobile styles */
 
 @media all and (min-width : 320px) and (max-width : 480px) {
@@ -750,9 +767,7 @@ h1#counter{
   #content-home{
     margin:0px;
   }
-  .container{
-    padding:0px 10px;
-  }
+
 
   #top-nav{
     text-align:center;
@@ -764,6 +779,7 @@ h1#counter{
 
   #bills, #members{
     height:200px;
+    margin-top:50px;
   }
 
   #batting-average{
