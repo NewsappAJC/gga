@@ -104,6 +104,7 @@ module.exports = function(grunt) {
           'build/scripts/entities/watched_bill.js'     : ['src/scripts/entities/watched_bill.js'],
           'build/scripts/entities/days_left.js'        : ['src/scripts/entities/days_left.js'],
           'build/scripts/entities/districts.js'        : ['src/scripts/entities/districts.js'],
+          'build/scripts/entities/legislative_days.js' : ['src/scripts/entities/legislative_days.js'],
 
           'build/scripts/apps/bills/bills_app.js'            : ['src/scripts/apps/bills/bills_app.js'],
           'build/scripts/apps/bills/show/show_controller.js' : ['src/scripts/apps/bills/show/show_controller.js'],
