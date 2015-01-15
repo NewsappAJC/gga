@@ -32,20 +32,29 @@
 </head>
 <body>
   <!-- header -->
+<nav class="navbar navbar-default" role="navigation">
   <div id="sticky-nav">
     <div id="top">
       <div id="inside-top">
         <div class="container">
-          <div class="row" id="masthead-row">
+          <div class="row">
             <div class="col-sm-12">
               <div id="masthead">
                 <a href="http://www.myajc.com" target="_blank" alt="myajc.com">
-                  <img src="images/logo.svg" height="50px">
+                  <img src="images/logo.svg" id="logo">
                 </a>
               </div>
               <div id="masthead-tag">
                <span id="georgia">Georgia</span><br/>
                <span id="leg-nav">Legislative Navigator</span>
+              </div>
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-nav">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
               </div>
             </div>
           </div>
@@ -53,7 +62,7 @@
       </div>
     </div>
 
-    <nav role="navigation" id="top-nav">
+    <div id="top-nav" class="collapse navbar-collapse" >
       <div class="container">
         <div class="row">
           <div class="col-sm-8">
@@ -71,18 +80,6 @@
                 <a href="/#about">ABOUT</a>
               </div>
             </div>
-
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="container collapse" id="updateBox">
-                  <div class="well well-sm">
-                    <button type="button" class="close" id="closeUpdate"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <p>Welcome to the 2015 version of the Atlanta Journal-Constitution Legislative Navigator. We've freshend the stle, made the site more mobile-friendly and updated the bill prediction model from last year's version. We also have some planned changes that you will see over the next few weeks, including a better bill search facility, and the ability to find your representative and senator by entering your address. And we are continuing to work on our predictive model with a new partner.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
           <div id="whatsNew" class="col-sm-4">
             <div id="updateHeading">
@@ -92,9 +89,18 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="container collapse" id="updateBox">
+            <div class="well well-sm">
+              <button type="button" class="close" id="closeUpdate"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <p>Welcome to the 2015 version of the Atlanta Journal-Constitution Legislative Navigator. We've freshend the stle, made the site more mobile-friendly and updated the bill prediction model from last year's version. We also have some planned changes that you will see over the next few weeks, including a better bill search facility, and the ability to find your representative and senator by entering your address. And we are continuing to work on our predictive model with a new partner.</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </nav>
+    </div>
   </div>
+</nav>
 
   <div id="not-sticky">
     <div id="main-region"></div>
