@@ -57,8 +57,15 @@ define(["app"], function(GeneralAssemblyApp) {
       template: "#daily-votes-template"
     });
 
-    View.DailyEventsView = Marionette.ItemView.extend({
-      template: "#daily-events-template"
+    View.EventView = Marionette.ItemView.extend({
+      template: "#event-template",
+      tagName: "li"
+    })
+
+    View.DailyEventsView = Marionette.CompositeView.extend({
+      itemView: View.EventView,
+      template: "#daily-events-template",
+      itemViewContainer: "#daily-events"
     });
 
   });

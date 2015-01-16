@@ -14,7 +14,7 @@ define(["app"], function(GeneralAssemblyApp) {
     var API = {
       getEvents: function(date) {
         var d = $.Deferred();
-        Entities.events = new Entities.LegislativeDays(date);
+        Entities.events = new Entities.Events(date);
         Entities.events.fetch({
           dataType: "jsonp",
           success: function(data) {
@@ -26,8 +26,8 @@ define(["app"], function(GeneralAssemblyApp) {
       }
     };
 
-    GeneralAssemblyApp.reqres.setHandler("bill:events", function() {
-      return API.getEvents();
+    GeneralAssemblyApp.reqres.setHandler("bill:events", function(date) {
+      return API.getEvents(date);
     });
   });
 

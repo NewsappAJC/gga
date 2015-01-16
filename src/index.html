@@ -169,7 +169,6 @@
         </div>
       </div>
 
-
       <div class="row">
         <div class="col-sm-4">
           <div class="bottom-third" id="days-left-region"></div>
@@ -530,8 +529,13 @@
     <p>Some votes happened</p>
   </script>
 
+  <script type="text/template" id="event-template">
+    <a href="#bills/<%= document_type %>/<%= number %>"><%= document_type %><%= number %></a>: <%= description %>
+  </script>
+
   <script type="text/template" id="daily-events-template">
-    <p>Some events happened</p>
+    <ul id="daily-events">
+    </ul>
   </script>
 
   <script type="text/template" id="bill-detail-layout">

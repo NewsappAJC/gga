@@ -15,7 +15,6 @@ define(["app","apps/watched_bills/list/list_view"], function(GeneralAssemblyApp,
               .pairs()
               .map(function(model) { return {name: model[0], count: model[1]}; })
               .value();
-            window.category_model_data = category_model_data
 
             var categories = new GeneralAssemblyApp.Entities.BillCategories( category_model_data );
 
@@ -29,26 +28,31 @@ define(["app","apps/watched_bills/list/list_view"], function(GeneralAssemblyApp,
             });
 
             var legislative_day_view = new View.LegislativeDayView({
-              model: days.last()
+              model: GeneralAssemblyApp.Entities.days.last()
             });
 
-            var daily_votes_view = new View.DailyVotesView();
-            var daily_events_view = new View.DailyEventsView();
+            var yesterday = days.last();
+            var fetchingEvents = GeneralAssemblyApp.request("bill:events", yesterday.get('legislative_day_date'));
 
-            daily_journal_layout.on("show", function() {
-              daily_journal_layout.legislativeDayRegion.show(legislative_day_view);
-              daily_journal_layout.dailyVotesRegion.show(daily_votes_view);
-              daily_journal_layout.dailyEventsRegion.show(daily_events_view);
-            });
+            $.when(fetchingEvents).done(function(events) {
+              var daily_votes_view = new View.DailyVotesView();
+              var daily_events_view = new View.DailyEventsView({collection: events});
 
-            categories_layout.on("show", function() {
-              categories_layout.billsCountRegion.show(bills_count_view);
-              categories_layout.categoriesRegion.show(categories_view);
-              categories_layout.eventsRegion.show(daily_journal_layout);
-              // $("#dafult-tab").click();
-            });
+              daily_journal_layout.on("show", function() {
+                daily_journal_layout.legislativeDayRegion.show(legislative_day_view);
+                daily_journal_layout.dailyVotesRegion.show(daily_votes_view);
+                daily_journal_layout.dailyEventsRegion.show(daily_events_view);
+              });
 
-            GeneralAssemblyApp.mainRegion.show(categories_layout);
+              categories_layout.on("show", function() {
+                categories_layout.billsCountRegion.show(bills_count_view);
+                categories_layout.categoriesRegion.show(categories_view);
+                categories_layout.eventsRegion.show(daily_journal_layout);
+              });
+
+              GeneralAssemblyApp.mainRegion.show(categories_layout);
+            })
+
           });
         });
       },

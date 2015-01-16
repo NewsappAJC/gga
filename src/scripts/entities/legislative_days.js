@@ -21,7 +21,7 @@ define(["app"], function(GeneralAssemblyApp) {
 
           return d.promise();
         } else {
-          return Entites.days;
+          return Entities.days;
         }
       }
     };
