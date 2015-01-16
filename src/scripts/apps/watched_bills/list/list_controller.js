@@ -7,9 +7,9 @@ define(["app","apps/watched_bills/list/list_view"], function(GeneralAssemblyApp,
           var fetchingBillsCount = GeneralAssemblyApp.request("bills:count");
           var fetchingDays = GeneralAssemblyApp.request("days");
           var categories_layout = new View.CategoriesLayout();
+          var daily_journal_layout = new View.DailyJournalLayout()
 
           $.when(fetchingWatchedBills, fetchingBillsCount, fetchingDays).done(function(watched_bills, bills_count, days) {
-            console.log(days);
             category_model_data = _.chain(watched_bills.models)
               .countBy(function(model) { return model.get("category") })
               .pairs()
@@ -17,20 +17,35 @@ define(["app","apps/watched_bills/list/list_view"], function(GeneralAssemblyApp,
               .value();
             window.category_model_data = category_model_data
 
-            categories = new GeneralAssemblyApp.Entities.BillCategories( category_model_data );
+            var categories = new GeneralAssemblyApp.Entities.BillCategories( category_model_data );
 
-            categories_view = new View.CategoriesView({
+            var categories_view = new View.CategoriesView({
               collection: categories
             });
 
-            bills_count_view = new GeneralAssemblyApp.Common.View.BillsCountView({
+            var bills_count_view = new GeneralAssemblyApp.Common.View.BillsCountView({
               model: bills_count,
               className: "jumbotron"
+            });
+
+            var legislative_day_view = new View.LegislativeDayView({
+              model: days.last()
+            });
+
+            var daily_votes_view = new View.DailyVotesView();
+            var daily_events_view = new View.DailyEventsView();
+
+            daily_journal_layout.on("show", function() {
+              daily_journal_layout.legislativeDayRegion.show(legislative_day_view);
+              daily_journal_layout.dailyVotesRegion.show(daily_votes_view);
+              daily_journal_layout.dailyEventsRegion.show(daily_events_view);
             });
 
             categories_layout.on("show", function() {
               categories_layout.billsCountRegion.show(bills_count_view);
               categories_layout.categoriesRegion.show(categories_view);
+              categories_layout.eventsRegion.show(daily_journal_layout);
+              // $("#dafult-tab").click();
             });
 
             GeneralAssemblyApp.mainRegion.show(categories_layout);

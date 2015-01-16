@@ -16,6 +16,9 @@ define(["app"], function(GeneralAssemblyApp) {
         var doctype = $("#document-type").val();
         var number = $("#number").val();
         GeneralAssemblyApp.trigger("bills:show", doctype + '/' + number);
+      },
+      onShow: function() {
+        $("li#default-tab a").click();
       }
     });
 
@@ -35,6 +38,27 @@ define(["app"], function(GeneralAssemblyApp) {
     View.CategoriesView = Marionette.CollectionView.extend({
       itemView: View.CategoryView
       // className: "container"
+    });
+
+    View.DailyJournalLayout = Marionette.Layout.extend({
+      template: "#daily_journal_layout",
+      regions: {
+        legislativeDayRegion: "#legislative-day-region",
+        dailyVotesRegion: "#daily-votes-region",
+        dailyEventsRegion: "#daily-events-region"
+      }
+    });
+
+    View.LegislativeDayView = Marionette.ItemView.extend({
+      template: "#legislative-day-template"
+    });
+
+    View.DailyVotesView = Marionette.ItemView.extend({
+      template: "#daily-votes-template"
+    });
+
+    View.DailyEventsView = Marionette.ItemView.extend({
+      template: "#daily-events-template"
     });
 
   });

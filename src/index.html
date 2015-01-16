@@ -439,7 +439,7 @@
       </div>
       <div class="row">
         <ul class="nav nav-tabs">
-          <li><a href="#bill-category-region" data-toggle="tab">Watched Bills</a></li>
+          <li id="default-tab"><a href="#bill-category-region" data-toggle="tab">Bills to Watch</a></li>
           <li><a href="#bill-event-region" data-toggle="tab">Daily Journal</a></li>
         </ul>
         <div class="tab-content">
@@ -511,6 +511,27 @@
         <% } %>
       </div>
     </div>
+  </script>
+
+  <script type="text/template" id="daily_journal_layout">
+    <div id="legislative-day-region"></div>
+    <h3>Votes Today</h3>
+    <div id="daily-votes-region"></div>
+    <h3>Events Today</h3>
+    <div id="daily-events-region"></div>
+  </script>
+
+  <script type="text/template" id="legislative-day-template">
+    <h2>Day <%= id %></h2>
+    <p><%= legislative_day_date %></p>
+  </script>
+
+  <script type="text/template" id="daily-votes-template">
+    <p>Some votes happened</p>
+  </script>
+
+  <script type="text/template" id="daily-events-template">
+    <p>Some events happened</p>
   </script>
 
   <script type="text/template" id="bill-detail-layout">
