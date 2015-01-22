@@ -2,7 +2,7 @@ define(["app","apps/watched_bills/list/list_view"], function(GeneralAssemblyApp,
   GeneralAssemblyApp.module("WatchedBillsApp.List", function(List, GeneralAssemblyApp, Backbone, Marionette, $, _) {
     List.Controller = {
       listCategories: function() {
-        require(["entities/watched_bill","entities/bill","entities/events"], function() {
+        require(["entities/watched_bill","entities/bill","entities/events","entities/votes"], function() {
           var fetchingWatchedBills = GeneralAssemblyApp.request("watched_bills:collection");
           var fetchingBillsCount = GeneralAssemblyApp.request("bills:count");
           var fetchingDays = GeneralAssemblyApp.request("days");
@@ -27,15 +27,16 @@ define(["app","apps/watched_bills/list/list_view"], function(GeneralAssemblyApp,
               className: "jumbotron"
             });
 
-            var legislative_day_view = new View.LegislativeDayView({
-              model: GeneralAssemblyApp.Entities.days.last()
+            var legislative_day_view = new View.LegislativeDaysListView({
+              collection: days
             });
 
             var yesterday = days.last();
             var fetchingEvents = GeneralAssemblyApp.request("bill:events", yesterday.get('legislative_day_date'));
+            var fetchingVotes = GeneralAssemblyApp.request("daily:votes", yesterday.get('legislative_day_date'));
 
-            $.when(fetchingEvents).done(function(events) {
-              var daily_votes_view = new View.DailyVotesView();
+            $.when(fetchingEvents, fetchingVotes).done(function(events, votes) {
+              var daily_votes_view = new View.DailyVotesView({collection: votes});
               var daily_events_view = new View.DailyEventsView({collection: events});
 
               daily_journal_layout.on("show", function() {

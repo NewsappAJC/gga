@@ -50,11 +50,31 @@ define(["app"], function(GeneralAssemblyApp) {
     });
 
     View.LegislativeDayView = Marionette.ItemView.extend({
-      template: "#legislative-day-template"
+      template: "#legislative-day-template",
+      tagName: "li",
+      className: "day-item"
     });
 
-    View.DailyVotesView = Marionette.ItemView.extend({
-      template: "#daily-votes-template"
+    View.LegislativeDaysListView = Marionette.CompositeView.extend({
+      itemView: View.LegislativeDayView,
+      template: "#legislative_day_list_template",
+      itemViewContainer: "#days"
+    });
+
+    View.VoteView = Marionette.ItemView.extend({
+      template: "#daily-votes-template",
+      tagName: "li"
+    });
+
+    View.EmptyVotesView = Marionette.ItemView.extend({
+      template: "#empty-votes-template"
+    });
+
+    View.DailyVotesView = Marionette.CompositeView.extend({
+      itemView: View.VoteView,
+      template: "#daily-votes-template",
+      itemViewContainer: "#daily-votes",
+      emptyView: View.EmptyVotesView
     });
 
     View.EventView = Marionette.ItemView.extend({
@@ -62,10 +82,15 @@ define(["app"], function(GeneralAssemblyApp) {
       tagName: "li"
     })
 
+    View.EmptyEventsView = Marionette.ItemView.extend({
+      template: "#empty-events-template"
+    });
+
     View.DailyEventsView = Marionette.CompositeView.extend({
       itemView: View.EventView,
       template: "#daily-events-template",
-      itemViewContainer: "#daily-events"
+      itemViewContainer: "#daily-events",
+      emptyView: View.EmptyEventsView
     });
 
   });

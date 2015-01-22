@@ -514,23 +514,47 @@
 
   <script type="text/template" id="daily_journal_layout">
     <div id="legislative-day-region"></div>
+    <hr>
     <h3>Votes Today</h3>
     <div id="daily-votes-region"></div>
+    <hr>
     <h3>Events Today</h3>
     <div id="daily-events-region"></div>
   </script>
 
   <script type="text/template" id="legislative-day-template">
-    <h2>Day <%= id %></h2>
-    <p><%= legislative_day_date %></p>
+    <a data="<%= legislative_day_date %>">
+      <% if (legislative_day) { %>
+        <h4>Day <%= legislative_day %></h4>
+      <% } %>
+      <h5><%= legislative_day_date %></h5>
+    </a>
+  </script>
+
+  <script type="text/template" id="legislative_day_list_template">
+    <ul id="days" class="days-list">
+    </ul>
+  </script>
+
+  <script type="text/template" id="vote-template">
+    <a href="#bills/<%= bill_id %>"><%= legislation %></a> (<%= caption %>: <%= yeas %> Yeas, <%= nays %> Nays, <%= excused %> Excused, <%= not_voting %> Not Voting
+  </script>
+
+  <script type="text/template" id="empty-votes-template">
+    <h4>There were no votes on this date</h4>
   </script>
 
   <script type="text/template" id="daily-votes-template">
-    <p>Some votes happened</p>
+    <ul id="daily-votes">
+    </ul>
+  </script>
+
+  <script type="text/template" id="empty-events-template">
+    <h4>There were no events on this date</h4>
   </script>
 
   <script type="text/template" id="event-template">
-    <a href="#bills/<%= document_type %>/<%= number %>"><%= document_type %><%= number %></a>: <%= description %>
+    <a href="#bills/<%= document_type %>/<%= number %>"><%= document_type %> <%= number %></a>: <%= description %>
   </script>
 
   <script type="text/template" id="daily-events-template">

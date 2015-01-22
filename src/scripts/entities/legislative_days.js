@@ -4,7 +4,7 @@ define(["app"], function(GeneralAssemblyApp) {
     Entities.LegislativeDay = Backbone.Model.extend();
     Entities.LegislativeDays = Backbone.Collection.extend({
       model: Entities.LegislativeDay,
-      url: Entities.api_base + 'legislativedays/'
+      url: Entities.api_base + 'days/'
     });
 
     var API = {

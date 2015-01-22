@@ -605,7 +605,7 @@ body .ui-tooltip {
   height:350px;
   margin-right:0px;
   padding:0px;
-  
+
 }
 #bills, #members{
   opacity:0.9;
@@ -848,3 +848,22 @@ img.info-tip {
   margin-left: -15px;
   margin-right: -15px;
 }
+
+ul.days-list {
+  list-style-type: none;
+  display:inline-block;
+}
+ul.days-list li {
+  float: left;
+  display: none;
+}
+ul.days-list li.current {
+  display: block;
+}
+ul.days-list a {
+  display: block;
+  width: 75px;
+  height: 45px;
+  vertical-align: text-bottom;
+}
+

@@ -1,9 +1,8 @@
 define(["app"], function(GeneralAssemblyApp) {
   GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Backbone, Marionette, $, _){
 
-    Entities.event_url = Entities.api_base + 'billevents/';
+    Entities.event_url = Entities.api_base + 'billevents/recent/';
     Entities.Event = Backbone.Model.extend();
-
     Entities.Events = Backbone.Collection.extend({
       model: Entities.Event,
       initialize: function(date) {
