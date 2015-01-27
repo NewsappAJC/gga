@@ -874,3 +874,24 @@ ul.days-list h4{
 ul.days-list h5{
   margin-bottom: 0px;
 }
+
+ul#daily-events, ul#daily-votes{
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.center {
+  text-align: center;
+}
+
+.fa-angle-left {
+  margin-right: 10px;
+  color: lightgray;
+  cursor: pointer;
+}
+.fa-angle-right {
+  margin-left: 10px;
+  color: lightgray;
+  cursor: pointer;
+}
+

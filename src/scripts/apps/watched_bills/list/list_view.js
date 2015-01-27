@@ -58,6 +58,7 @@ define(["app"], function(GeneralAssemblyApp) {
     View.LegislativeDaysListView = Marionette.CompositeView.extend({
       itemView: View.LegislativeDayView,
       template: "#legislative_day_list_template",
+      className: "center",
       itemViewContainer: "#days",
       events: {
         "click #events-previous" : "showPreviousEvent",
