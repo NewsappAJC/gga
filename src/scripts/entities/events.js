@@ -25,7 +25,7 @@ define(["app"], function(GeneralAssemblyApp) {
       }
     };
 
-    GeneralAssemblyApp.reqres.setHandler("bill:events", function(date) {
+    GeneralAssemblyApp.reqres.setHandler("daily:events", function(date) {
       return API.getEvents(date);
     });
   });

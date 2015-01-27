@@ -229,17 +229,17 @@ a:hover{
   line-height:1.2em;
 }
 
-.btn{
+.btn-filter{
     background-color:#003896;
     color:#fff;
     border-radius:0px;
     text-transform:uppercase;
 }
-.btn:hover{
+.btn-filter:hover{
   color:#fff;
   background-color:#2a6496;
 }
-.btn-default{
+.btn-filter-default{
   background-color: #474949;
   border-color: #474949;
   border-radius:0px;
@@ -852,6 +852,7 @@ img.info-tip {
 ul.days-list {
   list-style-type: none;
   display:inline-block;
+  padding: 0px 5px;
 }
 ul.days-list li {
   float: left;
@@ -866,4 +867,6 @@ ul.days-list a {
   height: 45px;
   vertical-align: text-bottom;
 }
-
+ul.days-list h4{
+  margin-top: 0px;
+}

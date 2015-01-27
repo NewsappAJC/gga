@@ -58,7 +58,30 @@ define(["app"], function(GeneralAssemblyApp) {
     View.LegislativeDaysListView = Marionette.CompositeView.extend({
       itemView: View.LegislativeDayView,
       template: "#legislative_day_list_template",
-      itemViewContainer: "#days"
+      itemViewContainer: "#days",
+      events: {
+        "click #events-previous": "showPreviousEvent",
+        "click #events-next"    : "showNextEvent"
+      },
+
+      initialize: function() {
+        this.index = this.collection.length - 1;
+      },
+
+      showPreviousEvent: function() {
+        if (this.index > 0) {
+          this.index = this.index - 1;
+          GeneralAssemblyApp.trigger("events:list", this.index);
+        }
+      },
+
+      showNextEvent: function() {
+        if (this.index < this.collection.length - 1) {
+          console.log(this.index);
+          this.index = this.index + 1;
+          GeneralAssemblyApp.trigger("events:list", this.index);
+        }
+      }
     });
 
     View.VoteView = Marionette.ItemView.extend({
@@ -90,7 +113,25 @@ define(["app"], function(GeneralAssemblyApp) {
       itemView: View.EventView,
       template: "#daily-events-template",
       itemViewContainer: "#daily-events",
-      emptyView: View.EmptyEventsView
+      emptyView: View.EmptyEventsView,
+
+      initialize: function () {
+        var view = this;
+        this.listenTo(GeneralAssemblyApp, "events:list", function(index) {
+          var date = GeneralAssemblyApp.Entities.days.models[index].get("legislative_day_date");
+          var fetchingEvents = GeneralAssemblyApp.request("daily:events", date);
+
+          // grab daily events and update view collection
+          $.when(fetchingEvents).done(function(events) {
+            view.collection = events;
+            view.render();
+
+            // Change display date
+            $("ul.days-list li").removeClass("current")
+            $($("ul.days-list li")[index]).addClass("current")
+          });
+        });
+      }
     });
 
   });

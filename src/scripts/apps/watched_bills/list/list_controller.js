@@ -10,6 +10,7 @@ define(["app","apps/watched_bills/list/list_view"], function(GeneralAssemblyApp,
           var daily_journal_layout = new View.DailyJournalLayout()
 
           $.when(fetchingWatchedBills, fetchingBillsCount, fetchingDays).done(function(watched_bills, bills_count, days) {
+            window.days = days
             category_model_data = _.chain(watched_bills.models)
               .countBy(function(model) { return model.get("category") })
               .pairs()
@@ -31,8 +32,9 @@ define(["app","apps/watched_bills/list/list_view"], function(GeneralAssemblyApp,
               collection: days
             });
 
-            var yesterday = days.last();
-            var fetchingEvents = GeneralAssemblyApp.request("bill:events", yesterday.get('legislative_day_date'));
+            // var yesterday = days.last();
+            var yesterday = days.models[legislative_day_view.index]
+            var fetchingEvents = GeneralAssemblyApp.request("daily:events", yesterday.get('legislative_day_date'));
             var fetchingVotes = GeneralAssemblyApp.request("daily:votes", yesterday.get('legislative_day_date'));
 
             $.when(fetchingEvents, fetchingVotes).done(function(events, votes) {
@@ -43,6 +45,7 @@ define(["app","apps/watched_bills/list/list_view"], function(GeneralAssemblyApp,
                 daily_journal_layout.legislativeDayRegion.show(legislative_day_view);
                 daily_journal_layout.dailyVotesRegion.show(daily_votes_view);
                 daily_journal_layout.dailyEventsRegion.show(daily_events_view);
+                $("ul.days-list li").last().addClass("current");
               });
 
               categories_layout.on("show", function() {
@@ -57,6 +60,7 @@ define(["app","apps/watched_bills/list/list_view"], function(GeneralAssemblyApp,
           });
         });
       },
+
       listWatchedBills: function(category) {
       }
     }

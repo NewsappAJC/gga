@@ -344,18 +344,18 @@
         <div class="row">
           <div class="col-sm-8">
             <div id="filter-party" class="nav btn-group-sm">
-              <button id="filter-Democrat" class="btn navbar-btn filter">Democrat</button>
-              <button id="filter-Republican" class="btn navbar-btn filter">Republican</button>
-              <button id="filter-Independent" class="btn navbar-btn filter">Independent</button>
-              <button id="filter-all-parties" class="btn btn-default navbar-btn filter">All parties</button>
+              <button id="filter-Democrat" class="btn navbar-btn btn-filter">Democrat</button>
+              <button id="filter-Republican" class="btn navbar-btn btn-filter">Republican</button>
+              <button id="filter-Independent" class="btn navbar-btn btn-filter">Independent</button>
+              <button id="filter-all-parties" class="btn btn-filter-default navbar-btn btn-filter">All parties</button>
             </div>
           </div>
 
           <div class="col-sm-4">
             <div id="filter-district_type" class="nav btn-group-sm navbar-right">
-              <button id="filter-Senate" class="btn navbar-btn filter">Senate</button>
-              <button id="filter-House" class="btn navbar-btn filter">House</button>
-              <button id="filter-all-districtTypes" class="btn btn-default navbar-btn filter">Both chambers</button>
+              <button id="filter-Senate" class="btn navbar-btn btn-filter">Senate</button>
+              <button id="filter-House" class="btn navbar-btn btn-filter">House</button>
+              <button id="filter-all-districtTypes" class="btn btn-filter-default navbar-btn btn-filter">Both chambers</button>
             </div>
           </div>
         </div>
@@ -523,17 +523,19 @@
   </script>
 
   <script type="text/template" id="legislative-day-template">
-    <a data="<%= legislative_day_date %>">
+    <span class="glyphicon-class" data="<%= legislative_day_date %>">
       <% if (legislative_day) { %>
         <h4>Day <%= legislative_day %></h4>
       <% } %>
       <h5><%= legislative_day_date %></h5>
-    </a>
+    </span>
   </script>
 
   <script type="text/template" id="legislative_day_list_template">
+    <i id="events-previous" class="fa fa-angle-left fa-5x fa-border fa-pull-left"></i>
     <ul id="days" class="days-list">
     </ul>
+    <i id="events-next" class="fa fa-angle-right fa-5x fa-border fa-pull-right"></i>
   </script>
 
   <script type="text/template" id="vote-template">
