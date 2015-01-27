@@ -853,6 +853,7 @@ ul.days-list {
   list-style-type: none;
   display:inline-block;
   padding: 0px 5px;
+  margin: 0px;
 }
 ul.days-list li {
   float: left;
@@ -869,4 +870,7 @@ ul.days-list a {
 }
 ul.days-list h4{
   margin-top: 0px;
+}
+ul.days-list h5{
+  margin-bottom: 0px;
 }

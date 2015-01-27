@@ -60,8 +60,8 @@ define(["app"], function(GeneralAssemblyApp) {
       template: "#legislative_day_list_template",
       itemViewContainer: "#days",
       events: {
-        "click #events-previous": "showPreviousEvent",
-        "click #events-next"    : "showNextEvent"
+        "click #events-previous" : "showPreviousEvent",
+        "click #events-next"     : "showNextEvent"
       },
 
       initialize: function() {
@@ -71,15 +71,22 @@ define(["app"], function(GeneralAssemblyApp) {
       showPreviousEvent: function() {
         if (this.index > 0) {
           this.index = this.index - 1;
-          GeneralAssemblyApp.trigger("events:list", this.index);
+          GeneralAssemblyApp.trigger("daily:events:list", this.index);
+
+          // Change display date
+          $("ul.days-list li").removeClass("current");
+          $($("ul.days-list li")[this.index]).addClass("current");
         }
       },
 
       showNextEvent: function() {
         if (this.index < this.collection.length - 1) {
-          console.log(this.index);
           this.index = this.index + 1;
-          GeneralAssemblyApp.trigger("events:list", this.index);
+          GeneralAssemblyApp.trigger("daily:events:list", this.index);
+
+          // Change display date
+          $("ul.days-list li").removeClass("current");
+          $($("ul.days-list li")[this.index]).addClass("current");
         }
       }
     });
@@ -97,7 +104,21 @@ define(["app"], function(GeneralAssemblyApp) {
       itemView: View.VoteView,
       template: "#daily-votes-template",
       itemViewContainer: "#daily-votes",
-      emptyView: View.EmptyVotesView
+      emptyView: View.EmptyVotesView,
+
+      initialize: function () {
+        var view = this;
+        this.listenTo(GeneralAssemblyApp, "daily:events:list", function(index) {
+          var date = GeneralAssemblyApp.Entities.days.models[index].get("legislative_day_date");
+          var fetchingVotes = GeneralAssemblyApp.request("daily:votes", date);
+
+          $.when(fetchingVotes).done(function(votes) {
+            view.collection = votes;
+            view.render();
+          });
+        });
+      }
+
     });
 
     View.EventView = Marionette.ItemView.extend({
@@ -117,18 +138,13 @@ define(["app"], function(GeneralAssemblyApp) {
 
       initialize: function () {
         var view = this;
-        this.listenTo(GeneralAssemblyApp, "events:list", function(index) {
+        this.listenTo(GeneralAssemblyApp, "daily:events:list", function(index) {
           var date = GeneralAssemblyApp.Entities.days.models[index].get("legislative_day_date");
           var fetchingEvents = GeneralAssemblyApp.request("daily:events", date);
 
-          // grab daily events and update view collection
           $.when(fetchingEvents).done(function(events) {
             view.collection = events;
             view.render();
-
-            // Change display date
-            $("ul.days-list li").removeClass("current")
-            $($("ul.days-list li")[index]).addClass("current")
           });
         });
       }
