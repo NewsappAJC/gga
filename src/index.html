@@ -93,7 +93,7 @@
           <div class="container collapse" id="updateBox">
             <div class="well well-sm">
               <button type="button" class="close" id="closeUpdate"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-              <p>Welcome to the 2015 version of the Atlanta Journal-Constitution Legislative Navigator. We've freshend the stle, made the site more mobile-friendly and updated the bill prediction model from last year's version. We also have some planned changes that you will see over the next few weeks, including a better bill search facility, and the ability to find your representative and senator by entering your address. And we are continuing to work on our predictive model with a new partner.</p>
+              <p>New in the Bills section of the AJC Legislative Navigator: a daily journal of all votes and all changes in bill status. We'll be refining this feature, but all the information's now there to track day-by-day the legislature's progress.</p>
             </div>
           </div>
         </div>
@@ -168,7 +168,6 @@
           </div>
         </div>
       </div>
-
 
       <div class="row">
         <div class="col-sm-4">
@@ -345,18 +344,18 @@
         <div class="row">
           <div class="col-sm-8">
             <div id="filter-party" class="nav btn-group-sm">
-              <button id="filter-Democrat" class="btn navbar-btn filter">Democrat</button>
-              <button id="filter-Republican" class="btn navbar-btn filter">Republican</button>
-              <button id="filter-Independent" class="btn navbar-btn filter">Independent</button>
-              <button id="filter-all-parties" class="btn btn-default navbar-btn filter">All parties</button>
+              <button id="filter-Democrat" class="btn navbar-btn btn-filter">Democrat</button>
+              <button id="filter-Republican" class="btn navbar-btn btn-filter">Republican</button>
+              <button id="filter-Independent" class="btn navbar-btn btn-filter">Independent</button>
+              <button id="filter-all-parties" class="btn btn-filter-default navbar-btn btn-filter">All parties</button>
             </div>
           </div>
 
           <div class="col-sm-4">
             <div id="filter-district_type" class="nav btn-group-sm navbar-right">
-              <button id="filter-Senate" class="btn navbar-btn filter">Senate</button>
-              <button id="filter-House" class="btn navbar-btn filter">House</button>
-              <button id="filter-all-districtTypes" class="btn btn-default navbar-btn filter">Both chambers</button>
+              <button id="filter-Senate" class="btn navbar-btn btn-filter">Senate</button>
+              <button id="filter-House" class="btn navbar-btn btn-filter">House</button>
+              <button id="filter-all-districtTypes" class="btn btn-filter-default navbar-btn btn-filter">Both chambers</button>
             </div>
           </div>
         </div>
@@ -386,9 +385,11 @@
         <div class="col-sm-10">
           <h3 class="billnumhed">
             <a href="#bills/<%= bill_id %>"><%= document_type %> <%= number %></a>
+            <!--
             <% if (passed_over === -1) { %>
               <i class="fa fa-times red hover" title="This bill or constitutional amendment resolution did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules. The substance of this bill could also be amended to a live bill later in the session. Local bills and private resolutions are not affected by the crossover day deadline."></i>
             <% } %>
+            -->
           </h3>
           <h4><%= caption %></h3></h4>
           <p><strong>Status:</strong> <%= status_description %></p>
@@ -433,8 +434,18 @@
             <button type="submit" class="btn btn-xs">Go</button>
           </form>
         </div>
+        <hr>
       </div>
-      <div class="row" id="bill-category-region"></div>
+      <div class="row">
+        <ul class="nav nav-tabs">
+          <li id="default-tab"><a href="#bill-category-region" data-toggle="tab">Bills to Watch</a></li>
+          <li><a href="#bill-event-region" data-toggle="tab">Daily Journal</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane" id="bill-category-region"></div>
+          <div class="tab-pane" id="bill-event-region">Some Stuff Happened</div>
+        </div>
+      </div>
     </div>
   </script>
 
@@ -450,22 +461,11 @@
   <script type="text/template" id="bills-count-template">
         <h3><%- bills %> total bills</h3>
         <ul class="fa-ul display-ul">
-            <% if(passed_house > 0) { %>
-              <li><i class="fa-li fa fa-check-circle"></i> <%- passed_house %> Passed the House.</li>
-            <% } %>
-            <% if(passed_senate > 0) { %>
-              <li><i class="fa-li fa fa-check-circle"></i> <%- passed_senate %> Passed the Senate.</li>
-            <% } %>
-
-            <% if(sent_to_gov > 0) { %>
+              <li><i class="fa-li fa fa-check-circle"></i> <%- passed_house %> Passed by House.</li>
+              <li><i class="fa-li fa fa-check-circle"></i> <%- passed_senate %> Passed by Senate.</li>
               <li><i class="fa-li fa fa-envelope"></i> <%- sent_to_gov %> Sent to governor.</li>
-            <% } %>
-            <% if(signed_by_gov > 0) { %>
-              <li><i class="fa-li fa fa-pencil"></i> <%- signed_by_gov %> Signed by governor.</li>
-            <% } %>
-            <% if(vetoed > 0) { %>
+              <li><i class="fa-li fa fa-pencil"></i> <%- signed_by_gov %> Signed into law.</li>
               <li><i class="fa-li fa fa-thumbs-down"></i> <%- vetoed %> Vetoed.</li>
-            <% } %>
           </ul>
   </script>
 
@@ -510,6 +510,70 @@
         <% } %>
       </div>
     </div>
+  </script>
+
+  <script type="text/template" id="daily_journal_layout">
+    <div class="row">
+      <div id="legislative-day-region"></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-8">
+        <h3>Votes Today</h3>
+        <div id="daily-votes-region"></div>
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <h3>Events Today</h3>
+        <div id="daily-events-region"></div>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/template" id="legislative-day-template">
+    <% if (legislative_day) { %>
+      <h4>Legislative Day <%= legislative_day %></h4>
+    <% } %>
+    <h5><%= legislative_day_date %></h5>
+  </script>
+
+  <script type="text/template" id="legislative_day_list_template">
+    <i id="events-previous" class="fa fa-angle-left fa-5x"></i>
+    <ul id="days" class="days-list">
+    </ul>
+    <i id="events-next" class="fa fa-angle-right fa-5x"></i>
+  </script>
+
+  <script type="text/template" id="vote-template">
+    <td><a href="#bills/<%= bill_id %>"><%= legislation %></a> <%= caption %></td>
+    <td><%= yeas %></td>
+    <td><%= nays %></td>
+    <td><%= excused %></td>
+    <td><%= not_voting %></td>
+  </script>
+
+  <script type="text/template" id="empty-votes-template">
+    <h4>There were no votes on this date</h4>
+  </script>
+
+  <script type="text/template" id="daily-votes-template">
+    <table id="daily-votes-table" class="table table-hover table-condensed table-bordered">
+      <thead>
+        <tr><th></th><th>Yea</th><th>Nay</th><th>Excused</th><th>Not Voting</th></tr>
+      <thead>
+      <tbody id="daily-votes"></tbody>
+    </table>
+  </script>
+
+  <script type="text/template" id="empty-events-template">
+    <h4>There were no events on this date</h4>
+  </script>
+
+  <script type="text/template" id="event-template">
+    <a href="#bills/<%= document_type %>/<%= number %>"><%= document_type %> <%= number %></a>: <%= description %>
+  </script>
+
+  <script type="text/template" id="daily-events-template">
+    <ul id="daily-events">
+    </ul>
   </script>
 
   <script type="text/template" id="bill-detail-layout">
