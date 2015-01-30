@@ -93,8 +93,8 @@ define(["app"], function(GeneralAssemblyApp) {
     });
 
     View.VoteView = Marionette.ItemView.extend({
-      template: "#daily-votes-template",
-      tagName: "li"
+      template: "#vote-template",
+      tagName: "tr"
     });
 
     View.EmptyVotesView = Marionette.ItemView.extend({
