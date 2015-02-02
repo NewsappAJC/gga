@@ -1,8 +1,10 @@
 define(["app"], function(GeneralAssemblyApp) {
   GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Backbone, Marionette, $, _){
 
-    Entities.LegislativeDays = Backbone.Model.extend({
-      urlRoot: Entities.api_base + 'legislativedays'
+    Entities.LegislativeDay = Backbone.Model.extend();
+    Entities.LegislativeDays = Backbone.Collection.extend({
+      model: Entities.LegislativeDay,
+      url: Entities.api_base + 'days/'
     });
 
     var API = {
@@ -19,7 +21,7 @@ define(["app"], function(GeneralAssemblyApp) {
 
           return d.promise();
         } else {
-          return Entites.days;
+          return Entities.days;
         }
       }
     };

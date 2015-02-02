@@ -12,13 +12,14 @@ define(["app"], function(GeneralAssemblyApp) {
       template: "#member-list-panel",
       className: "container",
       events: {
-        "click .filter": "filterMembers"
+        "click .btn-filter": "filterMembers"
       },
 
       filterMembers: function(e) {
         e.preventDefault();
-        $(e.currentTarget).siblings().removeClass("btn-default");
-        $(e.currentTarget).addClass("btn-default");
+        console.log(e.currentTarget);
+        $(e.currentTarget).siblings().removeClass("btn-filter-default");
+        $(e.currentTarget).addClass("btn-filter-default");
 
         var key = $(e.currentTarget).parent().attr("id").match(/filter-(.*)$/)[1];
         var val = $(e.currentTarget).attr("id").match(/filter-(.*)$/)[1];
@@ -28,18 +29,18 @@ define(["app"], function(GeneralAssemblyApp) {
       },
 
       onSetFilterCriterion: function(criterion) {
-        $(".filter").removeClass("btn-default");
+        $(".filter").removeClass("btn-filter-default");
 
         if (! criterion.party) {
-          $("#filter-party").children("#filter-all-parties").addClass("btn-default");
+          $("#filter-party").children("#filter-all-parties").addClass("btn-filter-default");
         } else {
-          $("#filter-" + criterion.party).addClass("btn-default");
+          $("#filter-" + criterion.party).addClass("btn-filter-default");
         }
 
         if (! criterion.district_type) {
-          $("#filter-district_type").children("#filter-all-districtTypes").addClass("btn-default");
+          $("#filter-district_type").children("#filter-all-districtTypes").addClass("btn-filter-default");
         } else {
-          $("#filter-" + criterion.district_type).addClass("btn-default");
+          $("#filter-" + criterion.district_type).addClass("btn-filter-default");
         }
       },
 

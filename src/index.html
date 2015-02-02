@@ -93,7 +93,7 @@
           <div class="container collapse" id="updateBox">
             <div class="well well-sm">
               <button type="button" class="close" id="closeUpdate"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-              <p>Welcome to the 2015 version of the Atlanta Journal-Constitution Legislative Navigator. We've freshened the site, made the site more mobile-friendly and updated the bill prediction model from last year's version. We also have some planned changes that you will see over the next few weeks, including a better bill search facility, and the ability to find your representative and senator by entering your address. And we are continuing to work on our predictive model with a new partner.</p>
+              <p>New in the Bills section of the AJC Legislative Navigator: a daily journal of all votes and all changes in bill status. We'll be refining this feature, but all the information's now there to track day-by-day the legislature's progress.</p>
             </div>
           </div>
         </div>
@@ -168,7 +168,6 @@
           </div>
         </div>
       </div>
-
 
       <div class="row">
         <div class="col-sm-4">
@@ -345,18 +344,18 @@
         <div class="row">
           <div class="col-sm-8">
             <div id="filter-party" class="nav btn-group-sm">
-              <button id="filter-Democrat" class="btn navbar-btn filter">Democrat</button>
-              <button id="filter-Republican" class="btn navbar-btn filter">Republican</button>
-              <button id="filter-Independent" class="btn navbar-btn filter">Independent</button>
-              <button id="filter-all-parties" class="btn btn-default navbar-btn filter">All parties</button>
+              <button id="filter-Democrat" class="btn navbar-btn btn-filter">Democrat</button>
+              <button id="filter-Republican" class="btn navbar-btn btn-filter">Republican</button>
+              <button id="filter-Independent" class="btn navbar-btn btn-filter">Independent</button>
+              <button id="filter-all-parties" class="btn btn-filter-default navbar-btn btn-filter">All parties</button>
             </div>
           </div>
 
           <div class="col-sm-4">
             <div id="filter-district_type" class="nav btn-group-sm navbar-right">
-              <button id="filter-Senate" class="btn navbar-btn filter">Senate</button>
-              <button id="filter-House" class="btn navbar-btn filter">House</button>
-              <button id="filter-all-districtTypes" class="btn btn-default navbar-btn filter">Both chambers</button>
+              <button id="filter-Senate" class="btn navbar-btn btn-filter">Senate</button>
+              <button id="filter-House" class="btn navbar-btn btn-filter">House</button>
+              <button id="filter-all-districtTypes" class="btn btn-filter-default navbar-btn btn-filter">Both chambers</button>
             </div>
           </div>
         </div>
@@ -398,8 +397,8 @@
 
         <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
         <div class="col-sm-2 well" align="center">
-          <% if (caption.match(/General appropriations.*2015/)) { %>
-            <p>This bill carries the state budget for the next fiscal year and must pass for state government to be funded. Because of this special circumstance, we do not assign a probability to this bill.<p>
+          <% if (id === 42876 or id === 42877) { %>
+            <p><strong>This bill carries the state budget for the next fiscal year and must pass for state government to be funded. Because of this special circumstance, we do not assign a probability to this bill.</strong><p>
           <% } else { %>
             <p>Chance of passing <img class="info-tip" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from a statistical model developed by the AJC based on the success or failure of bills introduced in the first year of the five previous legislative sessions (from 2005-2006 through 2013-2014). The model considers a variety of factors, including sponsors and cosponsors, bill summary text and when a bill was submitted. The technique used by the AJC was tested on previous legislative sessions."></p>
             <h1><%- (predictions * 100).toFixed() %>%</h1>
@@ -438,7 +437,14 @@
         <hr>
       </div>
       <div class="row">
-          <div id="bill-category-region"></div>
+        <ul class="nav nav-tabs">
+          <li id="default-tab"><a href="#bill-category-region" data-toggle="tab">Bills to Watch</a></li>
+          <li><a href="#bill-event-region" data-toggle="tab">Daily Journal</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane" id="bill-category-region"></div>
+          <div class="tab-pane" id="bill-event-region">Some Stuff Happened</div>
+        </div>
       </div>
     </div>
   </script>
@@ -504,6 +510,70 @@
         <% } %>
       </div>
     </div>
+  </script>
+
+  <script type="text/template" id="daily_journal_layout">
+    <div class="row">
+      <div id="legislative-day-region"></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-8">
+        <h3>Votes Today</h3>
+        <div id="daily-votes-region"></div>
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <h3>Events Today</h3>
+        <div id="daily-events-region"></div>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/template" id="legislative-day-template">
+    <% if (legislative_day) { %>
+      <h4>Legislative Day <%= legislative_day %></h4>
+    <% } %>
+    <h5><%= legislative_day_date %></h5>
+  </script>
+
+  <script type="text/template" id="legislative_day_list_template">
+    <i id="events-previous" class="fa fa-angle-left fa-5x"></i>
+    <ul id="days" class="days-list">
+    </ul>
+    <i id="events-next" class="fa fa-angle-right fa-5x"></i>
+  </script>
+
+  <script type="text/template" id="vote-template">
+    <td><a href="#bills/<%= bill_id %>"><%= legislation %></a> <%= caption %></td>
+    <td><%= yeas %></td>
+    <td><%= nays %></td>
+    <td><%= excused %></td>
+    <td><%= not_voting %></td>
+  </script>
+
+  <script type="text/template" id="empty-votes-template">
+    <h4>There were no votes on this date</h4>
+  </script>
+
+  <script type="text/template" id="daily-votes-template">
+    <table id="daily-votes-table" class="table table-hover table-condensed table-bordered">
+      <thead>
+        <tr><th></th><th>Yea</th><th>Nay</th><th>Excused</th><th>Not Voting</th></tr>
+      <thead>
+      <tbody id="daily-votes"></tbody>
+    </table>
+  </script>
+
+  <script type="text/template" id="empty-events-template">
+    <h4>There were no events on this date</h4>
+  </script>
+
+  <script type="text/template" id="event-template">
+    <a href="#bills/<%= document_type %>/<%= number %>"><%= document_type %> <%= number %></a>: <%= description %>
+  </script>
+
+  <script type="text/template" id="daily-events-template">
+    <ul id="daily-events">
+    </ul>
   </script>
 
   <script type="text/template" id="bill-detail-layout">
@@ -572,10 +642,10 @@
           <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
             <div>
               <hr>
-              <h3>Chance of passing: <%- (predictions * 100).toFixed() %>%  <img class="info-tip" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from statistical models developed by the AJC based on the success or failure of bills that survived the crossover day deadline during the three previous legislative sessions (2008-2009, 2009-2010 and 2011-2012). The models consider a variety of factors, including sponsors and cosponsors, how recently the bill saw activity and where it stood as of crossover day. The technique used by the AJC was tested on previous legislative sessions."></h3>
-                <% if ( id === 40560 ) { %>
-                  <div><p>This bill carries the state budget for the next fiscal year and must pass for state government to be funded. Because of this special circumstance, we do not assign a probability to this bill.<p></div>
+                <% if ( id === 42877 || id === 42876 ) { %>
+                  <div><p><strong>This bill carries the state budget for the next fiscal year and must pass for state government to be funded. Because of this special circumstance, we do not assign a probability to this bill.</strong><p></div>
                 <% } else { %>
+              <h3>Chance of passing: <%- (predictions * 100).toFixed() %>%  <img class="info-tip" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from statistical models developed by the AJC based on the success or failure of bills that survived the crossover day deadline during the three previous legislative sessions (2008-2009, 2009-2010 and 2011-2012). The models consider a variety of factors, including sponsors and cosponsors, how recently the bill saw activity and where it stood as of crossover day. The technique used by the AJC was tested on previous legislative sessions."></h3>
                   <div class="progress">
                     <div class="progress-bar"
                          role="progressbar"

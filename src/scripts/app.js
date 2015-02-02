@@ -37,6 +37,5 @@ define(["marionette"], function(Marionette) {
       });
     }
   });
-
   return GeneralAssemblyApp;
 });

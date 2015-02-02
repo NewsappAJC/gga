@@ -1,9 +1,8 @@
 define(["app"], function(GeneralAssemblyApp) {
   GeneralAssemblyApp.module("Entities", function(Entities, GeneralAssemblyApp, Backbone, Marionette, $, _){
 
-    Entities.event_url = Entities.api_base + 'billevents/';
+    Entities.event_url = Entities.api_base + 'billevents/recent/';
     Entities.Event = Backbone.Model.extend();
-
     Entities.Events = Backbone.Collection.extend({
       model: Entities.Event,
       initialize: function(date) {
@@ -14,7 +13,7 @@ define(["app"], function(GeneralAssemblyApp) {
     var API = {
       getEvents: function(date) {
         var d = $.Deferred();
-        Entities.events = new Entities.LegislativeDays(date);
+        Entities.events = new Entities.Events(date);
         Entities.events.fetch({
           dataType: "jsonp",
           success: function(data) {
@@ -26,8 +25,8 @@ define(["app"], function(GeneralAssemblyApp) {
       }
     };
 
-    GeneralAssemblyApp.reqres.setHandler("bill:events", function() {
-      return API.getEvents();
+    GeneralAssemblyApp.reqres.setHandler("daily:events", function(date) {
+      return API.getEvents(date);
     });
   });
 
