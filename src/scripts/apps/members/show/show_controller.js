@@ -27,6 +27,7 @@ define(["app","apps/members/show/show_view"], function(GeneralAssemblyApp, View)
             });
 
             var bills = new GeneralAssemblyApp.Entities.MemberBills(member.get("bills"));
+            console.log(bills);
             var billsListView = new View.Bills({
               collection: bills
             });
@@ -37,7 +38,6 @@ define(["app","apps/members/show/show_view"], function(GeneralAssemblyApp, View)
             });
 
             var district = new GeneralAssemblyApp.Entities.District( member.get("district") );
-            console.log(district.attributes);
             var districtView = new View.District({
               model: district
             });
