@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="style_gmap.css" type="text/css" />
+</head>
+<body>
+	<div class="main">
+		<div class="content">
+			<div class="link-panel">
+				<h4>Georgia State General Assembly Legislative Districts</h4>
+				<ul class="tab">
+					<li data-itemid="1" class="active"><span>Senate Districts</span></li>
+					<li data-itemid="2"><span>House Districts</span></li>
+				</ul>
+				<div class="d-list-box"><ul class="district-list"></ul></div>
+			</div>
+			<div class="container">			
+				<div id="form">							
+					<h2 style="float:left;">Who represents me?</h2>
+					<input type="text" id="address" placeholder="Enter your address"/> <input type="button" value="Find" id="btnFind" />				
+				</div>
+				<div id="map"></div>
+				<div id="district"></div>
+			</div>			
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/jscript"></script>
+		<script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/jscript"></script>
+		<script src="gmap.js" type="text/jscript"></script>
+		</div>
+</div>
+</body>
+</html>
