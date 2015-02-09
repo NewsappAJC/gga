@@ -131,6 +131,10 @@ module.exports = function(grunt) {
           'build/scripts/apps/about/about_app.js'        : ['src/scripts/apps/about/about_app.js'],
           'build/scripts/apps/about/about_controller.js' : ['src/scripts/apps/about/about_controller.js'],
           'build/scripts/apps/about/about_view.js'       : ['src/scripts/apps/about/about_view.js'],
+		  
+		  'build/scripts/apps/map/map_app.js'        : ['src/scripts/apps/map/map_app.js'],
+          'build/scripts/apps/map/map_controller.js' : ['src/scripts/apps/map/map_controller.js'],
+          'build/scripts/apps/map/map_view.js'       : ['src/scripts/apps/map/map_view.js'],
 
           'build/scripts/common/views.js' : ['src/scripts/common/views.js'],
           'build/scripts/common/app.js' : ['src/scripts/common/app.js']
