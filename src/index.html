@@ -543,7 +543,9 @@
   </script>
 
   <script type="text/template" id="vote-template">
-    <td><a href="#bills/<%= bill_id %>"><%= legislation %></a> <%= caption %></td>
+    <td><%= legislation %></td>
+    <td><%= caption %></td>
+    <td><%= branch %></td>
     <td><%= yeas %></td>
     <td><%= nays %></td>
     <td><%= excused %></td>
@@ -557,7 +559,15 @@
   <script type="text/template" id="daily-votes-template">
     <table id="daily-votes-table" class="table table-hover table-condensed table-bordered">
       <thead>
-        <tr><th></th><th>Yea</th><th>Nay</th><th>Excused</th><th>Not Voting</th></tr>
+        <tr>
+          <th>Legislation</th>
+          <th>Action</th>
+          <th>Branch</th>
+          <th>Yea</th>
+          <th>Nay</th>
+          <th>Excused</th>
+          <th>Not<br>Voting</th>
+        </tr>
       <thead>
       <tbody id="daily-votes"></tbody>
     </table>
@@ -717,7 +727,7 @@
 
   <script type="text/template" ID="member-vote-template">
     <td><%= vote_date.toString("MMM d, yyyy") %></td>
-    <td><%= document_type %><%= number %></td>
+    <td><%= legislation %></td>
     <td><%= caption %></td>
     <td class="voted <%= voted %>"><%= voted %></td>
   </script>

@@ -326,10 +326,10 @@ td.voted.Nay {
   color: red;
 }
 td.voted.Excused {
-  color: lightgray;
+  color: gray;
 }
 td.voted.NotVoting {
-  color: lightgray;
+  color: gray;
 }
 
 /* footer styles */
