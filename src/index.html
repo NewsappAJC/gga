@@ -117,7 +117,7 @@
                    <a href="http://www.myajc.com/staff/jeff-ernsthausen/">Jeff Ernsthausen</a>
               </p>
               <p>SOURCES: <a href="http://www.legis.ga.gov/en-US/default.aspx"> The Georgia General Assembly</a> and the <a href="http://www.followthemoney.org/">National Institute on Money in State Politics.</a></p>
-              <p>© 2014 <a href="http://www.coxmediagroup.com" target="_blank">Cox Media Group</a>.</p>
+              <p>© 2015 <a href="http://www.coxmediagroup.com" target="_blank">Cox Media Group</a>.</p>
             </div>
           </div>
         </div>
@@ -543,7 +543,11 @@
   </script>
 
   <script type="text/template" id="vote-template">
-    <td><%= legislation %></td>
+    <td>
+      <% _.each(bills, function(bill) { %>
+        <a href="#bills/<%= bill['bill_id'] %>"><%= bill["document_type"] %><%= bill["number"] %></a>
+      <% }); %>
+    </td>
     <td><%= caption %></td>
     <td><%= branch %></td>
     <td><%= yeas %></td>
@@ -727,7 +731,11 @@
 
   <script type="text/template" ID="member-vote-template">
     <td><%= vote_date.toString("MMM d, yyyy") %></td>
-    <td><%= legislation %></td>
+    <td>
+      <% _.each(bills, function(bill) { %>
+        <a href="#bills/<%= bill['bill_id'] %>"> <%= bill['document_type'] %><%= bill['number'] %> </a>
+      <% }); %>
+    </td>
     <td><%= caption %></td>
     <td class="voted <%= voted %>"><%= voted %></td>
   </script>
