@@ -258,6 +258,14 @@
                     <% if (district_address_city) { %>
                       <li><strong>Home town:</strong> <%- district_address_city %></li>
                     <% } %>
+
+                    <% if (address_phone) { %>
+                      <li><a href="tel:<%- address_phone %>"><%- address_phone.substring(0,3) + '-' + address_phone.substring(3,6) + '-' + address_phone.substring(6,11) %></a></li>
+                    <% } %>
+
+                    <% if (address_email) { %>
+                      <li><a href="mailto:<%- address_email %>">Email member</a></li>
+                    <% } %>
                   </ul>
                 </div>
                 <div class="col-sm-8">

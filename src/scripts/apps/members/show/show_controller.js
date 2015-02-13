@@ -10,7 +10,6 @@ define(["app","apps/members/show/show_view"], function(GeneralAssemblyApp, View)
           var memberShowLayout = new View.Layout();
 
           $.when(fetchingMembers).done(function(member) {
-            window.member = member;
 
             var memberDetailView = new View.Detail({
               model: member
