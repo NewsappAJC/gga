@@ -8,7 +8,8 @@ define(["app"], function(GeneralAssemblyApp) {
         billsCountRegion: "#bills-count-region"
       },
       events: {
-        "submit form#bill-search": "showBill"
+        "submit form#bill-search": "showBill",
+        "click #bill-text-search-go": "getSearchResults"
       },
       showBill: function(e) {
         e.preventDefault();
@@ -19,6 +20,46 @@ define(["app"], function(GeneralAssemblyApp) {
       },
       onShow: function() {
         $("li#default-tab a").click();
+      },
+
+      getSearchResults: function() {
+        // This is code provided by The Dude to implement bill text search
+        that = this;
+        var z = $('#bill-text-search-input').val();
+        var x = $.trim(z);
+        x = x.replace(/ /g, '+');
+        $.ajax({
+            type: "GET",
+            cache: false,
+            url: 'https://www.documentcloud.org/api/search.json?mentions=10&q=projectid%3A17285+' + x
+        })
+        .done(function(res) {
+            y = res;
+            that.renderSearchResults(y,z);
+
+        });
+      },
+
+      renderSearchResults: function(x,y) {
+        // This is code provided by The Dude to implement bill text search
+        for(var i=0;i<x.documents.length;i++){
+            var thisstring = '<div id="' + x.documents[i].title + '" class="docitem"><div><div><img class="doc" src="' + x.documents[i].resources.thumbnail + '" /></div><div class="topinfo"><a href="' + x.documents[i].resources.pdf + '" target="_blank">' + x.documents[i].title + '</a><br><span>' + x.documents[i].pages + ' page(s) - Source: ' + x.documents[i].source + ' - Uploaded: ' + x.documents[i].updated_at + '</span><br><span>' + x.documents[i].description + '</span></div></div></div>';
+            $s = $(thisstring);
+            var nextstring = '<div class="subdiv"><div class="doc-pageinfo"><span>' + x.documents[i].mentions.length + ' page(s) mentioning &ldquo;' + y + '&rdquo;</span></div></div>';
+            $t = $(nextstring);
+
+            for(var j=0;j<x.documents[i].mentions.length;j++){
+                var pagelink = x.documents[i].resources.page.image;
+                pagelink = pagelink.replace("{page}",x.documents[i].mentions[j].page);
+                pagelink = pagelink.replace("{size}","thumbnail");
+                var istring = '<div class="subitem"><a href="https://www.documentcloud.org/documents/' + x.documents[i].id + '.html#search/p' + x.documents[i].mentions[j].page + '/' + encodeURI(y) + '" alt="Go To Page" target="_blank"><img class="docsub" src="' + pagelink + '" /></a><div><span>' + x.documents[i].mentions[j].text + '</span></div></div>'
+                $u = $(istring);
+                $t.append($u);
+            }
+
+            $s.append($t);
+            $('#doclist').append($s);
+        }
       }
     });
 
