@@ -22,7 +22,7 @@ define(["app"], function(GeneralAssemblyApp) {
         $("li#default-tab a").click();
       },
 
-      getSearchResults: function() {
+      getSearchResults: function(e) {
         // This is code provided by The Dude to implement bill text search
         that = this;
         var z = $('#bill-text-search-input').val();
@@ -31,7 +31,7 @@ define(["app"], function(GeneralAssemblyApp) {
         $.ajax({
             type: "GET",
             cache: false,
-            url: 'https://www.documentcloud.org/api/search.json?mentions=10&q=projectid%3A17285+' + x
+            url: 'https://www.documentcloud.org/api/search.json?mentions=10&q=projectid%3A18221+current%3Atrue+' + x
         })
         .done(function(res) {
             y = res;
@@ -42,10 +42,14 @@ define(["app"], function(GeneralAssemblyApp) {
 
       renderSearchResults: function(x,y) {
         // This is code provided by The Dude to implement bill text search
+        var doclist = $('#doclist');
+        doclist.empty();
+
         for(var i=0;i<x.documents.length;i++){
-            var thisstring = '<div id="' + x.documents[i].title + '" class="docitem"><div><div><img class="doc" src="' + x.documents[i].resources.thumbnail + '" /></div><div class="topinfo"><a href="' + x.documents[i].resources.pdf + '" target="_blank">' + x.documents[i].title + '</a><br><span>' + x.documents[i].pages + ' page(s) - Source: ' + x.documents[i].source + ' - Uploaded: ' + x.documents[i].updated_at + '</span><br><span>' + x.documents[i].description + '</span></div></div></div>';
+            if (x.documents[i].mentions.length === 0) continue;
+            var thisstring = '<div id="' + x.documents[i].title + '" class="docitem"><div><div><img class="doc" src="' + x.documents[i].resources.thumbnail + '" /></div><div class="topinfo"><a href="' + x.documents[i].resources.pdf + '" target="_blank">' + x.documents[i].title + '</a></div></div></div>';
             $s = $(thisstring);
-            var nextstring = '<div class="subdiv"><div class="doc-pageinfo"><span>' + x.documents[i].mentions.length + ' page(s) mentioning &ldquo;' + y + '&rdquo;</span></div></div>';
+            var nextstring = '<div class="subdiv">' + '<div class="doc-pageinfo"><span>'  + x.documents[i].pages + ' page(s), ' + x.documents[i].mentions.length + ' mentioning &ldquo;' + y + '&rdquo;</span></div></div>';
             $t = $(nextstring);
 
             for(var j=0;j<x.documents[i].mentions.length;j++){
@@ -58,7 +62,7 @@ define(["app"], function(GeneralAssemblyApp) {
             }
 
             $s.append($t);
-            $('#doclist').append($s);
+            doclist.append($s);
         }
       }
     });
