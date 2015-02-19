@@ -431,31 +431,29 @@
       <div class="row">
         <div class="col-sm-12">
           <form id="bill-search" class="form-search">
-            Find a bill:
+            Go to a bill:
             <select id="document-type">
               <option value="HB">House Bill</option>
               <option value="HR">House Resolution</option>
               <option value="SB">Senate Bill</option>
               <option value="SR">Senate Resolution</option>
             </select>
-            <input type="text" class="input-mini" id="number">
+            <input type="text" class="input-mini" id="number" placeholder="Enter bill number">
             <button type="submit" class="btn btn-xs">Go</button>
           </form>
         </div>
         <hr>
       </div>
       <div class="row">
-        <input type="text" id = "bill-text-search-input" class="search-input" placeholder="Search document content" /><input type="button" id="bill-text-search-go" class="search-go" value="Search" />
-        <div id="doclist"></div>
-      </div>
-      <div class="row">
         <ul class="nav nav-tabs">
           <li id="default-tab"><a href="#bill-category-region" data-toggle="tab">Bills to Watch</a></li>
           <li><a href="#bill-event-region" data-toggle="tab">Daily Journal</a></li>
+          <li><a href="#bill-search-region" data-toggle="tab">Search Bill Text</a></li>
         </ul>
         <div class="tab-content">
           <div class="tab-pane" id="bill-category-region"></div>
-          <div class="tab-pane" id="bill-event-region">Some Stuff Happened</div>
+          <div class="tab-pane" id="bill-event-region"></div>
+          <div class="tab-pane" id="bill-search-region"></div>
         </div>
       </div>
     </div>
@@ -522,6 +520,16 @@
         <% } %>
       </div>
     </div>
+  </script>
+
+  <script type="text/template" id="bill-search-template">
+    <div class="row">
+      <form id="text-search-form" class="form-search">
+        <input type="text" id = "bill-text-search-input" class="search-input" placeholder="Search document content"></input>
+        <button type="submit" id="bill-text-search-go" class="btn btn-xs search-go" value="Search">Search</button>
+      </form>
+    </div>
+    <div id="doclist" class="row"></div>
   </script>
 
   <script type="text/template" id="daily_journal_layout">
