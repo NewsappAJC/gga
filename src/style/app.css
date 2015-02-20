@@ -905,7 +905,12 @@ ul#daily-events, ul#daily-votes{
 /*li{
         list-style-type:none;
     }
-*/  .search-wrap{
+*/
+  #text-search-form {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  .search-wrap{
     width: 400px;
     height: 25px;
   }
@@ -941,7 +946,7 @@ ul#daily-events, ul#daily-votes{
     #doclist{
         min-height:80px;
         border:none;
-        padding:2px 30px 5px 90px;
+        padding:2px 30px 5px 0px;
     }
     .fuzz{
         z-index: 998;
@@ -1006,7 +1011,7 @@ ul#daily-events, ul#daily-votes{
         float:left;
     }
     .topinfo{
-        margin-left:20px;
+        margin-left:0px;
     }
     .topinfo a{
         font-size:1.2em;
