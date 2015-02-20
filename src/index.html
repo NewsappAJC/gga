@@ -120,7 +120,7 @@
                    <a href="http://www.myajc.com/staff/jeff-ernsthausen/">Jeff Ernsthausen</a>
               </p>
               <p>SOURCES: <a href="http://www.legis.ga.gov/en-US/default.aspx"> The Georgia General Assembly</a> and the <a href="http://www.followthemoney.org/">National Institute on Money in State Politics.</a></p>
-              <p>© 2014 <a href="http://www.coxmediagroup.com" target="_blank">Cox Media Group</a>.</p>
+              <p>© 2015 <a href="http://www.coxmediagroup.com" target="_blank">Cox Media Group</a>.</p>
             </div>
           </div>
         </div>
@@ -180,7 +180,7 @@
           <div class="bottom-third" id="bill-count-region"></div>
         </div>
         <div class="col-sm-4">
-          <div class="bottom-third" id="news-feed-region">
+          <div class="bottom-third hidden-xs" id="news-feed-region">
             <h3>LEGISLATIVE NEWS</h3>
             <div id="news-feeds"></div>
           </div>
@@ -260,6 +260,14 @@
 
                     <% if (district_address_city) { %>
                       <li><strong>Home town:</strong> <%- district_address_city %></li>
+                    <% } %>
+
+                    <% if (address_phone) { %>
+                      <li><a href="tel:<%- address_phone %>"><%- address_phone.substring(0,3) + '-' + address_phone.substring(3,6) + '-' + address_phone.substring(6,11) %></a></li>
+                    <% } %>
+
+                    <% if (address_email) { %>
+                      <li><a href="mailto:<%- address_email %>">Email member</a></li>
                     <% } %>
                   </ul>
                 </div>
@@ -400,8 +408,8 @@
 
         <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
         <div class="col-sm-2 well" align="center">
-          <% if (id === 42876 or id === 42877) { %>
-            <p><strong>This bill carries the state budget for the next fiscal year and must pass for state government to be funded. Because of this special circumstance, we do not assign a probability to this bill.</strong><p>
+          <% if (caption.match(/(General|Supplemental) appropriations.*201(5|4)/)) { %>
+            <p>This is a budget bill and must pass for state government to continue operating. We do not assign a probability to budget bills.<p>
           <% } else { %>
             <p>Chance of passing <img class="info-tip" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from a statistical model developed by the AJC based on the success or failure of bills introduced in the first year of the five previous legislative sessions (from 2005-2006 through 2013-2014). The model considers a variety of factors, including sponsors and cosponsors, bill summary text and when a bill was submitted. The technique used by the AJC was tested on previous legislative sessions."></p>
             <h1><%- (predictions * 100).toFixed() %>%</h1>
@@ -546,7 +554,13 @@
   </script>
 
   <script type="text/template" id="vote-template">
-    <td><a href="#bills/<%= bill_id %>"><%= legislation %></a> <%= caption %></td>
+    <td>
+      <% _.each(bills, function(bill) { %>
+        <a href="#bills/<%= bill['bill_id'] %>"><%= bill["document_type"] %><%= bill["number"] %></a>
+      <% }); %>
+    </td>
+    <td><%= caption %></td>
+    <td><%= branch %></td>
     <td><%= yeas %></td>
     <td><%= nays %></td>
     <td><%= excused %></td>
@@ -560,7 +574,15 @@
   <script type="text/template" id="daily-votes-template">
     <table id="daily-votes-table" class="table table-hover table-condensed table-bordered">
       <thead>
-        <tr><th></th><th>Yea</th><th>Nay</th><th>Excused</th><th>Not Voting</th></tr>
+        <tr>
+          <th>Legislation</th>
+          <th>Action</th>
+          <th>Branch</th>
+          <th>Yea</th>
+          <th>Nay</th>
+          <th>Excused</th>
+          <th>Not<br>Voting</th>
+        </tr>
       <thead>
       <tbody id="daily-votes"></tbody>
     </table>
@@ -645,10 +667,10 @@
           <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
             <div>
               <hr>
-                <% if ( id === 42877 || id === 42876 ) { %>
-                  <div><p><strong>This bill carries the state budget for the next fiscal year and must pass for state government to be funded. Because of this special circumstance, we do not assign a probability to this bill.</strong><p></div>
-                <% } else { %>
-              <h3>Chance of passing: <%- (predictions * 100).toFixed() %>%  <img class="info-tip" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from statistical models developed by the AJC based on the success or failure of bills that survived the crossover day deadline during the three previous legislative sessions (2008-2009, 2009-2010 and 2011-2012). The models consider a variety of factors, including sponsors and cosponsors, how recently the bill saw activity and where it stood as of crossover day. The technique used by the AJC was tested on previous legislative sessions."></h3>
+              <% if ( caption.match(/(General|Supplemental) appropriations.*201(5|4)/) ) { %>
+                <div><p><b>This is a budget bill and must pass for state government to continue operating. We do not assign a probability to budget bills.</b></p></div>
+              <% } else { %>
+                <h3>Chance of passing: <%- (predictions * 100).toFixed() %>%  <img class="info-tip" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from statistical models developed by the AJC based on the success or failure of bills that survived the crossover day deadline during the three previous legislative sessions (2008-2009, 2009-2010 and 2011-2012). The models consider a variety of factors, including sponsors and cosponsors, how recently the bill saw activity and where it stood as of crossover day. The technique used by the AJC was tested on previous legislative sessions."></h3>
                   <div class="progress">
                     <div class="progress-bar"
                          role="progressbar"
@@ -720,7 +742,11 @@
 
   <script type="text/template" ID="member-vote-template">
     <td><%= vote_date.toString("MMM d, yyyy") %></td>
-    <td><%= document_type %><%= number %></td>
+    <td>
+      <% _.each(bills, function(bill) { %>
+        <a href="#bills/<%= bill['bill_id'] %>"> <%= bill['document_type'] %><%= bill['number'] %> </a>
+      <% }); %>
+    </td>
     <td><%= caption %></td>
     <td class="voted <%= voted %>"><%= voted %></td>
   </script>
@@ -800,6 +826,7 @@
           <p>Read what we discovered about the legislative process at <a href="http://www.myajc.com/news/news/what-are-the-odds/ndPfx/" target="_blank">MyAJC.com</a>.</p>
       </div>
     </div>
+
   </script>
 
   <script type="text/type" id="map-template">

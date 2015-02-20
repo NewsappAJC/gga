@@ -66,15 +66,7 @@ define(["app"], function(GeneralAssemblyApp){
     View.Vote = Marionette.ItemView.extend({
       template: "#member-vote-template",
       tagName: "tr",
-      className: "member-vote",
-      events: {
-        "click": "showBill"
-      },
-      showBill: function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        GeneralAssemblyApp.trigger("bills:show", this.model.get("bill_id"));
-      }
+      className: "member-vote"
     });
     View.Votes = Marionette.CompositeView.extend({
       itemView: View.Vote,

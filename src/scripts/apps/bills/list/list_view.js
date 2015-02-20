@@ -4,12 +4,14 @@ define(["app"], function(GeneralAssemblyApp) {
       template: "bill-item-template"
     });
 
-    view.BillListView = Marrinonette.CompositView.extend({
+    View.BillListView = Marrinonette.CompositView.extend({
       template: "bill-search-list-template",
       itemView: View.BillView,
       tagName: "tr",
       itemViewContainer: "tbody"
     });
+
+
   });
   return GeneralAssemblyApp.BillsApp.List.View;
 });

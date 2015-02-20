@@ -10,7 +10,6 @@ define(["app","apps/members/show/show_view"], function(GeneralAssemblyApp, View)
           var memberShowLayout = new View.Layout();
 
           $.when(fetchingMembers).done(function(member) {
-            window.member = member;
 
             var memberDetailView = new View.Detail({
               model: member
@@ -37,7 +36,6 @@ define(["app","apps/members/show/show_view"], function(GeneralAssemblyApp, View)
             });
 
             var district = new GeneralAssemblyApp.Entities.District( member.get("district") );
-            console.log(district.attributes);
             var districtView = new View.District({
               model: district
             });
