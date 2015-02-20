@@ -15,7 +15,7 @@ $(document).ready(function () {
 	_tmp += '" ]';
 	console.log(_tmp);*/
 	var _colors = [ "#7B8C73", "#63705C", "#4A5445", "#31382E", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#A08FA3", "#88738C", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#6D5C70", "#906699", "#362E38", "#A785AD", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#6D5C70", "#906699", "#362E38", "#A785AD", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#6D5C70", "#906699", "#362E38", "#A785AD", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#4D7326", "#4D7A1F", "#4D8217", "#4D8A0F", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#336105", "#336600", "#E6E8E3", "#E6EBE0", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#CCDBBD", "#CCE0B8", "#CCE6B3", "#CCEBAD", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#B3E87D", "#B3F075", "#B3F76E", "#B3FF66", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#808C73", "#809966", "#80A659", "#80B24D", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#669933", "#66A329", "#66AD1F", "#66B814", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#4D9108", "#4D9900", "#33382E", "#333D29", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#33570F", "#335C0A", "#4D7326", "#4D7A1F", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#33570F", "#335C0A", "#336105", "#336600" ];
-	
+
 
     renderDistricts(56, 'Senate', _colors);
     fillArray('ga_senate.json');
@@ -34,7 +34,7 @@ $(document).ready(function () {
     google.maps.event.addListener(marker, 'click', function () {
         infoWindow.open(map, marker);
     });
-	
+
 	google.maps.event.addListener(map, 'click', function (event) {
 		var lat = event.latLng.lat();
 		var lng = event.latLng.lng();
@@ -43,7 +43,7 @@ $(document).ready(function () {
     });
 
     var data_senate = new google.maps.Data();
-    data_senate.loadGeoJson('ga_senate.json');	
+    data_senate.loadGeoJson('ga_senate.json');
     data_senate.setMap(map);
 	google.maps.event.addListener(data_senate, 'click', function (event) {
 		var lat = event.latLng.lat();
@@ -120,7 +120,7 @@ $(document).ready(function () {
 		$('.district-list').find('li').removeClass('active');
         geocoder.geocode({ 'address': address }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
-                var location = results[0].geometry.location;				
+                var location = results[0].geometry.location;
                 showPoint(location);
 				getLegislatorsByLocation(location.lat(), location.lng());
             } else {
@@ -135,14 +135,14 @@ $(document).ready(function () {
         marker.setPosition(location);
         showPopup(location);
     }
-	
+
 	function goHomePosition() {
-		var defaultLocation = new google.maps.LatLng(39.8, -98.5);		
-        map.setCenter(defaultLocation);		
+		var defaultLocation = new google.maps.LatLng(39.8, -98.5);
+        map.setCenter(defaultLocation);
 		map.fitBounds(new google.maps.LatLngBounds(
 			new google.maps.LatLng(34.4, -86.5),
 			new google.maps.LatLng(30.757787, -80.630202)
-		));        
+		));
     }
 
     function showPopup(location) {
@@ -162,9 +162,9 @@ $(document).ready(function () {
         $('.district-list').find('li').click(function () {
             $('.district-list').find('li').removeClass('active');
             $(this).addClass('active');
-			var point = district_pos_array[parseInt($(this).data('did')) - 1];            
+			var point = district_pos_array[parseInt($(this).data('did')) - 1];
 			showPoint(point);
-            //getLegislators($(this).data('did'));			
+            //getLegislators($(this).data('did'));
 			getCenterPoint($(this).data('did'));
         });
     }
@@ -192,7 +192,7 @@ $(document).ready(function () {
                     district_pos_array.push(new google.maps.LatLng(item[0][1], item[0][0]));
                     //district_pos_array.push(item[0][1] + ',' + item[0][0]);
                 }
-            }            
+            }
         });
     }
 
@@ -206,7 +206,7 @@ $(document).ready(function () {
     }
 
     function getLegislators(districtNumber) {
-        var url = 'http://openstates.org/api/v1/legislators/?apikey=9272d35da412492886ff2a164d8c5631&state=ga&district=' + districtNumber;		
+        var url = 'http://openstates.org/api/v1/legislators/?apikey=9272d35da412492886ff2a164d8c5631&state=ga&district=' + districtNumber;
         $.getJSON(url, function (data) {
 			showInPopup(data);
         });
@@ -224,12 +224,12 @@ $(document).ready(function () {
         });
     }
 	function showInPopup(data){
-		var rep_info = parseMemberInfo(data, 0);			
-		var sen_info = parseMemberInfo(data, 1);				
+		var rep_info = parseMemberInfo(data, 0);
+		var sen_info = parseMemberInfo(data, 1);
 		var _html = '<div class="p-content" style="width:280px; height:180px;">';
-		_html += '<p class="t">State Legislators</p>';			
-		_html += '<div class="m-info"><p>Senate District '+ sen_info.district +'</p><img src="' + sen_info.photo_url + '" /><a href="'+sen_info.url+'" target="_blank">Sen. ' + sen_info.fullname + '<br/>('+sen_info.party+')</a></div>';			
-		_html += '<div class="m-info"><p>House District ' + rep_info.district + '</p><img src="' + rep_info.photo_url + '" /><a href="'+rep_info.url+'" target="_blank">Rep. ' + rep_info.fullname + '<br/>('+rep_info.party +')</a></div>';			
+		_html += '<p class="t">State Legislators</p>';
+		_html += '<div class="m-info"><p>Senate District '+ sen_info.district +'</p><img src="' + sen_info.photo_url + '" /><a href="'+sen_info.url+'" target="_blank">Sen. ' + sen_info.fullname + '<br/>('+sen_info.party+')</a></div>';
+		_html += '<div class="m-info"><p>House District ' + rep_info.district + '</p><img src="' + rep_info.photo_url + '" /><a href="'+rep_info.url+'" target="_blank">Rep. ' + rep_info.fullname + '<br/>('+rep_info.party +')</a></div>';
 		_html += '</div>';
 		infoWindow.setContent(_html);
 	}
@@ -238,17 +238,17 @@ $(document).ready(function () {
 			fullname : data[i].full_name,
 			party : data[i].party,
 			photo_url : data[i].photo_url,
-			district : data[i].district, 
+			district : data[i].district,
 			url : data[i].url
 		};
 		return m_info;
 	}
-	
+
 	function getCenterPoint(district_name) {
 		var url = 'http://openstates.org/api/v1/districts/boundary/sldl/ga-'+district_name+'/?apikey=9272d35da412492886ff2a164d8c5631'
 		var result = '';
 		$.getJSON(url, function (data) {
-            console.log(data);			
+            console.log(data);
 			showPoint(new google.maps.LatLng(data.region.center_lat, data.region.center_lon));
 			getLegislatorsByLocation(data.region.center_lat, data.region.center_lon);
         });
