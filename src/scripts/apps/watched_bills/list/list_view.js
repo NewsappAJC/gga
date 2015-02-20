@@ -5,7 +5,8 @@ define(["app"], function(GeneralAssemblyApp) {
       regions: {
         categoriesRegion: "#bill-category-region",
         eventsRegion: "#bill-event-region",
-        billsCountRegion: "#bills-count-region"
+        billsCountRegion: "#bills-count-region",
+        billSearchRegion: "#bill-search-region"
       },
       events: {
         "submit form#bill-search": "showBill"
@@ -19,7 +20,7 @@ define(["app"], function(GeneralAssemblyApp) {
       },
       onShow: function() {
         $("li#default-tab a").click();
-      }
+      },
     });
 
     View.CategoryView = Marionette.ItemView.extend({
@@ -148,6 +149,72 @@ define(["app"], function(GeneralAssemblyApp) {
             view.render();
           });
         });
+      }
+    });
+
+    View.TextSearchView = Marionette.ItemView.extend({
+      template: "#bill-search-template",
+      className: "container",
+      events: {
+        "click #bill-text-search-go": "getSearchResults"
+      },
+
+      getSearchResults: function(e) {
+        // This is code provided by The Dude to implement bill text search
+        e.preventDefault();
+        that = this;
+        $('#doclist').empty()
+        $('#doclist').append("<h3>Searching ...</h3>")
+        var z = $('#bill-text-search-input').val();
+        var x = $.trim(z);
+        x = x.replace(/ /g, '+');
+        $.ajax({
+            type: "GET",
+            cache: false,
+            url: 'https://www.documentcloud.org/api/search.json?mentions=10&per_page=1000&data=true&q=projectid%3A18221+current%3Atrue+' + x
+        })
+        .done(function(res) {
+            y = res;
+            that.renderSearchResults(y,z);
+
+        });
+      },
+
+      renderSearchResults: function(x,y) {
+        // This is code provided by The Dude to implement bill text search
+        var doclist = $('#doclist');
+        doclist.empty();
+
+        for(var i=0;i<x.documents.length;i++){
+            if (x.documents[i].mentions.length === 0) continue;
+            var thisstring =
+              '<div id="' + x.documents[i].title + '" class="docitem">' +
+                  '<div class="topinfo">' +
+                    '<a href="#bills/' + x.documents[i].data.bill_id + '">' + x.documents[i].title + '</a>' +
+                  '</div>' +
+              '</div>';
+            $s = $(thisstring);
+
+            var nextstring =
+              '<div class="subdiv">' +
+                '<div class="doc-pageinfo">' +
+                  '<span>' + x.documents[i].pages + ' page(s), ' + x.documents[i].mentions.length + ' mentioning &ldquo;' + y + '&rdquo;</span>' +
+                '</div>' +
+              '</div>';
+            $t = $(nextstring);
+
+            for(var j=0;j<x.documents[i].mentions.length;j++){
+                var pagelink = x.documents[i].resources.page.image;
+                pagelink = pagelink.replace("{page}",x.documents[i].mentions[j].page);
+                pagelink = pagelink.replace("{size}","thumbnail");
+                var istring = '<div class="subitem"><a href="https://www.documentcloud.org/documents/' + x.documents[i].id + '.html#search/p' + x.documents[i].mentions[j].page + '/' + encodeURI(y) + '" alt="Go To Page" target="_blank"><img class="docsub" src="' + pagelink + '" /></a><div><span>' + x.documents[i].mentions[j].text + '</span></div></div>'
+                $u = $(istring);
+                $t.append($u);
+            }
+
+            $s.append($t);
+            doclist.append($s);
+        }
       }
     });
 

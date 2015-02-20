@@ -431,14 +431,14 @@
       <div class="row">
         <div class="col-sm-12">
           <form id="bill-search" class="form-search">
-            Find a bill:
+            Go to a bill:
             <select id="document-type">
               <option value="HB">House Bill</option>
               <option value="HR">House Resolution</option>
               <option value="SB">Senate Bill</option>
               <option value="SR">Senate Resolution</option>
             </select>
-            <input type="text" class="input-mini" id="number">
+            <input type="text" class="input-mini" id="number" placeholder="Enter bill number">
             <button type="submit" class="btn btn-xs">Go</button>
           </form>
         </div>
@@ -448,10 +448,12 @@
         <ul class="nav nav-tabs">
           <li id="default-tab"><a href="#bill-category-region" data-toggle="tab">Bills to Watch</a></li>
           <li><a href="#bill-event-region" data-toggle="tab">Daily Journal</a></li>
+          <li><a href="#bill-search-region" data-toggle="tab">Search Bill Text</a></li>
         </ul>
         <div class="tab-content">
           <div class="tab-pane" id="bill-category-region"></div>
-          <div class="tab-pane" id="bill-event-region">Some Stuff Happened</div>
+          <div class="tab-pane" id="bill-event-region"></div>
+          <div class="tab-pane" id="bill-search-region"></div>
         </div>
       </div>
     </div>
@@ -520,17 +522,33 @@
     </div>
   </script>
 
+  <script type="text/template" id="bill-search-template">
+    <div class="row">
+      <div class="col-sm-12">
+        <form id="text-search-form" class="form-search">
+          <input type="text" id = "bill-text-search-input" class="search-input" placeholder="Search document content"></input>
+          <button type="submit" id="bill-text-search-go" class="btn btn-xs search-go" value="Search">Search</button>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="doclist"></div>
+      </div>
+    </div>
+  </script>
+
   <script type="text/template" id="daily_journal_layout">
     <div class="row">
       <div id="legislative-day-region"></div>
     </div>
     <div class="row">
       <div class="col-xs-12 col-md-8">
-        <h3>Votes Today</h3>
+        <h3>Votes on this day</h3>
         <div id="daily-votes-region"></div>
       </div>
       <div class="col-xs-12 col-md-4">
-        <h3>Events Today</h3>
+        <h3>Events on this day</h3>
         <div id="daily-events-region"></div>
       </div>
     </div>
@@ -713,7 +731,7 @@
   </script>
 
   <script type="text/template" id="bill-version-template">
-    <%- version %>: <a href="<%- url %>" target="_blank"><%- description %></a>
+    <%- version %>: <a href="<%- dc_url %>" target="_blank"><%- description %></a>
   </script>
 
   <script type="text/template" id="bill-vote-template">
