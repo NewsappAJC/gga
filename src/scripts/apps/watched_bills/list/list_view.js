@@ -161,6 +161,7 @@ define(["app"], function(GeneralAssemblyApp) {
 
       getSearchResults: function(e) {
         // This is code provided by The Dude to implement bill text search
+        e.preventDefault();
         that = this;
         $('#doclist').empty()
         $('#doclist').append("<h3>Searching ...</h3>")
@@ -186,7 +187,6 @@ define(["app"], function(GeneralAssemblyApp) {
 
         for(var i=0;i<x.documents.length;i++){
             if (x.documents[i].mentions.length === 0) continue;
-            // var thisstring = '<div id="' + x.documents[i].title + '" class="docitem"><div><div><img class="doc" src="' + x.documents[i].resources.thumbnail + '" /></div><div class="topinfo"><a href="' + x.documents[i].resources.pdf + '" target="_blank">' + x.documents[i].title + '</a></div></div></div>';
             var thisstring =
               '<div id="' + x.documents[i].title + '" class="docitem">' +
                   '<div class="topinfo">' +
