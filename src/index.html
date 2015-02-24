@@ -686,7 +686,7 @@
               <% if ( caption.match(/(General|Supplemental) appropriations.*201(5|4)/) ) { %>
                 <div><p><b>This is a budget bill and must pass for state government to continue operating. We do not assign a probability to budget bills.</b></p></div>
               <% } else { %>
-                <h3>Chance of passing <img class="info-tip" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from statistical models developed by the AJC based on the success or failure of bills that survived the crossover day deadline during the three previous legislative sessions (2008-2009, 2009-2010 and 2011-2012). The models consider a variety of factors, including sponsors and cosponsors, how recently the bill saw activity and where it stood as of crossover day. The technique used by the AJC was tested on previous legislative sessions."></h3>
+                <h3>Chance of passing: <%- (predictions * 100).toFixed() %>%  <img class="info-tip" src="images/icon_info.png" title="Forecasts of each bill’s chance of passage this year are generated from a statistical model developed by the AJC based on the success or failure of bills from legislative sessions from 2005 to 2014. The model accounts for a variety of factors, including sponsorship, the number of days remaining in the session and the current progress each bill has made so far. The technique used by the AJC was tested on previous legislative sessions."></h3>
                   <div id="predictions-chart"></div>
                 <% } %>
             </div>

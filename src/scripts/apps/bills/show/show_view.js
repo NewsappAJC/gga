@@ -79,7 +79,6 @@ define(["app"], function(GeneralAssemblyApp) {
             d.close = +d.prediction;
           });
 
-          console.log(data);
           x.domain([1,40]);
           y.domain([0,1]);
 
