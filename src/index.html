@@ -25,6 +25,9 @@
   <link rel="stylesheet" type="text/css" href="style/app.css">
   <link rel="stylesheet" type="text/css" href="style/fonts.css">
 
+  <script type="text/javascript" src="/data/predictions_history.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -667,12 +670,45 @@
     <div class="panel-body">
       <div class="row">
         <div class="col-sm-12">
-          <div>
-          <!-- Post passover day flag
+
             <% if ( passed_over === -1 ) { %>
               <p class="red"><strong>Note:</strong> This general bill or constitutional amendment resolution did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules. The substance of this bill could also be amended to a live bill later in the session. Local bills and private resolutions are not affected by the crossover day deadline.</p>
             <% } %>
-          -->
+
+            <p><strong><%- caption %></strong><p>
+            <p><strong>Current Status:</strong> <%- status_description %></p>
+            <p><strong>Current Version:</strong> <a href="<%- latest_version_url %>" target="_blank"><%- latest_version_description %></a></p>
+            <p><strong>Official Summary:</strong> <%- summary %></p>
+
+            <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
+            <div>
+              <hr>
+              <% if ( caption.match(/(General|Supplemental) appropriations.*201(5|4)/) ) { %>
+                <div><p><b>This is a budget bill and must pass for state government to continue operating. We do not assign a probability to budget bills.</b></p></div>
+              <% } else { %>
+                <h3>Chance of passing <img class="info-tip" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from statistical models developed by the AJC based on the success or failure of bills that survived the crossover day deadline during the three previous legislative sessions (2008-2009, 2009-2010 and 2011-2012). The models consider a variety of factors, including sponsors and cosponsors, how recently the bill saw activity and where it stood as of crossover day. The technique used by the AJC was tested on previous legislative sessions."></h3>
+                  <div id="predictions-chart"></div>
+                <% } %>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <!---<script type="text/template" id="bill-detail-template">
+    <div class="panel-heading">
+      <h3 class="billnumhed"><%- document_type %> <%- number %></h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <div>
+
+            <% if ( passed_over === -1 ) { %>
+              <p class="red"><strong>Note:</strong> This general bill or constitutional amendment resolution did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules. The substance of this bill could also be amended to a live bill later in the session. Local bills and private resolutions are not affected by the crossover day deadline.</p>
+            <% } %>
+
             <p><strong><%- caption %></strong><p>
             <p><strong>Current Status:</strong> <%- status_description %></p>
             <p><strong>Current Version:</strong> <a href="<%- latest_version_url %>" target="_blank"><%- latest_version_description %></a></p>
@@ -703,7 +739,7 @@
         </div>
       </div>
     </div>
-  </script>
+  </script>-->
 
   <script type="text/template" id="bill-author-list">
     <ul class="media-list" id="bill-authors"></ul>
