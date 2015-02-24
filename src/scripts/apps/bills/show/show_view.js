@@ -24,22 +24,83 @@ define(["app"], function(GeneralAssemblyApp) {
       className: "panel panel-default",
 
       onShow: function() {
-        var crossover_status = this.model.get("passed_over");
-        var bar = $(".progress-bar");
-        var prog = bar.attr("aria-valuenow");
-        $(bar).addClass(function() {
-          return prog <= 20 ? "progress-bar-danger" :
-                 prog < 80 ? "progress-bar-warning" :
-                 "progress-bar-success";
-        });
+        // var crossover_status = this.model.get("passed_over");
+        // var bar = $(".progress-bar");
+        // var prog = bar.attr("aria-valuenow");
+        // $(bar).addClass(function() {
+        //   return prog <= 20 ? "progress-bar-danger" :
+        //          prog < 80 ? "progress-bar-warning" :
+        //          "progress-bar-success";
+        // });
 
         // Code to style unpassed bills red after crossover day
         // if (crossover_status === -1) {
         //   var billnum = $(".billnumhed")
         //   $(billnum).addClass("red");
         // }
+
+        var data = this.model.get("predictions_history");
+
+        var margin = {top: 20, right: 20, bottom: 30, left: 50},
+            width = $('#predictions-chart').width() - margin.left - margin.right,
+            height = 300 - margin.top - margin.bottom;
+
+        var formatPercent = d3.format(".0%");
+
+        var x = d3.scale.linear()
+            .range([0, width]);
+
+        var y = d3.scale.linear()
+            .range([height, 0]);
+
+        var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom");
+
+        var yAxis = d3.svg.axis()
+            .scale(y)
+            .ticks(3)
+            .orient("left")
+            .tickFormat(formatPercent);
+
+        var line = d3.svg.line()
+            .x(function(d) { return x(d.date); })
+            .y(function(d) { return y(d.close); });
+
+        var svg = d3.select("#predictions-chart").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+          data.forEach(function(d) {
+            d.date = +d.legislative_day;
+            d.close = +d.prediction;
+          });
+
+          console.log(data);
+          x.domain([1,40]);
+          y.domain([0,1]);
+
+          svg.append("g")
+              .attr("class", "x axis")
+              .attr("transform", "translate(0," + height + ")")
+              .call(xAxis);
+
+          svg.append("g")
+              .attr("class", "y axis")
+              .call(yAxis);
+
+          svg.append("path")
+              .datum(data)
+              .attr("class", "line")
+              .attr("d", line);
+
+
       }
     });
+
 
     // Bill author views
     View.AuthorView = Marionette.ItemView.extend({

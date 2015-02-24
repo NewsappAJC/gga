@@ -19,6 +19,9 @@ p{
   line-height:1.7em;
   font-size:14px;
 }
+p strong {
+  font-family:'PublicoText-SemiBold';
+}
 
 #sticky-nav{
   top:0px;
@@ -739,6 +742,34 @@ h1#counter{
 #bottom-row{
   padding-top: 20px;
   padding-bottom:20px;
+}
+
+
+
+
+/* chart styles */
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #333;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  stroke-width:1px;
+  stroke:#333;
+}
+.y.axis path {
+  display:none;
+}
+.y.axis line {
+  stroke:#333;
+}
+
+.line {
+  fill: none;
+  stroke:#003896;
+  stroke-width: 1.5px;
 }
 
 
