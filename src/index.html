@@ -408,7 +408,7 @@
           <% if (caption.match(/(General|Supplemental) appropriations.*201(5|4)/)) { %>
             <p>This is a budget bill and must pass for state government to continue operating. We do not assign a probability to budget bills.<p>
           <% } else { %>
-            <p>Chance of passing <img class="info-tip" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from a statistical model developed by the AJC based on the success or failure of bills introduced in the first year of the five previous legislative sessions (from 2005-2006 through 2013-2014). The model considers a variety of factors, including sponsors and cosponsors, bill summary text and when a bill was submitted. The technique used by the AJC was tested on previous legislative sessions."></p>
+            <p>Chance of passing <img class="info-tip" src="images/icon_info.png" title="Forecasts of each bill’s chance of passage this year are generated from a statistical model developed by the AJC based on the success or failure of bills from legislative sessions from 2005 to 2014. The model accounts for a variety of factors, including sponsorship, the number of days remaining in the session and the current progress each bill has made so far. The technique used by the AJC was tested on previous legislative sessions."></p>
             <h1><%- (predictions * 100).toFixed() %>%</h1>
           <% } %>
         </div>
@@ -514,7 +514,7 @@
       <div class="col-sm-2">
         <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
         <div class="alert" id="<%- bill_id %>" align="center">
-          <p>Chance of passing <img class="info-tip" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from a statistical model developed by the AJC based on the success or failure of bills introduced in the first year of the five previous legislative sessions (from 2005-2006 through 2013-2014). The model considers a variety of factors, including sponsors and cosponsors, bill summary text and when a bill was submitted. The technique used by the AJC was tested on previous legislative sessions."></p>
+          <p>Chance of passing <img class="info-tip" src="images/icon_info.png" title="Forecasts of each bill’s chance of passage this year are generated from a statistical model developed by the AJC based on the success or failure of bills from legislative sessions from 2005 to 2014. The model accounts for a variety of factors, including sponsorship, the number of days remaining in the session and the current progress each bill has made so far. The technique used by the AJC was tested on previous legislative sessions."></p>
           <h1><%- (predictions * 100).toFixed() %>%</h1>
         </div>
         <% } %>
@@ -685,7 +685,7 @@
               <% if ( caption.match(/(General|Supplemental) appropriations.*201(5|4)/) ) { %>
                 <div><p><b>This is a budget bill and must pass for state government to continue operating. We do not assign a probability to budget bills.</b></p></div>
               <% } else { %>
-                <h3>Chance of passing: <%- (predictions * 100).toFixed() %>%  <img class="info-tip" src="images/icon_info.png" title="Predictions of each bill’s chance of passage are generated from statistical models developed by the AJC based on the success or failure of bills that survived the crossover day deadline during the three previous legislative sessions (2008-2009, 2009-2010 and 2011-2012). The models consider a variety of factors, including sponsors and cosponsors, how recently the bill saw activity and where it stood as of crossover day. The technique used by the AJC was tested on previous legislative sessions."></h3>
+                <h3>Chance of passing: <%- (predictions * 100).toFixed() %>%  <img class="info-tip" src="images/icon_info.png" title="Forecasts of each bill’s chance of passage this year are generated from a statistical model developed by the AJC based on the success or failure of bills from legislative sessions from 2005 to 2014. The model accounts for a variety of factors, including sponsorship, the number of days remaining in the session and the current progress each bill has made so far. The technique used by the AJC was tested on previous legislative sessions."></h3>
                   <div class="progress">
                     <div class="progress-bar"
                          role="progressbar"
@@ -827,18 +827,17 @@
           <p class="article-credit">
             By <a href="http://www.myajc.com/staff/jeff-ernsthausen/">Jeff Ernsthausen</a>
           </p>
-          <p>The AJC has created a new predictive model for 2015. Instead of predicting the chance that a bill will pass during the overall 2-year legislative session (e.g. 2015-2016), our model now offers a forecast of whether each bill will pass this year.</p>
-          <p>To create the Georgia Legislative Navigator, the Atlanta Journal-Constitution assembled information on almost 15,000 bills introduced since 2001, each labeled with votes, sponsorship and text summaries. Then we recognized this would create a rare opportunity. We could use that enormously detailed data to, in essence, calculate the chances that a bill would pass.  That could shine a light on the often murky legislative process and the factors that hurt or help bills.</p>
+
+          <p>To create the Georgia Legislative Navigator Predict-a-bill, a statistical model that predicts the probability that a bill will pass, the Atlanta Journal-Constitution assembled information on almost 15,000 bills introduced since 2001, each labeled with votes, sponsorship and text summaries. Then we recognized this would create a rare opportunity. We could use that enormously detailed data to, in essence, calculate the chances that a bill would pass.  That could shine a light on the often murky legislative process and the factors that hurt or help bills.</p>
           <p>So the AJC consulted with experts in quantitative methods of social science, starting with Professor Charles Bullock, chair of the Political Science Department at the University of Georgia and a close observer of the Georgia Legislature. To identify the factors that might influence a bill’s outcome, he recommended a technique, logistic regression, originally developed to predict patients’ risk of developing certain diseases.</p>
           <p>A book by Professor Frank Harrell, chairman of the Department of Biostatistics at the Vanderbilt University School of Medicine became our bible, and Harrell also provided advice and reviewed the AJC’s work.  Gary King, director of the Institute for Quantitative Social Science at Harvard University also provided insights., and Professor John Stasko of the Georgia Institute of Technology provided advice and software used to identify key terms in bill text.</p>
-          <p>The model is based on obvious factors influencing a bill’s fate – the party of the bill’s sponsor, the number of co-sponsors, and whether a leadership figure was a sponsor -  and some not so obvious ones. In the latter category were how close to the end of the session a bill was submitted, and some of the wording in the bill’s summary. We looked at whether the summary included certain social issues terms that refer to abortion, gun control, prayer in school, alcohol or controlled substances. And we included a variable for whether a bill is statewide or local, since so many bills that move through the Legislature are local and tend to pass at a higher rate.</p>
-          <p>The model does not yet take into account the legislative hurdles that a bill has already cleared, such as getting out of committee or passing one chamber.</p>
-          <p>We tested our model by comparing its predictions with the actual outcomes of bills in earlier sessions.  The result: It does a reasonably good job of predicting the chances of passage for the bulk of bills that pass through the Legislature each year.</p>
-          <p>We’ll be working to refine the model and may even try to predict how individual legislators will vote. If you want to take a shot at improving our model:</p>
-          <p><a href="http://ajcgga-api.herokuapp.com/api/bill_attributes.csv" title="It's a big file. Please be patient">Download our model data here</a>
+          <p>The original Predict-a-bill model was based on obvious factors influencing a bill’s fate – the party of the bill’s sponsor, the number of co-sponsors, and whether a leadership figure was a sponsor -  and some not so obvious ones. In the latter category were how close to the end of the session a bill was submitted, and some of the wording in the bill’s summary. We looked at whether the summary included certain social issues terms that refer to abortion, gun control, prayer in school, alcohol or controlled substances. And we included a variable for whether a bill is statewide or local, since so many bills that move through the Legislature are local and tend to pass at a higher rate.</p>
+          <p>In February 2015, the AJC released a major update to Predict-a-bill. The updated model takes into account several new factors, the most important of which are the current status of a bill and how many days are left in the legislative session. The chances of a bill’s passing will change every day as the legislative session moves along, producing a much more accurate picture of a proposal’s chances.</p>
+<!--          <p><a href="http://ajcgga-api.herokuapp.com/api/bill_attributes.csv" title="It's a big file. Please be patient">Download our model data here</a>
           <p><a href="https://gist.github.com/NewsappAJC/9418045" target="_blank">See the model, written in R, here</a>
           <p>Read more about how our model was developed on the <a href="http://ajcnewsapps.tumblr.com/" target="_blank">AJC Newsapp Team blog</a>.</p>
           <p>Read what we discovered about the legislative process at <a href="http://www.myajc.com/news/news/what-are-the-odds/ndPfx/" target="_blank">MyAJC.com</a>.</p>
+-->
       </div>
     </div>
 
