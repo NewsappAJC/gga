@@ -58,6 +58,7 @@ define(["app"], function(GeneralAssemblyApp) {
       model: Entities.BillVote
     });
 
+
     var API = {
       getBillsCount: function() {
         var defer = $.Deferred();
