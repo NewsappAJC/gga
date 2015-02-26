@@ -41,7 +41,7 @@ define(["app"], function(GeneralAssemblyApp) {
 
         var data = this.model.get("predictions_history");
 
-        var margin = {top: 20, right: 20, bottom: 30, left: 50},
+        var margin = {top: 20, right: 20, bottom: 40, left: 50},
             width = $('#predictions-chart').width() - margin.left - margin.right,
             height = 300 - margin.top - margin.bottom;
 
@@ -96,6 +96,10 @@ define(["app"], function(GeneralAssemblyApp) {
               .attr("class", "line")
               .attr("d", line);
 
+          svg.append("text")
+              .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom) + ")")
+              .attr("class","x-label")
+              .text("Day of session");
 
       }
     });

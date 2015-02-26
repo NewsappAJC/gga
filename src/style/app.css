@@ -765,6 +765,15 @@ h1#counter{
 .y.axis line {
   stroke:#333;
 }
+.x-label {
+  text-transform:uppercase;
+  text-anchor:middle;
+  letter-spacing:1px;
+}
+
+#predictions-chart text {
+  font-size:12px;
+}
 
 .line {
   fill: none;
