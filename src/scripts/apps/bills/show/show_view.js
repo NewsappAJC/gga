@@ -99,7 +99,7 @@ define(["app"], function(GeneralAssemblyApp) {
           svg.append("text")
               .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom) + ")")
               .attr("class","x-label")
-              .text("Day of session");
+              .text("Legislative session days");
 
       }
     });
