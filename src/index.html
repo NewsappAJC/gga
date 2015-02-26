@@ -516,7 +516,7 @@
         <p><strong>Latest status:</strong> <%= status_description %> (<%- status_date.toString("MMM d, yyyy") %>)</p>
       </div>
       <div class="col-sm-2">
-        <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 && bill_id !== 42877 && bil_id !== 42876 ) { %>
+        <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 && bill_id !== 42877 && bill_id !== 42876 ) { %>
         <div class="alert" id="<%- bill_id %>" align="center">
           <p>Chance of passing <img class="info-tip" src="images/icon_info.png" title="Forecasts of each bill’s chance of passage this year are generated from a statistical model developed by the AJC based on the success or failure of bills from legislative sessions from 2005 to 2014. The model accounts for a variety of factors, including sponsorship, the number of days remaining in the session and the current progress each bill has made so far. The technique used by the AJC was tested on previous legislative sessions."></p>
           <h1><%- (predictions * 100).toFixed() %>%</h1>
