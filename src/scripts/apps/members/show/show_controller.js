@@ -2,7 +2,7 @@ define(["app","apps/members/show/show_view"], function(GeneralAssemblyApp, View)
   GeneralAssemblyApp.module("MembersApp.Show", function(Show, GeneralAssemblyApp, Backbone, Marionette, $, _) {
     Show.Controller = {
       showMember: function(id) {
-        require(["entities/member","entities/top_contributors","entities/districts"], function() {
+        require(["entities/member","entities/top_contributors","entities/districts","common/views"], function() {
           var loadingView = new GeneralAssemblyApp.Common.View.Loading();
           GeneralAssemblyApp.mainRegion.show(loadingView);
 

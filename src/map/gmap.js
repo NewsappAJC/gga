@@ -5,6 +5,7 @@ $(document).ready(function () {
 	var _colors_house = [];
     var color_counter = -1;
     var district_pos_array;
+    var member_id_regexp = /Member=(\d+)/
     /*for (var i = 1; i <= 180; i++) {
         _colors.push(getRandomColor());
     }
@@ -226,10 +227,20 @@ $(document).ready(function () {
 	function showInPopup(data){
 		var rep_info = parseMemberInfo(data, 0);
 		var sen_info = parseMemberInfo(data, 1);
+
+        var rep_id = member_id_regexp.exec(rep_info.url)[1];
+        console.log(rep_id);
+
+        var sen_id = member_id_regexp.exec(sen_info.url)[1];
+        console.log(sen_id);
+
 		var _html = '<div class="p-content" style="width:280px; height:180px;">';
 		_html += '<p class="t">State Legislators</p>';
-		_html += '<div class="m-info"><p>Senate District '+ sen_info.district +'</p><img src="' + sen_info.photo_url + '" /><a href="'+sen_info.url+'" target="_blank">Sen. ' + sen_info.fullname + '<br/>('+sen_info.party+')</a></div>';
-		_html += '<div class="m-info"><p>House District ' + rep_info.district + '</p><img src="' + rep_info.photo_url + '" /><a href="'+rep_info.url+'" target="_blank">Rep. ' + rep_info.fullname + '<br/>('+rep_info.party +')</a></div>';
+		// _html += '<div class="m-info"><p>Senate District '+ sen_info.district +'</p><img src="' + sen_info.photo_url + '" /><a href="'+sen_info.url+'" target="_blank">Sen. ' + sen_info.fullname + '<br/>('+sen_info.party+')</a></div>';
+        _html += '<div class="m-info"><p>Senate District '+ sen_info.district +'</p><img src="' + sen_info.photo_url + '" /><a href="../#members/'+sen_id+'" target="_top">Sen. ' + sen_info.fullname + '<br/>('+sen_info.party+')</a></div>';
+
+		// _html += '<div class="m-info"><p>House District ' + rep_info.district + '</p><img src="' + rep_info.photo_url + '" /><a href="'+rep_info.url+'" target="_blank">Rep. ' + rep_info.fullname + '<br/>('+rep_info.party +')</a></div>';
+        _html += '<div class="m-info"><p>House District ' + rep_info.district + '</p><img src="' + rep_info.photo_url + '" /><a href="../#members/'+rep_id+'" target="_top">Rep. ' + rep_info.fullname + '<br/>('+rep_info.party +')</a></div>';
 		_html += '</div>';
 		infoWindow.setContent(_html);
 	}

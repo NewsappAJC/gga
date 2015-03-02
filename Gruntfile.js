@@ -19,7 +19,8 @@ module.exports = function(grunt) {
           { expand: true, flatten: true, src: ['src/style/boomerslab_cond/*.otf'], dest: 'build/style/boomerslab_cond/' },
           { expand: true, flatten: true, src: ['src/style/boomerslab_extracond/*.otf'], dest: 'build/style/boomerslab_extracond/' },
           { expand: true, flatten: true, src: ['src/style/publico/*.otf'], dest: 'build/style/publico/' },
-          { expand: true, flatten: true, src: ['src/style/Scout/*.otf'], dest: 'build/style/Scout/' }
+          { expand: true, flatten: true, src: ['src/style/Scout/*.otf'], dest: 'build/style/Scout/' },
+          { expand: true, flatten: true, src: ['src/map/*.*'], dest: 'build/map/' }
         ]
       }
     },
@@ -131,7 +132,7 @@ module.exports = function(grunt) {
           'build/scripts/apps/about/about_app.js'        : ['src/scripts/apps/about/about_app.js'],
           'build/scripts/apps/about/about_controller.js' : ['src/scripts/apps/about/about_controller.js'],
           'build/scripts/apps/about/about_view.js'       : ['src/scripts/apps/about/about_view.js'],
-		  
+
 		  'build/scripts/apps/map/map_app.js'        : ['src/scripts/apps/map/map_app.js'],
           'build/scripts/apps/map/map_controller.js' : ['src/scripts/apps/map/map_controller.js'],
           'build/scripts/apps/map/map_view.js'       : ['src/scripts/apps/map/map_view.js'],
