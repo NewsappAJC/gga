@@ -160,6 +160,8 @@ module.exports = function(grunt) {
         },
         files: {
           'build/style/app.css': ['src/style/app.css'],
+          'build/style/bill_search_screen.css': ['src/style/bill_search_screen.css'],
+          'build/style/bill_search_antiscreen.css': ['src/style/bill_search_antiscreen.css'],
           'build/style/fonts.css': ['src/style/fonts.css'],
           'build/style/bootstrap.css': ['src/style/bootstrap.css'],
           'build/style/jquery-ui-1.10.3.custom.css': ['src/style/jquery-ui-1.10.3.custom.css'],

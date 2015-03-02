@@ -1,6 +1,6 @@
 define(["app"], function(GeneralAssemblyApp) {
   GeneralAssemblyApp.module("BillsApp.List.View", function(View, GeneralAssemblyApp, Backbone, Marionette, $, _) {
-    View.BillView = Marrionette.ItemView,extend({
+    View.BillView = Marrionette.ItemView.extend({
       template: "bill-item-template"
     });
 

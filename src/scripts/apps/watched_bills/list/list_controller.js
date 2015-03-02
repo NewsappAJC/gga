@@ -7,7 +7,8 @@ define(["app","apps/watched_bills/list/list_view"], function(GeneralAssemblyApp,
           var fetchingBillsCount = GeneralAssemblyApp.request("bills:count");
           var fetchingDays = GeneralAssemblyApp.request("days");
           var categories_layout = new View.CategoriesLayout();
-          var daily_journal_layout = new View.DailyJournalLayout()
+          var daily_journal_layout = new View.DailyJournalLayout();
+          var textSearchView = new View.TextSearchView();
 
           $.when(fetchingWatchedBills, fetchingBillsCount, fetchingDays).done(function(watched_bills, bills_count, days) {
             window.days = days
@@ -52,6 +53,7 @@ define(["app","apps/watched_bills/list/list_view"], function(GeneralAssemblyApp,
                 categories_layout.billsCountRegion.show(bills_count_view);
                 categories_layout.categoriesRegion.show(categories_view);
                 categories_layout.eventsRegion.show(daily_journal_layout);
+                categories_layout.billSearchRegion.show(textSearchView);
               });
 
               GeneralAssemblyApp.mainRegion.show(categories_layout);
