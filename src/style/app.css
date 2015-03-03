@@ -765,7 +765,7 @@ h1#counter{
 .y.axis line {
   stroke:#333;
 }
-.x-label, .model-change-label {
+.x-label {
   text-transform:uppercase;
   text-anchor:middle;
   letter-spacing:1px;
