@@ -101,7 +101,7 @@ define(["app"], function(GeneralAssemblyApp) {
               .attr('x', function(d) { // sets the x position of the bar
                 return x(24)-(width/80);
               })
-              .attr('y', 0)
+              .attr('y', -1)
               .attr("height", height)
               .attr("width", width/80)
               .style("fill","#fff");
