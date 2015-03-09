@@ -396,7 +396,7 @@
             <a href="#bills/<%= bill_id %>"><%= document_type %> <%= number %></a>
             <!--
             <% if (passed_over === -1) { %>
-              <i class="fa fa-times red hover" title="This bill or constitutional amendment resolution did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules. The substance of this bill could also be amended to a live bill later in the session. Local bills and private resolutions are not affected by the crossover day deadline."></i>
+              <i class="fa fa-times red hover" title="This bill has not yet cross over from one house to the other. If it does not do so by the 30th legislative day, known as Crossover Day, it will become inactive until the legislative session resumes next year. Bills can survive Crossover Day if legislators vote to suspend rules. The substance of the bill could also be amended to a live bill later in this year&#39s session. Local bills and private resolutions are not affected by the Crossover Day deadline."></i>
             <% } %>
             -->
           </h3>
@@ -506,7 +506,7 @@
         <h3 class="billnumhed">
           <a href="#bills/<%- bill_id %>" id="billhed<%- bill_id %>"><%- document_type %> <%- number %>: <%- title %></a>
           <% if (passed_over === -1) { %>
-            <i class="fa fa-times red hover" title="This general bill or constitutional amendment resolution did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules. The substance of this bill could also be amended to a live bill later in the session. Local bills and private resolutions are not affected by the crossover day deadline."></i>
+            <i class="fa fa-times red hover" title="This bill has not yet cross over from one house to the other. If it does not do so by the 30th legislative day, known as Crossover Day, it will become inactive until the legislative session resumes next year. Bills can survive Crossover Day if legislators vote to suspend rules. The substance of the bill could also be amended to a live bill later in this year&#39s session. Local bills and private resolutions are not affected by the Crossover Day deadline."></i>
           <% } %>
         </h3>
 
@@ -671,15 +671,18 @@
         <div class="col-sm-12">
 
             <% if ( passed_over === -1 ) { %>
-              <p class="red"><strong>Note:</strong> This general bill or constitutional amendment resolution did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules. The substance of this bill could also be amended to a live bill later in the session. Local bills and private resolutions are not affected by the crossover day deadline.</p>
+              <p class="red"><strong>Note:</strong> This bill has not yet cross over from one house to the other. If it does not do so by the 30th legislative day, known as Crossover Day, it will become inactive until the legislative session resumes next year. Bills can survive Crossover Day if legislators vote to suspend rules. The substance of the bill could also be amended to a live bill later in this year&#39s session. Local bills and private resolutions are not affected by the Crossover Day deadline.</p>
             <% } %>
 
             <p><strong><%- caption %></strong><p>
-            <p><strong>Current Status:</strong> <%- status_description %></p>
+            <p>
+              <strong>Current Status:</strong>
+              <%- status_description %>
+            </p>
             <p><strong>Current Version:</strong> <a href="<%- latest_version_url %>" target="_blank"><%- latest_version_description %></a></p>
             <p><strong>Official Summary:</strong> <%- summary %></p>
 
-            <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
+            <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= -1 ) { %>
             <div>
               <hr>
               <% if ( caption.match(/(General|Supplemental) appropriations.*201(5|4)/) ) { %>
@@ -696,7 +699,8 @@
     </div>
   </script>
 
-  <!---<script type="text/template" id="bill-detail-template">
+<!---
+  <script type="text/template" id="bill-detail-template">
     <div class="panel-heading">
       <h3 class="billnumhed"><%- document_type %> <%- number %></h3>
     </div>
@@ -739,7 +743,8 @@
         </div>
       </div>
     </div>
-  </script>-->
+  </script>
+-->
 
   <script type="text/template" id="bill-author-list">
     <ul class="media-list" id="bill-authors"></ul>
