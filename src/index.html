@@ -473,11 +473,21 @@
   <script type="text/template" id="bills-count-template">
         <h3><%- bills %> total bills</h3>
         <ul class="fa-ul display-ul">
-              <li><i class="fa-li fa fa-check-circle"></i> <%- passed_house %> Passed by House.</li>
-              <li><i class="fa-li fa fa-check-circle"></i> <%- passed_senate %> Passed by Senate.</li>
-              <li><i class="fa-li fa fa-envelope"></i> <%- sent_to_gov %> Sent to governor.</li>
-              <li><i class="fa-li fa fa-pencil"></i> <%- signed_by_gov %> Signed into law.</li>
-              <li><i class="fa-li fa fa-thumbs-down"></i> <%- vetoed %> Vetoed.</li>
+              <li>
+                <a href="#bills/list/passed_house"><i class="fa-li fa fa-check-circle"></i> <%- passed_house %> Passed by House.</a>
+              </li>
+              <li>
+                <a href="#bills/list/passed_senate"><i class="fa-li fa fa-check-circle"></i> <%- passed_senate %> Passed by Senate.</a>
+              </li>
+              <li>
+                <a href="#bills/list/sent_to_governor"><i class="fa-li fa fa-envelope"></i> <%- sent_to_gov %> Sent to governor.</a>
+              </li>
+              <li>
+                <a href="#bills/list/signed"><i class="fa-li fa fa-pencil"></i> <%- signed_by_gov %> Signed into law.</a>
+              </li>
+              <li>
+                <a href="#bills/list/vetoed"><i class="fa-li fa fa-thumbs-down"></i> <%- vetoed %> Vetoed.</a>
+              </li>
           </ul>
   </script>
 
