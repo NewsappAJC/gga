@@ -394,18 +394,16 @@
         <div class="col-sm-10">
           <h3 class="billnumhed">
             <a href="#bills/<%= bill_id %>"><%= document_type %> <%= number %></a>
-            <!--
             <% if (passed_over === -1) { %>
-              <i class="fa fa-times red hover" title="This bill has not yet crossed over from one house to the other. By tradition, if it does not do so by the 30th legislative day, known as Crossover Day, it will become inactive until the legislative session resumes next year. However, the substance of the bill could be amended to a live bill later in this year&#39s session. Local bills and private resolutions are not affected by the Crossover Day deadline."></i>
+              <i class="fa fa-times red hover" title="This bill did not cross over from one house to the other by the 30th day of the legislative session, known as Crossover Day. By tradition, if a bill or constitutional amendment resolution is not passed out of its chamber of origin by Crossover Day, it becomes inactive until the legislative session resumes next year. However, the substance of the bill can still be amended to a live bill later in this year&#39s session. Local bills and private resolutions are not affected by the Crossover Day deadline."></i>
             <% } %>
-            -->
           </h3>
           <h4><%= caption %></h3></h4>
           <p><strong>Status:</strong> <%= status_description %></p>
 
         </div>
 
-        <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= -1 ) { %>
+        <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
         <div class="col-sm-2 well" align="center">
           <% if (caption.match(/(General|Supplemental) appropriations.*201(5|4)/)) { %>
             <p>This is a budget bill and must pass for state government to continue operating. We do not assign a probability to budget bills.<p>
@@ -515,18 +513,16 @@
       <div class="col-sm-10">
         <h3 class="billnumhed">
           <a href="#bills/<%- bill_id %>" id="billhed<%- bill_id %>"><%- document_type %> <%- number %>: <%- title %></a>
-          <!--
           <% if (passed_over === -1) { %>
-            <i class="fa fa-times red hover" title="This bill has not yet crossed over from one house to the other. By tradition, if it does not do so by the 30th legislative day, known as Crossover Day, it will become inactive until the legislative session resumes next year. However, the substance of the bill could be amended to a live bill later in this year&#39s session. Local bills and private resolutions are not affected by the Crossover Day deadline."></i>
+            <i class="fa fa-times red hover" title="This bill did not cross over from one house to the other by the 30th day of the legislative session, known as Crossover Day. By tradition, if a bill or constitutional amendment resolution is not passed out of its chamber of origin by Crossover Day, it becomes inactive until the legislative session resumes next year. However, the substance of the bill can still be amended to a live bill later in this year&#39s session. Local bills and private resolutions are not affected by the Crossover Day deadline."></i>
           <% } %>
-          -->
         </h3>
 
         <p><%- description %></p>
         <p><strong>Latest status:</strong> <%= status_description %> (<%- status_date.toString("MMM d, yyyy") %>)</p>
       </div>
       <div class="col-sm-2">
-        <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= -1 && bill_id !== 42877 && bill_id !== 42876 ) { %>
+        <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 && bill_id !== 42877 && bill_id !== 42876 ) { %>
         <div class="alert" id="<%- bill_id %>" align="center">
           <p>Chance of passing <img class="info-tip" src="images/icon_info.png" title="Forecasts of each bill’s chance of passage this year are generated from a statistical model developed by the AJC based on the success or failure of bills from legislative sessions from 2005 to 2014. The model accounts for a variety of factors, including sponsorship, the number of days remaining in the session and the current progress each bill has made so far. The technique used by the AJC was tested on previous legislative sessions."></p>
           <h2><%- predictions < .01 ? 'Below 1' : (predictions * 100).toFixed() %>%</h2>
@@ -541,11 +537,9 @@
       <div class="col-sm-10">
         <h4 class="billnumhed">
           <a href="#bills/<%- id %>" id="billhed<%- id %>"><%- document_type %> <%- number %>: <%- caption %></a>
-          <!--
           <% if (passed_over === -1) { %>
-            <i class="fa fa-times red hover" title="This bill has not yet crossed over from one house to the other. By tradition, if it does not do so by the 30th legislative day, known as Crossover Day, it will become inactive until the legislative session resumes next year. However, the substance of the bill could be amended to a live bill later in this year&#39s session. Local bills and private resolutions are not affected by the Crossover Day deadline."></i>
+            <i class="fa fa-times red hover" title="This bill did not cross over from one house to the other by the 30th day of the legislative session, known as Crossover Day. By tradition, if a bill or constitutional amendment resolution is not passed out of its chamber of origin by Crossover Day, it becomes inactive until the legislative session resumes next year. However, the substance of the bill can still be amended to a live bill later in this year&#39s session. Local bills and private resolutions are not affected by the Crossover Day deadline."></i>
           <% } %>
-          -->
         </h4>
 
         <p><%- summary %></p>
@@ -702,14 +696,19 @@
 
   <script type="text/template" id="bill-detail-template">
     <div class="panel-heading">
-      <h3 class="billnumhed"><%- document_type %> <%- number %></h3>
+      <h3 class="billnumhed">
+        <%- document_type %> <%- number %>
+        <% if (passed_over === -1) { %>
+          <i class="fa fa-times red hover"></i>
+        <% } %>
+     </h3>
     </div>
     <div class="panel-body">
       <div class="row">
         <div class="col-sm-12">
 
             <% if ( passed_over === -1 ) { %>
-              <p class="red"><strong>Note:</strong> This bill has not yet crossed over from one house to the other. By tradition, if it does not do so by the 30th legislative day, known as Crossover Day, it will become inactive until the legislative session resumes next year. However, the substance of the bill could be amended to a live bill later in this year&#39s session. Local bills and private resolutions are not affected by the Crossover Day deadline.</p>
+              <p class="red"><strong>Note:</strong> This bill did not cross over from one house to the other by the 30th day of the legislative session, known as Crossover Day. By tradition, if a bill or constitutional amendment resolution is not passed out of its chamber of origin by Crossover Day, it becomes inactive until the legislative session resumes next year. However, the substance of the bill can still be amended to a live bill later in this year&#39s session. Local bills and private resolutions are not affected by the Crossover Day deadline.</p>
             <% } %>
 
             <p><strong><%- caption %></strong><p>
