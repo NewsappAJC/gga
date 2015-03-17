@@ -5,11 +5,11 @@ define(["app"], function(GeneralAssemblyApp) {
       var $updateBox = $("#updateBox");
       var timeout = setTimeout(function(){ $updateBox.collapse('show'); clearTimeout(timeout);}, 1000);
 
-      var closeTimeout = setTimeout(function(){ 
+      var closeTimeout = setTimeout(function(){
         $updateBox.collapse('hide');
         toggleArrow();
         clearTimeout(closeTimeout);
-      },8000);
+      },5000);
 
       $('#closeUpdate').on("click", function(){
         $updateBox.collapse('hide');

@@ -111,6 +111,8 @@ module.exports = function(grunt) {
           'build/scripts/apps/bills/bills_app.js'            : ['src/scripts/apps/bills/bills_app.js'],
           'build/scripts/apps/bills/show/show_controller.js' : ['src/scripts/apps/bills/show/show_controller.js'],
           'build/scripts/apps/bills/show/show_view.js'       : ['src/scripts/apps/bills/show/show_view.js'],
+          'build/scripts/apps/bills/list/list_controller.js' : ['src/scripts/apps/bills/list/list_controller.js'],
+          'build/scripts/apps/bills/list/list_view.js'       : ['src/scripts/apps/bills/list/list_view.js'],
 
           'build/scripts/apps/members/members_app.js'          : ['src/scripts/apps/members/members_app.js'],
           'build/scripts/apps/members/show/show_controller.js' : ['src/scripts/apps/members/show/show_controller.js'],
