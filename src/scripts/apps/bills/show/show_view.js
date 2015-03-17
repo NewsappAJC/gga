@@ -66,7 +66,6 @@ define(["app"], function(GeneralAssemblyApp) {
         var line = d3.svg.line()
             .x(function(d) { return x(d.date); })
             .y(function(d) { return y(d.close); });
-
         var svg = d3.select("#predictions-chart").append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
@@ -96,11 +95,47 @@ define(["app"], function(GeneralAssemblyApp) {
               .attr("class", "line")
               .attr("d", line);
 
+          svg.append("rect")
+              .data(data)
+              .attr('x', function(d) { // sets the x position of the bar
+                return x(24)-(width/80);
+              })
+              .attr('y', -1)
+              .attr("height", height)
+              .attr("width", width/80)
+              .style("fill","#fff");
+
+          svg.append("line")
+             .attr("y1", 0)
+             .attr("y2", height)
+             .attr("x1", x(24)-(width/160))
+             .attr("x2", x(24)-(width/160))
+             .attr("class","prediction-marker");
+
+          svg.append("line")
+             .attr("y1", 0)
+             .attr("y2", height - 2)
+             .attr("x1", x(30))
+             .attr("x2", x(30))
+             .attr("class","crossover-marker");
+
           svg.append("text")
               .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom) + ")")
               .attr("class","x-label")
               .text("Legislative session days");
 
+          svg.append("g")
+              .attr("transform", "translate(" + (x(24)-(width/80)) + " ," + -10 + ")")
+              .attr("class","model-change-label")
+              .append("text")
+              .text('Model revised*');
+
+          svg.append("g")
+              .attr("transform", "translate(" + (x(30)-(width/80)) + " ," + -10 + ")")
+              .attr("class","model-change-label")
+              .attr("fill", "red")
+              .append("text")
+              .text('Crossover Day**');
       }
     });
 

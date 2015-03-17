@@ -771,8 +771,25 @@ h1#counter{
   letter-spacing:1px;
 }
 
+.model-change-label {
+  text-transform:uppercase;
+  text-anchor:middle;
+  font-size:10px;
+}
+
+.crossover-chart-label {
+  text-transform:uppercase;
+  text-anchor:middle;
+  font-size:10px;
+  fill:red;
+}
+
 #predictions-chart text {
   font-size:12px;
+}
+
+svg img {
+  z-index:3000;
 }
 
 .line {
@@ -781,6 +798,24 @@ h1#counter{
   stroke-width: 1.5px;
 }
 
+.prediction-marker {
+  stroke-dasharray: 4,3,4;
+  stroke:#aaa;
+}
+
+.crossover-marker {
+  stroke:red;
+}
+
+#chart-note {
+  margin-top:20px;
+}
+#chart-note p{
+  font-size:12px;
+  color:#888;
+  margin-top:0;
+  margin-bottom:0;
+}
 
 /*tablet styles */
 @media all and (max-width: 768px) and (min-width : 480px) {
