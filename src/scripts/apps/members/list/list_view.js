@@ -1,10 +1,25 @@
 define(["app"], function(GeneralAssemblyApp) {
   GeneralAssemblyApp.module("MembersApp.List.View", function(View, GeneralAssemblyApp, Backbone, Marionette, $, _) {
-    View.MemberLayout = Marionette.Layout.extend({
+    View.MembersLayout = Marionette.Layout.extend({
       template: "#member-list-layout",
+      regions: {
+        membersRegion: "#member-browse-region",
+        mapRegion: "#map-region"
+      }
+    });
+
+    View.MemberBrowseLayout = Marionette.Layout.extend({
+      template: "#member-browse-layout",
       regions: {
         panelRegion: "#panel-region",
         membersRegion: "#members-region"
+      }
+    });
+
+    View.MapView = Marionette.ItemView.extend({
+      template:"#map-template",
+      onShow:function(){
+        $(document).tooltip({predelay:0,cancelDefault:!0});
       }
     });
 

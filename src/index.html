@@ -80,9 +80,11 @@
               <div class="col-sm-2">
                 <a href="/#about">ABOUT</a>
               </div>
+<!--
 			  <div class="col-sm-2">
 				<a href="/#map">MAP</a>
 			  </div>
+-->
             </div>
           </div>
           <div id="whatsNew" class="col-sm-4">
@@ -344,7 +346,25 @@
     <div class="navbar navbar-static-top" id="panel-region"></div>
     <div class="container">
       <div class="row">
-        <div class="col-sm-12" id="members-region"></div>
+        <ul class="nav nav-tabs">
+          <li id="default_tab"><a href="#member-browse-region" data-toggle="tab">Browse members</a></li>
+          <li><a href="#map-region" data-toggle="tab">Find my legislators</a></li>
+        </ul>
+      </div>
+      <div class="tab-content col-sm-12">
+        <div class="tab-pane" id="member-browse-region"></div>
+        <div class="tab-pane" id="map-region"></div>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/template" id="member-browse-layout">
+    <div class="container">
+      <div class="row">
+        <div class="navbar navbar-static-top" id="panel-region"></div>
+      </div>
+      <div class="row">
+        <div id="members-region"></div>
       </div>
     </div>
   </script>
@@ -929,16 +949,9 @@
   </script>
 
   <script type="text/type" id="map-template">
-    <div class="container">
-      <div class="row">
-        <div class="jumbotron">
-          <h2>Georgia Legislative Map</h2>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-		<iframe style="width:100%; height:1200px; margin:auto; " src="/map/index_gmap.html" scrolling="no" frameborder="0px"/>
-	</div>
+     <div class="container">
+	 	   <iframe style="width:100%; height:1200px; margin:auto; " src="/map/index_gmap.html" scrolling="no" frameborder="0px"/>
+	   </div>
    </script>
 
 
