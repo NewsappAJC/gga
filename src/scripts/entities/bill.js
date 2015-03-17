@@ -5,7 +5,8 @@ define(["app"], function(GeneralAssemblyApp) {
 
     Entities.Bill = Backbone.Model.extend({
       initialize: function(id) {
-        this.url = Entities.bills_url + id
+        this.url = Entities.bills_url + id;
+        this.set("status_date", new Date(this.get("status_date")));
       }
     });
     Entities.Bills = Backbone.Collection.extend({
@@ -89,11 +90,23 @@ define(["app"], function(GeneralAssemblyApp) {
 
       getBills: function() {
         var defer = $.Deferred();
-        bills = new Entities.Bills();
+        var bills = new Entities.Bills();
         bills.fetch({
           dataType: "jsonp",
-          success: function() {
-            defer.resolve(data)
+          success: function(data) {
+            defer.resolve(data);
+          }
+        });
+        return defer.promise();
+      },
+      getBillsByEvent: function(event) {
+        var defer = $.Deferred();
+        var bills = new Entities.Bills();
+        bills.url = Entities.bills_url + event;
+        bills.fetch({
+          dataType: "jsonp",
+          success: function(data) {
+            defer.resolve(data);
           }
         });
         return defer.promise();
@@ -117,6 +130,10 @@ define(["app"], function(GeneralAssemblyApp) {
 
     GeneralAssemblyApp.reqres.setHandler("bills:list", function() {
       return API.getBills();
+    });
+
+    GeneralAssemblyApp.reqres.setHandler("bills:list:byevent", function(event) {
+      return API.getBillsByEvent(event);
     });
   });
   return GeneralAssemblyApp.Entities.Bill;

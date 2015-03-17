@@ -394,11 +394,9 @@
         <div class="col-sm-10">
           <h3 class="billnumhed">
             <a href="#bills/<%= bill_id %>"><%= document_type %> <%= number %></a>
-            <!--
             <% if (passed_over === -1) { %>
-              <i class="fa fa-times red hover" title="This bill or constitutional amendment resolution did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules. The substance of this bill could also be amended to a live bill later in the session. Local bills and private resolutions are not affected by the crossover day deadline."></i>
+              <i class="fa fa-times red hover" title="This bill did not cross over from one house to the other by the 30th day of the legislative session, known as Crossover Day. By tradition, if a bill or constitutional amendment resolution is not passed out of its chamber of origin by Crossover Day, it becomes inactive until the legislative session resumes next year. However, the substance of the bill can still be amended to a live bill later in this year&#39s session. Local bills and private resolutions are not affected by the Crossover Day deadline."></i>
             <% } %>
-            -->
           </h3>
           <h4><%= caption %></h3></h4>
           <p><strong>Status:</strong> <%= status_description %></p>
@@ -409,9 +407,9 @@
         <div class="col-sm-2 well" align="center">
           <% if (caption.match(/(General|Supplemental) appropriations.*201(5|4)/)) { %>
             <p>This is a budget bill and must pass for state government to continue operating. We do not assign a probability to budget bills.<p>
-          <% } else { %>
+          <% } else if (passed_over >= 0 ) { %>
             <p>Chance of passing <img class="info-tip" src="images/icon_info.png" title="Forecasts of each bill’s chance of passage this year are generated from a statistical model developed by the AJC based on the success or failure of bills from legislative sessions from 2005 to 2014. The model accounts for a variety of factors, including sponsorship, the number of days remaining in the session and the current progress each bill has made so far. The technique used by the AJC was tested on previous legislative sessions."></p>
-            <h1><%- (predictions * 100).toFixed() %>%</h1>
+            <h2><%- predictions < .01 ? 'Below 1' : (predictions * 100).toFixed() %>%</h2>
           <% } %>
         </div>
         <% } %>
@@ -473,11 +471,21 @@
   <script type="text/template" id="bills-count-template">
         <h3><%- bills %> total bills</h3>
         <ul class="fa-ul display-ul">
-              <li><i class="fa-li fa fa-check-circle"></i> <%- passed_house %> Passed by House.</li>
-              <li><i class="fa-li fa fa-check-circle"></i> <%- passed_senate %> Passed by Senate.</li>
-              <li><i class="fa-li fa fa-envelope"></i> <%- sent_to_gov %> Sent to governor.</li>
-              <li><i class="fa-li fa fa-pencil"></i> <%- signed_by_gov %> Signed into law.</li>
-              <li><i class="fa-li fa fa-thumbs-down"></i> <%- vetoed %> Vetoed.</li>
+              <li>
+                <a href="#bills/list/passed_house"><i class="fa-li fa fa-check-circle"></i> <%- passed_house %> Passed by House.</a>
+              </li>
+              <li>
+                <a href="#bills/list/passed_senate"><i class="fa-li fa fa-check-circle"></i> <%- passed_senate %> Passed by Senate.</a>
+              </li>
+              <li>
+                <a href="#bills/list/sent_to_governor"><i class="fa-li fa fa-envelope"></i> <%- sent_to_gov %> Sent to governor.</a>
+              </li>
+              <li>
+                <a href="#bills/list/signed"><i class="fa-li fa fa-pencil"></i> <%- signed_by_gov %> Signed into law.</a>
+              </li>
+              <li>
+                <a href="#bills/list/vetoed"><i class="fa-li fa fa-thumbs-down"></i> <%- vetoed %> Vetoed.</a>
+              </li>
           </ul>
   </script>
 
@@ -506,7 +514,7 @@
         <h3 class="billnumhed">
           <a href="#bills/<%- bill_id %>" id="billhed<%- bill_id %>"><%- document_type %> <%- number %>: <%- title %></a>
           <% if (passed_over === -1) { %>
-            <i class="fa fa-times red hover" title="This general bill or constitutional amendment resolution did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules. The substance of this bill could also be amended to a live bill later in the session. Local bills and private resolutions are not affected by the crossover day deadline."></i>
+            <i class="fa fa-times red hover" title="This bill did not cross over from one house to the other by the 30th day of the legislative session, known as Crossover Day. By tradition, if a bill or constitutional amendment resolution is not passed out of its chamber of origin by Crossover Day, it becomes inactive until the legislative session resumes next year. However, the substance of the bill can still be amended to a live bill later in this year&#39s session. Local bills and private resolutions are not affected by the Crossover Day deadline."></i>
           <% } %>
         </h3>
 
@@ -517,7 +525,31 @@
         <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 && bill_id !== 42877 && bill_id !== 42876 ) { %>
         <div class="alert" id="<%- bill_id %>" align="center">
           <p>Chance of passing <img class="info-tip" src="images/icon_info.png" title="Forecasts of each bill’s chance of passage this year are generated from a statistical model developed by the AJC based on the success or failure of bills from legislative sessions from 2005 to 2014. The model accounts for a variety of factors, including sponsorship, the number of days remaining in the session and the current progress each bill has made so far. The technique used by the AJC was tested on previous legislative sessions."></p>
-          <h1><%- (predictions * 100).toFixed() %>%</h1>
+          <h2><%- predictions < .01 ? 'Below 1' : (predictions * 100).toFixed() %>%</h2>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/template" id="bill_list-template">
+    <div class="row">
+      <div class="col-sm-10">
+        <h4 class="billnumhed">
+          <a href="#bills/<%- id %>" id="billhed<%- id %>"><%- document_type %> <%- number %>: <%- caption %></a>
+          <% if (passed_over === -1) { %>
+            <i class="fa fa-times red hover" title="This bill did not cross over from one house to the other by the 30th day of the legislative session, known as Crossover Day. By tradition, if a bill or constitutional amendment resolution is not passed out of its chamber of origin by Crossover Day, it becomes inactive until the legislative session resumes next year. However, the substance of the bill can still be amended to a live bill later in this year&#39s session. Local bills and private resolutions are not affected by the Crossover Day deadline."></i>
+          <% } %>
+        </h4>
+
+        <p><%- summary %></p>
+        <p><strong>Latest status:</strong> <%= status_description %> (<%- status_date.toString("MMM d, yyyy") %>)</p>
+      </div>
+      <div class="col-sm-2">
+        <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 && id !== 42877 && id !== 42876 ) { %>
+        <div class="alert" id="<%- id %>" align="center">
+          <p>Chance of passing <img class="info-tip" src="images/icon_info.png" title="Forecasts of each bill’s chance of passage this year are generated from a statistical model developed by the AJC based on the success or failure of bills from legislative sessions from 2005 to 2014. The model accounts for a variety of factors, including sponsorship, the number of days remaining in the session and the current progress each bill has made so far. The technique used by the AJC was tested on previous legislative sessions."></p>
+          <h2><%- predictions < .01 ? 'Below 1' : (predictions * 100).toFixed() %>%</h2>
         </div>
         <% } %>
       </div>
@@ -664,30 +696,42 @@
 
   <script type="text/template" id="bill-detail-template">
     <div class="panel-heading">
-      <h3 class="billnumhed"><%- document_type %> <%- number %></h3>
+      <h3 class="billnumhed">
+        <%- document_type %> <%- number %>
+        <% if (passed_over === -1) { %>
+          <i class="fa fa-times red hover"></i>
+        <% } %>
+     </h3>
     </div>
     <div class="panel-body">
       <div class="row">
         <div class="col-sm-12">
 
             <% if ( passed_over === -1 ) { %>
-              <p class="red"><strong>Note:</strong> This general bill or constitutional amendment resolution did not cross over from one house to the other before the day 30 deadline and is no longer active, unless legislators vote to suspend rules. The substance of this bill could also be amended to a live bill later in the session. Local bills and private resolutions are not affected by the crossover day deadline.</p>
+              <p class="red"><strong>Note:</strong> This bill did not cross over from one house to the other by the 30th day of the legislative session, known as Crossover Day. By tradition, if a bill or constitutional amendment resolution is not passed out of its chamber of origin by Crossover Day, it becomes inactive until the legislative session resumes next year. However, the substance of the bill can still be amended to a live bill later in this year&#39s session. Local bills and private resolutions are not affected by the Crossover Day deadline.</p>
             <% } %>
 
             <p><strong><%- caption %></strong><p>
-            <p><strong>Current Status:</strong> <%- status_description %></p>
-            <p><strong>Current Version:</strong> <a href="<%- latest_version_url %>" target="_blank"><%- latest_version_description %></a></p>
+            <p>
+              <strong>Current Status:</strong>
+              <%- status_description %>
+            </p>
             <p><strong>Official Summary:</strong> <%- summary %></p>
 
-            <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= 0 ) { %>
+            <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= -1 ) { %>
             <div>
               <hr>
               <% if ( caption.match(/(General|Supplemental) appropriations.*201(5|4)/) ) { %>
                 <div><p><b>This is a budget bill and must pass for state government to continue operating. We do not assign a probability to budget bills.</b></p></div>
               <% } else { %>
-                <h3>Chance of passing: <%- (predictions * 100).toFixed() %>%  <img class="info-tip" src="images/icon_info.png" title="Forecasts of each bill’s chance of passage this year are generated from a statistical model developed by the AJC based on the success or failure of bills from legislative sessions from 2005 to 2014. The model accounts for a variety of factors, including sponsorship, the number of days remaining in the session and the current progress each bill has made so far. The technique used by the AJC was tested on previous legislative sessions."></h3>
+                <% if (passed_over >= 0) { %>
+                  <h3>Chance of passing: <%- predictions < .01 ? 'Below 1' : (predictions * 100).toFixed() %>%  <img class="info-tip" src="images/icon_info.png" title="Forecasts of each bill’s chance of passage this year are generated from a statistical model developed by the AJC based on the success or failure of bills from legislative sessions from 2005 to 2014. The model accounts for a variety of factors, including sponsorship, the number of days remaining in the session and the current progress each bill has made so far. The technique used by the AJC was tested on previous legislative sessions."></h3>
+                <% } %>
                   <div id="predictions-chart"></div>
-                  <div id="chart-note">*On March 3, the AJC revised its predictions to reflect more complete data on committee and caucus leadership, as well as a modification to how the model accounts for the passage of time.</div>
+                  <div id="chart-note">
+                    <p>* On March 3, the AJC revised its predictions to reflect more complete data on committee and caucus leadership, as well as a modification to how the model accounts for the passage of time.</p>
+                    <p>** By tradition, general bills and constitutional ammendment resolutions that do not pass their chamber of origin by the 30th legislative day become inactive until this legislative session resumes in 2016.</p>
+                  </div>
                 <% } %>
             </div>
           <% } %>
@@ -696,7 +740,8 @@
     </div>
   </script>
 
-  <!---<script type="text/template" id="bill-detail-template">
+<!---
+  <script type="text/template" id="bill-detail-template">
     <div class="panel-heading">
       <h3 class="billnumhed"><%- document_type %> <%- number %></h3>
     </div>
@@ -739,7 +784,8 @@
         </div>
       </div>
     </div>
-  </script>-->
+  </script>
+-->
 
   <script type="text/template" id="bill-author-list">
     <ul class="media-list" id="bill-authors"></ul>
