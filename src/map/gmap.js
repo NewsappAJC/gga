@@ -85,15 +85,36 @@ $(document).ready(function () {
     });
 
 	//Left panel tab click event
-    $('ul.tab li').click(function () {
+    // $('ul.tab li').click(function () {
+    //     if ($(this).hasClass('active')) {
+    //         return;
+    //     }
+    //     map.setZoom(7);
+    //     color_counter = 0;
+    //     $('ul.tab li').removeClass('active');
+    //     $(this).addClass('active');
+    //     if ($(this).data('itemid') == '1') {
+    //         renderDistricts(56, 'Senate', _colors_senate);
+    //         data_house.setMap(null);
+    //         data_senate.setMap(map);
+    //         fillArray('ga_senate.json');
+    //     } else {
+    //         renderDistricts(180, 'House', _colors_house);
+    //         data_senate.setMap(null);
+    //         data_house.setMap(map);
+    //         fillArray('ga_house.json');
+    //     }
+    // });
+
+    $('#choose-map button').click(function() {
         if ($(this).hasClass('active')) {
             return;
         }
         map.setZoom(7);
         color_counter = 0;
-        $('ul.tab li').removeClass('active');
+        $('#choose-map button').removeClass('active');
         $(this).addClass('active');
-        if ($(this).data('itemid') == '1') {
+        if ($(this).data('itemid') == 'senate') {
             renderDistricts(56, 'Senate', _colors_senate);
             data_house.setMap(null);
             data_senate.setMap(map);
