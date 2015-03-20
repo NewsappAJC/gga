@@ -2,14 +2,12 @@ define(["app","apps/members/list/list_view"], function(GeneralAssemblyApp, View)
   GeneralAssemblyApp.module("MembersApp.List", function(List, GeneralAssemblyApp, Backbone, Marionette, $, _) {
     List.Controller = {
       listMembers: function(criterion) {
-        require(["entities/member"], function() {
+        require(["entities/member","goog!maps,3,other_params:sensor=false"], function() {
           var fetchingMembers = GeneralAssemblyApp.request("members:collection");
-
-          console.log(View.MembersLayout);
           var membersLayout = new View.MembersLayout();
           var memberBrowseLayout = new View.MemberBrowseLayout();
           var membersListPanel = new View.MemberPanel();
-          var mapView = new View.MapView();
+          var mapView = new View.MemberMapView();
 
           $.when(fetchingMembers).done(function(members) {
             filteredMembers = GeneralAssemblyApp.Entities.FilteredCollection({

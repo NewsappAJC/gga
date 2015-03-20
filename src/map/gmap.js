@@ -26,6 +26,8 @@ $(document).ready(function () {
 	geocoder = new google.maps.Geocoder(),
     infoWindow = new google.maps.InfoWindow(),
 	mapFeature;
+    window.map = map
+
 
     map.fitBounds(new google.maps.LatLngBounds(
 		new google.maps.LatLng(34.4, -86.5),

@@ -344,15 +344,15 @@
       </div>
     </div>
     <div class="navbar navbar-static-top" id="panel-region"></div>
-    <div class="container">
+    <div class="container" id="tabs">
       <div class="row">
         <ul class="nav nav-tabs">
-          <li id="default_tab"><a href="#member-browse-region" data-toggle="tab">Browse members</a></li>
-          <li><a href="#map-region" data-toggle="tab">Find my legislators</a></li>
+          <li id="browse-tab"><a href="#member-browse-region" data-toggle="tab" id="browse-tab">Browse members</a></li>
+          <li><a href="#map-region" data-toggle="tab" id="map-tab">Find my legislators</a></li>
         </ul>
       </div>
-      <div class="tab-content col-sm-12">
-        <div class="tab-pane" id="member-browse-region"></div>
+      <div class="tab-content row">
+        <div class="tab-pane active" id="member-browse-region"></div>
         <div class="tab-pane" id="map-region"></div>
       </div>
     </div>
@@ -474,7 +474,7 @@
           <li><a href="#bill-search-region" data-toggle="tab">Search Bill Text</a></li>
         </ul>
         <div class="tab-content">
-          <div class="tab-pane" id="bill-category-region"></div>
+          <div class="tab-pane active" id="bill-category-region"></div>
           <div class="tab-pane" id="bill-event-region"></div>
           <div class="tab-pane" id="bill-search-region"></div>
         </div>
@@ -948,10 +948,46 @@
 
   </script>
 
-  <script type="text/type" id="map-template">
+  <script type="text/template" id="map-template">
      <div class="container">
 	 	   <iframe style="width:100%; height:1200px; margin:auto; " src="/map/index_gmap.html" scrolling="no" frameborder="0px"/>
 	   </div>
+   </script>
+
+   <script type="text/template" id="member-map-template">
+    <div class="row">
+      <div class="map-container">
+        <div class="row"
+          <div id="form">
+              <h4>Who represents me?</h4>
+              <div class="row">
+                <div class="col-sm-2">
+                  <button type="submit" class="btn btn-primary" value="Find My Legislators" id="btnFind">Find My Legislators</button>
+                </div>
+                <div class="col-sm-6">
+                  <input type="text" id="address" class="form-control" placeholder="Enter your address"/>
+                </div>
+                <div id="choose-map" class="col-sm-4">
+                  Show me
+                  <button data-itemid="senate" id="senate-districts" class="btn btn-primary">Senate Districts</button>
+                  <button data-itemid="house" id="house-districts" class="btn btn-primary">House Districts</button>
+                </div>
+              </div>
+          </div>
+          <!--
+          <div id="choose-map" class="navbar">
+            <p>
+              Show me
+              <button data-itemid="senate" id="senate-districts" clas="btn btn-default navbar-btn">Senate Districts</button>
+              <button data-itemid="house" id="house-districts" clas="btn btn-default navbar-btn">House Districts</button>
+            </p>
+          </div>
+          -->
+        </div>
+        <div id="map" class="row"></div>
+        <div id="district"></div>
+      </div>
+    </div>
    </script>
 
 

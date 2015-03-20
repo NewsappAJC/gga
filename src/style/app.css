@@ -981,122 +981,127 @@ ul#daily-events, ul#daily-votes{
         list-style-type:none;
     }
 */
-  #text-search-form {
-    margin-top: 20px;
-    margin-bottom: 30px;
-  }
-  .search-wrap{
-    width: 400px;
-    height: 25px;
-  }
-  .search-inner-wrap{
-    width: 90%;
+#text-search-form {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.search-wrap{
+  width: 400px;
+  height: 25px;
+}
+.search-inner-wrap{
+  width: 90%;
+  border:none;
+  margin: 0 auto;
+}
+.search-input{
+  width: 70%;
+  margin-right:3%;
+}
+.search-go{
+  border: 1px solid #0b4682;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  background-color: #007CF9;
+  color: white;
+  width: 23%;
+  margin-right: 2%;
+}
+.search-go:hover{
+  border: 1px solid #09335e;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  background-color: #0f69c4;
+  color: white;
+  width: 23%;
+  margin-right: 2%;
+}
+#doclist{
+    min-height:80px;
     border:none;
-    margin: 0 auto;
-  }
-  .search-input{
-    width: 70%;
-    margin-right:3%;
-  }
-  .search-go{
-    border: 1px solid #0b4682;
-    border-radius: 2px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    background-color: #007CF9;
-    color: white;
-    width: 23%;
-    margin-right: 2%;
-  }
-  .search-go:hover{
-    border: 1px solid #09335e;
-    border-radius: 2px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    background-color: #0f69c4;
-    color: white;
-    width: 23%;
-    margin-right: 2%;
-  }
-    #doclist{
-        min-height:80px;
-        border:none;
-        padding:2px 30px 5px 0px;
-    }
-    .fuzz{
-        z-index: 998;
-        width:100%;
-        height:100%;
-        background-color:rgba(188,188,188,0.7);
-        position:absolute;
-        top:0;
-        left:0;
-    }
-    img.doc{
-        width:60px;
-        height:75px;
-        padding:1px;
-        cursor:pointer;
-        border: 1px solid #aaa;
-        box-shadow: 2px 2px 0 #e0e0e0;
-        -webkit-box-shadow: 2px 2px 0 #e0e0e0;
-        -moz-box-shadow: 2px 2px 0 #e0e0e0;
-    }
-    div.title{
-        margin-left:10px;
-    }
-    .docitem a{
-        text-decoration:none;
-        color: black;
-        vertical-align:top;
-    }
-    .docitem{
-        /*display:block;*/
-        display:inline-block;
-        width:100%;
-    }
-    .docitem div{
-        display:inline-block;
-        vertical-align:top;
-    }
-    img.docsub{
-        width:45px;
-        height:57px;
-        padding:1px;
-        cursor:pointer;
-        border: 1px solid #aaa;
-        box-shadow: 2px 2px 0 #e0e0e0;
-        -webkit-box-shadow: 2px 2px 0 #e0e0e0;
-        -moz-box-shadow: 2px 2px 0 #e0e0e0;
+    padding:2px 30px 5px 0px;
+}
+.fuzz{
+    z-index: 998;
+    width:100%;
+    height:100%;
+    background-color:rgba(188,188,188,0.7);
+    position:absolute;
+    top:0;
+    left:0;
+}
+img.doc{
+    width:60px;
+    height:75px;
+    padding:1px;
+    cursor:pointer;
+    border: 1px solid #aaa;
+    box-shadow: 2px 2px 0 #e0e0e0;
+    -webkit-box-shadow: 2px 2px 0 #e0e0e0;
+    -moz-box-shadow: 2px 2px 0 #e0e0e0;
+}
+div.title{
+    margin-left:10px;
+}
+.docitem a{
+    text-decoration:none;
+    color: black;
+    vertical-align:top;
+}
+.docitem{
+    /*display:block;*/
+    display:inline-block;
+    width:100%;
+}
+.docitem div{
+    display:inline-block;
+    vertical-align:top;
+}
+img.docsub{
+    width:45px;
+    height:57px;
+    padding:1px;
+    cursor:pointer;
+    border: 1px solid #aaa;
+    box-shadow: 2px 2px 0 #e0e0e0;
+    -webkit-box-shadow: 2px 2px 0 #e0e0e0;
+    -moz-box-shadow: 2px 2px 0 #e0e0e0;
 
-    }
-    .subdiv{
-        margin-left: 10%;
-    }
-    .subitem{
-        margin-top:10px;
-        margin-bottom:10px;
-    }
-    .subitem div{
-        width:80%;
-        margin-left: 20px;
-        font-size: 0.8em;
-    }
-    .subitem img{
-        float:left;
-    }
-    .topinfo{
-        margin-left:0px;
-    }
-    .topinfo a{
-        font-size:1.2em;
-    }
-    .topinfo span{
-        font-size:0.8em;
-    }
-    .topinfo span + span{
-        font-size:1.0em;
-    }
-    .subitem div span b{
-        background-color:yellow;
-    }
+}
+.subdiv{
+    margin-left: 10%;
+}
+.subitem{
+    margin-top:10px;
+    margin-bottom:10px;
+}
+.subitem div{
+    width:80%;
+    margin-left: 20px;
+    font-size: 0.8em;
+}
+.subitem img{
+    float:left;
+}
+.topinfo{
+    margin-left:0px;
+}
+.topinfo a{
+    font-size:1.2em;
+}
+.topinfo span{
+    font-size:0.8em;
+}
+.topinfo span + span{
+    font-size:1.0em;
+}
+.subitem div span b{
+    background-color:yellow;
+}
+
+/* map style */
+#map {
+  height: 650px;
+}
