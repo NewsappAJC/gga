@@ -124,7 +124,7 @@ define(["app"], function(GeneralAssemblyApp) {
           if ($(this).hasClass('active')) {
               return;
           }
-          map.setZoom(7);
+          // map.setZoom(7);
           color_counter = 0;
           $('#choose-map button').removeClass('active');
           $(this).addClass('active');
