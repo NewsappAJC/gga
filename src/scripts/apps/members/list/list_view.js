@@ -10,7 +10,7 @@ define(["app"], function(GeneralAssemblyApp) {
         $("a[data-toggle='tab']").on("shown.bs.tab", function(e){
           var clickedTabId = e.currentTarget.attributes.id.value;
           if (clickedTabId === 'map-tab') {
-            var defaultLocation = new google.maps.LatLng(32.8, -83.5);
+            var defaultLocation = new google.maps.LatLng(32.8347, -83.6517);
             map.fitBounds(new google.maps.LatLngBounds(
               new google.maps.LatLng(34.4, -86.5),
               new google.maps.LatLng(30.757787, -80.630202)
@@ -40,18 +40,21 @@ define(["app"], function(GeneralAssemblyApp) {
     View.MemberMapView = Marionette.ItemView.extend({
       template: "#member-map-template",
       onShow: function() {
-        var _colors_senate = [];
-        var _colors_house = [];
-        var color_counter = -1;
+        // var _colors_senate = [];
+        // var _colors_house = [];
+        // var color_counter = -1;
+        var fillColor = "#BDBDBD";
+        var borderColor = "#1A558E";
+        var opacity = 0.6;
         var district_pos_array;
         var member_id_regexp = /Member=(\d+)/
-        var _colors = [ "#7B8C73", "#63705C", "#4A5445", "#31382E", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#A08FA3", "#88738C", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#6D5C70", "#906699", "#362E38", "#A785AD", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#6D5C70", "#906699", "#362E38", "#A785AD", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#6D5C70", "#906699", "#362E38", "#A785AD", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#4D7326", "#4D7A1F", "#4D8217", "#4D8A0F", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#336105", "#336600", "#E6E8E3", "#E6EBE0", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#CCDBBD", "#CCE0B8", "#CCE6B3", "#CCEBAD", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#B3E87D", "#B3F075", "#B3F76E", "#B3FF66", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#808C73", "#809966", "#80A659", "#80B24D", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#669933", "#66A329", "#66AD1F", "#66B814", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#4D9108", "#4D9900", "#33382E", "#333D29", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#33570F", "#335C0A", "#4D7326", "#4D7A1F", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#33570F", "#335C0A", "#336105", "#336600" ];
+        // var _colors = [ "#7B8C73", "#63705C", "#4A5445", "#31382E", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#A08FA3", "#88738C", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#6D5C70", "#906699", "#362E38", "#A785AD", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#6D5C70", "#906699", "#362E38", "#A785AD", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#6D5C70", "#906699", "#362E38", "#A785AD", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#4D7326", "#4D7A1F", "#4D8217", "#4D8A0F", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#336105", "#336600", "#E6E8E3", "#E6EBE0", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#CCDBBD", "#CCE0B8", "#CCE6B3", "#CCEBAD", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#B3E87D", "#B3F075", "#B3F76E", "#B3FF66", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#808C73", "#809966", "#80A659", "#80B24D", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#669933", "#66A329", "#66AD1F", "#66B814", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#4D9108", "#4D9900", "#33382E", "#333D29", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#33570F", "#335C0A", "#4D7326", "#4D7A1F", "#6D5C70", "#906699", "#362E38", "#A785AD", "#7B8C73", "#63705C", "#4A5445", "#31382E", "#5F7A52", "#475C3D", "#33570F", "#335C0A", "#336105", "#336600" ];
 
         // renderDistricts(56, 'Senate', _colors);
         fillArray('map/ga_senate.json');
 
         var mapOptions = {
-          center: { lat: 39.8, lng: -98.5},
+          center: { lat: 32.8347, lng: -83.6517},
           zoom: 7,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
@@ -89,13 +92,13 @@ define(["app"], function(GeneralAssemblyApp) {
         });
 
         data_senate.setStyle(function (feature) {
-          color_counter++;
-          _colors_senate.push(_colors[color_counter]);
+          // color_counter++;
+          // _colors_senate.push(_colors[color_counter]);
           return ({
-            fillColor: _colors[color_counter],
-            strokeColor: "#B2C2A3",
+            fillColor: fillColor,
+            strokeColor: borderColor,
             strokeWeight: 1.1,
-            fillOpacity: 0.85
+            fillOpacity: 0.6
           });
         });
 
@@ -108,15 +111,15 @@ define(["app"], function(GeneralAssemblyApp) {
           getLegislatorsByLocation(lat, lng);
         });
 
-        color_counter = -1;
+        // color_counter = -1;
         data_house.setStyle(function (feature) {
-          color_counter++;
-          _colors_house.push(_colors[color_counter]);
+          // color_counter++;
+          // _colors_house.push(_colors[color_counter]);
           return ({
-            fillColor: _colors[color_counter],
-            strokeColor: "#B2C2A3",
+            fillColor: fillColor,
+            strokeColor: borderColor,
             strokeWeight: 1.1,
-            fillOpacity: 0.85
+            fillOpacity: 0.6
           });
         });
 

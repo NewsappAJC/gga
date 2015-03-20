@@ -1105,3 +1105,10 @@ img.docsub{
 #map {
   height: 650px;
 }
+
+.p-content { }
+.p-content p { margin: 0px; padding: 5px 0px;}
+.p-content a { display:block; }
+.p-content .t { padding:2px 0px; font-size:14px; font-weight:bold; border-bottom:1px solid #ccc; }
+.p-content .m-info { width: 138px; float: left; padding: 10px 5px; }
+.p-content img { height:70px; }
