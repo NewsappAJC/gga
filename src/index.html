@@ -80,6 +80,11 @@
               <div class="col-sm-2">
                 <a href="/#about">ABOUT</a>
               </div>
+<!--
+			  <div class="col-sm-2">
+				<a href="/#map">MAP</a>
+			  </div>
+-->
             </div>
           </div>
           <div id="whatsNew" class="col-sm-4">
@@ -94,7 +99,7 @@
           <div class="container collapse" id="updateBox">
             <div class="well well-sm">
               <button type="button" class="close" id="closeUpdate"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-              <p>The AJC has released a new, significantly improved  version of the Legislative Navigator Predict-a-bill, the statistical model that estimated the probability that a bill will pass. The new model takes into account where the bill is in the legislative process and how many days are left in the session. In testing on previous sessions the new model has proven much more accurate, and becasue the probability can be calculated daily it reveals how a bill's chances are waning or waxing as the session continues. To learn more, read about the <a href="http://ajcnewsapps.tumblr.com/post/112039443036/predict-a-bill-goes-real-time-more-or-less">improved model on the AJC Data Team blog</a></p>
+              <p>New to the AJC legislative Navigator <a href="#members"><u>Member page</u>&#58;</a> Enter your address or click on a map location to find out who represents you in the Georgia General Assembly</p>
             </div>
           </div>
         </div>
@@ -339,9 +344,27 @@
       </div>
     </div>
     <div class="navbar navbar-static-top" id="panel-region"></div>
+    <div class="container" id="tabs">
+      <div class="row">
+        <ul class="nav nav-tabs">
+          <li id="browse-tab"><a href="#member-browse-region" data-toggle="tab" id="browse-tab">Browse members</a></li>
+          <li><a href="#map-region" data-toggle="tab" id="map-tab">Find my legislators</a></li>
+        </ul>
+      </div>
+      <div class="tab-content row">
+        <div class="tab-pane active" id="member-browse-region"></div>
+        <div class="tab-pane" id="map-region"></div>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/template" id="member-browse-layout">
     <div class="container">
       <div class="row">
-        <div class="col-sm-12" id="members-region"></div>
+        <div class="navbar navbar-static-top" id="panel-region"></div>
+      </div>
+      <div class="row">
+        <div id="members-region"></div>
       </div>
     </div>
   </script>
@@ -451,7 +474,7 @@
           <li><a href="#bill-search-region" data-toggle="tab">Search Bill Text</a></li>
         </ul>
         <div class="tab-content">
-          <div class="tab-pane" id="bill-category-region"></div>
+          <div class="tab-pane active" id="bill-category-region"></div>
           <div class="tab-pane" id="bill-event-region"></div>
           <div class="tab-pane" id="bill-search-region"></div>
         </div>
@@ -924,6 +947,48 @@
     </div>
 
   </script>
+
+  <script type="text/template" id="map-template">
+     <div class="container">
+	 	   <iframe style="width:100%; height:1200px; margin:auto; " src="/map/index_gmap.html" scrolling="no" frameborder="0px"/>
+	   </div>
+   </script>
+
+   <script type="text/template" id="member-map-template">
+    <div class="row">
+      <div class="map-container">
+        <div class="row"
+          <div id="form">
+              <h4>Who represents me?</h4>
+              <div class="row">
+                <div class="col-sm-2">
+                  <button type="submit" class="btn btn-primary" value="Find My Legislators" id="btnFind">Find My Legislators</button>
+                </div>
+                <div class="col-sm-6">
+                  <input type="text" id="address" class="form-control" placeholder="Enter your address"/>
+                </div>
+                <div id="choose-map" class="col-sm-4">
+                  Show me
+                  <button data-itemid="senate" id="senate-districts" class="btn btn-primary">Senate Districts</button>
+                  <button data-itemid="house" id="house-districts" class="btn btn-primary">House Districts</button>
+                </div>
+              </div>
+          </div>
+          <!--
+          <div id="choose-map" class="navbar">
+            <p>
+              Show me
+              <button data-itemid="senate" id="senate-districts" clas="btn btn-default navbar-btn">Senate Districts</button>
+              <button data-itemid="house" id="house-districts" clas="btn btn-default navbar-btn">House Districts</button>
+            </p>
+          </div>
+          -->
+        </div>
+        <div id="map" class="row"></div>
+        <div id="district"></div>
+      </div>
+    </div>
+   </script>
 
 
   <script data-main="scripts/require_main.js" src="scripts/lib/require.js"></script>

@@ -17,10 +17,7 @@ define(["app"], function(GeneralAssemblyApp) {
         var doctype = $("#document-type").val();
         var number = $("#number").val();
         GeneralAssemblyApp.trigger("bills:show", doctype + '/' + number);
-      },
-      onShow: function() {
-        $("li#default-tab a").click();
-      },
+      }
     });
 
     View.CategoryView = Marionette.ItemView.extend({

@@ -2,11 +2,12 @@ define(["app","apps/members/list/list_view"], function(GeneralAssemblyApp, View)
   GeneralAssemblyApp.module("MembersApp.List", function(List, GeneralAssemblyApp, Backbone, Marionette, $, _) {
     List.Controller = {
       listMembers: function(criterion) {
-        require(["entities/member"], function() {
+        require(["entities/member","goog!maps,3,other_params:sensor=false"], function() {
           var fetchingMembers = GeneralAssemblyApp.request("members:collection");
-
-          var membersListLayout = new View.MemberLayout();
+          var membersLayout = new View.MembersLayout();
+          var memberBrowseLayout = new View.MemberBrowseLayout();
           var membersListPanel = new View.MemberPanel();
+          var mapView = new View.MemberMapView();
 
           $.when(fetchingMembers).done(function(members) {
             filteredMembers = GeneralAssemblyApp.Entities.FilteredCollection({
@@ -28,9 +29,14 @@ define(["app","apps/members/list/list_view"], function(GeneralAssemblyApp, View)
               GeneralAssemblyApp.trigger("member:show", id);
             });
 
-            membersListLayout.on("show", function() {
-              membersListLayout.panelRegion.show(membersListPanel);
-              membersListLayout.membersRegion.show(membersListView);
+            memberBrowseLayout.on("show", function() {
+              memberBrowseLayout.panelRegion.show(membersListPanel);
+              memberBrowseLayout.membersRegion.show(membersListView);
+            });
+
+            membersLayout.on("show", function() {
+              membersLayout.membersRegion.show(memberBrowseLayout);
+              membersLayout.mapRegion.show(mapView);
             });
 
             membersListPanel.on("members:filter", function(criterion) {
@@ -38,7 +44,7 @@ define(["app","apps/members/list/list_view"], function(GeneralAssemblyApp, View)
               GeneralAssemblyApp.trigger("members:filter", filteredMembers.filterCriterion);
             });
 
-            GeneralAssemblyApp.mainRegion.show(membersListLayout);
+            GeneralAssemblyApp.mainRegion.show(membersLayout);
           });
         });
       }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="style_gmap.css" type="text/css" />
+</head>
+<body>
+	<div class="main container">
+		<div class="row">
+			<div class="map-container">
+				<div id="form">
+					<h4>Who represents me?</h4>
+					<input type="text" id="address" placeholder="Enter your address"/> <input type="button" value="Find" id="btnFind" />
+				</div>
+				<div id="choose-map" class="nav btn-group-sm btn-filter">
+					Show me
+					<button data-itemid="senate" id="senate-districts" clas="btn navbar-btn active">Senate Districts</button>
+					<button data-itemid="house" id="house-districts" clas="btn navbar-btn">House Districts</button>
+				</div>
+				<div id="map"></div>
+				<div id="district"></div>
+			</div>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/jscript"></script>
+		<script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/jscript"></script>
+		<script src="gmap.js" type="text/jscript"></script>
+		</div>
+</div>
+</body>
+</html>
