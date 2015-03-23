@@ -40,6 +40,9 @@ define(["app"], function(GeneralAssemblyApp) {
         // }
 
         var data = this.model.get("predictions_history");
+        data.sort(function(a, b) {
+          return a.legislative_day - b.legislative_day;
+        });
 
         var margin = {top: 20, right: 20, bottom: 40, left: 50},
             width = $('#predictions-chart').width() - margin.left - margin.right,
