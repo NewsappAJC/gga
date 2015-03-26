@@ -733,8 +733,10 @@
             <% if ( passed_over === -1 ) { %>
               <p class="red"><strong>Note:</strong> This bill did not cross over from one house to the other by the 30th day of the legislative session, known as Crossover Day. By tradition, if a bill or constitutional amendment resolution is not passed out of its chamber of origin by Crossover Day, it becomes inactive until the legislative session resumes next year. However, the substance of the bill can still be amended to a live bill later in this year&#39s session. Local bills and private resolutions are not affected by the Crossover Day deadline.</p>
             <% } %>
-
             <p><strong><%- caption %></strong><p>
+            <% console.log(category); if (category !== null) { %>
+              <p><strong>Topic: </strong><%- category %> <img class="info-tip" src="images/icon_info.png" title="Topics are assigned by a statistical model created by IBM and trained on historical legislation before the U.S. Congress."></p>
+            <% } %>
             <p>
               <strong>Current Status:</strong>
               <%- status_description %>
