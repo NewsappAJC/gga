@@ -751,7 +751,7 @@
             </p>
             <p><strong>Official Summary:</strong> <%- summary %></p>
 
-            <% if ( $.isNumeric(predictions) && bill_passed === 0 && passed_over >= -1 ) { %>
+            <% if ( document_type.match(/B/) && bill_passed === 0 && passed_over >= -1 ) { %>
             <div>
               <hr>
               <% if ( caption.match(/(General|Supplemental) appropriations.*201(5|4)/) ) { %>
