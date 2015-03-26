@@ -24,7 +24,7 @@ define(["app"], function(GeneralAssemblyApp) {
     });
 
     View.BillCompactView = Marionette.ItemView.extend({
-      template: "#bill_list-template",
+      template: "#bill-list-template",
       tagName: "li",
       className: "list-group-item",
       onShow: function() {
